@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "703724480418",
+    "project_id": "scientiboost-fe2f3",
+    "storage_bucket": "scientiboost-fe2f3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703724480418:android:bcb84f32e40ecb6025f4fb",
+        "android_client_info": {
+          "package_name": "com.example.scientiboost"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeK-AqvoxYdAL5eEHKmM_1QNvNBEjfdj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
