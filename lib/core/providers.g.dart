@@ -6,23 +6,7 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseAuthHash() => r'8f84097cccd00af817397c1715c5f537399ba780';
-
-/// See also [firebaseAuth].
-@ProviderFor(firebaseAuth)
-final firebaseAuthProvider = AutoDisposeProvider<FirebaseAuth>.internal(
-  firebaseAuth,
-  name: r'firebaseAuthProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$firebaseAuthHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef FirebaseAuthRef = AutoDisposeProviderRef<FirebaseAuth>;
-String _$authRepositoryHash() => r'6941272bd5567f3f9bc763191cd75cc047d4134b';
+String _$authRepositoryHash() => r'8df379ec7a154dbb4003018d26d4827c45a33019';
 
 /// See also [authRepository].
 @ProviderFor(authRepository)
@@ -40,7 +24,7 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
-String _$goRouterHash() => r'7ff256467ebf7508e6512c5cc54da6b234020107';
+String _$goRouterHash() => r'b7db06023309bbff0326a6e1f45d089aa353d988';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

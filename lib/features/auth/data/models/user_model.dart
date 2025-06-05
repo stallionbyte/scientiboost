@@ -9,7 +9,6 @@ abstract class UserModel with _$UserModel {
   const factory UserModel({
     required String uid,
     required String email,
-    String? displayName,
     @Default(false) bool emailVerified,
   }) = _UserModel;
 

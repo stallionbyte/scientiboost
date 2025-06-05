@@ -10,6 +10,7 @@ abstract class AuthRepository {
   Future<ResultDart<UserModel, String>> signUp(String email, String password);
   Future<ResultDart<Unit, String>> signOut();
   Future<ResultDart<Unit, String>> sendPasswordResetEmail(String email);
+
   Stream<UserModel?> get authStateChanges;
 }
 
@@ -34,12 +35,11 @@ class AuthRepositoryImpl implements AuthRepository {
         UserModel(
           uid: user.uid,
           email: user.email!,
-          displayName: user.displayName,
           emailVerified: user.emailVerified,
         ),
       );
     } on FirebaseAuthException catch (e) {
-      return Failure(_mapFirebaseError(e));
+      return Failure(_formatErrorMessage(e));
     } catch (e) {
       return Failure(AuthConstants.genericError);
     }
@@ -56,16 +56,16 @@ class AuthRepositoryImpl implements AuthRepository {
         password: password,
       );
       final user = credential.user!;
+
       return Success(
         UserModel(
           uid: user.uid,
           email: user.email!,
-          displayName: user.displayName,
           emailVerified: user.emailVerified,
         ),
       );
     } on FirebaseAuthException catch (e) {
-      return Failure(_mapFirebaseError(e));
+      return Failure(_formatErrorMessage(e));
     } catch (e) {
       return Failure(AuthConstants.genericError);
     }
@@ -76,6 +76,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _firebaseAuth.signOut();
       return const Success(unit);
+    } on FirebaseAuthException catch (e) {
+      return Failure(_formatErrorMessage(e));
     } catch (e) {
       return Failure(AuthConstants.genericError);
     }
@@ -87,7 +89,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
       return const Success(unit);
     } on FirebaseAuthException catch (e) {
-      return Failure(_mapFirebaseError(e));
+      return Failure(_formatErrorMessage(e));
     } catch (e) {
       return Failure(AuthConstants.genericError);
     }
@@ -101,27 +103,12 @@ class AuthRepositoryImpl implements AuthRepository {
                 ? UserModel(
                   uid: user.uid,
                   email: user.email!,
-                  displayName: user.displayName,
                   emailVerified: user.emailVerified,
                 )
                 : null,
       );
 
-  // Mappe les erreurs Firebase en messages conviviaux
-  String _mapFirebaseError(FirebaseAuthException e) {
-    switch (e.code) {
-      case 'invalid-email':
-        return AuthConstants.invalidEmail;
-      case 'user-not-found':
-        return AuthConstants.userNotFound;
-      case 'wrong-password':
-        return AuthConstants.wrongPassword;
-      case 'email-already-in-use':
-        return AuthConstants.emailAlreadyInUse;
-      case 'weak-password':
-        return AuthConstants.weakPassword;
-      default:
-        return AuthConstants.genericError;
-    }
+  String _formatErrorMessage(FirebaseAuthException e) {
+    return "Une erreur s'est produite \n code erreur: ${e.code} \n message: ${e.message}";
   }
 }
