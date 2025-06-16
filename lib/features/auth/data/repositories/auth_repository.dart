@@ -10,6 +10,7 @@ abstract class AuthRepository {
   Future<ResultDart<UserModel, String>> signUp(String email, String password);
   Future<ResultDart<Unit, String>> signOut();
   Future<ResultDart<Unit, String>> sendPasswordResetEmail(String email);
+  Future<ResultDart<Unit, String>> sendEmailVerification();
 
   Stream<UserModel?> get authStateChanges;
 }
@@ -87,6 +88,19 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<ResultDart<Unit, String>> sendPasswordResetEmail(String email) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
+      return const Success(unit);
+    } on FirebaseAuthException catch (e) {
+      return Failure(_formatErrorMessage(e));
+    } catch (e) {
+      return Failure(Constants.genericError);
+    }
+  }
+
+  @override
+  Future<ResultDart<Unit, String>> sendEmailVerification() async {
+    try {
+      await _firebaseAuth.currentUser?.sendEmailVerification();
+
       return const Success(unit);
     } on FirebaseAuthException catch (e) {
       return Failure(_formatErrorMessage(e));

@@ -12,6 +12,7 @@ import '../features/auth/presentation/screens/signin_screen.dart';
 import '../features/auth/presentation/screens/password_reset_screen.dart';
 import 'package:scientiboost/features/auth/presentation/screens/signup_screen.dart';
 import 'package:scientiboost/features/auth/presentation/screens/signout_screen.dart';
+import 'package:scientiboost/features/auth/presentation/screens/email_verification_screen.dart';
 
 import '../features/subscription/presentation/screens/subscription_screen.dart';
 import '../features/subscription/presentation/screens/subscription_infos_screen.dart';
@@ -54,6 +55,10 @@ GoRouter goRouter(Ref ref) => GoRouter(
     GoRoute(
       path: '/signout',
       builder: (context, state) => const SignOutScreen(),
+    ),
+    GoRoute(
+      path: '/email-verification',
+      builder: (context, state) => const EmailVerificationScreen(),
     ),
     GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
     GoRoute(path: '/menu', builder: (context, state) => MenuScreen()),

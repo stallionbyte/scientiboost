@@ -12,6 +12,7 @@ class ProfilScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authViewModelProvider);
     final user_ = ref.read(authViewModelProvider.notifier).getUser();
+    final emailVerified_ = user_?.emailVerified ?? true;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Profil')),
@@ -44,6 +45,15 @@ class ProfilScreen extends ConsumerWidget {
               },
               child: const Text('Mon abonnement'),
             ),
+
+            if (ref.read(authViewModelProvider.notifier).isAuthenticated() &&
+                !emailVerified_)
+              ElevatedButton(
+                onPressed: () {
+                  ref.read(goRouterProvider).push('/email-verification');
+                },
+                child: const Text('vérifier mon email'),
+              ),
           ],
         ),
       ),
