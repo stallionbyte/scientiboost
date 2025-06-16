@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../viewmodels/auth_viewmodel.dart';
+
+import '../viewmodels/password_reset_viewmodel.dart';
+
+import '../../../../core/providers.dart';
 
 class PasswordResetScreen extends ConsumerStatefulWidget {
   const PasswordResetScreen({super.key});
@@ -23,7 +26,8 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authState = ref.watch(authViewModelProvider);
+    ref.watch(goRouterProvider);
+    final passwordResetState = ref.watch(passwordResetViewmodelProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -38,14 +42,14 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
       ),
       backgroundColor: Colors.white,
       body: () {
-        if (authState case AuthInitial() || AuthLoading()) {
+        if (passwordResetState case PasswordResetLoading()) {
           return const Center(child: CircularProgressIndicator());
-        } else if (authState case PasswordResetEmailSent(:final message)) {
-          return Center(child: Text(message));
-        } else if (authState case Unauthenticated()) {
+        } else if (passwordResetState case PasswordResetInitial()) {
           return _buildForm(context);
-        } else if (authState case AuthError(:final message)) {
+        } else if (passwordResetState case PasswordResetError(:final message)) {
           return _buildForm(context, error: message);
+        } else if (passwordResetState case PasswordResetEmailSent()) {
+          return _buildSentPage(context);
         }
       }(),
     );
@@ -112,7 +116,7 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       ref
-                          .read(authViewModelProvider.notifier)
+                          .read(passwordResetViewmodelProvider.notifier)
                           .sendPasswordResetEmail(_emailController.text);
                     }
                   },
@@ -134,6 +138,38 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildSentPage(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            'Un email de réinitialisation de mot de passe a été envoyé. Veuillez vérifier votre boite de reception',
+          ),
+          ElevatedButton(
+            onPressed: () {
+              ref.read(goRouterProvider).push('/pages-wrapper');
+            },
+
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 12),
+            ),
+
+            child: Text(
+              "j'ai compris",
+              style: TextStyle(fontSize: 14),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
       ),
     );
   }

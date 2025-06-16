@@ -1,8 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/constants.dart';
-
 import '../../data/models/user_model.dart';
 
 import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
@@ -19,8 +17,6 @@ sealed class AuthState with _$AuthState {
   const factory AuthState.authLoading() = AuthLoading;
   const factory AuthState.authenticated(UserModel user) = Authenticated;
   const factory AuthState.unauthenticated() = Unauthenticated;
-  const factory AuthState.passwordResetEmailSent(String message) =
-      PasswordResetEmailSent;
   const factory AuthState.authError(String message) = AuthError;
 }
 
@@ -116,17 +112,5 @@ class AuthViewModel extends _$AuthViewModel {
       final router = ref.read(goRouterProvider);
       router.push('/pages-wrapper');
     }
-  }
-
-  // Gère la réinitialisation du mot de passe
-  Future<void> sendPasswordResetEmail(String email) async {
-    state = const AuthState.authLoading();
-    final result = await ref
-        .read(authRepositoryProvider)
-        .sendPasswordResetEmail(email);
-    state = result.fold(
-      (_) => AuthState.passwordResetEmailSent(AuthConstants.passwordResetSent),
-      (error) => AuthState.authError(error),
-    );
   }
 }
