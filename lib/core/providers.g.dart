@@ -24,7 +24,28 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
-String _$goRouterHash() => r'b7db06023309bbff0326a6e1f45d089aa353d988';
+String _$subscriptionRepositoryHash() =>
+    r'3f16d130fee07a1377569cf62e48e9f5b6548725';
+
+/// See also [subscriptionRepository].
+@ProviderFor(subscriptionRepository)
+final subscriptionRepositoryProvider =
+    AutoDisposeProvider<SubscriptionRepository>.internal(
+      subscriptionRepository,
+      name: r'subscriptionRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$subscriptionRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SubscriptionRepositoryRef =
+    AutoDisposeProviderRef<SubscriptionRepository>;
+String _$goRouterHash() => r'c944ba8f74b08a61ea9773d144bccd94fb173e9a';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

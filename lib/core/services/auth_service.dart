@@ -19,4 +19,4 @@ class AuthService {
 }
 
 // Utilisation :
-// final authService = AuthService.instance;
+// final AuthService = AuthService.instance;

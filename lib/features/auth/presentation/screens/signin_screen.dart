@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/providers.dart';
+
 import '../viewmodels/auth_viewmodel.dart';
+
+import '../../../../core/providers.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});
@@ -28,26 +30,35 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(goRouterProvider);
     final authState = ref.watch(authViewModelProvider);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Connexion',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
       backgroundColor: Colors.white,
       body: () {
-        if (authState case Initial() || Loading()) {
+        if (authState case AuthInitial() || AuthLoading()) {
           return const Center(child: CircularProgressIndicator());
-        } else if (authState case Authenticated(:final user)) {
-          return Placeholder();
-        } else if (authState
-            case Unauthenticated() || PasswordResetEmailSent()) {
-          return _buildForm(context);
-        } else if (authState case Error(:final message)) {
+        } else if (authState case AuthError(:final message)) {
           return _buildForm(context, error: message);
+        } else {
+          return _buildForm(context);
         }
       }(),
     );
   }
 
   Widget _buildForm(BuildContext context, {String? error}) {
-    final router = ref.watch(goRouterProvider);
+    final router = ref.read(goRouterProvider);
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -60,22 +71,14 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 40),
-                // Titre
-                const Text(
-                  'Connexion',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-                const SizedBox(height: 60),
 
                 // Input Email
                 TextFormField(
                   controller: _emailController,
+                  enabled:
+                      !ref
+                          .watch(authViewModelProvider.notifier)
+                          .isAuthenticated(),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -116,6 +119,10 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _isPasswordHidden,
+                  enabled:
+                      !ref
+                          .watch(authViewModelProvider.notifier)
+                          .isAuthenticated(),
                   decoration: InputDecoration(
                     labelText: 'Mot de passe',
                     hintText: 'votre mot de passe',
@@ -160,6 +167,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     return null;
                   },
                 ),
+
                 const SizedBox(height: 32),
 
                 // affichage des erreurs
@@ -172,15 +180,23 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 // Bouton Se connecter
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ref
-                          .read(authViewModelProvider.notifier)
-                          .signIn(
-                            _emailController.text,
-                            _passwordController.text,
-                          );
+                    if (!ref
+                        .watch(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
+                      return () {
+                        if (_formKey.currentState!.validate()) {
+                          ref
+                              .read(authViewModelProvider.notifier)
+                              .signIn(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+                        }
+                      };
+                    } else {
+                      return null;
                     }
-                  },
+                  }(),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
@@ -199,57 +215,63 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 const SizedBox(height: 32),
 
                 // Texte cliquable "Pas encore inscit ?"
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      router.push('/signup');
-                    },
-                    child: RichText(
-                      text: const TextSpan(
-                        text: 'Pas encore inscit ? ',
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
-                        children: [
-                          TextSpan(
-                            text: "S'inscrire",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              decoration: TextDecoration.none,
+                if (!ref
+                    .watch(authViewModelProvider.notifier)
+                    .isAuthenticated())
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        router.push('/signup');
+                      },
+                      child: RichText(
+                        text: const TextSpan(
+                          text: 'Pas encore inscit ? ',
+                          style: TextStyle(color: Colors.black54, fontSize: 14),
+                          children: [
+                            TextSpan(
+                              text: "S'inscrire",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
 
                 const SizedBox(height: 32),
                 // Text mot de passe oublié
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      router.push('/password-reset');
-                    },
-                    child: RichText(
-                      text: const TextSpan(
-                        text: 'mot de passe oublié ? ',
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
-                        children: [
-                          TextSpan(
-                            text: 'Réinitialisation',
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              decoration: TextDecoration.none,
+                if (!ref
+                    .watch(authViewModelProvider.notifier)
+                    .isAuthenticated())
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        router.push('/password-reset');
+                      },
+                      child: RichText(
+                        text: const TextSpan(
+                          text: 'mot de passe oublié ? ',
+                          style: TextStyle(color: Colors.black54, fontSize: 14),
+                          children: [
+                            TextSpan(
+                              text: 'Réinitialisation',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

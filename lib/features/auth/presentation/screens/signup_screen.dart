@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/providers.dart';
+
 import '../viewmodels/auth_viewmodel.dart';
+
+import '../../../../core/providers.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});
@@ -13,7 +15,7 @@ class SignUpScreen extends ConsumerStatefulWidget {
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   bool _isPasswordHidden = true;
@@ -22,32 +24,40 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _phoneController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(goRouterProvider);
     final authState = ref.watch(authViewModelProvider);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Inscription',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
       backgroundColor: Colors.white,
       body: () {
-        if (authState case Initial() || Loading()) {
+        if (authState case AuthInitial() || AuthLoading()) {
           return const Center(child: CircularProgressIndicator());
-        } else if (authState case Authenticated(:final user)) {
-          return Placeholder();
-        } else if (authState
-            case Unauthenticated() || PasswordResetEmailSent()) {
-          return _buildForm(context);
-        } else if (authState case Error(:final message)) {
+        } else if (authState case AuthError(:final message)) {
           return _buildForm(context, error: message);
+        } else {
+          return _buildForm(context);
         }
       }(),
     );
   }
 
   Widget _buildForm(BuildContext context, {String? error}) {
-    final router = ref.watch(goRouterProvider);
+    final router = ref.read(goRouterProvider);
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -60,22 +70,14 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 40),
-                // Titre
-                const Text(
-                  'Inscription',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-                const SizedBox(height: 60),
 
                 // Input Email
                 TextFormField(
                   controller: _emailController,
+                  enabled:
+                      !ref
+                          .watch(authViewModelProvider.notifier)
+                          .isAuthenticated(),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -116,6 +118,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _isPasswordHidden,
+                  enabled:
+                      !ref
+                          .watch(authViewModelProvider.notifier)
+                          .isAuthenticated(),
                   decoration: InputDecoration(
                     labelText: 'Mot de passe',
                     hintText: 'votre mot de passe',
@@ -171,15 +177,23 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 // Bouton S'inscrire
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ref
-                          .read(authViewModelProvider.notifier)
-                          .signUp(
-                            _emailController.text,
-                            _passwordController.text,
-                          );
+                    if (!ref
+                        .watch(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
+                      return () {
+                        if (_formKey.currentState!.validate()) {
+                          ref
+                              .read(authViewModelProvider.notifier)
+                              .signUp(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+                        }
+                      };
+                    } else {
+                      return null;
                     }
-                  },
+                  }(),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
@@ -198,30 +212,33 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 const SizedBox(height: 32),
 
                 // Texte cliquable "Déjà inscrit ?"
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      router.push('/signin');
-                    },
-                    child: RichText(
-                      text: const TextSpan(
-                        text: 'Déjà inscrit ? ',
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
-                        children: [
-                          TextSpan(
-                            text: 'Se connecter',
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              decoration: TextDecoration.none,
+                if (!ref
+                    .watch(authViewModelProvider.notifier)
+                    .isAuthenticated())
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        router.push('/signin');
+                      },
+                      child: RichText(
+                        text: const TextSpan(
+                          text: 'Déjà inscrit ? ',
+                          style: TextStyle(color: Colors.black54, fontSize: 14),
+                          children: [
+                            TextSpan(
+                              text: 'Se connecter',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

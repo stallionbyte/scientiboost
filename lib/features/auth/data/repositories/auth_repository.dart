@@ -41,7 +41,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       return Failure(_formatErrorMessage(e));
     } catch (e) {
-      return Failure(AuthConstants.genericError);
+      return Failure(Constants.genericError);
     }
   }
 
@@ -67,7 +67,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       return Failure(_formatErrorMessage(e));
     } catch (e) {
-      return Failure(AuthConstants.genericError);
+      return Failure(Constants.genericError);
     }
   }
 
@@ -79,7 +79,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       return Failure(_formatErrorMessage(e));
     } catch (e) {
-      return Failure(AuthConstants.genericError);
+      return Failure(Constants.genericError);
     }
   }
 
@@ -91,8 +91,12 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       return Failure(_formatErrorMessage(e));
     } catch (e) {
-      return Failure(AuthConstants.genericError);
+      return Failure(Constants.genericError);
     }
+  }
+
+  String _formatErrorMessage(FirebaseAuthException e) {
+    return "Une erreur s'est produite \n code erreur: ${e.code} \n message: ${e.message}";
   }
 
   @override
@@ -107,8 +111,4 @@ class AuthRepositoryImpl implements AuthRepository {
                 )
                 : null,
       );
-
-  String _formatErrorMessage(FirebaseAuthException e) {
-    return "Une erreur s'est produite \n code erreur: ${e.code} \n message: ${e.message}";
-  }
 }

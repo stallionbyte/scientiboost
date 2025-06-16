@@ -25,15 +25,26 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
   Widget build(BuildContext context) {
     final authState = ref.watch(authViewModelProvider);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Reinitialisation',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
       backgroundColor: Colors.white,
       body: () {
-        if (authState case Initial() || Loading()) {
+        if (authState case AuthInitial() || AuthLoading()) {
           return const Center(child: CircularProgressIndicator());
         } else if (authState case PasswordResetEmailSent(:final message)) {
           return Center(child: Text(message));
         } else if (authState case Unauthenticated()) {
           return _buildForm(context);
-        } else if (authState case Error(:final message)) {
+        } else if (authState case AuthError(:final message)) {
           return _buildForm(context, error: message);
         }
       }(),
@@ -51,18 +62,6 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 60),
-                // Titre
-                const Text(
-                  'Reinitialisation de mot de passe',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
                 const SizedBox(height: 60),
 
                 // Input Email
@@ -108,7 +107,7 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
 
                 const SizedBox(height: 32),
 
-                // Bouton Se connecter
+                // Bouton Réinitialiser
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -127,7 +126,7 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
                     elevation: 2,
                   ),
                   child: const Text(
-                    "reinitialiser",
+                    "réinitialiser le mot de passe",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 ),
