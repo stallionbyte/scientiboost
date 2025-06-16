@@ -143,15 +143,7 @@ class MenuScreen extends ConsumerWidget {
                               color: const Color(0xFF1877F2),
                               onTap: () {
                                 // rediriger vers une page dédiée
-                                ref
-                                    .read(authViewModelProvider.notifier)
-                                    .signOut();
-
-                                ref
-                                    .read(currentPageViewModelProvider.notifier)
-                                    .setState(CurrentPageState.home());
-
-                                router.push('/pages-wrapper');
+                                router.push('/signout');
                               },
                             ),
 

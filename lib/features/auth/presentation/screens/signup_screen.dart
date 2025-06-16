@@ -76,7 +76,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   controller: _emailController,
                   enabled:
                       !ref
-                          .watch(authViewModelProvider.notifier)
+                          .read(authViewModelProvider.notifier)
                           .isAuthenticated(),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -120,7 +120,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   obscureText: _isPasswordHidden,
                   enabled:
                       !ref
-                          .watch(authViewModelProvider.notifier)
+                          .read(authViewModelProvider.notifier)
                           .isAuthenticated(),
                   decoration: InputDecoration(
                     labelText: 'Mot de passe',
@@ -178,7 +178,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (!ref
-                        .watch(authViewModelProvider.notifier)
+                        .read(authViewModelProvider.notifier)
                         .isAuthenticated()) {
                       return () {
                         if (_formKey.currentState!.validate()) {
@@ -212,9 +212,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 const SizedBox(height: 32),
 
                 // Texte cliquable "Déjà inscrit ?"
-                if (!ref
-                    .watch(authViewModelProvider.notifier)
-                    .isAuthenticated())
+                if (!ref.read(authViewModelProvider.notifier).isAuthenticated())
                   Center(
                     child: GestureDetector(
                       onTap: () {

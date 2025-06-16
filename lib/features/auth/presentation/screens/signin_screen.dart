@@ -77,7 +77,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   controller: _emailController,
                   enabled:
                       !ref
-                          .watch(authViewModelProvider.notifier)
+                          .read(authViewModelProvider.notifier)
                           .isAuthenticated(),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -121,7 +121,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   obscureText: _isPasswordHidden,
                   enabled:
                       !ref
-                          .watch(authViewModelProvider.notifier)
+                          .read(authViewModelProvider.notifier)
                           .isAuthenticated(),
                   decoration: InputDecoration(
                     labelText: 'Mot de passe',
@@ -181,7 +181,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (!ref
-                        .watch(authViewModelProvider.notifier)
+                        .read(authViewModelProvider.notifier)
                         .isAuthenticated()) {
                       return () {
                         if (_formKey.currentState!.validate()) {
@@ -215,9 +215,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 const SizedBox(height: 32),
 
                 // Texte cliquable "Pas encore inscit ?"
-                if (!ref
-                    .watch(authViewModelProvider.notifier)
-                    .isAuthenticated())
+                if (!ref.read(authViewModelProvider.notifier).isAuthenticated())
                   Center(
                     child: GestureDetector(
                       onTap: () {
@@ -245,9 +243,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
                 const SizedBox(height: 32),
                 // Text mot de passe oublié
-                if (!ref
-                    .watch(authViewModelProvider.notifier)
-                    .isAuthenticated())
+                if (!ref.read(authViewModelProvider.notifier).isAuthenticated())
                   Center(
                     child: GestureDetector(
                       onTap: () {

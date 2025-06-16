@@ -45,7 +45,7 @@ final subscriptionRepositoryProvider =
 // ignore: unused_element
 typedef SubscriptionRepositoryRef =
     AutoDisposeProviderRef<SubscriptionRepository>;
-String _$goRouterHash() => r'c944ba8f74b08a61ea9773d144bccd94fb173e9a';
+String _$goRouterHash() => r'12cfd038a72545bb3790cde178523d8f503f65c8';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)
