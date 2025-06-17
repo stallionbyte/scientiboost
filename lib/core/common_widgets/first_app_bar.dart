@@ -50,9 +50,13 @@ class _FirstAppBarState extends ConsumerState<FirstAppBar> {
                 height: 44,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.blue,
+                  color: Colors.white,
                 ),
-                child: Icon(Icons.star, color: Colors.white, size: 24),
+                child: Image.asset(
+                  'assets/icon/icon.png',
+                  width: 44,
+                  height: 44,
+                ),
               ),
             ),
             SizedBox(width: 8),
