@@ -1,115 +1,247 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import '../../../auth/presentation/viewmodels/auth_viewmodel.dart';
-import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
-import '../../../../core/providers.dart';
+
+import '../../../../data/datasources/remote/remote_data_sevices.dart';
+
+import '../../../video/presentation/screens/video_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authViewModelProvider);
-    final router = ref.watch(goRouterProvider);
-    //final subscriptionState = ref.watch(subscriptionViewModelProvider);
-
-    // Détermine l'état de connexion et le texte à afficher
-
-    final statusText = () {
-      if (authState case Authenticated()) {
-        return 'Connecté';
-      } else {
-        return 'Déconnecté';
-      }
-    }();
-
-    //final statusText = isConnected ? 'Connecté' : 'Déconnecté';
-
+    final supabase = RemoteDataServices.instance.supabase;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Zone de texte pour l'état de connexion
+        SizedBox(height: 20),
+
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20.0), // Rayon des coins
+          child: Image.asset(
+            'assets/img/eleve-scientific.png',
+            width:
+                MediaQuery.of(context).size.width *
+                0.8, // 80% de la largeur de l'écran
+            fit: BoxFit.contain, // Maintenir les proportions
+          ),
+        ),
+
+        SizedBox(height: 40),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.check_circle_outline, color: Colors.blue, size: 30),
+            SizedBox(width: 20),
+            RichText(
+              text: TextSpan(
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: 'PC: ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '20/20',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 20),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RichText(
+              text: TextSpan(
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: 'SVT: ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '20/20',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
         Text(
-          statusText,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          '(bientot)',
+          style: const TextStyle(fontSize: 16, color: Colors.black),
         ),
 
-        const SizedBox(height: 20),
+        SizedBox(height: 20),
 
-        // Bouton "Se connecter"
-        ElevatedButton(
-          onPressed: () {
-            if (authState case Unauthenticated()) {
-              return () {
-                context.push('/signin');
-              };
-            } else if (authState case Authenticated()) {
-              return null;
-            }
-          }(),
-          child: const Text('Se connecter'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RichText(
+              text: TextSpan(
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: 'MATH: ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '20/20',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        Text(
+          '(bientot)',
+          style: const TextStyle(fontSize: 16, color: Colors.black),
         ),
 
-        ElevatedButton(
-          onPressed: () {
-            if (authState case Unauthenticated()) {
-              return () {
-                context.push('/signup');
-              };
-            } else if (authState case Authenticated()) {
-              return null;
-            }
-          }(),
-          child: const Text('S\'inscrire'),
+        SizedBox(height: 40),
+
+        Row(
+          children: [
+            SizedBox(width: 20),
+            Icon(Icons.check_circle_outline, color: Colors.blue),
+            const SizedBox(width: 10),
+
+            // Envelopper Text dans un Expanded
+            Text(
+              'Videos explicatives',
+              style: const TextStyle(fontSize: 16, color: Colors.blue),
+            ),
+          ],
         ),
 
-        const SizedBox(height: 10),
+        Row(
+          children: [
+            SizedBox(width: 20),
+            Icon(Icons.check_circle_outline, color: Colors.blue),
+            const SizedBox(width: 10),
 
-        // Bouton "Se déconnecter"
-        ElevatedButton(
-          onPressed: () {
-            if (authState case Authenticated()) {
-              return () {
-                ref.read(authViewModelProvider.notifier).signOut();
-              };
-            } else if (authState case Unauthenticated()) {
-              return null;
-            }
-          }(), // Désactivé si déconnecté
-          child: const Text('Se déconnecter'),
+            // Envelopper Text dans un Expanded
+            Text(
+              'Exercices corrigés',
+              style: const TextStyle(fontSize: 16, color: Colors.blue),
+            ),
+          ],
         ),
 
-        const SizedBox(height: 10),
+        Row(
+          children: [
+            SizedBox(width: 20),
+            Icon(Icons.check_circle_outline, color: Colors.blue),
+            const SizedBox(width: 10),
 
-        // Bouton "S'abonner"
-        ElevatedButton(
-          onPressed: () {
-            ref.read(subscriptionViewModelProvider.notifier).init();
-
-            if (authState case Authenticated()) {
-              ref
-                  .read(subscriptionViewModelProvider.notifier)
-                  .checkSubscription();
-            }
-            router.push('/subscription');
-          },
-          child: Text("S'abonner"),
+            Expanded(
+              child: Text(
+                "Sujets d'examen corrigés",
+                style: const TextStyle(fontSize: 16, color: Colors.blue),
+              ),
+            ),
+          ],
         ),
 
-        const SizedBox(height: 10),
+        Row(
+          children: [
+            SizedBox(width: 20),
+            Icon(Icons.check_circle_outline, color: Colors.blue),
+            const SizedBox(width: 10),
 
-        ElevatedButton(
-          onPressed: () {
-            if (authState case Authenticated(:final user)) {
-              return () {
-                router.push('/profil', extra: user);
-              };
-            } else if (authState case Unauthenticated()) {
-              return null;
-            }
-          }(), // Désactivé si déconnecté
-          child: const Text('Profil'),
+            // Envelopper Text dans un Expanded
+            Text(
+              "Receuil de formules",
+              style: const TextStyle(fontSize: 16, color: Colors.blue),
+            ),
+          ],
+        ),
+
+        Row(
+          children: [
+            SizedBox(width: 20),
+            Icon(Icons.check_circle_outline, color: Colors.blue),
+            const SizedBox(width: 10),
+
+            // Envelopper Text dans un Expanded
+            Text(
+              "Astuces",
+              style: const TextStyle(fontSize: 16, color: Colors.blue),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 40),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                "Exemple de video",
+                style: const TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 20),
+
+        VideoPlayerScreen(
+          supabase: supabase,
+          bucket: 'pc',
+          name: 'element_chimique.mp4',
+        ),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                "Elément chimique",
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -26,14 +26,7 @@ class _FirstAppBarState extends ConsumerState<FirstAppBar> {
       height: 60,
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.3),
-            spreadRadius: 1,
-            blurRadius: 2,
-            offset: Offset(0, 1),
-          ),
-        ],
+        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8),

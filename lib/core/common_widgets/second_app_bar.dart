@@ -20,8 +20,8 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.blue[50],
-        border: Border(bottom: BorderSide(color: Colors.grey[300]!)),
+        color: Colors.white,
+        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -42,7 +42,7 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
                                 .read(currentPageViewModelProvider.notifier)
                                 .isExercices()
                             ? Colors.blue
-                            : Colors.grey.withValues(alpha: 0.1),
+                            : Colors.grey[350],
                     foregroundColor:
                         ref
                                 .read(currentPageViewModelProvider.notifier)
@@ -78,7 +78,7 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
                                 .read(currentPageViewModelProvider.notifier)
                                 .isExams()
                             ? Colors.blue
-                            : Colors.grey.withValues(alpha: 0.1),
+                            : Colors.grey[350],
                     foregroundColor:
                         ref
                                 .read(currentPageViewModelProvider.notifier)
