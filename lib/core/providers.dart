@@ -24,6 +24,10 @@ import '../features/profil/presentation/screens/profil_screen.dart';
 import '../features/pages_wrapper/presentation/screens/pages_wrapper.dart';
 import '../features/pages_wrapper/presentation/screens/menu_screen.dart';
 
+import '../features/video/presentation/screens/video_screen.dart';
+
+import '../features/exercice/presentation/screens/exercice_screen.dart';
+
 import '../placeholder.dart';
 
 import '../data/datasources/remote/remote_data_sevices.dart';
@@ -63,6 +67,15 @@ GoRouter goRouter(Ref ref) => GoRouter(
     GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
     GoRoute(path: '/menu', builder: (context, state) => MenuScreen()),
     GoRoute(path: '/checkout', builder: (context, state) => CheckoutScreen()),
+    GoRoute(
+      path: '/video',
+      builder:
+          (context, state) => VideoPlayerScreen(
+            bucket: state.uri.queryParameters['bucket'],
+            nameOnDataBase: state.uri.queryParameters['nameOnDataBase'],
+            title: state.uri.queryParameters['title'],
+          ),
+    ),
 
     GoRoute(
       path: '/subscription',
@@ -90,6 +103,13 @@ GoRouter goRouter(Ref ref) => GoRouter(
       path: '/profil',
       builder: (context, state) {
         return ProfilScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/exercice',
+      builder: (context, state) {
+        return ExerciceScreen();
       },
     ),
   ],

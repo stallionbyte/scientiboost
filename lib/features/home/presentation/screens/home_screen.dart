@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../data/datasources/remote/remote_data_sevices.dart';
-
-import '../../../video/presentation/screens/video_screen.dart';
+import '../../../../core/providers.dart';
+import '../../../../core/common_widgets/button_arrow_forward.dart';
+import '../../../../core/common_widgets/subscription_button.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final supabase = RemoteDataServices.instance.supabase;
+    ref.watch(goRouterProvider);
+    final router = ref.read(goRouterProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -221,20 +222,25 @@ class HomeScreen extends ConsumerWidget {
 
         SizedBox(height: 20),
 
-        VideoPlayerScreen(
-          supabase: supabase,
-          bucket: 'pc',
-          name: 'element_chimique.mp4',
+        ButtonArrowForward(
+          text: 'voir vidéo',
+          onPressed: () {
+            router.push(
+              '/video?bucket=pc&nameOnDataBase=element_chimique.mp4&title=élément chimique',
+            );
+          },
         ),
+
+        SizedBox(height: 40),
 
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
               child: Text(
-                "Elément chimique",
+                "Exemple d'exercice corrigé",
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 25,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
@@ -243,6 +249,110 @@ class HomeScreen extends ConsumerWidget {
             ),
           ],
         ),
+
+        SizedBox(height: 20),
+
+        ButtonArrowForward(
+          text: 'voir exercice',
+          onPressed: () {
+            router.push('/exercice');
+          },
+        ),
+
+        SizedBox(height: 40),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                "Exemple d'examen corrigé",
+                style: const TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 20),
+
+        ButtonArrowForward(
+          text: 'voir examen',
+          onPressed: () {
+            router.push('/exercice');
+          },
+        ),
+
+        SizedBox(height: 40),
+
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20.0), // Rayon des coins
+          child: Image.asset(
+            'assets/img/eleve-ecrivant.png',
+            width:
+                MediaQuery.of(context).size.width *
+                0.8, // 80% de la largeur de l'écran
+            fit: BoxFit.contain, // Maintenir les proportions
+          ),
+        ),
+
+        SizedBox(height: 20),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: RichText(
+                text: TextSpan(
+                  children: const <TextSpan>[
+                    TextSpan(
+                      text: 'Soyez ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'excellent(e) ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.amber,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Dans les matières ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'scientifiques',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 20),
+
+        SubscriptionButton(),
+
+        SizedBox(height: 40),
       ],
     );
   }

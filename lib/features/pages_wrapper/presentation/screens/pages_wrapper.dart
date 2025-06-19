@@ -8,8 +8,6 @@ import '../viewmodels/current_page_viewmodel.dart';
 import '../../../../core/common_widgets/first_app_bar.dart';
 import '../../../../core/common_widgets/second_app_bar.dart';
 
-import '../../../video/presentation/screens/video_screen.dart';
-
 class PagesWrapper extends ConsumerStatefulWidget {
   const PagesWrapper({super.key});
 
@@ -22,11 +20,10 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
   Widget build(BuildContext context) {
     ref.watch(currentPageViewModelProvider);
     return Scaffold(
+      appBar: FirstAppBar(),
       body: SafeArea(
         child: Column(
           children: [
-            // Première AppBar
-            _buildFirstAppBar(),
             // Deuxième AppBar
             _buildSecondAppBar(),
             // Contenu de la page
@@ -35,10 +32,6 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
         ),
       ),
     );
-  }
-
-  Widget _buildFirstAppBar() {
-    return FirstAppBar();
   }
 
   Widget _buildSecondAppBar() {

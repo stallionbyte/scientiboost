@@ -8,83 +8,68 @@ import '../../features/pages_wrapper/presentation/viewmodels/current_page_viewmo
 
 import '../providers.dart';
 
-class FirstAppBar extends ConsumerStatefulWidget {
+class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const FirstAppBar({super.key});
-
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _FirstAppBarState();
-}
-
-class _FirstAppBarState extends ConsumerState<FirstAppBar> {
+  Size get preferredSize => const Size.fromHeight(60);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(currentPageViewModelProvider);
     ref.watch(goRouterProvider);
     ref.watch(authViewModelProvider);
 
-    return Container(
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(0),
+        child: Container(color: Colors.grey.shade300, height: 1),
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        child: Row(
-          children: [
-            // Logo circulaire
-            GestureDetector(
-              onTap:
-                  () => ref
-                      .read(currentPageViewModelProvider.notifier)
-                      .setState(CurrentPageState.home()),
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: Image.asset(
-                  'assets/icon/icon.png',
-                  width: 44,
-                  height: 44,
-                ),
+      title: Row(
+        children: [
+          GestureDetector(
+            onTap:
+                () => ref
+                    .read(currentPageViewModelProvider.notifier)
+                    .setState(CurrentPageState.home()),
+            child: Container(
+              width: 44,
+              height: 44,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
               ),
+              child: Image.asset('assets/icon/icon.png', width: 44, height: 44),
             ),
-            SizedBox(width: 8),
-
-            // Bouton S'abonner
-            SubscriptionButton(),
-
-            SizedBox(width: 8),
-
-            // Icône utilisateur (si authentifié)
-            if (ref.read(authViewModelProvider.notifier).isAuthenticated()) ...[
-              GestureDetector(
-                onTap: () {
-                  ref
-                      .read(goRouterProvider)
-                      .push(
-                        '/profil',
-                        extra:
-                            ref.read(authViewModelProvider.notifier).getUser(),
-                      );
-                },
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey[300],
-                  ),
-                  child: Icon(Icons.person, color: Colors.grey[600], size: 20),
-                ),
-              ),
-            ],
-          ],
-        ),
+          ),
+          const SizedBox(width: 8),
+          const SubscriptionButton(),
+        ],
       ),
+      actions: [
+        if (ref.read(authViewModelProvider.notifier).isAuthenticated()) ...[
+          GestureDetector(
+            onTap: () {
+              ref
+                  .read(goRouterProvider)
+                  .push(
+                    '/profil',
+                    extra: ref.read(authViewModelProvider.notifier).getUser(),
+                  );
+            },
+            child: Container(
+              width: 40,
+              height: 40,
+              margin: const EdgeInsets.only(right: 8),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.grey[300],
+              ),
+              child: Icon(Icons.person, color: Colors.grey[600], size: 20),
+            ),
+          ),
+        ],
+      ],
     );
   }
 }
