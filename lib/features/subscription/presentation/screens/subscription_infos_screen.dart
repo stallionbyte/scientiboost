@@ -5,6 +5,8 @@ import '../viewmodels/subscription_viewmodel.dart';
 
 import '../../data/models/subscription_model.dart';
 
+import '../../../../core/helpers.dart' as helpers;
+
 class SubscriptionInfosScreen extends ConsumerWidget {
   const SubscriptionInfosScreen({super.key});
 
@@ -12,28 +14,38 @@ class SubscriptionInfosScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final subscriptionState = ref.watch(subscriptionViewModelProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Abonnement')),
+      appBar: AppBar(
+        title: const Text(
+          'Abonnement',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
+      ),
       body: () {
         if (subscriptionState case SubscriptionLoading()) {
           return const Center(child: CircularProgressIndicator());
         } else if (subscriptionState case Subscribed(:final subscription)) {
           return _buildPage(context, ref, subscription);
         } else if (subscriptionState case SubscriptionError(:final message)) {
-          return Center(
-            child: Column(
-              children: [
-                Text(message, style: const TextStyle(color: Colors.red)),
-                _checkButton(context, ref),
-              ],
-            ),
+          helpers.scheduleShowSnackBar(
+            context: context,
+            content: message,
+            backgroundColor: Colors.red,
           );
+          return Center(child: _checkButton(context, ref));
         } else if (subscriptionState case Unsubscribed()) {
-          return Center(
-            child: Column(
-              children: [
-                const Text("Vous n'avez pas d'abonnement valide actuellement"),
-                _checkButton(context, ref),
-              ],
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Vous n'avez pas d'abonnement valide actuellement",
+                  ),
+                  SizedBox(height: 40),
+                  _checkButton(context, ref),
+                ],
+              ),
             ),
           );
         } else {
@@ -53,12 +65,12 @@ class SubscriptionInfosScreen extends ConsumerWidget {
         backgroundColor: Colors.amber,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.all(12),
       ),
 
       child: Text(
         "Vérifier mon abonnement",
-        style: TextStyle(fontSize: 14),
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         overflow: TextOverflow.ellipsis,
       ),
     );
@@ -69,55 +81,126 @@ class SubscriptionInfosScreen extends ConsumerWidget {
     WidgetRef ref,
     SubscriptionModel subscription,
   ) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Abonnement',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Date de début:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    TextSpan(text: subscription.startAt.toString()),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Date de fin:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    TextSpan(text: subscription.expireAt.toString()),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Matière(s):  ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    TextSpan(text: subscription.subjects?.join(", ")),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Prix:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    TextSpan(
+                      text:
+                          '${subscription.price?.toStringAsFixed(2)} Franc CFA',
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Statut:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    TextSpan(
+                      text: 'valide',
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Important:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    TextSpan(
+                      text:
+                          'Vous devez attendre la fin de cet abonnement avant de vous réabonner',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              _checkButton(context, ref),
+            ],
           ),
-          const SizedBox(height: 16),
-          Text(
-            'Date de début: ${subscription.startAt.toString()}',
-            style: const TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Date de fin: ${subscription.expireAt.toString()}',
-            style: const TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Matières: ${subscription.subjects?.join(", ")}',
-            style: const TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Prix: ${subscription.price?.toStringAsFixed(2)} Franc CFA',
-            style: const TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Statut: ${ref.read(subscriptionViewModelProvider.notifier).isSubscribed() ? "Valide" : "Expiré"}',
-            style: TextStyle(
-              fontSize: 16,
-              color:
-                  ref
-                          .read(subscriptionViewModelProvider.notifier)
-                          .isSubscribed()
-                      ? Colors.green
-                      : Colors.red,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Important: Vous devez attendre la fin de cet abonnement avant de vous réabonner',
-            style: TextStyle(fontSize: 16, color: Colors.red),
-          ),
-          _checkButton(context, ref),
-        ],
+        ),
       ),
     );
   }

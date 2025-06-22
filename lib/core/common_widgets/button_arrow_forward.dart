@@ -8,17 +8,19 @@ class ButtonArrowForward extends ConsumerWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.backgroundColor,
   });
 
   final VoidCallback onPressed;
   final String text;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(goRouterProvider);
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue, // Fond bleu
+        backgroundColor: backgroundColor ?? Colors.blue, // Fond bleu
         foregroundColor: Colors.white, // Texte et icône blancs
         padding: const EdgeInsets.symmetric(
           horizontal: 16,

@@ -1,5 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -28,28 +31,53 @@ import '../features/video/presentation/screens/video_screen.dart';
 
 import '../features/exercice/presentation/screens/exercice_screen.dart';
 
+import '../data/storage/shared_preference_storage.dart';
+import '../data/storage/local_storage_interface.dart';
+
+import '../test_widget.dart';
+
 import '../placeholder.dart';
 
-import '../data/datasources/remote/remote_data_sevices.dart';
-import '../core/services/auth_service.dart';
-
 part 'providers.g.dart';
+
+// Provider pour une instance de FirebaseAuth
+@riverpod
+FirebaseAuth firebaseAuthInstance(Ref ref) => FirebaseAuth.instance;
+
+// Provider pour une instance de FirebaseFirestore
+@riverpod
+FirebaseFirestore firebaseFirestoreInstance(Ref ref) =>
+    FirebaseFirestore.instance;
+
+// Provider pour SupabaseClient
+@riverpod
+SupabaseClient supabaseClient(Ref ref) => Supabase.instance.client;
 
 // Provider pour le repository d'authentification
 @riverpod
 AuthRepository authRepository(Ref ref) =>
-    AuthRepositoryImpl(AuthService.instance.firebaseAuth);
+    AuthRepositoryImpl(ref.read(firebaseAuthInstanceProvider));
 
 // Provider pour le repository de suscription
 @riverpod
 SubscriptionRepository subscriptionRepository(Ref ref) =>
-    SubscriptionRepositoryImpl(RemoteDataServices.instance.firebaseFirestore);
+    SubscriptionRepositoryImpl(ref.read(firebaseFirestoreInstanceProvider));
+
+// Provider pour SharedPreferencesStorage
+@riverpod
+Future<LocalStorageInterface> sharedPreferences(Ref ref) async {
+  final storage = SharedPreferencesStorage();
+  await storage.init();
+  return storage;
+}
 
 // Provider pour GoRouter
 @riverpod
 GoRouter goRouter(Ref ref) => GoRouter(
   initialLocation: '/pages-wrapper',
   routes: [
+    GoRoute(path: '/test', builder: (context, state) => const TestWidget()),
+
     GoRoute(
       path: '/pages-wrapper',
       builder: (context, state) => PagesWrapper(),
@@ -71,9 +99,10 @@ GoRouter goRouter(Ref ref) => GoRouter(
       path: '/video',
       builder:
           (context, state) => VideoPlayerScreen(
-            bucket: state.uri.queryParameters['bucket'],
-            nameOnDataBase: state.uri.queryParameters['nameOnDataBase'],
-            title: state.uri.queryParameters['title'],
+            matiere: state.uri.queryParameters['matiere'] as String,
+            nameOnDataBase:
+                state.uri.queryParameters['nameOnDataBase'] as String,
+            title: state.uri.queryParameters['title'] as String,
           ),
     ),
 

@@ -8,19 +8,31 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:media_kit/media_kit.dart'; // Provides [Player], [Media], [Playlist] etc.
 import 'package:media_kit_video/media_kit_video.dart'; // Provides [VideoController] & [Video] etc.
 
-import 'package:supabase_flutter/supabase_flutter.dart';
-
 import '../../../../data/datasources/remote/remote_data_sevices.dart';
 
 import '../../../../core/common_widgets/first_app_bar.dart';
 
-class VideoPlayerScreen extends ConsumerStatefulWidget {
-  VideoPlayerScreen({super.key, this.bucket, this.nameOnDataBase, this.title});
+import '../viewmodels/video_viewmodel.dart';
+import '../../data/repositories/video_repository.dart';
 
-  final String? bucket;
-  final String? nameOnDataBase;
-  final String? title;
-  final SupabaseClient supabase = RemoteDataServices.instance.supabase;
+import 'package:flutter/foundation.dart';
+
+class VideoPlayerScreen extends ConsumerStatefulWidget {
+  VideoPlayerScreen({
+    super.key,
+    required this.matiere,
+    required this.nameOnDataBase,
+    required this.title,
+  });
+
+  final String matiere;
+  final String nameOnDataBase;
+  final String title;
+  //final SupabaseClient supabase = RemoteDataServices.instance.supabase;
+  final VideoViewmodel videoViewmodel = VideoViewmodel(
+    VideoRepositoryImpl(RemoteDataServices.instance.supabase),
+  );
+
   @override
   ConsumerState<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
 }
@@ -31,12 +43,22 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
   // Create a [VideoController] to handle video output from [Player].
   late final controller = VideoController(player);
 
+  String? errorMessage;
+
   @override
   void initState() {
     super.initState();
     // Play a [Media] or [Playlist].
-
     _initialize();
+
+    // Écouter les erreurs du player
+    player.stream.error.listen((error) {
+      debugPrint('**********************************************************');
+      debugPrint('in stream error');
+      setState(() {
+        errorMessage = "Une erreur s'est produite";
+      });
+    });
   }
 
   @override
@@ -60,12 +82,19 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
   }
   */
 
-  void _initVideo() {
-    final String publicUrl = widget.supabase.storage
-        .from(widget.bucket as String)
-        .getPublicUrl(widget.nameOnDataBase as String);
+  Future<void> _initVideo() async {
+    final publicUrl = widget.videoViewmodel.getPublicUrl(
+      widget.matiere,
+      widget.nameOnDataBase,
+    );
 
-    player.open(Media(publicUrl), play: false);
+    if (publicUrl != null) {
+      await player.open(Media(publicUrl), play: true);
+    } else {
+      setState(() {
+        errorMessage = 'URL de la vidéo non disponible';
+      });
+    }
   }
 
   @override
@@ -75,17 +104,47 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 40),
-            SizedBox(
+            const SizedBox(height: 40),
+            Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.width * 9.0 / 16.0,
-              // Use [Video] widget to display video output.
-              child: Video(controller: controller),
+              color: Colors.black,
+              // Afficher soit la vidéo, soit un message d'erreur
+              child:
+                  errorMessage != null
+                      ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            errorMessage!,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          ElevatedButton(
+                            onPressed: () => _initVideo(),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              padding: EdgeInsets.all(8),
+                            ),
+                            child: const Text('Réessayer'),
+                          ),
+                        ],
+                      )
+                      : Video(controller: controller),
             ),
-
-            SizedBox(height: 20),
-
-            if (widget.title != null) Text(widget.title as String),
+            const SizedBox(height: 20),
+            Text(
+              widget.title,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),

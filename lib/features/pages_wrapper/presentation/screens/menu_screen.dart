@@ -65,7 +65,7 @@ class MenuScreen extends ConsumerWidget {
                             children: [
                               CircleAvatar(
                                 radius: 25,
-                                backgroundColor: Color(0xFF4267B2),
+                                backgroundColor: Colors.blue,
                                 child: Icon(
                                   Icons.person,
                                   color: Colors.white,

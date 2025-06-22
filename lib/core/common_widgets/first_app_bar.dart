@@ -44,32 +44,36 @@ class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
           ),
           const SizedBox(width: 8),
           const SubscriptionButton(),
+          const SizedBox(width: 8),
+
+          if (ref.read(authViewModelProvider.notifier).isAuthenticated()) ...[
+            GestureDetector(
+              onTap: () {
+                ref
+                    .read(goRouterProvider)
+                    .push(
+                      '/profil',
+                      extra: ref.read(authViewModelProvider.notifier).getUser(),
+                    );
+              },
+              child: Container(
+                width: 40,
+                height: 40,
+                margin: const EdgeInsets.only(right: 8),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.grey[300],
+                ),
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.blue,
+                  child: Icon(Icons.person, color: Colors.white, size: 30),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
-      actions: [
-        if (ref.read(authViewModelProvider.notifier).isAuthenticated()) ...[
-          GestureDetector(
-            onTap: () {
-              ref
-                  .read(goRouterProvider)
-                  .push(
-                    '/profil',
-                    extra: ref.read(authViewModelProvider.notifier).getUser(),
-                  );
-            },
-            child: Container(
-              width: 40,
-              height: 40,
-              margin: const EdgeInsets.only(right: 8),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.grey[300],
-              ),
-              child: Icon(Icons.person, color: Colors.grey[600], size: 20),
-            ),
-          ),
-        ],
-      ],
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:result_dart/result_dart.dart';
 
+import '../../../../core/error/firebase/error.dart';
+
 import '../../../../core/constants.dart';
-import '../models/user_model.dart';
+import '../../../auth/data/models/user_model.dart';
 
 // Interface du repository d'authentification
 abstract class AuthRepository {
@@ -40,7 +42,7 @@ class AuthRepositoryImpl implements AuthRepository {
         ),
       );
     } on FirebaseAuthException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(authE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -66,7 +68,7 @@ class AuthRepositoryImpl implements AuthRepository {
         ),
       );
     } on FirebaseAuthException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(authE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -78,7 +80,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await _firebaseAuth.signOut();
       return const Success(unit);
     } on FirebaseAuthException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(authE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -90,7 +92,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
       return const Success(unit);
     } on FirebaseAuthException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(authE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -103,14 +105,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return const Success(unit);
     } on FirebaseAuthException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(authE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
-  }
-
-  String _formatErrorMessage(FirebaseAuthException e) {
-    return "Une erreur s'est produite \n code erreur: ${e.code} \n message: ${e.message}";
   }
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/providers.dart';
 import '../../../../core/common_widgets/button_arrow_forward.dart';
 import '../../../../core/common_widgets/subscription_button.dart';
+import '../../../../core/constants.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -225,9 +226,7 @@ class HomeScreen extends ConsumerWidget {
         ButtonArrowForward(
           text: 'voir vidéo',
           onPressed: () {
-            router.push(
-              '/video?bucket=pc&nameOnDataBase=element_chimique.mp4&title=élément chimique',
-            );
+            router.push(VideoConstants.pathElementChimique);
           },
         ),
 
@@ -255,7 +254,7 @@ class HomeScreen extends ConsumerWidget {
         ButtonArrowForward(
           text: 'voir exercice',
           onPressed: () {
-            router.push('/exercice');
+            router.push('/test');
           },
         ),
 
@@ -283,7 +282,63 @@ class HomeScreen extends ConsumerWidget {
         ButtonArrowForward(
           text: 'voir examen',
           onPressed: () {
-            router.push('/exercice');
+            router.push('/test');
+          },
+        ),
+
+        SizedBox(height: 40),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                "Exemple de formules",
+                style: const TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 20),
+
+        ButtonArrowForward(
+          text: 'voir formules',
+          onPressed: () {
+            router.push('/test');
+          },
+        ),
+
+        SizedBox(height: 40),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                "Exemple d'astuces",
+                style: const TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+
+        SizedBox(height: 20),
+
+        ButtonArrowForward(
+          text: 'voir astuces',
+          onPressed: () {
+            router.push('/test');
           },
         ),
 

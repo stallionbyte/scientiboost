@@ -47,6 +47,10 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     }
   }
 
+  void setState(SubscriptionState state_) {
+    state = state_;
+  }
+
   Future<void> checkSubscription() async {
     state = SubscriptionState.subscriptionLoading();
 
@@ -73,7 +77,7 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
       router.push('/subscription');
     } else if (state case Subscribed(:final subscription)) {
       state = SubscriptionState.subscriptionError(
-        'Vous avez déjà un abonnement valide en cours qui expire le : ${subscription.expireAt.toString()}. Vous devez attendre la fin de cet abonnement avant de vous réabonner.',
+        'Vous avez déjà un abonnement valide en cours qui expire le : ${subscription.expireAt.toString()}.',
       );
     }
   }

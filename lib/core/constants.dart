@@ -21,5 +21,10 @@ class AuthConstants {
 }
 
 class SubscriptionConstants {
-  static const String unselected = 'Choisi au moins une matière.';
+  static const String unselected = 'Veuiller choisir au moins une matière.';
+}
+
+class VideoConstants {
+  static const String pathElementChimique =
+      '/video?matiere=pc&nameOnDataBase=element_chimique.mp4&title=élément chimique';
 }

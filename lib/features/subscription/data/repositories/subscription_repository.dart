@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/subscription_model.dart';
 
 import '../../../../core/constants.dart';
+import '../../../../core/error/firebase/error.dart';
 
 import '../../../auth/presentation/viewmodels/auth_viewmodel.dart';
 
@@ -24,10 +25,6 @@ class SubscriptionRepositoryImpl implements SubscriptionRepository {
   final FirebaseFirestore _firebaseFirestore;
 
   SubscriptionRepositoryImpl(this._firebaseFirestore);
-
-  String _formatErrorMessage(FirebaseException e) {
-    return "Une erreur s'est produite \n code erreur: ${e.code} \n message: ${e.message}";
-  }
 
   @override
   Future<ResultDart<SubscriptionModel, String>?> validSubscription(
@@ -62,7 +59,7 @@ class SubscriptionRepositoryImpl implements SubscriptionRepository {
         return null;
       }
     } on FirebaseException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(e: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -89,7 +86,7 @@ class SubscriptionRepositoryImpl implements SubscriptionRepository {
 
       return Success(SubscriptionModel.fromJson(subscription));
     } on FirebaseException catch (e) {
-      return Failure(_formatErrorMessage(e));
+      return Failure(errorMessageWithCode(e: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }

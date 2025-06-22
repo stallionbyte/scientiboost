@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../viewmodels/auth_viewmodel.dart';
 
+import '../../../../core/helpers.dart' as helpers;
+
 class SignOutScreen extends ConsumerWidget {
   const SignOutScreen({super.key});
 
@@ -15,7 +17,12 @@ class SignOutScreen extends ConsumerWidget {
         if (authState case AuthLoading() || AuthInitial()) {
           return const Center(child: CircularProgressIndicator());
         } else if (authState case AuthError(:final message)) {
-          return _buildPage(context, ref, error: message);
+          helpers.scheduleShowSnackBar(
+            context: context,
+            content: message,
+            backgroundColor: Colors.red,
+          );
+          return _buildPage(context, ref);
         } else {
           return _buildPage(context, ref);
         }
@@ -39,20 +46,21 @@ class SignOutScreen extends ConsumerWidget {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.all(12),
       ),
 
       child: Text(
         "Se déconnecter",
-        style: TextStyle(fontSize: 14),
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         overflow: TextOverflow.ellipsis,
       ),
     );
   }
 
-  Widget _buildPage(BuildContext context, WidgetRef ref, {String? error}) {
+  Widget _buildPage(BuildContext context, WidgetRef ref) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (ref.read(authViewModelProvider.notifier).isAuthenticated())
             Text(
@@ -64,9 +72,9 @@ class SignOutScreen extends ConsumerWidget {
               'Vous etes déconnecté(e)',
               style: const TextStyle(color: Colors.red),
             ),
-          if (error != null) ...[
-            Text(error, style: const TextStyle(color: Colors.red)),
-          ],
+
+          SizedBox(height: 40),
+
           _checkButton(context, ref),
         ],
       ),

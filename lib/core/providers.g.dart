@@ -6,6 +6,64 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$firebaseAuthInstanceHash() =>
+    r'06561e5382340644ed217d128ce9cf7451692502';
+
+/// See also [firebaseAuthInstance].
+@ProviderFor(firebaseAuthInstance)
+final firebaseAuthInstanceProvider = AutoDisposeProvider<FirebaseAuth>.internal(
+  firebaseAuthInstance,
+  name: r'firebaseAuthInstanceProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$firebaseAuthInstanceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FirebaseAuthInstanceRef = AutoDisposeProviderRef<FirebaseAuth>;
+String _$firebaseFirestoreInstanceHash() =>
+    r'ef97206b67d6a359374e5c898af53cbb6e0cbd54';
+
+/// See also [firebaseFirestoreInstance].
+@ProviderFor(firebaseFirestoreInstance)
+final firebaseFirestoreInstanceProvider =
+    AutoDisposeProvider<FirebaseFirestore>.internal(
+      firebaseFirestoreInstance,
+      name: r'firebaseFirestoreInstanceProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$firebaseFirestoreInstanceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FirebaseFirestoreInstanceRef =
+    AutoDisposeProviderRef<FirebaseFirestore>;
+String _$supabaseClientHash() => r'de6240783d7dddb57e07d034deb0ddf8e2fcc3e4';
+
+/// See also [supabaseClient].
+@ProviderFor(supabaseClient)
+final supabaseClientProvider = AutoDisposeProvider<SupabaseClient>.internal(
+  supabaseClient,
+  name: r'supabaseClientProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$supabaseClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SupabaseClientRef = AutoDisposeProviderRef<SupabaseClient>;
 String _$authRepositoryHash() => r'8df379ec7a154dbb4003018d26d4827c45a33019';
 
 /// See also [authRepository].
@@ -45,7 +103,7 @@ final subscriptionRepositoryProvider =
 // ignore: unused_element
 typedef SubscriptionRepositoryRef =
     AutoDisposeProviderRef<SubscriptionRepository>;
-String _$goRouterHash() => r'd03fe6edb4514c4a8453d92533f9c25b633ea48e';
+String _$goRouterHash() => r'f829086ec5db6790b1c39d1eecd18a18414407b5';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

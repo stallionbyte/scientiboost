@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../viewmodels/email_verification_viewmodel.dart';
 import '../viewmodels/auth_viewmodel.dart';
 
+import '../../../../core/helpers.dart' as helpers;
+
 import '../../../../core/providers.dart';
 
 class EmailVerificationScreen extends ConsumerStatefulWidget {
@@ -49,7 +51,12 @@ class _EmailVerificationScreenState
         } else if (emailVerificationState case EmailVerificationError(
           :final message,
         )) {
-          return _buildForm(context, error: message);
+          helpers.scheduleShowSnackBar(
+            context: context,
+            content: message,
+            backgroundColor: Colors.red,
+          );
+          return _buildForm(context);
         } else if (emailVerificationState case EmailVerificationEmailSent()) {
           return _buildSentPage(context);
         }
@@ -57,45 +64,39 @@ class _EmailVerificationScreenState
     );
   }
 
-  Widget _buildForm(BuildContext context, {String? error}) {
+  Widget _buildForm(BuildContext context) {
     final email = ref.read(authViewModelProvider.notifier).getUser()?.email;
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            children: [
-              Text(
-                "Vous est etes sur le point d'envoyer un email de vérification pour vérifier l'email: $email",
-              ),
-              if (error != null) ...[
-                Text(error, style: const TextStyle(color: Colors.red)),
-              ],
-              ElevatedButton(
-                onPressed: () {
-                  ref
-                      .read(emailVerificationViewmodelProvider.notifier)
-                      .sendEmailVerification();
-                },
-
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                ),
-
-                child: Text(
-                  "envoyer",
-                  style: TextStyle(fontSize: 14),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Vous est etes sur le point d'envoyer un email de vérification pour vérifier l'email: $email",
           ),
-        ),
+
+          ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(emailVerificationViewmodelProvider.notifier)
+                  .sendEmailVerification();
+            },
+
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 12),
+            ),
+
+            child: Text(
+              "envoyer",
+              style: TextStyle(fontSize: 14),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -103,6 +104,7 @@ class _EmailVerificationScreenState
   Widget _buildSentPage(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             'Un email de vérification a été envoyé. Veuillez vérifier votre boite de reception',

@@ -3,6 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../viewmodels/subscription_viewmodel.dart';
 
+import '../../../../core/helpers.dart' as helpers;
+
+import '../../../../core/constants.dart';
+
 class SubscriptionSreen extends ConsumerStatefulWidget {
   const SubscriptionSreen({super.key});
 
@@ -31,7 +35,7 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
         title: const Text(
           'Abonnement',
           style: TextStyle(
-            fontSize: 32,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
             color: Colors.black87,
           ),
@@ -43,7 +47,12 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
         if (subscriptionState case SubscriptionLoading()) {
           return const Center(child: CircularProgressIndicator());
         } else if (subscriptionState case SubscriptionError(:final message)) {
-          return _buildForm(context, error: message);
+          helpers.scheduleShowSnackBar(
+            context: context,
+            content: message,
+            backgroundColor: Colors.red,
+          );
+          return _buildForm(context);
         } else {
           return _buildForm(context);
         }
@@ -64,9 +73,6 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
               children: [
                 const SizedBox(height: 60),
 
-                // Titre
-                const SizedBox(height: 60),
-
                 // Intégrer les checkbox ici
                 const Text(
                   'Sélectionnez vos matières :',
@@ -80,7 +86,11 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
 
                 // Checkbox Physique-Chimie
                 CheckboxListTile(
-                  title: const Text('Physique-Chimie (PC)'),
+                  activeColor: Colors.blue,
+                  title: const Text(
+                    'Physique-Chimie (PC)',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                   enabled:
                       !ref
                           .read(subscriptionViewModelProvider.notifier)
@@ -97,11 +107,12 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
 
                 // Checkbox SVT
                 CheckboxListTile(
-                  title: const Text('SVT'),
-                  enabled:
-                      !ref
-                          .read(subscriptionViewModelProvider.notifier)
-                          .isSubscribed(),
+                  activeColor: Colors.blue,
+                  title: const Text(
+                    'SVT (bientôt)',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  enabled: false,
                   value: _svt,
                   onChanged: (bool? value) {
                     setState(() {
@@ -114,11 +125,12 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
 
                 // Checkbox Mathématiques
                 CheckboxListTile(
-                  title: const Text('Mathématiques'),
-                  enabled:
-                      !ref
-                          .read(subscriptionViewModelProvider.notifier)
-                          .isSubscribed(),
+                  activeColor: Colors.blue,
+                  title: const Text(
+                    'Mathématiques (bientôt)',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  enabled: false,
                   value: _mathematiques,
                   onChanged: (bool? value) {
                     setState(() {
@@ -155,13 +167,10 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
                                 );
                           }
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Veuillez sélectionner au moins une matière.',
-                              ),
-                              backgroundColor: Colors.red,
-                            ),
+                          helpers.showSnackBar(
+                            context: context,
+                            content: SubscriptionConstants.unselected,
+                            backgroundColor: Colors.red,
                           );
                         }
                       };

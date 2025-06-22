@@ -5,6 +5,8 @@ import '../viewmodels/auth_viewmodel.dart';
 
 import '../../../../core/providers.dart';
 
+import '../../../../core/helpers.dart' as helpers;
+
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});
 
@@ -49,7 +51,13 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         if (authState case AuthInitial() || AuthLoading()) {
           return const Center(child: CircularProgressIndicator());
         } else if (authState case AuthError(:final message)) {
-          return _buildForm(context, error: message);
+          helpers.scheduleShowSnackBar(
+            context: context,
+            content: message,
+            backgroundColor: Colors.red,
+          );
+
+          return _buildForm(context);
         } else {
           return _buildForm(context);
         }
@@ -57,7 +65,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     );
   }
 
-  Widget _buildForm(BuildContext context, {String? error}) {
+  Widget _buildForm(BuildContext context) {
     final router = ref.read(goRouterProvider);
 
     return SafeArea(
@@ -169,11 +177,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 ),
 
                 const SizedBox(height: 32),
-
-                // affichage des erreurs
-                if (error != null) ...[
-                  Text(error, style: const TextStyle(color: Colors.red)),
-                ],
 
                 const SizedBox(height: 32),
 
