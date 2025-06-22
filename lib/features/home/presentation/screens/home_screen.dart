@@ -92,7 +92,7 @@ class HomeScreen extends ConsumerWidget {
         ),
         Text(
           '(bientot)',
-          style: const TextStyle(fontSize: 16, color: Colors.black),
+          style: const TextStyle(fontSize: 16, color: Colors.blue),
         ),
 
         SizedBox(height: 20),
@@ -126,7 +126,7 @@ class HomeScreen extends ConsumerWidget {
         ),
         Text(
           '(bientot)',
-          style: const TextStyle(fontSize: 16, color: Colors.black),
+          style: const TextStyle(fontSize: 16, color: Colors.blue),
         ),
 
         SizedBox(height: 40),
@@ -204,142 +204,371 @@ class HomeScreen extends ConsumerWidget {
 
         SizedBox(height: 40),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                "Exemple de video",
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+        Card(
+          elevation: 4, // Ombre pour donner du relief
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Coins arrondis
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Image en haut de la carte
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
                 ),
-                textAlign: TextAlign.center,
+                child: Image.asset(
+                  'assets/img/eleve-scientific.png',
+                  width: double.infinity,
+                  height: 150,
+                  fit: BoxFit.contain,
+                  errorBuilder:
+                      (context, error, stackTrace) => Container(
+                        height: 150,
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                ),
               ),
-            ),
-          ],
-        ),
 
-        SizedBox(height: 20),
+              SizedBox(height: 20),
+              // Titre
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    //padding: const EdgeInsets.all(16),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        'Exemple de video',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-        ButtonArrowForward(
-          text: 'voir vidéo',
-          onPressed: () {
-            router.push(VideoConstants.pathElementChimique);
-          },
+              SizedBox(height: 20),
+
+              // Bouton
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                child: ButtonArrowForward(
+                  text: 'voir vidéo',
+                  onPressed: () {
+                    router.push(VideoConstants.pathElementChimique);
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
 
         SizedBox(height: 40),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                "Exemple d'exercice corrigé",
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+        Card(
+          elevation: 4, // Ombre pour donner du relief
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Coins arrondis
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Image en haut de la carte
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
                 ),
-                textAlign: TextAlign.center,
+                child: Image.asset(
+                  'assets/img/eleve-scientific.png',
+                  width: double.infinity,
+                  height: 150,
+                  fit: BoxFit.contain,
+                  errorBuilder:
+                      (context, error, stackTrace) => Container(
+                        height: 150,
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                ),
               ),
-            ),
-          ],
-        ),
 
-        SizedBox(height: 20),
+              SizedBox(height: 20),
+              // Titre
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    //padding: const EdgeInsets.all(16),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        "Exemple d'exercice corrigé",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-        ButtonArrowForward(
-          text: 'voir exercice',
-          onPressed: () {
-            router.push('/test');
-          },
+              SizedBox(height: 20),
+
+              // Bouton
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                child: ButtonArrowForward(
+                  text: 'voir exercice',
+                  onPressed: () {
+                    router.push('/test');
+                    ;
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
 
         SizedBox(height: 40),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                "Exemple d'examen corrigé",
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+        Card(
+          elevation: 4, // Ombre pour donner du relief
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Coins arrondis
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Image en haut de la carte
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
                 ),
-                textAlign: TextAlign.center,
+                child: Image.asset(
+                  'assets/img/eleve-scientific.png',
+                  width: double.infinity,
+                  height: 150,
+                  fit: BoxFit.contain,
+                  errorBuilder:
+                      (context, error, stackTrace) => Container(
+                        height: 150,
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                ),
               ),
-            ),
-          ],
-        ),
 
-        SizedBox(height: 20),
+              SizedBox(height: 20),
+              // Titre
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    //padding: const EdgeInsets.all(16),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        "Exemple d'examen corrigé",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-        ButtonArrowForward(
-          text: 'voir examen',
-          onPressed: () {
-            router.push('/test');
-          },
+              SizedBox(height: 20),
+
+              // Bouton
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                child: ButtonArrowForward(
+                  text: 'voir examen',
+                  onPressed: () {
+                    router.push('/test');
+                    ;
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
 
         SizedBox(height: 40),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                "Exemple de formules",
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+        Card(
+          elevation: 4, // Ombre pour donner du relief
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Coins arrondis
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Image en haut de la carte
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
                 ),
-                textAlign: TextAlign.center,
+                child: Image.asset(
+                  'assets/img/eleve-scientific.png',
+                  width: double.infinity,
+                  height: 150,
+                  fit: BoxFit.contain,
+                  errorBuilder:
+                      (context, error, stackTrace) => Container(
+                        height: 150,
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                ),
               ),
-            ),
-          ],
-        ),
 
-        SizedBox(height: 20),
+              SizedBox(height: 20),
+              // Titre
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    //padding: const EdgeInsets.all(16),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        "Exemple de formules",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-        ButtonArrowForward(
-          text: 'voir formules',
-          onPressed: () {
-            router.push('/test');
-          },
+              SizedBox(height: 20),
+
+              // Bouton
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                child: ButtonArrowForward(
+                  text: 'voir formules',
+                  onPressed: () {
+                    router.push('/test');
+                    ;
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
 
         SizedBox(height: 40),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                "Exemple d'astuces",
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+        Card(
+          elevation: 4, // Ombre pour donner du relief
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Coins arrondis
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Image en haut de la carte
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(12),
                 ),
-                textAlign: TextAlign.center,
+                child: Image.asset(
+                  'assets/img/ampoule.png',
+                  width: double.infinity,
+                  height: 150,
+                  fit: BoxFit.contain,
+                  errorBuilder:
+                      (context, error, stackTrace) => Container(
+                        height: 150,
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                ),
               ),
-            ),
-          ],
-        ),
 
-        SizedBox(height: 20),
+              SizedBox(height: 20),
+              // Titre
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    //padding: const EdgeInsets.all(16),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        "Exemple d'astuces",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-        ButtonArrowForward(
-          text: 'voir astuces',
-          onPressed: () {
-            router.push('/test');
-          },
+              SizedBox(height: 20),
+
+              // Bouton
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                child: ButtonArrowForward(
+                  text: 'voir astuces',
+                  onPressed: () {
+                    router.push('/test');
+                    ;
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
 
         SizedBox(height: 40),
