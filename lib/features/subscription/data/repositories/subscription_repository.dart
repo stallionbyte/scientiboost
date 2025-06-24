@@ -1,13 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:result_dart/result_dart.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/subscription_model.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/error/firebase/error.dart';
-
-import '../../../auth/presentation/viewmodels/auth_viewmodel.dart';
 
 abstract class SubscriptionRepository {
   Future<ResultDart<SubscriptionModel, String>> addSubscription(
@@ -18,27 +17,26 @@ abstract class SubscriptionRepository {
     double? price,
   );
 
-  Future<ResultDart<SubscriptionModel, String>?> validSubscription(Ref ref);
+  Future<ResultDart<SubscriptionModel, String>?> validSubscription();
 }
 
 class SubscriptionRepositoryImpl implements SubscriptionRepository {
   final FirebaseFirestore _firebaseFirestore;
+  final FirebaseAuth _firebaseAuth;
 
-  SubscriptionRepositoryImpl(this._firebaseFirestore);
+  SubscriptionRepositoryImpl(this._firebaseFirestore, this._firebaseAuth);
 
   @override
-  Future<ResultDart<SubscriptionModel, String>?> validSubscription(
-    Ref ref,
-  ) async {
+  Future<ResultDart<SubscriptionModel, String>?> validSubscription() async {
     DateTime? queryExpireAt;
     Map<String, dynamic>? subscription;
     try {
-      final user_ = ref.read(authViewModelProvider.notifier).getUser();
+      final userUid = _firebaseAuth.currentUser?.uid;
 
       final query =
           await _firebaseFirestore
               .collection("subscriptions")
-              .where("userUid", isEqualTo: user_?.uid)
+              .where("userUid", isEqualTo: userUid)
               .get();
 
       if (query.docs.isEmpty) {

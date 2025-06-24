@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_viewmodel.dart';
+part of 'exo_viewmodel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authViewModelHash() => r'fbe235af877489e3fc4a0cefd5d40cdfdccfa322';
+String _$exoViewmodelHash() => r'28b36916155d2bfbf97a19cc7e073c2d62075498';
 
-/// See also [AuthViewModel].
-@ProviderFor(AuthViewModel)
-final authViewModelProvider =
-    AutoDisposeNotifierProvider<AuthViewModel, AuthState>.internal(
-      AuthViewModel.new,
-      name: r'authViewModelProvider',
+/// See also [ExoViewmodel].
+@ProviderFor(ExoViewmodel)
+final exoViewmodelProvider =
+    AutoDisposeNotifierProvider<ExoViewmodel, ExoState>.internal(
+      ExoViewmodel.new,
+      name: r'exoViewmodelProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$authViewModelHash,
+              : _$exoViewmodelHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$AuthViewModel = AutoDisposeNotifier<AuthState>;
+typedef _$ExoViewmodel = AutoDisposeNotifier<ExoState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

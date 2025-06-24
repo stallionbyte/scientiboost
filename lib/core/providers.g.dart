@@ -64,7 +64,7 @@ final supabaseClientProvider = AutoDisposeProvider<SupabaseClient>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SupabaseClientRef = AutoDisposeProviderRef<SupabaseClient>;
-String _$authRepositoryHash() => r'8df379ec7a154dbb4003018d26d4827c45a33019';
+String _$authRepositoryHash() => r'02d6a77e4e313a3a2d4be6b8cb656583e8a812f4';
 
 /// See also [authRepository].
 @ProviderFor(authRepository)
@@ -83,7 +83,7 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 // ignore: unused_element
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 String _$subscriptionRepositoryHash() =>
-    r'3f16d130fee07a1377569cf62e48e9f5b6548725';
+    r'a736f4778a0eb1e9321f20fbd91433a2520175ad';
 
 /// See also [subscriptionRepository].
 @ProviderFor(subscriptionRepository)
@@ -103,7 +103,27 @@ final subscriptionRepositoryProvider =
 // ignore: unused_element
 typedef SubscriptionRepositoryRef =
     AutoDisposeProviderRef<SubscriptionRepository>;
-String _$goRouterHash() => r'f829086ec5db6790b1c39d1eecd18a18414407b5';
+String _$sharedPreferencesHash() => r'2af0fa3c646e9fb10377e7fd2a1b0ecb6db3bf73';
+
+/// See also [sharedPreferences].
+@ProviderFor(sharedPreferences)
+final sharedPreferencesProvider =
+    AutoDisposeFutureProvider<LocalStorageInterface>.internal(
+      sharedPreferences,
+      name: r'sharedPreferencesProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$sharedPreferencesHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SharedPreferencesRef =
+    AutoDisposeFutureProviderRef<LocalStorageInterface>;
+String _$goRouterHash() => r'0c4c9e35e64eeeed31b45e43d015c3d8a4d18e0d';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

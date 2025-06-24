@@ -110,6 +110,11 @@ class AuthViewModel extends _$AuthViewModel {
     );
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
+
+      ref
+          .read(subscriptionViewModelProvider.notifier)
+          .setState(SubscriptionState.subscriptionInitial());
+
       router.push('/pages-wrapper');
     }
   }

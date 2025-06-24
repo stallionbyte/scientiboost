@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+//import 'package:flutter/foundation.dart';
 
 import '../../data/models/subscription_model.dart';
 
@@ -54,9 +55,8 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
   Future<void> checkSubscription() async {
     state = SubscriptionState.subscriptionLoading();
 
-    final result = await ref
-        .read(subscriptionRepositoryProvider)
-        .validSubscription(ref);
+    final result =
+        await ref.read(subscriptionRepositoryProvider).validSubscription();
 
     if (result == null) {
       state = SubscriptionState.unsubscribed();
@@ -71,7 +71,9 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
   Future<void> goToSubscription() async {
     final router = ref.read(goRouterProvider);
 
-    await checkSubscription();
+    if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
+      await checkSubscription();
+    }
 
     if (state case Unsubscribed()) {
       router.push('/subscription');
@@ -179,13 +181,13 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     List<String> subjects = [];
 
     if (physiqueChimie) {
-      subjects.add('PC');
+      subjects.add('pc');
     }
     if (svt) {
-      subjects.add('SVT');
+      subjects.add('svt');
     }
     if (math) {
-      subjects.add('Math');
+      subjects.add('math');
     }
 
     return subjects;

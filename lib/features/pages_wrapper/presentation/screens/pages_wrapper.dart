@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../home/presentation/screens/home_screen.dart';
+import '../../../exos/presentation/screens/exos_screen.dart';
 
 import '../viewmodels/current_page_viewmodel.dart';
 
@@ -69,17 +70,7 @@ Widget _buildHomePage() {
 Widget _buildExercicesPage() {
   return SingleChildScrollView(
     padding: EdgeInsets.all(16),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Exercices',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 16),
-        _buildFakeContent('Voici la liste de tous les exercices disponibles.'),
-      ],
-    ),
+    child: ExosScreen(),
   );
 }
 

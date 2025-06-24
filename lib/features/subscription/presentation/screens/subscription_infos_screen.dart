@@ -49,7 +49,21 @@ class SubscriptionInfosScreen extends ConsumerWidget {
             ),
           );
         } else {
-          return Center(child: _checkButton(context, ref));
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Veuillez vérifier votre connexion internet avant de commencer",
+                  ),
+                  SizedBox(height: 40),
+                  _checkButton(context, ref),
+                ],
+              ),
+            ),
+          );
         }
       }(),
     );

@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
+import '../../features/exos/presentation/viewmodels/exo_viewmodel.dart';
+
 import '../../core/providers.dart';
 
 class SecondAppBar extends ConsumerStatefulWidget {
@@ -16,6 +18,7 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
   Widget build(BuildContext context) {
     ref.watch(currentPageViewModelProvider);
     ref.watch(goRouterProvider);
+    ref.watch(exoViewmodelProvider);
 
     return Container(
       height: 50,
@@ -31,10 +34,14 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
               child: SizedBox(
                 height: 36,
                 child: ElevatedButton(
-                  onPressed:
-                      () => ref
-                          .read(currentPageViewModelProvider.notifier)
-                          .setState(CurrentPageState.exercices()),
+                  onPressed: () {
+                    ref
+                        .read(exoViewmodelProvider.notifier)
+                        .setState(ExoState.exoInitial());
+                    ref
+                        .read(currentPageViewModelProvider.notifier)
+                        .setState(CurrentPageState.exercices());
+                  },
 
                   style: ElevatedButton.styleFrom(
                     backgroundColor:

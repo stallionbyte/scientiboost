@@ -204,6 +204,13 @@ class HomeScreen extends ConsumerWidget {
 
         SizedBox(height: 40),
 
+        ButtonArrowForward(
+          text: 'voir exos',
+          onPressed: () {
+            router.push('/exos');
+          },
+        ),
+
         Card(
           elevation: 4, // Ombre pour donner du relief
           shape: RoundedRectangleBorder(

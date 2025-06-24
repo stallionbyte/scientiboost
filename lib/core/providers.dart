@@ -24,6 +24,9 @@ import '../features/subscription/presentation/screens/checkout_screen.dart';
 
 import '../features/profil/presentation/screens/profil_screen.dart';
 
+import '../features/exos/presentation/screens/exos_screen.dart';
+import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo1_screen.dart';
+
 import '../features/pages_wrapper/presentation/screens/pages_wrapper.dart';
 import '../features/pages_wrapper/presentation/screens/menu_screen.dart';
 
@@ -61,7 +64,10 @@ AuthRepository authRepository(Ref ref) =>
 // Provider pour le repository de suscription
 @riverpod
 SubscriptionRepository subscriptionRepository(Ref ref) =>
-    SubscriptionRepositoryImpl(ref.read(firebaseFirestoreInstanceProvider));
+    SubscriptionRepositoryImpl(
+      ref.read(firebaseFirestoreInstanceProvider),
+      ref.read(firebaseAuthInstanceProvider),
+    );
 
 // Provider pour SharedPreferencesStorage
 @riverpod
@@ -79,9 +85,17 @@ GoRouter goRouter(Ref ref) => GoRouter(
     GoRoute(path: '/test', builder: (context, state) => const TestWidget()),
 
     GoRoute(
+      path: '/placeholder',
+      builder: (context, state) => const MyPlaceholder(),
+    ),
+
+    GoRoute(path: '/exos', builder: (context, state) => const ExosScreen()),
+
+    GoRoute(
       path: '/pages-wrapper',
       builder: (context, state) => PagesWrapper(),
     ),
+
     GoRoute(path: '/signin', builder: (context, state) => const SignInScreen()),
     GoRoute(path: '/signup', builder: (context, state) => const SignUpScreen()),
     GoRoute(
@@ -92,9 +106,16 @@ GoRouter goRouter(Ref ref) => GoRouter(
       path: '/email-verification',
       builder: (context, state) => const EmailVerificationScreen(),
     ),
+    GoRoute(
+      path: '/password-reset',
+      builder: (context, state) => const PasswordResetScreen(),
+    ),
+
     GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
     GoRoute(path: '/menu', builder: (context, state) => MenuScreen()),
+
     GoRoute(path: '/checkout', builder: (context, state) => CheckoutScreen()),
+
     GoRoute(
       path: '/video',
       builder:
@@ -115,19 +136,12 @@ GoRouter goRouter(Ref ref) => GoRouter(
       builder: (context, state) => SubscriptionPerksScreen(),
     ),
     GoRoute(
-      path: '/placeholder',
-      builder: (context, state) => const MyPlaceholder(),
-    ),
-    GoRoute(
-      path: '/password-reset',
-      builder: (context, state) => const PasswordResetScreen(),
-    ),
-    GoRoute(
       path: '/subscription-infos',
       builder: (context, state) {
         return SubscriptionInfosScreen();
       },
     ),
+
     GoRoute(
       path: '/profil',
       builder: (context, state) {
@@ -139,6 +153,13 @@ GoRouter goRouter(Ref ref) => GoRouter(
       path: '/exercice',
       builder: (context, state) {
         return ExerciceScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/pc/nuc/chap11/exo1',
+      builder: (context, state) {
+        return PcNucChap11Exo1Screen();
       },
     ),
   ],
