@@ -1,27 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tex/flutter_tex.dart';
 
 import '../../../../../../../core/common_widgets/first_app_bar.dart';
 import '../../../../../../../core/common_widgets/miss_matiere_message.dart';
 import '../../../../../../../core/common_widgets/unsubscribed_message.dart';
 
-import '../../../../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
-import '../../../../../../exos/presentation/viewmodels/exo_viewmodel.dart';
+import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import '../../../exos/presentation/viewmodels/exo_viewmodel.dart';
 
 import '../../../../../../../core/providers.dart';
-import '../../../../../../../core/constants.dart';
+//import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/common_widgets/third_app_bar.dart';
 
-class PcNucChap11Exo1Screen extends ConsumerStatefulWidget {
-  const PcNucChap11Exo1Screen({super.key});
+class ExoScreen extends ConsumerStatefulWidget {
+  const ExoScreen({
+    super.key,
+    required this.enonce,
+    required this.correction,
+    required this.matiere,
+    required this.chapNum,
+    required this.chapTitle,
+    required this.exoNum,
+    required this.route,
+    required this.favorites,
+  });
+
+  final Widget enonce;
+  final Widget correction;
+  final String matiere;
+  final int chapNum;
+  final String chapTitle;
+  final int exoNum;
+  final String route;
+  final String favorites;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PcNucChap11Exo1ScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ExoScreenState();
 }
 
-class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
+class _ExoScreenState extends ConsumerState<ExoScreen> {
   bool isCorrectionVisible = false; // Variable d'état locale
 
   @override
@@ -42,76 +59,8 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
 
   Widget _buildThirdAppBar() {
     return ThirdAppBar(
-      storageFavoritesKey: StorageKeysConstants.favoritesExos,
-      favoriteRoute: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
-    );
-  }
-
-  Widget _buildCorrectionAccordion() {
-    return SingleChildScrollView(
-      child: ExpansionPanelList.radio(
-        elevation: 1,
-        expandedHeaderPadding: EdgeInsets.zero,
-        children: [
-          ExpansionPanelRadio(
-            value: 'uniqueValue',
-            headerBuilder: (context, isExpanded) {
-              return ListTile(
-                title: const Text(
-                  '1) question1',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-              );
-            },
-            body: const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                ],
-              ),
-            ),
-          ),
-
-          ExpansionPanelRadio(
-            value: 'uniqueValue2',
-            headerBuilder: (context, isExpanded) {
-              return ListTile(
-                title: const Text(
-                  '1) question1',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-              );
-            },
-            body: const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                  Text('contenu question 1...', style: TextStyle(fontSize: 14)),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      storageFavoritesKey: widget.favorites,
+      favoriteRoute: widget.route,
     );
   }
 
@@ -130,12 +79,12 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
                 child: RichText(
                   text: TextSpan(
                     style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: const <TextSpan>[
+                    children: <TextSpan>[
                       TextSpan(
                         text: 'Matère:',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: '   Physique-Chimie'),
+                      TextSpan(text: '   ${widget.matiere}'),
                     ],
                   ),
                 ),
@@ -151,12 +100,12 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
                 child: RichText(
                   text: TextSpan(
                     style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: const <TextSpan>[
+                    children: <TextSpan>[
                       TextSpan(
-                        text: 'Chapitre 11:',
+                        text: 'Chapitre ${widget.chapNum}:',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: '   le noyau atomique'),
+                      TextSpan(text: '   ${widget.chapTitle}'),
                     ],
                   ),
                 ),
@@ -167,7 +116,7 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
           SizedBox(height: 40),
 
           Text(
-            'Exercice 1',
+            'Exercice ${widget.exoNum}',
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -177,7 +126,7 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
 
           SizedBox(height: 20),
 
-          Text('Enoncé..'),
+          widget.enonce,
 
           SizedBox(height: 40),
 
@@ -214,7 +163,7 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
             () {
               if (subscriptionState case Subscribed(:final subscription)) {
                 if (subscription.subjects?.contains('pc') as bool) {
-                  return _buildCorrectionAccordion();
+                  return widget.correction;
                 } else {
                   return MissMatiereMessage(matieres: 'PC');
                 }

@@ -1,9 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
-import '../../features/exos/presentation/viewmodels/exo_viewmodel.dart';
-
 import '../../core/providers.dart';
 
 class ThirdAppBar extends ConsumerStatefulWidget {

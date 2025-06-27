@@ -25,9 +25,11 @@ import '../features/subscription/presentation/screens/checkout_screen.dart';
 import '../features/profil/presentation/screens/profil_screen.dart';
 
 import '../features/exos/presentation/screens/exos_screen.dart';
-import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo1_screen.dart';
-import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo2_screen.dart';
-//import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo3_screen.dart';
+import '../features/exos/presentation/screens/exo_screen.dart';
+import '../features/exos/presentation/screens/pc/nuc/chap11/exo1/enonce.dart';
+import '../features/exos/presentation/screens/pc/nuc/chap11/exo1/correction.dart';
+import '../features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
+import '../features/exos/presentation/screens/pc/nuc/chap11/exo2/correction.dart';
 
 import '../features/exams/presentation/screens/d/pc/2024/2024.dart';
 import '../features/exams/presentation/screens/d/pc/2025/2025.dart';
@@ -75,11 +77,6 @@ SubscriptionRepository subscriptionRepository(Ref ref) =>
       ref.read(firebaseFirestoreInstanceProvider),
       ref.read(firebaseAuthInstanceProvider),
     );
-
-// Provider pour gérer la visibilité de la correction
-final correctionPcNucChap11Exo1VisibilityProvider = StateProvider<bool>(
-  (ref) => false,
-);
 
 // Provider pour SharedPreferencesStorage
 
@@ -180,25 +177,35 @@ GoRouter goRouter(Ref ref) => GoRouter(
     GoRoute(
       path: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
       builder: (context, state) {
-        return PcNucChap11Exo1Screen();
+        return ExoScreen(
+          matiere: 'Physique-Chimie',
+          chapNum: 11,
+          chapTitle: 'Le noyau atomique',
+          exoNum: 1,
+          enonce: PcNucChap11Exo1Enonce(),
+          correction: PcNucChap11Exo1Correction(),
+          route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
+          favorites: StorageKeysConstants.favoritesExos,
+        );
       },
     ),
 
     GoRoute(
       path: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
       builder: (context, state) {
-        return PcNucChap11Exo2Screen();
+        return ExoScreen(
+          matiere: 'Physique-Chimie',
+          chapNum: 11,
+          chapTitle: 'Le noyau atomique',
+          exoNum: 2,
+          enonce: PcNucChap11Exo2Enonce(),
+          correction: PcNucChap11Exo2Correction(),
+          route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
+          favorites: StorageKeysConstants.favoritesExos,
+        );
       },
     ),
 
-    /*
-    GoRoute(
-      path: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
-      builder: (context, state) {
-        return PcNucChap11Exo3Screen();
-      },
-    ),
-    */
     GoRoute(
       path: RoutesNamesConstants.pcBacD2025,
       builder: (context, state) {
