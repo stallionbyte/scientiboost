@@ -26,97 +26,93 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
         color: Colors.white,
         border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Row(
-          children: [
-            Expanded(
-              child: SizedBox(
-                height: 36,
-                child: ElevatedButton(
-                  onPressed: () {
-                    ref
-                        .read(exoViewmodelProvider.notifier)
-                        .setState(ExoState.exoInitial());
-                    ref
+      child: Row(
+        children: [
+          SizedBox(width: 12),
+          Expanded(
+            child: SizedBox(
+              height: 36,
+              child: ElevatedButton(
+                onPressed: () {
+                  ref
+                      .read(exoViewmodelProvider.notifier)
+                      .setState(ExoState.exoInitial());
+                  ref
+                      .read(currentPageViewModelProvider.notifier)
+                      .setState(CurrentPageState.exercices());
+                },
+
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      ref
+                              .read(currentPageViewModelProvider.notifier)
+                              .isExercices()
+                          ? Colors.blue
+                          : Colors.grey.shade300,
+                  foregroundColor:
+                      ref
+                              .read(currentPageViewModelProvider.notifier)
+                              .isExercices()
+                          ? Colors.white
+                          : Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
+
+                child: Text(
+                  'Exercices',
+                  style: TextStyle(fontSize: 14),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 12),
+          Expanded(
+            child: SizedBox(
+              height: 36,
+              child: ElevatedButton(
+                onPressed:
+                    () => ref
                         .read(currentPageViewModelProvider.notifier)
-                        .setState(CurrentPageState.exercices());
-                  },
+                        .setState(CurrentPageState.exams()),
 
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        ref
-                                .read(currentPageViewModelProvider.notifier)
-                                .isExercices()
-                            ? Colors.blue
-                            : Colors.grey[350],
-                    foregroundColor:
-                        ref
-                                .read(currentPageViewModelProvider.notifier)
-                                .isExercices()
-                            ? Colors.white
-                            : Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      ref.read(currentPageViewModelProvider.notifier).isExams()
+                          ? Colors.blue
+                          : Colors.grey.shade300,
+                  foregroundColor:
+                      ref.read(currentPageViewModelProvider.notifier).isExams()
+                          ? Colors.white
+                          : Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
                   ),
+                ),
 
-                  child: Text(
-                    'Exercices',
-                    style: TextStyle(fontSize: 14),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                child: Text(
+                  'Examens',
+                  style: TextStyle(fontSize: 14),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
-            SizedBox(width: 12),
-            Expanded(
-              child: SizedBox(
-                height: 36,
-                child: ElevatedButton(
-                  onPressed:
-                      () => ref
-                          .read(currentPageViewModelProvider.notifier)
-                          .setState(CurrentPageState.exams()),
+          ),
 
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        ref
-                                .read(currentPageViewModelProvider.notifier)
-                                .isExams()
-                            ? Colors.blue
-                            : Colors.grey[350],
-                    foregroundColor:
-                        ref
-                                .read(currentPageViewModelProvider.notifier)
-                                .isExams()
-                            ? Colors.white
-                            : Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                  ),
-
-                  child: Text(
-                    'Examens',
-                    style: TextStyle(fontSize: 14),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
+          // Icône burger/croix
+          GestureDetector(
+            onTap: () => ref.read(goRouterProvider).push('/menu'),
+            child: SizedBox(
+              width: 40,
+              height: 40,
+              child: Icon(Icons.menu, color: Colors.black, size: 24),
             ),
+          ),
 
-            // Icône burger/croix
-            GestureDetector(
-              onTap: () => ref.read(goRouterProvider).push('/menu'),
-              child: SizedBox(
-                width: 40,
-                height: 40,
-                child: Icon(Icons.menu, color: Colors.grey[700], size: 24),
-              ),
-            ),
-          ],
-        ),
+          SizedBox(width: 12),
+        ],
       ),
     );
   }
