@@ -31,8 +31,17 @@ import '../features/exos/presentation/screens/pc/nuc/chap11/exo1/correction.dart
 import '../features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
 import '../features/exos/presentation/screens/pc/nuc/chap11/exo2/correction.dart';
 
-import '../features/exams/presentation/screens/d/pc/2024/2024.dart';
-import '../features/exams/presentation/screens/d/pc/2025/2025.dart';
+import 'package:scientiboost/features/exams/presentation/screens/exam_screen.dart';
+import '../features/exams/presentation/screens/d/pc/2024/chim/exo1/enonce.dart';
+import '../features/exams/presentation/screens/d/pc/2024/chim/exo1/correction.dart';
+import '../features/exams/presentation/screens/d/pc/2024/chim/exo2/enonce.dart';
+import '../features/exams/presentation/screens/d/pc/2024/chim/exo2/correction.dart';
+import '../features/exams/presentation/screens/d/pc/2024/phy/exo1/enonce.dart';
+import '../features/exams/presentation/screens/d/pc/2024/phy/exo1/correction.dart';
+import '../features/exams/presentation/screens/d/pc/2024/phy/exo2/enonce.dart';
+import '../features/exams/presentation/screens/d/pc/2024/phy/exo2/correction.dart';
+import '../features/exams/presentation/screens/d/pc/2024/phy/exo3/enonce.dart';
+import '../features/exams/presentation/screens/d/pc/2024/phy/exo3/correction.dart';
 
 import '../features/pages_wrapper/presentation/screens/pages_wrapper.dart';
 import '../features/pages_wrapper/presentation/screens/menu_screen.dart';
@@ -207,16 +216,27 @@ GoRouter goRouter(Ref ref) => GoRouter(
     ),
 
     GoRoute(
-      path: RoutesNamesConstants.pcBacD2025,
-      builder: (context, state) {
-        return PcBacD2025();
-      },
-    ),
-
-    GoRoute(
       path: RoutesNamesConstants.pcBacD2024,
       builder: (context, state) {
-        return PcBacD2024();
+        return ExamScreen(
+          pays: 'Burkina Faso',
+          matiere: 'Physique-Chimie',
+          examInfos: 'BAC D 2024',
+          favorites: StorageKeysConstants.favoritesExams,
+          route: RoutesNamesConstants.pcBacD2024,
+
+          enonceChimExo1: PcBacD2024ChimExo1Enonce(),
+          correctionChimExo1: PcBacD2024ChimExo1Correction(),
+          enonceChimExo2: PcBacD2024ChimExo2Enonce(),
+          correctionChimExo2: PcBacD2024ChimExo2Correction(),
+
+          enoncePhyExo1: PcBacD2024PhyExo1Enonce(),
+          correctionPhyExo1: PcBacD2024PhyExo1Correction(),
+          enoncePhyExo2: PcBacD2024PhyExo2Enonce(),
+          correctionPhyExo2: PcBacD2024PhyExo2Correction(),
+          enoncePhyExo3: PcBacD2024PhyExo3Enonce(),
+          correctionPhyExo3: PcBacD2024PhyExo3Correction(),
+        );
       },
     ),
 
