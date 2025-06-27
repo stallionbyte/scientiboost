@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../exos/presentation/viewmodels/exo_viewmodel.dart';
 
 import '../../../../core/providers.dart';
-import '../../../../core/common_widgets/button_exo.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/common_widgets/button_exo_exam.dart';
 
 class ExosScreen extends ConsumerStatefulWidget {
   const ExosScreen({super.key});
@@ -127,12 +128,33 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
 
-                  child: ButtonExo(
-                    num: 1,
+                  child: ButtonExoExam(
+                    text: 'Exercice 1',
+                    route_: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                     onPressed: () {
                       ref
                           .read(exoViewmodelProvider.notifier)
-                          .goToExercice(route: '/pc/nuc/chap11/exo1');
+                          .goToExercice(
+                            route:
+                                RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
+                          );
+                    },
+                  ),
+                ),
+
+                Align(
+                  alignment: Alignment.centerLeft,
+
+                  child: ButtonExoExam(
+                    text: 'Exercice 2',
+                    route_: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
+                    onPressed: () {
+                      ref
+                          .read(exoViewmodelProvider.notifier)
+                          .goToExercice(
+                            route:
+                                RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
+                          );
                     },
                   ),
                 ),

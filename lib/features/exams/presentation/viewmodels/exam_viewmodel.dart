@@ -6,60 +6,60 @@ import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dar
 
 import '../../../../core/providers.dart';
 
-part 'exo_viewmodel.freezed.dart';
-part 'exo_viewmodel.g.dart';
+part 'exam_viewmodel.freezed.dart';
+part 'exam_viewmodel.g.dart';
 
-// État immuable de l'exo
+// État immuable de l'Exam
 @freezed
-sealed class ExoState with _$ExoState {
-  const factory ExoState.exoInitial() = ExoInitial;
-  const factory ExoState.exoLoading(String route) = ExoLoading;
-  const factory ExoState.exoError(String error) = ExoError;
+sealed class ExamState with _$ExamState {
+  const factory ExamState.examInitial() = ExamInitial;
+  const factory ExamState.examLoading(String route) = ExamLoading;
+  const factory ExamState.examError(String error) = ExamError;
 }
 
-// ViewModel pour la logique d'Exo
+// ViewModel pour la logique d'Exam
 @riverpod
-class ExoViewmodel extends _$ExoViewmodel {
+class ExamViewmodel extends _$ExamViewmodel {
   @override
-  ExoState build() {
-    return const ExoState.exoInitial();
+  ExamState build() {
+    return const ExamState.examInitial();
   }
 
-  String? getMatiereFromExoRoute(String route) {
+  String? getMatiereFromExamRoute(String route) {
     final regex = RegExp(r'matiere\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
   }
 
-  String? getChapFromExoRoute(String route) {
-    final regex = RegExp(r'chap\((.*?)\)');
+  String? getBacFromExamRoute(String route) {
+    final regex = RegExp(r'bac\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
   }
 
-  String? getExoNumFromExoRoute(String route) {
-    final regex = RegExp(r'exo\((.*?)\)');
+  String? getAnneeFromExamRoute(String route) {
+    final regex = RegExp(r'annee\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
   }
 
-  Future<void> goToExercice({required route}) async {
+  Future<void> goToExam({required route}) async {
     final router = ref.read(goRouterProvider);
 
-    state = ExoState.exoInitial();
+    state = ExamState.examInitial();
 
     if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-      state = ExoState.exoLoading(route);
+      state = ExamState.examLoading(route);
       //await Future.delayed(Duration(seconds: 2));
       await ref
           .read(subscriptionViewModelProvider.notifier)
           .checkSubscription();
 
-      state = ExoState.exoInitial();
+      state = ExamState.examInitial();
       router.push(route);
     } else {
       router.push('/signin');
     }
   }
 
-  void setState(ExoState state_) {
+  void setState(ExamState state_) {
     state = state_;
   }
 }

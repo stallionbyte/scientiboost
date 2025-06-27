@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../exos/presentation/screens/exos_screen.dart';
+import '../../../exams/presentation/screens/exams_screen.dart';
 
 import '../viewmodels/current_page_viewmodel.dart';
 
@@ -77,17 +78,7 @@ Widget _buildExercicesPage() {
 Widget _buildExamensPage() {
   return SingleChildScrollView(
     padding: EdgeInsets.all(16),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Examens',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 16),
-        _buildFakeContent('Préparez-vous aux examens avec nos tests.'),
-      ],
-    ),
+    child: ExamsScreen(),
   );
 }
 

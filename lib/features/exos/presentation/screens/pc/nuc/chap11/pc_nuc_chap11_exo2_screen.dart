@@ -13,15 +13,22 @@ import '../../../../../../../core/providers.dart';
 import '../../../../../../../core/constants.dart';
 import '../../../../../../../core/common_widgets/third_app_bar.dart';
 
-class PcNucChap11Exo1Screen extends ConsumerStatefulWidget {
-  const PcNucChap11Exo1Screen({super.key});
+// Provider pour gérer la visibilité de la correction
+/*
+final correctionPcNucChap11Exo2VisibilityProvider = StateProvider<bool>(
+  (ref) => false,
+);
+*/
+
+class PcNucChap11Exo2Screen extends ConsumerStatefulWidget {
+  const PcNucChap11Exo2Screen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PcNucChap11Exo1ScreenState();
+      _PcNucChap11Exo2ScreenState();
 }
 
-class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
+class _PcNucChap11Exo2ScreenState extends ConsumerState<PcNucChap11Exo2Screen> {
   bool isCorrectionVisible = false; // Variable d'état locale
 
   @override
@@ -43,7 +50,7 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
   Widget _buildThirdAppBar() {
     return ThirdAppBar(
       storageFavoritesKey: StorageKeysConstants.favoritesExos,
-      favoriteRoute: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
+      favoriteRoute: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
     );
   }
 
@@ -81,7 +88,6 @@ class _PcNucChap11Exo1ScreenState extends ConsumerState<PcNucChap11Exo1Screen> {
               ),
             ),
           ),
-
           ExpansionPanelRadio(
             value: 'uniqueValue2',
             headerBuilder: (context, isExpanded) {

@@ -103,7 +103,7 @@ final subscriptionRepositoryProvider =
 // ignore: unused_element
 typedef SubscriptionRepositoryRef =
     AutoDisposeProviderRef<SubscriptionRepository>;
-String _$sharedPreferencesHash() => r'2af0fa3c646e9fb10377e7fd2a1b0ecb6db3bf73';
+String _$sharedPreferencesHash() => r'f2c436e3727638cee19f317e4537b9e02de4a8c9';
 
 /// See also [sharedPreferences].
 @ProviderFor(sharedPreferences)
@@ -123,7 +123,7 @@ final sharedPreferencesProvider =
 // ignore: unused_element
 typedef SharedPreferencesRef =
     AutoDisposeFutureProviderRef<LocalStorageInterface>;
-String _$goRouterHash() => r'0c4c9e35e64eeeed31b45e43d015c3d8a4d18e0d';
+String _$goRouterHash() => r'a62a3dc69808c691c123c76bcf5788a701fe067f';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

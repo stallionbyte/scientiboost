@@ -5,6 +5,7 @@ import 'package:flutter_tex/flutter_tex.dart';
 import '../../../../core/common_widgets/first_app_bar.dart';
 
 // Provider pour gérer l'état du bouton radio sélectionné
+
 final selectedModeProvider = StateProvider<String>((ref) => 'reponses');
 
 class ExerciceScreen extends ConsumerWidget {

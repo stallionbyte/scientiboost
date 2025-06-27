@@ -49,6 +49,15 @@ class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
           if (ref.read(authViewModelProvider.notifier).isAuthenticated()) ...[
             GestureDetector(
               onTap: () {
+                ref.read(goRouterProvider).push('/favorites');
+              },
+              child: Icon(Icons.favorite, color: Colors.blue),
+            ),
+
+            const SizedBox(width: 8),
+
+            GestureDetector(
+              onTap: () {
                 ref
                     .read(goRouterProvider)
                     .push(

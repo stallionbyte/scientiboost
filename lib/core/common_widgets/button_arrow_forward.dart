@@ -19,7 +19,7 @@ class ButtonArrowForward extends ConsumerWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? Colors.blue, // Fond bleu
         foregroundColor: Colors.white, // Texte et icône blancs
-        padding: const EdgeInsets.all(16.0), // Espacement interne
+        padding: const EdgeInsets.all(8), // Espacement interne
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18), // Coins arrondis
         ),

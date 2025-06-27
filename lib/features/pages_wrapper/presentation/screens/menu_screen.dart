@@ -114,7 +114,7 @@ class MenuScreen extends ConsumerWidget {
                             _buildMenuCard(
                               icon: Icons.login,
                               title: 'se connecter',
-                              color: const Color(0xFFFF6B35),
+                              color: Colors.blue,
                               onTap: () {
                                 router.push('/signin');
                               },
@@ -125,9 +125,9 @@ class MenuScreen extends ConsumerWidget {
                               .read(authViewModelProvider.notifier)
                               .isAuthenticated())
                             _buildMenuCard(
-                              icon: Icons.login,
+                              icon: Icons.person_add,
                               title: "s'inscrire",
-                              color: const Color(0xFF0084FF),
+                              color: Colors.blue,
                               onTap: () {
                                 router.push('/signup');
                               },
@@ -140,7 +140,7 @@ class MenuScreen extends ConsumerWidget {
                             _buildMenuCard(
                               icon: Icons.logout,
                               title: 'se déconnecter',
-                              color: const Color(0xFF1877F2),
+                              color: Colors.blue,
                               onTap: () {
                                 // rediriger vers une page dédiée
                                 router.push('/signout');
@@ -149,9 +149,9 @@ class MenuScreen extends ConsumerWidget {
 
                           // Formules
                           _buildMenuCard(
-                            icon: Icons.calculate,
+                            icon: Icons.functions,
                             title: 'Formules',
-                            color: const Color(0xFF42C767),
+                            color: Colors.blue,
                             onTap: () {
                               ref
                                   .read(currentPageViewModelProvider.notifier)
@@ -163,9 +163,9 @@ class MenuScreen extends ConsumerWidget {
 
                           // Astuces
                           _buildMenuCard(
-                            icon: Icons.lightbulb,
+                            icon: Icons.lightbulb_circle,
                             title: 'Astuces',
-                            color: const Color(0xFFFF3040),
+                            color: Colors.blue,
                             onTap: () {
                               ref
                                   .read(currentPageViewModelProvider.notifier)

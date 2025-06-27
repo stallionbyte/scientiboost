@@ -1,0 +1,35 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
+
+import '../../features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+
+import 'button_arrow_forward.dart';
+
+import '../providers.dart';
+
+class UnsubscribedMessage extends ConsumerWidget {
+  const UnsubscribedMessage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Text("correction réservée aux abonnés"),
+          const SizedBox(height: 20),
+          ButtonArrowForward(
+            text: 'vérifier mon abonnement',
+            backgroundColor: Colors.amber,
+            onPressed: () {
+              ref
+                  .read(subscriptionViewModelProvider.notifier)
+                  .setState(SubscriptionState.subscriptionInitial());
+              ref.read(goRouterProvider).push('/subscription-infos');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

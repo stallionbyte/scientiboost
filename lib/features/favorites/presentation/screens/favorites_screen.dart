@@ -1,0 +1,265 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../core/providers.dart';
+import '../../../../core/constants.dart';
+import '../../../../core/common_widgets/first_app_bar.dart';
+
+import '../../../exos/presentation/viewmodels/exo_viewmodel.dart';
+import '../../../exams/presentation/viewmodels/exam_viewmodel.dart';
+
+// La page principale qui gère les sélections
+
+class FavoritesScreen extends ConsumerStatefulWidget {
+  const FavoritesScreen({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _FavoritesScreenState();
+}
+
+class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
+  // Variables pour stocker les choix actuels.
+  // Elles sont "nullables" (avec '?') car au début, rien n'est sélectionné.
+  String? _selectedFavoritesGroup;
+
+  // Listes des options disponibles pour les menus déroulants
+  final List<String> _favoritesGroup = ['exercices', 'examens'];
+
+  // Fonctions pour extraire les informations des routes
+  String? getMatiere(String route) {
+    final regex = RegExp(r'matiere\((.*?)\)');
+    return regex.firstMatch(route)?.group(1);
+  }
+
+  String? getChap(String route) {
+    final regex = RegExp(r'chap\((.*?)\)');
+    return regex.firstMatch(route)?.group(1);
+  }
+
+  String? getExo(String route) {
+    final regex = RegExp(r'exo\((.*?)\)');
+    return regex.firstMatch(route)?.group(1);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.watch(sharedPreferencesProvider);
+    ref.watch(goRouterProvider);
+    ref.watch(exoViewmodelProvider);
+    ref.watch(examViewmodelProvider);
+
+    return Scaffold(
+      appBar: FirstAppBar(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: 40),
+                // --- Menu déroulant pour la CLASSE ---
+                DropdownMenu<String>(
+                  // Le label qui s'affiche au-dessus du champ
+                  label: const Text('Favoris'),
+                  // Message d'aide qui s'affiche à l'intérieur
+                  hintText: 'Choisissez vos favoris',
+                  // Occupe toute la largeur disponible
+                  expandedInsets: EdgeInsets.zero,
+                  // La liste des options à afficher
+                  dropdownMenuEntries:
+                      _favoritesGroup.map((String favorites) {
+                        return DropdownMenuEntry<String>(
+                          value: favorites,
+                          label: favorites,
+                        );
+                      }).toList(),
+                  // Cette fonction est appelée quand un choix est fait
+                  onSelected: (String? value) {
+                    // On met à jour l'état de la page avec le nouveau choix
+                    setState(() {
+                      _selectedFavoritesGroup = value;
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 30),
+
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (
+                    Widget child,
+                    Animation<double> animation,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                  child: _buildFavorites(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Construit et retourne le widget de contenu spécifique
+  /// basé sur les choix de `_selectedFavoritesGroup` et `_selectedMatiere`.
+
+  Widget? _buildFavorites() {
+    // Observer le FutureProvider
+    final localStorageAsync = ref.watch(sharedPreferencesProvider);
+
+    // Si l'un des deux choix n'est pas encore fait, on n'affiche rien
+    // ou un message invitant à faire une sélection.
+    if (_selectedFavoritesGroup == null) {
+      // La clé permet à AnimatedSwitcher de savoir que le widget a changé
+      return const Center(
+        key: ValueKey('placeholder'),
+        child: Text(
+          'Veuillez sélectionner les favoris',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.grey),
+        ),
+      );
+    }
+
+    // On crée une clé unique pour chaque combinaison pour que l'animation fonctionne correctement
+    final key = ValueKey('$_selectedFavoritesGroup');
+
+    // remplacer Placeholder() par le texte centré <Contenu>
+
+    Widget? favorites;
+
+    if (_selectedFavoritesGroup == 'exercices') {
+      favorites = localStorageAsync.when(
+        data: (localStorage) {
+          final routes =
+              localStorage.getStringList(StorageKeysConstants.favoritesExos) ??
+              [];
+
+          if (routes.isNotEmpty) {
+            return Column(
+              key: key,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var route in routes)
+                  GestureDetector(
+                    onTap: () {
+                      ref.read(goRouterProvider).push(route);
+                    },
+
+                    child: Card(
+                      elevation: 4,
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      child: ListTile(
+                        title: Text(
+                          ref
+                                  .read(exoViewmodelProvider.notifier)
+                                  .getMatiereFromExoRoute(route) ??
+                              'Inconnu',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Chapitre: ${ref.read(exoViewmodelProvider.notifier).getChapFromExoRoute(route) ?? 'Inconnu'}',
+                            ),
+                            Text(
+                              'Exercice: ${ref.read(exoViewmodelProvider.notifier).getExoNumFromExoRoute(route) ?? 'Inconnu'}',
+                            ),
+                          ],
+                        ),
+                        leading: const Icon(
+                          Icons.assignment,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          } else {
+            return const Center(
+              key: ValueKey('favorites_exos_empty'),
+              child: Text(
+                'Aucun exercice favori enrégistré',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            );
+          }
+        },
+        loading: () => const CircularProgressIndicator(),
+        error: (error, stack) => Text('Erreur : $error'),
+      );
+    } else if (_selectedFavoritesGroup == 'examens') {
+      favorites = localStorageAsync.when(
+        data: (localStorage) {
+          final routes =
+              localStorage.getStringList(StorageKeysConstants.favoritesExams) ??
+              [];
+
+          if (routes.isNotEmpty) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var route in routes)
+                  GestureDetector(
+                    onTap: () {
+                      ref.read(goRouterProvider).push(route);
+                    },
+
+                    child: Card(
+                      elevation: 4,
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      child: ListTile(
+                        title: Text(
+                          ref
+                                  .read(examViewmodelProvider.notifier)
+                                  .getMatiereFromExamRoute(route) ??
+                              'Inconnu',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'BAC  ${ref.read(examViewmodelProvider.notifier).getBacFromExamRoute(route)?.toUpperCase() ?? 'Inconnu'}',
+                            ),
+                            Text(
+                              'Année: ${ref.read(examViewmodelProvider.notifier).getAnneeFromExamRoute(route) ?? 'Inconnu'}',
+                            ),
+                          ],
+                        ),
+                        leading: const Icon(Icons.school, color: Colors.blue),
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          } else {
+            return const Center(
+              key: ValueKey('favorites_exams_empty'),
+              child: Text(
+                'Aucun examen favori enrégistré',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            );
+          }
+        },
+        loading: () => const CircularProgressIndicator(),
+        error: (error, stack) => Text('Erreur : $error'),
+      );
+    }
+
+    // On retourne le contenu dans une carte stylisée
+
+    // return la variable contenu ici
+
+    return favorites;
+  }
+}

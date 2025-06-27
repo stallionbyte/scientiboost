@@ -26,16 +26,23 @@ import '../features/profil/presentation/screens/profil_screen.dart';
 
 import '../features/exos/presentation/screens/exos_screen.dart';
 import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo1_screen.dart';
+import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo2_screen.dart';
+//import '../features/exos/presentation/screens/pc/nuc/chap11/pc_nuc_chap11_exo3_screen.dart';
+
+import '../features/exams/presentation/screens/d/pc/2024/2024.dart';
+import '../features/exams/presentation/screens/d/pc/2025/2025.dart';
 
 import '../features/pages_wrapper/presentation/screens/pages_wrapper.dart';
 import '../features/pages_wrapper/presentation/screens/menu_screen.dart';
 
 import '../features/video/presentation/screens/video_screen.dart';
 
-import '../features/exercice/presentation/screens/exercice_screen.dart';
+import '../features/favorites/presentation/screens/favorites_screen.dart';
 
 import '../data/storage/shared_preference_storage.dart';
 import '../data/storage/local_storage_interface.dart';
+
+import 'constants.dart';
 
 import '../test_widget.dart';
 
@@ -69,13 +76,34 @@ SubscriptionRepository subscriptionRepository(Ref ref) =>
       ref.read(firebaseAuthInstanceProvider),
     );
 
+// Provider pour gérer la visibilité de la correction
+final correctionPcNucChap11Exo1VisibilityProvider = StateProvider<bool>(
+  (ref) => false,
+);
+
 // Provider pour SharedPreferencesStorage
+
 @riverpod
 Future<LocalStorageInterface> sharedPreferences(Ref ref) async {
   final storage = SharedPreferencesStorage();
   await storage.init();
+  await storage.setStringList(StorageKeysConstants.favoritesExos, <String>[]);
+  await storage.setStringList(StorageKeysConstants.favoritesExams, <String>[]);
   return storage;
 }
+
+// Provider pour vérifier si la route de l'exercice est dans les favoris
+final isFavoriteRouteProvider = FutureProvider.family<bool, String>((
+  ref,
+  routeParams,
+) async {
+  List<String> parts = routeParams.split('|');
+  String favoriteRouteGroup = parts[0];
+  String route = parts[1];
+  final storage = await ref.watch(sharedPreferencesProvider.future);
+  final favorites = storage.getStringList(favoriteRouteGroup) ?? [];
+  return favorites.contains(route);
+});
 
 // Provider pour GoRouter
 @riverpod
@@ -150,16 +178,45 @@ GoRouter goRouter(Ref ref) => GoRouter(
     ),
 
     GoRoute(
-      path: '/exercice',
+      path: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
       builder: (context, state) {
-        return ExerciceScreen();
+        return PcNucChap11Exo1Screen();
       },
     ),
 
     GoRoute(
-      path: '/pc/nuc/chap11/exo1',
+      path: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
       builder: (context, state) {
-        return PcNucChap11Exo1Screen();
+        return PcNucChap11Exo2Screen();
+      },
+    ),
+
+    /*
+    GoRoute(
+      path: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
+      builder: (context, state) {
+        return PcNucChap11Exo3Screen();
+      },
+    ),
+    */
+    GoRoute(
+      path: RoutesNamesConstants.pcBacD2025,
+      builder: (context, state) {
+        return PcBacD2025();
+      },
+    ),
+
+    GoRoute(
+      path: RoutesNamesConstants.pcBacD2024,
+      builder: (context, state) {
+        return PcBacD2024();
+      },
+    ),
+
+    GoRoute(
+      path: '/favorites',
+      builder: (context, state) {
+        return FavoritesScreen();
       },
     ),
   ],

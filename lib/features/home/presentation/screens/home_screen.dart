@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/providers.dart';
 import '../../../../core/common_widgets/button_arrow_forward.dart';
 import '../../../../core/common_widgets/subscription_button.dart';
-import '../../../../core/constants.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -204,84 +203,6 @@ class HomeScreen extends ConsumerWidget {
 
         SizedBox(height: 40),
 
-        ButtonArrowForward(
-          text: 'voir exos',
-          onPressed: () {
-            router.push('/exos');
-          },
-        ),
-
-        Card(
-          elevation: 4, // Ombre pour donner du relief
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12), // Coins arrondis
-          ),
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Image en haut de la carte
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  'assets/img/eleve-scientific.png',
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.contain,
-                  errorBuilder:
-                      (context, error, stackTrace) => Container(
-                        height: 150,
-                        color: Colors.grey[300],
-                        child: const Icon(
-                          Icons.error,
-                          color: Colors.red,
-                          size: 40,
-                        ),
-                      ),
-                ),
-              ),
-
-              SizedBox(height: 20),
-              // Titre
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    //padding: const EdgeInsets.all(16),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Text(
-                        'Exemple de video',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              SizedBox(height: 20),
-
-              // Bouton
-              Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                child: ButtonArrowForward(
-                  text: 'voir vidéo',
-                  onPressed: () {
-                    router.push(VideoConstants.pathElementChimique);
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-
         SizedBox(height: 40),
 
         Card(
@@ -293,28 +214,7 @@ class HomeScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Image en haut de la carte
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  'assets/img/eleve-scientific.png',
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.contain,
-                  errorBuilder:
-                      (context, error, stackTrace) => Container(
-                        height: 150,
-                        color: Colors.grey[300],
-                        child: const Icon(
-                          Icons.error,
-                          color: Colors.red,
-                          size: 40,
-                        ),
-                      ),
-                ),
-              ),
+              Icon(Icons.assignment, size: 80.0, color: Colors.blue),
 
               SizedBox(height: 20),
               // Titre
@@ -343,12 +243,11 @@ class HomeScreen extends ConsumerWidget {
 
               // Bouton
               Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                padding: const EdgeInsets.all(16),
                 child: ButtonArrowForward(
                   text: 'voir exercice',
                   onPressed: () {
                     router.push('/test');
-                    ;
                   },
                 ),
               ),
@@ -367,28 +266,7 @@ class HomeScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Image en haut de la carte
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  'assets/img/eleve-scientific.png',
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.contain,
-                  errorBuilder:
-                      (context, error, stackTrace) => Container(
-                        height: 150,
-                        color: Colors.grey[300],
-                        child: const Icon(
-                          Icons.error,
-                          color: Colors.red,
-                          size: 40,
-                        ),
-                      ),
-                ),
-              ),
+              Icon(Icons.school, size: 80.0, color: Colors.blue),
 
               SizedBox(height: 20),
               // Titre
@@ -422,7 +300,6 @@ class HomeScreen extends ConsumerWidget {
                   text: 'voir examen',
                   onPressed: () {
                     router.push('/test');
-                    ;
                   },
                 ),
               ),
@@ -442,27 +319,7 @@ class HomeScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Image en haut de la carte
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  'assets/img/eleve-scientific.png',
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.contain,
-                  errorBuilder:
-                      (context, error, stackTrace) => Container(
-                        height: 150,
-                        color: Colors.grey[300],
-                        child: const Icon(
-                          Icons.error,
-                          color: Colors.red,
-                          size: 40,
-                        ),
-                      ),
-                ),
-              ),
+              Icon(Icons.functions, size: 80.0, color: Colors.blue),
 
               SizedBox(height: 20),
               // Titre
@@ -516,27 +373,7 @@ class HomeScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Image en haut de la carte
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: Image.asset(
-                  'assets/img/ampoule.png',
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.contain,
-                  errorBuilder:
-                      (context, error, stackTrace) => Container(
-                        height: 150,
-                        color: Colors.grey[300],
-                        child: const Icon(
-                          Icons.error,
-                          color: Colors.red,
-                          size: 40,
-                        ),
-                      ),
-                ),
-              ),
+              Icon(Icons.lightbulb_circle, size: 80.0, color: Colors.blue),
 
               SizedBox(height: 20),
               // Titre

@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'exo_viewmodel.dart';
+part of 'exam_viewmodel.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,7 +13,7 @@ part of 'exo_viewmodel.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$ExoState {
+mixin _$ExamState {
 
 
 
@@ -21,7 +21,7 @@ mixin _$ExoState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExoState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExamState);
 }
 
 
@@ -30,23 +30,23 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ExoState()';
+  return 'ExamState()';
 }
 
 
 }
 
 /// @nodoc
-class $ExoStateCopyWith<$Res>  {
-$ExoStateCopyWith(ExoState _, $Res Function(ExoState) __);
+class $ExamStateCopyWith<$Res>  {
+$ExamStateCopyWith(ExamState _, $Res Function(ExamState) __);
 }
 
 
 /// @nodoc
 
 
-class ExoInitial implements ExoState {
-  const ExoInitial();
+class ExamInitial implements ExamState {
+  const ExamInitial();
   
 
 
@@ -56,7 +56,7 @@ class ExoInitial implements ExoState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExoInitial);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExamInitial);
 }
 
 
@@ -65,7 +65,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ExoState.exoInitial()';
+  return 'ExamState.examInitial()';
 }
 
 
@@ -77,23 +77,23 @@ String toString() {
 /// @nodoc
 
 
-class ExoLoading implements ExoState {
-  const ExoLoading(this.route);
+class ExamLoading implements ExamState {
+  const ExamLoading(this.route);
   
 
  final  String route;
 
-/// Create a copy of ExoState
+/// Create a copy of ExamState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ExoLoadingCopyWith<ExoLoading> get copyWith => _$ExoLoadingCopyWithImpl<ExoLoading>(this, _$identity);
+$ExamLoadingCopyWith<ExamLoading> get copyWith => _$ExamLoadingCopyWithImpl<ExamLoading>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExoLoading&&(identical(other.route, route) || other.route == route));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExamLoading&&(identical(other.route, route) || other.route == route));
 }
 
 
@@ -102,15 +102,15 @@ int get hashCode => Object.hash(runtimeType,route);
 
 @override
 String toString() {
-  return 'ExoState.exoLoading(route: $route)';
+  return 'ExamState.examLoading(route: $route)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ExoLoadingCopyWith<$Res> implements $ExoStateCopyWith<$Res> {
-  factory $ExoLoadingCopyWith(ExoLoading value, $Res Function(ExoLoading) _then) = _$ExoLoadingCopyWithImpl;
+abstract mixin class $ExamLoadingCopyWith<$Res> implements $ExamStateCopyWith<$Res> {
+  factory $ExamLoadingCopyWith(ExamLoading value, $Res Function(ExamLoading) _then) = _$ExamLoadingCopyWithImpl;
 @useResult
 $Res call({
  String route
@@ -121,17 +121,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ExoLoadingCopyWithImpl<$Res>
-    implements $ExoLoadingCopyWith<$Res> {
-  _$ExoLoadingCopyWithImpl(this._self, this._then);
+class _$ExamLoadingCopyWithImpl<$Res>
+    implements $ExamLoadingCopyWith<$Res> {
+  _$ExamLoadingCopyWithImpl(this._self, this._then);
 
-  final ExoLoading _self;
-  final $Res Function(ExoLoading) _then;
+  final ExamLoading _self;
+  final $Res Function(ExamLoading) _then;
 
-/// Create a copy of ExoState
+/// Create a copy of ExamState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? route = null,}) {
-  return _then(ExoLoading(
+  return _then(ExamLoading(
 null == route ? _self.route : route // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -143,23 +143,23 @@ as String,
 /// @nodoc
 
 
-class ExoError implements ExoState {
-  const ExoError(this.error);
+class ExamError implements ExamState {
+  const ExamError(this.error);
   
 
  final  String error;
 
-/// Create a copy of ExoState
+/// Create a copy of ExamState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ExoErrorCopyWith<ExoError> get copyWith => _$ExoErrorCopyWithImpl<ExoError>(this, _$identity);
+$ExamErrorCopyWith<ExamError> get copyWith => _$ExamErrorCopyWithImpl<ExamError>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExoError&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExamError&&(identical(other.error, error) || other.error == error));
 }
 
 
@@ -168,15 +168,15 @@ int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'ExoState.exoError(error: $error)';
+  return 'ExamState.examError(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ExoErrorCopyWith<$Res> implements $ExoStateCopyWith<$Res> {
-  factory $ExoErrorCopyWith(ExoError value, $Res Function(ExoError) _then) = _$ExoErrorCopyWithImpl;
+abstract mixin class $ExamErrorCopyWith<$Res> implements $ExamStateCopyWith<$Res> {
+  factory $ExamErrorCopyWith(ExamError value, $Res Function(ExamError) _then) = _$ExamErrorCopyWithImpl;
 @useResult
 $Res call({
  String error
@@ -187,17 +187,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ExoErrorCopyWithImpl<$Res>
-    implements $ExoErrorCopyWith<$Res> {
-  _$ExoErrorCopyWithImpl(this._self, this._then);
+class _$ExamErrorCopyWithImpl<$Res>
+    implements $ExamErrorCopyWith<$Res> {
+  _$ExamErrorCopyWithImpl(this._self, this._then);
 
-  final ExoError _self;
-  final $Res Function(ExoError) _then;
+  final ExamError _self;
+  final $Res Function(ExamError) _then;
 
-/// Create a copy of ExoState
+/// Create a copy of ExamState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(ExoError(
+  return _then(ExamError(
 null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String,
   ));
