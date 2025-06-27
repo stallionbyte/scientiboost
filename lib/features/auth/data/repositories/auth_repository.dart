@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:result_dart/result_dart.dart';
 
-import '../../../../core/error/firebase/error.dart';
+import 'package:scientiboost/core/error/firebase/error.dart';
 
-import '../../../../core/constants.dart';
-import '../../../auth/data/models/user_model.dart';
+import 'package:scientiboost/core/constants.dart';
+
+import 'package:scientiboost/features/auth/data/models/user_model.dart';
 
 // Interface du repository d'authentification
 abstract class AuthRepository {

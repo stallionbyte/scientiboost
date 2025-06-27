@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../viewmodels/email_verification_viewmodel.dart';
-import '../viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/email_verification_viewmodel.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
-import '../../../../core/helpers.dart' as helpers;
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
-import '../../../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class EmailVerificationScreen extends ConsumerStatefulWidget {
   const EmailVerificationScreen({super.key});

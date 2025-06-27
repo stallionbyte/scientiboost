@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
 class SubscriptionButton extends ConsumerWidget {
   const SubscriptionButton({super.key});

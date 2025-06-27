@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});

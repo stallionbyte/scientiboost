@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class ThirdAppBar extends ConsumerStatefulWidget {
   const ThirdAppBar({
@@ -46,19 +46,11 @@ class _ThirdAppBarState extends ConsumerState<ThirdAppBar> {
                     final favorites =
                         storage.getStringList(widget.storageFavoritesKey) ?? [];
 
-                    debugPrint(
-                      '***********************************************',
-                    );
-                    print(isFavorite);
-                    print(favorites);
-
                     if (isFavorite) {
                       favorites.remove(widget.favoriteRoute);
                     } else {
                       favorites.add(widget.favoriteRoute);
                     }
-
-                    print(favorites);
 
                     await storage.setStringList(
                       widget.storageFavoritesKey,

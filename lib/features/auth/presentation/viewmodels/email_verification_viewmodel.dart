@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 part 'email_verification_viewmodel.freezed.dart';
 part 'email_verification_viewmodel.g.dart';

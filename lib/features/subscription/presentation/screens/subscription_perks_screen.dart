@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
-import '../../../../core/helpers.dart' as helpers;
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class SubscriptionPerksScreen extends ConsumerWidget {
   const SubscriptionPerksScreen({super.key});

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,58 +7,55 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:go_router/go_router.dart';
 
-import '../features/auth/data/repositories/auth_repository.dart';
-import '../features/subscription/data/repositories/subscription_repository.dart';
+import 'package:scientiboost/features/auth/data/repositories/auth_repository.dart';
+import 'package:scientiboost/features/subscription/data/repositories/subscription_repository.dart';
 
-import '../features/home/presentation/screens/home_screen.dart';
+import 'package:scientiboost/features/home/presentation/screens/home_screen.dart';
 
-import '../features/auth/presentation/screens/signin_screen.dart';
-import '../features/auth/presentation/screens/password_reset_screen.dart';
+import 'package:scientiboost/features/auth/presentation/screens/signin_screen.dart';
+import 'package:scientiboost/features/auth/presentation/screens/password_reset_screen.dart';
 import 'package:scientiboost/features/auth/presentation/screens/signup_screen.dart';
 import 'package:scientiboost/features/auth/presentation/screens/signout_screen.dart';
 import 'package:scientiboost/features/auth/presentation/screens/email_verification_screen.dart';
 
-import '../features/subscription/presentation/screens/subscription_screen.dart';
-import '../features/subscription/presentation/screens/subscription_infos_screen.dart';
-import '../features/subscription/presentation/screens/subscription_perks_screen.dart';
-import '../features/subscription/presentation/screens/checkout_screen.dart';
+import 'package:scientiboost/features/subscription/presentation/screens/subscription_screen.dart';
+import 'package:scientiboost/features/subscription/presentation/screens/subscription_infos_screen.dart';
+import 'package:scientiboost/features/subscription/presentation/screens/subscription_perks_screen.dart';
+import 'package:scientiboost/features/subscription/presentation/screens/checkout_screen.dart';
 
-import '../features/profil/presentation/screens/profil_screen.dart';
+import 'package:scientiboost/features/profil/presentation/screens/profil_screen.dart';
 
-import '../features/exos/presentation/screens/exos_screen.dart';
-import '../features/exos/presentation/screens/exo_screen.dart';
-import '../features/exos/presentation/screens/pc/nuc/chap11/exo1/enonce.dart';
-import '../features/exos/presentation/screens/pc/nuc/chap11/exo1/correction.dart';
-import '../features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
-import '../features/exos/presentation/screens/pc/nuc/chap11/exo2/correction.dart';
+import 'package:scientiboost/features/exos/presentation/screens/exo_screen.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/enonce.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/correction.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/correction.dart';
 
 import 'package:scientiboost/features/exams/presentation/screens/exam_screen.dart';
-import '../features/exams/presentation/screens/d/pc/2024/chim/exo1/enonce.dart';
-import '../features/exams/presentation/screens/d/pc/2024/chim/exo1/correction.dart';
-import '../features/exams/presentation/screens/d/pc/2024/chim/exo2/enonce.dart';
-import '../features/exams/presentation/screens/d/pc/2024/chim/exo2/correction.dart';
-import '../features/exams/presentation/screens/d/pc/2024/phy/exo1/enonce.dart';
-import '../features/exams/presentation/screens/d/pc/2024/phy/exo1/correction.dart';
-import '../features/exams/presentation/screens/d/pc/2024/phy/exo2/enonce.dart';
-import '../features/exams/presentation/screens/d/pc/2024/phy/exo2/correction.dart';
-import '../features/exams/presentation/screens/d/pc/2024/phy/exo3/enonce.dart';
-import '../features/exams/presentation/screens/d/pc/2024/phy/exo3/correction.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/enonce.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/correction.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo2/enonce.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo2/correction.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo1/enonce.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo1/correction.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo2/enonce.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo2/correction.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo3/enonce.dart';
+import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo3/correction.dart';
 
-import '../features/pages_wrapper/presentation/screens/pages_wrapper.dart';
-import '../features/pages_wrapper/presentation/screens/menu_screen.dart';
+import 'package:scientiboost/features/pages_wrapper/presentation/screens/pages_wrapper.dart';
+import 'package:scientiboost/features/pages_wrapper/presentation/screens/menu_screen.dart';
 
-import '../features/video/presentation/screens/video_screen.dart';
+import 'package:scientiboost/features/video/presentation/screens/video_screen.dart';
 
-import '../features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:scientiboost/features/favorites/presentation/screens/favorites_screen.dart';
 
-import '../data/storage/shared_preference_storage.dart';
-import '../data/storage/local_storage_interface.dart';
+import 'package:scientiboost/data/storage/shared_preference_storage.dart';
+import 'package:scientiboost/data/storage/local_storage_interface.dart';
 
-import 'constants.dart';
+import 'package:scientiboost/core/constants.dart';
 
-import '../test_widget.dart';
-
-import '../placeholder.dart';
+import 'package:scientiboost/test_widget.dart';
 
 part 'providers.g.dart';
 
@@ -120,10 +118,8 @@ GoRouter goRouter(Ref ref) => GoRouter(
 
     GoRoute(
       path: '/placeholder',
-      builder: (context, state) => const MyPlaceholder(),
+      builder: (context, state) => const Placeholder(),
     ),
-
-    GoRoute(path: '/exos', builder: (context, state) => const ExosScreen()),
 
     GoRoute(
       path: '/pages-wrapper',

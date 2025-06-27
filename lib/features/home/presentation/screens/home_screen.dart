@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/providers.dart';
-import '../../../../core/common_widgets/button_arrow_forward.dart';
-import '../../../../core/common_widgets/subscription_button.dart';
+import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
+import 'package:scientiboost/core/common_widgets/subscription_button.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import '../common_widgets/subscription_button.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
 
-import '../../features/auth/presentation/viewmodels/auth_viewmodel.dart';
-import '../../features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
+import 'package:scientiboost/core/common_widgets/subscription_button.dart';
 
-import '../providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const FirstAppBar({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
-import '../../../../core/helpers.dart' as helpers;
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class SignOutScreen extends ConsumerWidget {
   const SignOutScreen({super.key});

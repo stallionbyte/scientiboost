@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../exos/presentation/viewmodels/exo_viewmodel.dart';
+import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
 
-import '../../../../core/providers.dart';
-import '../../../../core/constants.dart';
-import '../../../../core/common_widgets/button_exo_exam.dart';
+import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 
 class ExosScreen extends ConsumerStatefulWidget {
   const ExosScreen({super.key});

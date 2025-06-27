@@ -1,11 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../data/models/user_model.dart';
+import 'package:scientiboost/features/auth/data/models/user_model.dart';
 
-import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
-import '../../../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 part 'auth_viewmodel.freezed.dart';
 part 'auth_viewmodel.g.dart';

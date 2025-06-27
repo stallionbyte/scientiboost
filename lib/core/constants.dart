@@ -56,3 +56,13 @@ class StorageKeysConstants {
   static const String favoritesExos = 'favorites_exos_routes';
   static const String favoritesExams = 'favorites_exams_routes';
 }
+
+class EnonceConstants {
+  static const double fontSize = 16.0;
+  static const double displayFontSize = 25.0;
+}
+
+class CorrectionConstants {
+  static const double fontSize = 16.0;
+  static const double displayFontSize = 25.0;
+}

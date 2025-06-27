@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../features/exos/presentation/viewmodels/exo_viewmodel.dart';
-import '../../features/exams/presentation/viewmodels/exam_viewmodel.dart';
+import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
+import 'package:scientiboost/features/exams/presentation/viewmodels/exam_viewmodel.dart';
 
 class ButtonExoExam extends ConsumerWidget {
   const ButtonExoExam({

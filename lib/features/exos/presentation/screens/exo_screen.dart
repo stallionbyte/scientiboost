@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../../../core/common_widgets/first_app_bar.dart';
-import '../../../../../../../core/common_widgets/miss_matiere_message.dart';
-import '../../../../../../../core/common_widgets/unsubscribed_message.dart';
+import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
+import 'package:scientiboost/core/common_widgets/third_app_bar.dart';
+import 'package:scientiboost/core/common_widgets/miss_matiere_message.dart';
+import 'package:scientiboost/core/common_widgets/unsubscribed_message.dart';
+import 'package:scientiboost/core/providers.dart';
 
-import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
-import '../../../exos/presentation/viewmodels/exo_viewmodel.dart';
-
-import '../../../../../../../core/providers.dart';
-//import '../../../../../../../core/constants.dart';
-import '../../../../../../../core/common_widgets/third_app_bar.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
 
 class ExoScreen extends ConsumerStatefulWidget {
   const ExoScreen({

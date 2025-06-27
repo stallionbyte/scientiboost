@@ -1,4 +1,4 @@
-import '../../data/repositories/video_repository.dart';
+import 'package:scientiboost/features/video/data/repositories/video_repository.dart';
 
 class VideoViewmodel {
   final VideoRepository _videoRepository;

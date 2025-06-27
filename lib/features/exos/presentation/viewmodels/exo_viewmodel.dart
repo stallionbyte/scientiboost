@@ -1,10 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../auth/presentation/viewmodels/auth_viewmodel.dart';
-import '../../../subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
-import '../../../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 part 'exo_viewmodel.freezed.dart';
 part 'exo_viewmodel.g.dart';

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../common/error.dart' as common;
+import 'package:scientiboost/core/error/common/error.dart' as common;
 
 String? errorMessageWithCode({
   FirebaseAuthException? authE,

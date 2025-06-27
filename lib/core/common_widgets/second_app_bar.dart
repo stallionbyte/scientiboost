@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
-import '../../features/exos/presentation/viewmodels/exo_viewmodel.dart';
+import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
+import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
 
-import '../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class SecondAppBar extends ConsumerStatefulWidget {
   const SecondAppBar({super.key});

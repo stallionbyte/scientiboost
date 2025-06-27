@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:result_dart/result_dart.dart';
 
-import '../models/subscription_model.dart';
+import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 
-import '../../../../core/constants.dart';
-import '../../../../core/error/firebase/error.dart';
+import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/error/firebase/error.dart';
 
 abstract class SubscriptionRepository {
   Future<ResultDart<SubscriptionModel, String>> addSubscription(

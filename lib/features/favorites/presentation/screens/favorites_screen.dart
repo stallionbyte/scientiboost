@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/providers.dart';
-import '../../../../core/constants.dart';
-import '../../../../core/common_widgets/first_app_bar.dart';
+import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
 
-import '../../../exos/presentation/viewmodels/exo_viewmodel.dart';
-import '../../../exams/presentation/viewmodels/exam_viewmodel.dart';
+import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
+import 'package:scientiboost/features/exams/presentation/viewmodels/exam_viewmodel.dart';
 
 // La page principale qui gère les sélections
 
@@ -25,22 +25,6 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
 
   // Listes des options disponibles pour les menus déroulants
   final List<String> _favoritesGroup = ['exercices', 'examens'];
-
-  // Fonctions pour extraire les informations des routes
-  String? getMatiere(String route) {
-    final regex = RegExp(r'matiere\((.*?)\)');
-    return regex.firstMatch(route)?.group(1);
-  }
-
-  String? getChap(String route) {
-    final regex = RegExp(r'chap\((.*?)\)');
-    return regex.firstMatch(route)?.group(1);
-  }
-
-  String? getExo(String route) {
-    final regex = RegExp(r'exo\((.*?)\)');
-    return regex.firstMatch(route)?.group(1);
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../home/presentation/screens/home_screen.dart';
-import '../../../exos/presentation/screens/exos_screen.dart';
-import '../../../exams/presentation/screens/exams_screen.dart';
+import 'package:scientiboost/features/home/presentation/screens/home_screen.dart';
+import 'package:scientiboost/features/exos/presentation/screens/exos_screen.dart';
+import 'package:scientiboost/features/exams/presentation/screens/exams_screen.dart';
 
-import '../viewmodels/current_page_viewmodel.dart';
+import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
 
-import '../../../../core/common_widgets/first_app_bar.dart';
-import '../../../../core/common_widgets/second_app_bar.dart';
+import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
+import 'package:scientiboost/core/common_widgets/second_app_bar.dart';
 
 class PagesWrapper extends ConsumerStatefulWidget {
   const PagesWrapper({super.key});

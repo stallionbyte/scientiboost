@@ -2,20 +2,19 @@
 // * media_kit
 // * media_kit_video
 // * media_kit_libs_video
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:media_kit/media_kit.dart'; // Provides [Player], [Media], [Playlist] etc.
 import 'package:media_kit_video/media_kit_video.dart'; // Provides [VideoController] & [Video] etc.
 
-import '../../../../data/datasources/remote/remote_data_sevices.dart';
+import 'package:scientiboost/data/datasources/remote/remote_data_sevices.dart';
 
-import '../../../../core/common_widgets/first_app_bar.dart';
+import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
 
-import '../viewmodels/video_viewmodel.dart';
-import '../../data/repositories/video_repository.dart';
-
-import 'package:flutter/foundation.dart';
+import 'package:scientiboost/features/video/presentation/viewmodels/video_viewmodel.dart';
+import 'package:scientiboost/features/video/data/repositories/video_repository.dart';
 
 class VideoPlayerScreen extends ConsumerStatefulWidget {
   VideoPlayerScreen({
@@ -53,8 +52,6 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
 
     // Écouter les erreurs du player
     player.stream.error.listen((error) {
-      debugPrint('**********************************************************');
-      debugPrint('in stream error');
       setState(() {
         errorMessage = "Une erreur s'est produite";
       });

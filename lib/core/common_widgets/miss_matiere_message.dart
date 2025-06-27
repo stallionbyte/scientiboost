@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
-import 'button_arrow_forward.dart';
+import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 
-import '../providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class MissMatiereMessage extends ConsumerWidget {
   const MissMatiereMessage({super.key, required this.matieres});

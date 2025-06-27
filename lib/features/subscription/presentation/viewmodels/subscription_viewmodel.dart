@@ -1,12 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-//import 'package:flutter/foundation.dart';
 
-import '../../data/models/subscription_model.dart';
+import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 
-import '../../../auth/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
-import '../../../../core/providers.dart';
+import 'package:scientiboost/core/providers.dart';
 
 part 'subscription_viewmodel.freezed.dart';
 part 'subscription_viewmodel.g.dart';
