@@ -47,6 +47,8 @@ import 'package:scientiboost/features/pages_wrapper/presentation/screens/pages_w
 import 'package:scientiboost/features/pages_wrapper/presentation/screens/menu_screen.dart';
 
 import 'package:scientiboost/features/video/presentation/screens/video_screen.dart';
+import 'package:scientiboost/features/video/data/repositories/video_repository.dart';
+import 'package:scientiboost/features/video/presentation/viewmodels/video_viewmodel.dart';
 
 import 'package:scientiboost/features/favorites/presentation/screens/favorites_screen.dart';
 
@@ -68,9 +70,25 @@ FirebaseAuth firebaseAuthInstance(Ref ref) => FirebaseAuth.instance;
 FirebaseFirestore firebaseFirestoreInstance(Ref ref) =>
     FirebaseFirestore.instance;
 
-// Provider pour SupabaseClient
+// 1. Fournisseur pour SupabaseClient (celui que vous avez déjà)
 @riverpod
 SupabaseClient supabaseClient(Ref ref) => Supabase.instance.client;
+
+// 2. Fournisseur pour VideoRepository
+// Ce provider dépend du supabaseClientProvider
+@riverpod
+VideoRepository videoRepository(Ref ref) {
+  // On récupère le client Supabase depuis son provider
+  return VideoRepositoryImpl(ref.read(supabaseClientProvider));
+}
+
+// 3. Fournisseur pour VideoViewmodel
+// Ce provider dépend du videoRepositoryProvider
+@riverpod
+VideoViewmodel videoViewmodel(Ref ref) {
+  // On récupère le repository depuis son provider
+  return VideoViewmodel(ref.read(videoRepositoryProvider));
+}
 
 // Provider pour le repository d'authentification
 @riverpod

@@ -203,8 +203,6 @@ class HomeScreen extends ConsumerWidget {
 
         SizedBox(height: 40),
 
-        SizedBox(height: 40),
-
         Card(
           elevation: 4, // Ombre pour donner du relief
           shape: RoundedRectangleBorder(

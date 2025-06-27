@@ -64,6 +64,42 @@ final supabaseClientProvider = AutoDisposeProvider<SupabaseClient>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SupabaseClientRef = AutoDisposeProviderRef<SupabaseClient>;
+String _$videoRepositoryHash() => r'c9a43c6c65d9fe8af040faa6d2947e511e186e5e';
+
+/// See also [videoRepository].
+@ProviderFor(videoRepository)
+final videoRepositoryProvider = AutoDisposeProvider<VideoRepository>.internal(
+  videoRepository,
+  name: r'videoRepositoryProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$videoRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef VideoRepositoryRef = AutoDisposeProviderRef<VideoRepository>;
+String _$videoViewmodelHash() => r'45c5be0fc84076b3f2902c10a4e3a3d31501f67a';
+
+/// See also [videoViewmodel].
+@ProviderFor(videoViewmodel)
+final videoViewmodelProvider = AutoDisposeProvider<VideoViewmodel>.internal(
+  videoViewmodel,
+  name: r'videoViewmodelProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$videoViewmodelHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef VideoViewmodelRef = AutoDisposeProviderRef<VideoViewmodel>;
 String _$authRepositoryHash() => r'02d6a77e4e313a3a2d4be6b8cb656583e8a812f4';
 
 /// See also [authRepository].
@@ -123,7 +159,7 @@ final sharedPreferencesProvider =
 // ignore: unused_element
 typedef SharedPreferencesRef =
     AutoDisposeFutureProviderRef<LocalStorageInterface>;
-String _$goRouterHash() => r'a62a3dc69808c691c123c76bcf5788a701fe067f';
+String _$goRouterHash() => r'f22060469ab4cf6781815196b142b14f2173f337';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

@@ -9,15 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:media_kit/media_kit.dart'; // Provides [Player], [Media], [Playlist] etc.
 import 'package:media_kit_video/media_kit_video.dart'; // Provides [VideoController] & [Video] etc.
 
-import 'package:scientiboost/data/datasources/remote/remote_data_sevices.dart';
-
 import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
-
-import 'package:scientiboost/features/video/presentation/viewmodels/video_viewmodel.dart';
-import 'package:scientiboost/features/video/data/repositories/video_repository.dart';
+import 'package:scientiboost/core/providers.dart';
 
 class VideoPlayerScreen extends ConsumerStatefulWidget {
-  VideoPlayerScreen({
+  const VideoPlayerScreen({
     super.key,
     required this.matiere,
     required this.nameOnDataBase,
@@ -27,10 +23,6 @@ class VideoPlayerScreen extends ConsumerStatefulWidget {
   final String matiere;
   final String nameOnDataBase;
   final String title;
-  //final SupabaseClient supabase = RemoteDataServices.instance.supabase;
-  final VideoViewmodel videoViewmodel = VideoViewmodel(
-    VideoRepositoryImpl(RemoteDataServices.instance.supabase),
-  );
 
   @override
   ConsumerState<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -65,28 +57,26 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
   }
 
   Future<void> _initialize() async {
-    _initVideo();
-    //await _initVideoAsync();
-  }
+    // Il n'est plus nécessaire d'avoir une méthode _initVideo séparée.
+    // L'état étant un ConsumerState, il a accès à `ref`.
+    // Nous utilisons ref.read() car nous sommes dans une méthode de cycle de vie
+    // comme initState, et nous n'avons besoin de la valeur qu'une seule fois.
+    final videoViewmodel = ref.read(videoViewmodelProvider);
 
-  /*
-  Future<void> _initVideoAsync() async {
-    final String signedUrl = await widget.supabase.storage
-        .from('pc')
-        .createSignedUrl('element_chimique.mp4', 3600) as String;
-
-    player.open(Media(signedUrl));
-  }
-  */
-
-  Future<void> _initVideo() async {
-    final publicUrl = widget.videoViewmodel.getPublicUrl(
+    final publicUrl = videoViewmodel.getPublicUrl(
       widget.matiere,
       widget.nameOnDataBase,
     );
 
     if (publicUrl != null) {
+      // Assurez-vous que getPublicUrl ne retourne pas null
       await player.open(Media(publicUrl), play: true);
+      // Réinitialiser l'erreur en cas de succès après une nouvelle tentative
+      if (errorMessage != null) {
+        setState(() {
+          errorMessage = null;
+        });
+      }
     } else {
       setState(() {
         errorMessage = 'URL de la vidéo non disponible';
@@ -122,7 +112,7 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
                             textAlign: TextAlign.center,
                           ),
                           ElevatedButton(
-                            onPressed: () => _initVideo(),
+                            onPressed: () => _initialize(),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.black,
