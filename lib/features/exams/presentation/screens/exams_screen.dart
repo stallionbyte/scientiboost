@@ -5,7 +5,7 @@ import 'package:scientiboost/features/exams/presentation/viewmodels/exam_viewmod
 
 import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
+import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 
 class ExamsScreen extends ConsumerStatefulWidget {
   const ExamsScreen({super.key});
@@ -83,9 +83,8 @@ class _ExamsScreenState extends ConsumerState<ExamsScreen> {
 
           SizedBox(height: 40),
 
-          ButtonExoExam(
+          ButtonArrowForward(
             text: '2024',
-            route_: RoutesNamesConstants.pcBacD2024,
             onPressed: () {
               ref
                   .read(examViewmodelProvider.notifier)

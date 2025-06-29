@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tex/flutter_tex.dart';
+
 import 'package:scientiboost/core/constants.dart';
+
+import 'package:scientiboost/core/common_widgets/button_video.dart';
 
 class PcNucChap11Exo1Correction extends ConsumerStatefulWidget {
   const PcNucChap11Exo1Correction({super.key});
@@ -36,6 +39,11 @@ class _PcNucChap11Exo1CorrectionState
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
+                ButtonVideo(
+                  text: 'élement chimique',
+                  videoRoute: VideoConstants.pathElementChimique,
+                ),
+
                 RichText(
                   text: TextSpan(
                     style: TextStyle(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 
 import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 
 class ExosScreen extends ConsumerStatefulWidget {
   const ExosScreen({super.key});
@@ -128,9 +128,9 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
 
-                  child: ButtonExoExam(
+                  child: ButtonArrowForward(
                     text: 'Exercice 1',
-                    route_: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
+
                     onPressed: () {
                       ref
                           .read(exoViewmodelProvider.notifier)
@@ -145,9 +145,8 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 Align(
                   alignment: Alignment.centerLeft,
 
-                  child: ButtonExoExam(
+                  child: ButtonArrowForward(
                     text: 'Exercice 2',
-                    route_: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
                     onPressed: () {
                       ref
                           .read(exoViewmodelProvider.notifier)
