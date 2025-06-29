@@ -9,6 +9,11 @@ import 'package:scientiboost/core/providers.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
+
+import 'package:scientiboost/core/constants.dart';
+
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class ExoScreen extends ConsumerStatefulWidget {
   const ExoScreen({
@@ -43,6 +48,47 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
   Widget build(BuildContext context) {
     ref.watch(exoViewmodelProvider);
     ref.watch(sharedPreferencesProvider);
+    final internetState = ref.watch(internetViewmodelProvider);
+
+    if (internetState case InternetError(:final message)) {
+      helpers.scheduleShowSnackBar(
+        context: context,
+        content: Row(
+          children: [
+            Expanded(
+              child: Text(
+                message,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Icon(Icons.cloud_off_rounded, color: Colors.white),
+          ],
+        ),
+
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 10),
+      );
+    } else if (internetState case InternetIsNotConnected()) {
+      helpers.scheduleShowSnackBar(
+        context: context,
+        content: Row(
+          children: [
+            Text(
+              InternetConstants.connexionError,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+
+            SizedBox(width: 8),
+
+            Icon(Icons.cloud_off_rounded, color: Colors.white),
+          ],
+        ),
+        backgroundColor: Colors.red,
+      );
+    }
 
     return Scaffold(
       appBar: FirstAppBar(),
@@ -130,11 +176,19 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
 
           // Bouton toggle correction
           ElevatedButton(
-            onPressed: () {
-              setState(() {
-                isCorrectionVisible =
-                    !isCorrectionVisible; // Mise à jour locale
-              });
+            onPressed: () async {
+              if (!isCorrectionVisible) {
+                await ref
+                    .read(subscriptionViewModelProvider.notifier)
+                    .checkSubscription();
+              }
+
+              if (ref.read(internetViewmodelProvider.notifier).isConnected()) {
+                setState(() {
+                  isCorrectionVisible =
+                      !isCorrectionVisible; // Mise à jour locale
+                });
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue, // Fond bleu
@@ -144,13 +198,26 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
                 borderRadius: BorderRadius.circular(18), // Coins arrondis
               ),
             ),
-            child: Text(
-              isCorrectionVisible ? 'Masquer correction' : 'Voir correction',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  isCorrectionVisible
+                      ? 'Masquer correction'
+                      : 'Voir correction',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+
+                if (ref.watch(internetViewmodelProvider)
+                    case InternetLoading()) ...[
+                  SizedBox(width: 8),
+                  CircularProgressIndicator(color: Colors.white),
+                ],
+              ],
             ),
           ),
 
@@ -159,11 +226,21 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
           // Afficher la correction seulement si elle est visible
           if (isCorrectionVisible) ...[
             () {
-              if (subscriptionState case Subscribed(:final subscription)) {
-                if (subscription.subjects?.contains('pc') as bool) {
-                  return widget.correction;
+              if (subscriptionState case SubscriptionLoading()) {
+                return CircularProgressIndicator();
+              } else if (subscriptionState case Subscribed(
+                :final subscription,
+              )) {
+                if (ref
+                    .read(subscriptionViewModelProvider.notifier)
+                    .isExpired(date: subscription.expireAt)) {
+                  return UnsubscribedMessage();
                 } else {
-                  return MissMatiereMessage(matieres: 'PC');
+                  if (subscription.subjects?.contains('pc') as bool) {
+                    return widget.correction;
+                  } else {
+                    return MissMatiereMessage(matieres: 'PC');
+                  }
                 }
               } else {
                 return UnsubscribedMessage();

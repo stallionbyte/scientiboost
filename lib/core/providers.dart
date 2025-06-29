@@ -50,6 +50,8 @@ import 'package:scientiboost/features/video/presentation/screens/video_screen.da
 import 'package:scientiboost/features/video/data/repositories/video_repository.dart';
 import 'package:scientiboost/features/video/presentation/viewmodels/video_viewmodel.dart';
 
+import 'package:scientiboost/features/internet/data/repositories/internet_repository.dart';
+
 import 'package:scientiboost/features/favorites/presentation/screens/favorites_screen.dart';
 
 import 'package:scientiboost/data/storage/shared_preference_storage.dart';
@@ -60,6 +62,12 @@ import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/test_widget.dart';
 
 part 'providers.g.dart';
+
+// Fournisseur pour InternetRepository
+@riverpod
+InternetRepository internetRepository(Ref ref) {
+  return InternetRepositoryImpl();
+}
 
 // Provider pour une instance de FirebaseAuth
 @riverpod

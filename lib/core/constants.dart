@@ -4,6 +4,15 @@ class Constants {
       'Une erreur est survenue. Veuillez réessayer.';
 }
 
+class InternetConstants {
+  static const String verificationError =
+      'Vérification de la connexion internet impossible';
+  static const String verificationTimeOutError =
+      'Problèmes de connexion internet';
+
+  static const String connexionError = 'Vous êtes déconnecté';
+}
+
 class PasswordResetConstants {
   static const String passwordResetEmailSent =
       'Un email de réinitialisation de mot de passe a été envoyé.';
@@ -31,25 +40,25 @@ class VideoConstants {
 
 class RoutesNamesConstants {
   static const String pcNucChap11ExosRoutesExo1 =
-      '/matiere(Physique-Chimie)/nuc/chap(11)/exo(1)';
+      '/matiere(PC)/nuc/chap(11)/exo(1)';
   static const String pcNucChap11ExosRoutesExo2 =
-      '/matiere(Physique-Chimie)/nuc/chap(11)/exo(2)';
+      '/matiere(PC)/nuc/chap(11)/exo(2)';
   static const String pcNucChap11ExosRoutesExo3 =
-      '/matiere(Physique-Chimie)/nuc/chap(11)/exo(3)';
+      '/matiere(PC)/nuc/chap(11)/exo(3)';
   static const String pcNucChap11ExosRoutesExo4 =
-      '/matiere(Physique-Chimie)/nuc/chap(11)/exo(4)';
+      '/matiere(PC)/nuc/chap(11)/exo(4)';
   static const String pcNucChap11ExosRoutesExo5 =
-      '/matiere(Physique-Chimie)/nuc/chap(11)/exo(5)';
+      '/matiere(PC)/nuc/chap(11)/exo(5)';
   static const String pcBacD2025 =
-      '/matiere(Physique-Chimie)/bac(d)/annee(2025)';
+      '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
   static const String pcBacD2024 =
-      '/matiere(Physique-Chimie)/bac(d)/annee(2024)';
+      '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2024)';
   static const String pcBacD2023 =
-      '/matiere(Physique-Chimie)/bac(d)/annee(2023)';
+      '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2023)';
   static const String pcBacD2022 =
-      '/matiere(Physique-Chimie)/bac(d)/annee(2022)';
+      '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2022)';
   static const String pcBacD2021 =
-      '/matiere(Physique-Chimie)/bac(d)/annee(2021)';
+      '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2021)';
 }
 
 class StorageKeysConstants {

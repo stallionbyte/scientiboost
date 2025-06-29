@@ -2,8 +2,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
-
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 
@@ -51,19 +51,27 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     state = state_;
   }
 
+  bool isExpired({required DateTime date}) {
+    return date.isBefore(DateTime.now());
+  }
+
   Future<void> checkSubscription() async {
-    state = SubscriptionState.subscriptionLoading();
+    await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
 
-    final result =
-        await ref.read(subscriptionRepositoryProvider).validSubscription();
+    if (ref.read(internetViewmodelProvider.notifier).isConnected()) {
+      state = SubscriptionState.subscriptionLoading();
 
-    if (result == null) {
-      state = SubscriptionState.unsubscribed();
-    } else {
-      state = result.fold(
-        (subscription) => SubscriptionState.subscribed(subscription),
-        (error) => SubscriptionState.subscriptionError(error),
-      );
+      final result =
+          await ref.read(subscriptionRepositoryProvider).validSubscription();
+
+      if (result == null) {
+        state = SubscriptionState.unsubscribed();
+      } else {
+        state = result.fold(
+          (subscription) => SubscriptionState.subscribed(subscription),
+          (error) => SubscriptionState.subscriptionError(error),
+        );
+      }
     }
   }
 
@@ -78,7 +86,7 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
       router.push('/subscription');
     } else if (state case Subscribed(:final subscription)) {
       state = SubscriptionState.subscriptionError(
-        'Vous avez déjà un abonnement valide en cours qui expire le : ${subscription.expireAt.toString()}.',
+        'abonnement valide déja en cours. Expire le : ${subscription.expireAt.toString()}.',
       );
     }
   }

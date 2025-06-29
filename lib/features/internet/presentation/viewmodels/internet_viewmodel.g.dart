@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'exam_viewmodel.dart';
+part of 'internet_viewmodel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$examViewmodelHash() => r'5042078f870372651d2c5953242a03e49f018c10';
+String _$internetViewmodelHash() => r'3e2cef56a214db7689dc9796f3858019942effd0';
 
-/// See also [ExamViewmodel].
-@ProviderFor(ExamViewmodel)
-final examViewmodelProvider =
-    AutoDisposeNotifierProvider<ExamViewmodel, ExamState>.internal(
-      ExamViewmodel.new,
-      name: r'examViewmodelProvider',
+/// See also [InternetViewmodel].
+@ProviderFor(InternetViewmodel)
+final internetViewmodelProvider =
+    AutoDisposeNotifierProvider<InternetViewmodel, InternetState>.internal(
+      InternetViewmodel.new,
+      name: r'internetViewmodelProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$examViewmodelHash,
+              : _$internetViewmodelHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$ExamViewmodel = AutoDisposeNotifier<ExamState>;
+typedef _$InternetViewmodel = AutoDisposeNotifier<InternetState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

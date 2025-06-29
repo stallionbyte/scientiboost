@@ -51,7 +51,7 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
         } else if (passwordResetState case PasswordResetError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
           return _buildForm(context);

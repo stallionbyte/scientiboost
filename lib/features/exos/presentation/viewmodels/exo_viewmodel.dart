@@ -2,7 +2,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 
@@ -43,16 +42,7 @@ class ExoViewmodel extends _$ExoViewmodel {
   Future<void> goToExercice({required route}) async {
     final router = ref.read(goRouterProvider);
 
-    state = ExoState.exoInitial();
-
     if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-      state = ExoState.exoLoading(route);
-      //await Future.delayed(Duration(seconds: 2));
-      await ref
-          .read(subscriptionViewModelProvider.notifier)
-          .checkSubscription();
-
-      state = ExoState.exoInitial();
       router.push(route);
     } else {
       router.push('/signin');

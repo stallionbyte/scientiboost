@@ -2,7 +2,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 
@@ -31,12 +30,17 @@ class ExamViewmodel extends _$ExamViewmodel {
   }
 
   String? getBacFromExamRoute(String route) {
-    final regex = RegExp(r'bac\((.*?)\)');
+    final regex = RegExp(r'examen\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
   }
 
   String? getAnneeFromExamRoute(String route) {
     final regex = RegExp(r'annee\((.*?)\)');
+    return regex.firstMatch(route)?.group(1);
+  }
+
+  String? getPaysFromExamRoute(String route) {
+    final regex = RegExp(r'pays\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
   }
 
@@ -46,13 +50,6 @@ class ExamViewmodel extends _$ExamViewmodel {
     state = ExamState.examInitial();
 
     if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-      state = ExamState.examLoading(route);
-      //await Future.delayed(Duration(seconds: 2));
-      await ref
-          .read(subscriptionViewModelProvider.notifier)
-          .checkSubscription();
-
-      state = ExamState.examInitial();
       router.push(route);
     } else {
       router.push('/signin');

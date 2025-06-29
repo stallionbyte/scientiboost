@@ -8,6 +8,11 @@ import 'package:scientiboost/core/common_widgets/miss_matiere_message.dart';
 import 'package:scientiboost/core/common_widgets/unsubscribed_message.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
+
+import 'package:scientiboost/core/constants.dart';
+
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class ExamScreen extends ConsumerStatefulWidget {
   const ExamScreen({
@@ -62,6 +67,48 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final internetState = ref.watch(internetViewmodelProvider);
+
+    if (internetState case InternetError(:final message)) {
+      helpers.scheduleShowSnackBar(
+        context: context,
+        content: Row(
+          children: [
+            Expanded(
+              child: Text(
+                message,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Icon(Icons.cloud_off_rounded, color: Colors.white),
+          ],
+        ),
+
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 10),
+      );
+    } else if (internetState case InternetIsNotConnected()) {
+      helpers.scheduleShowSnackBar(
+        context: context,
+        content: Row(
+          children: [
+            Text(
+              InternetConstants.connexionError,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+
+            SizedBox(width: 8),
+
+            Icon(Icons.cloud_off_rounded, color: Colors.white),
+          ],
+        ),
+        backgroundColor: Colors.red,
+      );
+    }
+
     return Scaffold(
       appBar: FirstAppBar(),
 
@@ -268,42 +315,92 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
 
         // Bouton toggle correction
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             switch (exo) {
               case 'chimExo1':
-                setState(() {
-                  isCorrectionChimExo1Visible =
-                      !isCorrectionChimExo1Visible; // Mise à jour locale
-                });
+                if (!isCorrectionChimExo1Visible) {
+                  await ref
+                      .read(subscriptionViewModelProvider.notifier)
+                      .checkSubscription();
+                }
+
+                if (ref
+                    .read(internetViewmodelProvider.notifier)
+                    .isConnected()) {
+                  setState(() {
+                    isCorrectionChimExo1Visible =
+                        !isCorrectionChimExo1Visible; // Mise à jour locale
+                  });
+                }
 
                 break;
               case 'chimExo2':
-                setState(() {
-                  isCorrectionChimExo2Visible =
-                      !isCorrectionChimExo2Visible; // Mise à jour locale
-                });
+                if (!isCorrectionChimExo2Visible) {
+                  await ref
+                      .read(subscriptionViewModelProvider.notifier)
+                      .checkSubscription();
+                }
+
+                if (ref
+                    .read(internetViewmodelProvider.notifier)
+                    .isConnected()) {
+                  setState(() {
+                    isCorrectionChimExo2Visible =
+                        !isCorrectionChimExo2Visible; // Mise à jour locale
+                  });
+                }
 
                 break;
               case 'phyExo1':
-                setState(() {
-                  isCorrectionPhyExo1Visible =
-                      !isCorrectionPhyExo1Visible; // Mise à jour locale
-                });
+                if (!isCorrectionPhyExo1Visible) {
+                  await ref
+                      .read(subscriptionViewModelProvider.notifier)
+                      .checkSubscription();
+                }
+
+                if (ref
+                    .read(internetViewmodelProvider.notifier)
+                    .isConnected()) {
+                  setState(() {
+                    isCorrectionPhyExo1Visible =
+                        !isCorrectionPhyExo1Visible; // Mise à jour locale
+                  });
+                }
 
                 break;
               case 'phyExo2':
-                setState(() {
-                  isCorrectionPhyExo2Visible =
-                      !isCorrectionPhyExo2Visible; // Mise à jour locale
-                });
+                if (!isCorrectionPhyExo2Visible) {
+                  await ref
+                      .read(subscriptionViewModelProvider.notifier)
+                      .checkSubscription();
+                }
+
+                if (ref
+                    .read(internetViewmodelProvider.notifier)
+                    .isConnected()) {
+                  setState(() {
+                    isCorrectionPhyExo2Visible =
+                        !isCorrectionPhyExo2Visible; // Mise à jour locale
+                  });
+                }
 
                 break;
 
               default:
-                setState(() {
-                  isCorrectionPhyExo3Visible =
-                      !isCorrectionPhyExo3Visible; // Mise à jour locale
-                });
+                if (!isCorrectionPhyExo3Visible) {
+                  await ref
+                      .read(subscriptionViewModelProvider.notifier)
+                      .checkSubscription();
+                }
+
+                if (ref
+                    .read(internetViewmodelProvider.notifier)
+                    .isConnected()) {
+                  setState(() {
+                    isCorrectionPhyExo3Visible =
+                        !isCorrectionPhyExo3Visible; // Mise à jour locale
+                  });
+                }
             }
           },
           style: ElevatedButton.styleFrom(
@@ -314,13 +411,24 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
               borderRadius: BorderRadius.circular(18), // Coins arrondis
             ),
           ),
-          child: Text(
-            isCorrectionVisible ? 'Masquer correction' : 'Voir correction',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                isCorrectionVisible ? 'Masquer correction' : 'Voir correction',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+
+              if (ref.watch(internetViewmodelProvider)
+                  case InternetLoading()) ...[
+                SizedBox(width: 8),
+                CircularProgressIndicator(color: Colors.white),
+              ],
+            ],
           ),
         ),
 
@@ -329,11 +437,19 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
         // Afficher la correction seulement si elle est visible
         if (isCorrectionVisible) ...[
           () {
-            if (subscriptionState case Subscribed(:final subscription)) {
-              if (subscription.subjects?.contains('pc') as bool) {
-                return correction;
+            if (subscriptionState case SubscriptionLoading()) {
+              return CircularProgressIndicator();
+            } else if (subscriptionState case Subscribed(:final subscription)) {
+              if (ref
+                  .read(subscriptionViewModelProvider.notifier)
+                  .isExpired(date: subscription.expireAt)) {
+                return UnsubscribedMessage();
               } else {
-                return MissMatiereMessage(matieres: 'PC');
+                if (subscription.subjects?.contains('pc') as bool) {
+                  return correction;
+                } else {
+                  return MissMatiereMessage(matieres: 'PC');
+                }
               }
             } else {
               return UnsubscribedMessage();

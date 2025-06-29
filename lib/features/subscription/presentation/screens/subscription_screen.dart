@@ -49,7 +49,7 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
         } else if (subscriptionState case SubscriptionError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
           return _buildForm(context);
@@ -169,7 +169,7 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
                         } else {
                           helpers.showSnackBar(
                             context: context,
-                            content: SubscriptionConstants.unselected,
+                            content: Text(SubscriptionConstants.unselected),
                             backgroundColor: Colors.red,
                           );
                         }

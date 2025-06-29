@@ -201,20 +201,19 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
                       margin: const EdgeInsets.symmetric(vertical: 8),
                       child: ListTile(
                         title: Text(
-                          ref
-                                  .read(examViewmodelProvider.notifier)
-                                  .getMatiereFromExamRoute(route) ??
-                              'Inconnu',
-                          style: const TextStyle(fontSize: 16),
+                          'Matiere:  ${ref.read(examViewmodelProvider.notifier).getMatiereFromExamRoute(route) ?? 'Inconnu'}',
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'BAC  ${ref.read(examViewmodelProvider.notifier).getBacFromExamRoute(route)?.toUpperCase() ?? 'Inconnu'}',
+                              'Examen: ${ref.read(examViewmodelProvider.notifier).getBacFromExamRoute(route)?.replaceAll("-", " ").toUpperCase() ?? 'Inconnu'}',
                             ),
                             Text(
                               'Année: ${ref.read(examViewmodelProvider.notifier).getAnneeFromExamRoute(route) ?? 'Inconnu'}',
+                            ),
+                            Text(
+                              'Pays: ${ref.read(examViewmodelProvider.notifier).getPaysFromExamRoute(route) ?? 'Inconnu'}',
                             ),
                           ],
                         ),

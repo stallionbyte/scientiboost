@@ -6,6 +6,26 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$internetRepositoryHash() =>
+    r'6b47bf73cae4e8e5b3841a6ff0949c4de4740800';
+
+/// See also [internetRepository].
+@ProviderFor(internetRepository)
+final internetRepositoryProvider =
+    AutoDisposeProvider<InternetRepository>.internal(
+      internetRepository,
+      name: r'internetRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$internetRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef InternetRepositoryRef = AutoDisposeProviderRef<InternetRepository>;
 String _$firebaseAuthInstanceHash() =>
     r'06561e5382340644ed217d128ce9cf7451692502';
 
@@ -64,7 +84,7 @@ final supabaseClientProvider = AutoDisposeProvider<SupabaseClient>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SupabaseClientRef = AutoDisposeProviderRef<SupabaseClient>;
-String _$videoRepositoryHash() => r'c9a43c6c65d9fe8af040faa6d2947e511e186e5e';
+String _$videoRepositoryHash() => r'27e58892506261bad4c664ad3fa94642201332de';
 
 /// See also [videoRepository].
 @ProviderFor(videoRepository)
@@ -82,7 +102,7 @@ final videoRepositoryProvider = AutoDisposeProvider<VideoRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef VideoRepositoryRef = AutoDisposeProviderRef<VideoRepository>;
-String _$videoViewmodelHash() => r'45c5be0fc84076b3f2902c10a4e3a3d31501f67a';
+String _$videoViewmodelHash() => r'470e89d1ef4bba300284954131369c63240696f6';
 
 /// See also [videoViewmodel].
 @ProviderFor(videoViewmodel)

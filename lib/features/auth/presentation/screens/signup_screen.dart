@@ -52,7 +52,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
         } else if (authState case AuthError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
           return _buildForm(context);

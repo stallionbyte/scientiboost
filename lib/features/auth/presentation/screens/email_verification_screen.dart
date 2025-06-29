@@ -53,7 +53,7 @@ class _EmailVerificationScreenState
         )) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
           return _buildForm(context);

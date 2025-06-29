@@ -19,7 +19,7 @@ class SignOutScreen extends ConsumerWidget {
         } else if (authState case AuthError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
           return _buildPage(context, ref);

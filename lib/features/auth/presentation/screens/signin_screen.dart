@@ -53,7 +53,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         } else if (authState case AuthError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
 

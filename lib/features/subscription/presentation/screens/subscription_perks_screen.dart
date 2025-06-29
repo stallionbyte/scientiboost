@@ -27,7 +27,7 @@ class SubscriptionPerksScreen extends ConsumerWidget {
         } else if (subscriptionState case SubscriptionError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
             duration: Duration(seconds: 10),
           );

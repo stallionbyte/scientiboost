@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
+
+import 'package:scientiboost/core/constants.dart';
 
 import 'package:scientiboost/core/helpers.dart' as helpers;
 
@@ -13,6 +16,48 @@ class SubscriptionInfosScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final subscriptionState = ref.watch(subscriptionViewModelProvider);
+    final internetState = ref.watch(internetViewmodelProvider);
+
+    if (internetState case InternetError(:final message)) {
+      helpers.scheduleShowSnackBar(
+        context: context,
+        content: Row(
+          children: [
+            Expanded(
+              child: Text(
+                message,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Icon(Icons.cloud_off_rounded, color: Colors.white),
+          ],
+        ),
+
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 10),
+      );
+    } else if (internetState case InternetIsNotConnected()) {
+      helpers.scheduleShowSnackBar(
+        context: context,
+        content: Row(
+          children: [
+            Text(
+              InternetConstants.connexionError,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+
+            SizedBox(width: 8),
+
+            Icon(Icons.cloud_off_rounded, color: Colors.white),
+          ],
+        ),
+        backgroundColor: Colors.red,
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -28,7 +73,7 @@ class SubscriptionInfosScreen extends ConsumerWidget {
         } else if (subscriptionState case SubscriptionError(:final message)) {
           helpers.scheduleShowSnackBar(
             context: context,
-            content: message,
+            content: Text(message),
             backgroundColor: Colors.red,
           );
           return Center(child: _checkButton(context, ref));
@@ -71,8 +116,10 @@ class SubscriptionInfosScreen extends ConsumerWidget {
 
   Widget _checkButton(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      onPressed: () {
-        ref.read(subscriptionViewModelProvider.notifier).checkSubscription();
+      onPressed: () async {
+        await ref
+            .read(subscriptionViewModelProvider.notifier)
+            .checkSubscription();
       },
 
       style: ElevatedButton.styleFrom(
@@ -82,10 +129,20 @@ class SubscriptionInfosScreen extends ConsumerWidget {
         padding: EdgeInsets.all(12),
       ),
 
-      child: Text(
-        "Vérifier mon abonnement",
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        overflow: TextOverflow.ellipsis,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Vérifier mon abonnement",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            overflow: TextOverflow.ellipsis,
+          ),
+
+          if (ref.watch(internetViewmodelProvider) case InternetLoading()) ...[
+            SizedBox(width: 8),
+            CircularProgressIndicator(color: Colors.white),
+          ],
+        ],
       ),
     );
   }
