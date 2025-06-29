@@ -63,6 +63,15 @@ import 'package:scientiboost/test_widget.dart';
 
 part 'providers.g.dart';
 
+// Just SignIn provider
+final justSignInProvider = StateProvider<bool>((ref) => false);
+
+// Just SignUp provider
+final justSignUpProvider = StateProvider<bool>((ref) => false);
+
+// Just SignOut provider
+final justSignOutProvider = StateProvider<bool>((ref) => false);
+
 // Fournisseur pour InternetRepository
 @riverpod
 InternetRepository internetRepository(Ref ref) {

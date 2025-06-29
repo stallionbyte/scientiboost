@@ -6,7 +6,7 @@ part of 'exam_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$examViewmodelHash() => r'5042078f870372651d2c5953242a03e49f018c10';
+String _$examViewmodelHash() => r'eba4c147cefcdfd225e4da99cbf62ac2bf867f49';
 
 /// See also [ExamViewmodel].
 @ProviderFor(ExamViewmodel)

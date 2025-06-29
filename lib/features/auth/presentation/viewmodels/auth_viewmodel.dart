@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scientiboost/features/auth/data/models/user_model.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 
@@ -67,13 +68,14 @@ class AuthViewModel extends _$AuthViewModel {
 
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
-      final subscriptionState = ref.read(subscriptionViewModelProvider);
 
-      if (subscriptionState case SubscriptionInit()) {
-        router.push('/subscription-perks');
-      } else {
-        router.push('/pages-wrapper');
-      }
+      ref.read(justSignInProvider.notifier).state = true;
+
+      ref
+          .read(currentPageViewModelProvider.notifier)
+          .setState(CurrentPageState.home());
+
+      router.push('/pages-wrapper');
     }
   }
 
@@ -90,13 +92,14 @@ class AuthViewModel extends _$AuthViewModel {
 
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
-      final subscriptionState = ref.read(subscriptionViewModelProvider);
 
-      if (subscriptionState case SubscriptionInit()) {
-        router.push('/subscription-perks');
-      } else {
-        router.push('/pages-wrapper');
-      }
+      ref.read(justSignUpProvider.notifier).state = true;
+
+      ref
+          .read(currentPageViewModelProvider.notifier)
+          .setState(CurrentPageState.home());
+
+      router.push('/pages-wrapper');
     }
   }
 
@@ -108,12 +111,19 @@ class AuthViewModel extends _$AuthViewModel {
       (_) => const AuthState.unauthenticated(),
       (error) => AuthState.authError(error),
     );
+
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
+
+      ref.read(justSignOutProvider.notifier).state = true;
 
       ref
           .read(subscriptionViewModelProvider.notifier)
           .setState(SubscriptionState.subscriptionInitial());
+
+      ref
+          .read(currentPageViewModelProvider.notifier)
+          .setState(CurrentPageState.home());
 
       router.push('/pages-wrapper');
     }
