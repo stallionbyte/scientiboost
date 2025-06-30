@@ -39,14 +39,28 @@ class SubscriptionInfosScreen extends ConsumerWidget {
         backgroundColor: Colors.red,
         duration: Duration(seconds: 10),
       );
+
+      helpers.scheduleAction(
+        context: context,
+        action: () {
+          ref
+              .read(internetViewmodelProvider.notifier)
+              .setState(InternetState.internetInitial());
+        },
+      );
     } else if (internetState case InternetIsNotConnected()) {
       helpers.scheduleShowSnackBar(
         context: context,
         content: Row(
           children: [
-            Text(
-              InternetConstants.connexionError,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Expanded(
+              child: Text(
+                InternetConstants.connexionError,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
 
             SizedBox(width: 8),
@@ -55,6 +69,15 @@ class SubscriptionInfosScreen extends ConsumerWidget {
           ],
         ),
         backgroundColor: Colors.red,
+      );
+
+      helpers.scheduleAction(
+        context: context,
+        action: () {
+          ref
+              .read(internetViewmodelProvider.notifier)
+              .setState(InternetState.internetInitial());
+        },
       );
     }
 
@@ -67,6 +90,8 @@ class SubscriptionInfosScreen extends ConsumerWidget {
       ),
       body: () {
         if (subscriptionState case SubscriptionLoading()) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (internetState case InternetLoading()) {
           return const Center(child: CircularProgressIndicator());
         } else if (subscriptionState case Subscribed(:final subscription)) {
           return _buildPage(context, ref, subscription);
@@ -137,11 +162,6 @@ class SubscriptionInfosScreen extends ConsumerWidget {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             overflow: TextOverflow.ellipsis,
           ),
-
-          if (ref.watch(internetViewmodelProvider) case InternetLoading()) ...[
-            SizedBox(width: 8),
-            CircularProgressIndicator(color: Colors.white),
-          ],
         ],
       ),
     );

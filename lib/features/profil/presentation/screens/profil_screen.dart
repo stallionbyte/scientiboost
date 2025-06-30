@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
@@ -14,6 +15,8 @@ class ProfilScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authViewModelProvider);
     ref.watch(subscriptionViewModelProvider);
+    ref.watch(internetViewmodelProvider);
+
     final user_ = ref.read(authViewModelProvider.notifier).getUser();
 
     return Scaffold(
@@ -52,6 +55,11 @@ class ProfilScreen extends ConsumerWidget {
                 ref
                     .read(subscriptionViewModelProvider.notifier)
                     .setState(SubscriptionState.subscriptionInitial());
+
+                ref
+                    .read(internetViewmodelProvider.notifier)
+                    .setState(InternetState.internetInitial());
+
                 ref.read(goRouterProvider).push('/subscription-infos');
               },
             ),

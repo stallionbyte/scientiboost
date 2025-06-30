@@ -10,7 +10,7 @@ class InternetConstants {
   static const String verificationTimeOutError =
       'Problèmes de connexion internet';
 
-  static const String connexionError = 'Vous êtes déconnecté';
+  static const String connexionError = 'Connexion à internet impossible';
 }
 
 class PasswordResetConstants {
@@ -31,6 +31,9 @@ class AuthConstants {
 
 class SubscriptionConstants {
   static const String unselected = 'Veuiller choisir au moins une matière.';
+  static String alreadySubscribed(DateTime date) {
+    return 'Abonnement PC valide en cours. Expire le : ${date.toString()}. Réabonnement PC possible uniquement après cette date.';
+  }
 }
 
 class VideoConstants {

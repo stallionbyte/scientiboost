@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
+import 'package:scientiboost/core/providers.dart';
+
 class SubscriptionButton extends ConsumerWidget {
   const SubscriptionButton({super.key});
 
@@ -13,7 +15,7 @@ class SubscriptionButton extends ConsumerWidget {
       height: 36,
       child: ElevatedButton.icon(
         onPressed: () {
-          ref.read(subscriptionViewModelProvider.notifier).init();
+          ref.read(goRouterProvider).push('/subscription-perks');
         },
         icon: Icon(Icons.star, size: 16),
         label: Text(

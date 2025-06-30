@@ -15,7 +15,6 @@ part 'subscription_viewmodel.g.dart';
 sealed class SubscriptionState with _$SubscriptionState {
   const factory SubscriptionState.subscriptionInitial() = SubscriptionInitial;
   const factory SubscriptionState.subscriptionLoading() = SubscriptionLoading;
-  const factory SubscriptionState.subscriptionInit() = SubscriptionInit;
   const factory SubscriptionState.subscriptionPending(
     SubscriptionModel subscription,
   ) = SubscriptionPending;
@@ -34,19 +33,6 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     return const SubscriptionState.subscriptionInitial();
   }
 
-  void init() {
-    state = SubscriptionState.subscriptionInit();
-
-    final authState = ref.read(authViewModelProvider);
-    final router = ref.read(goRouterProvider);
-
-    if (authState case Authenticated()) {
-      router.push('/subscription-perks');
-    } else {
-      router.push('/signin');
-    }
-  }
-
   void setState(SubscriptionState state_) {
     state = state_;
   }
@@ -59,18 +45,22 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
 
     if (ref.read(internetViewmodelProvider.notifier).isConnected()) {
-      state = SubscriptionState.subscriptionLoading();
+      if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
+        state = SubscriptionState.subscriptionLoading();
 
-      final result =
-          await ref.read(subscriptionRepositoryProvider).validSubscription();
+        final result =
+            await ref.read(subscriptionRepositoryProvider).validSubscription();
 
-      if (result == null) {
-        state = SubscriptionState.unsubscribed();
+        if (result == null) {
+          state = SubscriptionState.unsubscribed();
+        } else {
+          state = result.fold(
+            (subscription) => SubscriptionState.subscribed(subscription),
+            (error) => SubscriptionState.subscriptionError(error),
+          );
+        }
       } else {
-        state = result.fold(
-          (subscription) => SubscriptionState.subscribed(subscription),
-          (error) => SubscriptionState.subscriptionError(error),
-        );
+        ref.read(goRouterProvider).push('/signin');
       }
     }
   }

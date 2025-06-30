@@ -39,7 +39,12 @@ class HomeScreen extends ConsumerWidget {
         ),
       );
 
-      helpers.scheduleJustSignInReset(context: context, ref: ref);
+      helpers.scheduleAction(
+        context: context,
+        action: () {
+          ref.read(justSignInProvider.notifier).state = false;
+        },
+      );
     }
 
     if (isJustSignUp) {
@@ -50,7 +55,7 @@ class HomeScreen extends ConsumerWidget {
           children: [
             Expanded(
               child: Text(
-                'Vous êtes inscrit(e)',
+                'Vous êtes inscrit(e). Bienvenu(e)',
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
@@ -63,7 +68,12 @@ class HomeScreen extends ConsumerWidget {
         ),
       );
 
-      helpers.scheduleJustSignUpReset(context: context, ref: ref);
+      helpers.scheduleAction(
+        context: context,
+        action: () {
+          ref.read(justSignUpProvider.notifier).state = false;
+        },
+      );
     }
 
     if (isJustSignOut) {
@@ -87,7 +97,12 @@ class HomeScreen extends ConsumerWidget {
         ),
       );
 
-      helpers.scheduleJustSignOutReset(context: context, ref: ref);
+      helpers.scheduleAction(
+        context: context,
+        action: () {
+          ref.read(justSignOutProvider.notifier).state = false;
+        },
+      );
     }
 
     return Column(

@@ -6,6 +6,7 @@ import 'package:scientiboost/core/common_widgets/third_app_bar.dart';
 import 'package:scientiboost/core/common_widgets/miss_matiere_message.dart';
 import 'package:scientiboost/core/common_widgets/unsubscribed_message.dart';
 import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
@@ -183,7 +184,8 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
                     .checkSubscription();
               }
 
-              if (ref.read(internetViewmodelProvider.notifier).isConnected()) {
+              if (ref.read(internetViewmodelProvider.notifier).isConnected() &&
+                  ref.read(authViewModelProvider.notifier).isAuthenticated()) {
                 setState(() {
                   isCorrectionVisible =
                       !isCorrectionVisible; // Mise à jour locale

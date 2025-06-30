@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
+import 'package:scientiboost/core/providers.dart';
+
 import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class SubscriptionPerksScreen extends ConsumerWidget {
@@ -10,7 +12,8 @@ class SubscriptionPerksScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final subscriptionState = ref.watch(subscriptionViewModelProvider);
+    ref.watch(goRouterProvider);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -21,21 +24,7 @@ class SubscriptionPerksScreen extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: () {
-        if (subscriptionState case SubscriptionLoading()) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (subscriptionState case SubscriptionError(:final message)) {
-          helpers.scheduleShowSnackBar(
-            context: context,
-            content: Text(message),
-            backgroundColor: Colors.red,
-            duration: Duration(seconds: 10),
-          );
-          return _buildPage(context, ref);
-        } else {
-          return _buildPage(context, ref);
-        }
-      }(),
+      body: _buildPage(context, ref),
     );
   }
 
@@ -187,9 +176,7 @@ class SubscriptionPerksScreen extends ConsumerWidget {
               height: 56,
               child: ElevatedButton(
                 onPressed: () {
-                  ref
-                      .read(subscriptionViewModelProvider.notifier)
-                      .goToSubscription();
+                  ref.read(goRouterProvider).push('/subscription');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.amber,

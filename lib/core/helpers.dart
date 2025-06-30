@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/scheduler.dart';
-
-import 'package:scientiboost/core/providers.dart';
 
 void showSnackBar({
   required BuildContext context,
@@ -40,29 +37,11 @@ void scheduleShowSnackBar({
   });
 }
 
-void scheduleJustSignInReset({
+void scheduleAction({
   required BuildContext context,
-  required WidgetRef ref,
+  required VoidCallback action,
 }) {
   SchedulerBinding.instance.addPostFrameCallback((_) {
-    ref.read(justSignInProvider.notifier).state = false;
-  });
-}
-
-void scheduleJustSignUpReset({
-  required BuildContext context,
-  required WidgetRef ref,
-}) {
-  SchedulerBinding.instance.addPostFrameCallback((_) {
-    ref.read(justSignUpProvider.notifier).state = false;
-  });
-}
-
-void scheduleJustSignOutReset({
-  required BuildContext context,
-  required WidgetRef ref,
-}) {
-  SchedulerBinding.instance.addPostFrameCallback((_) {
-    ref.read(justSignOutProvider.notifier).state = false;
+    action();
   });
 }

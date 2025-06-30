@@ -9,6 +9,7 @@ import 'package:scientiboost/core/common_widgets/unsubscribed_message.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
 import 'package:scientiboost/core/constants.dart';
 
@@ -325,8 +326,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                 }
 
                 if (ref
-                    .read(internetViewmodelProvider.notifier)
-                    .isConnected()) {
+                        .read(internetViewmodelProvider.notifier)
+                        .isConnected() &&
+                    ref
+                        .read(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
                   setState(() {
                     isCorrectionChimExo1Visible =
                         !isCorrectionChimExo1Visible; // Mise à jour locale
@@ -342,8 +346,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                 }
 
                 if (ref
-                    .read(internetViewmodelProvider.notifier)
-                    .isConnected()) {
+                        .read(internetViewmodelProvider.notifier)
+                        .isConnected() &&
+                    ref
+                        .read(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
                   setState(() {
                     isCorrectionChimExo2Visible =
                         !isCorrectionChimExo2Visible; // Mise à jour locale
@@ -359,8 +366,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                 }
 
                 if (ref
-                    .read(internetViewmodelProvider.notifier)
-                    .isConnected()) {
+                        .read(internetViewmodelProvider.notifier)
+                        .isConnected() &&
+                    ref
+                        .read(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
                   setState(() {
                     isCorrectionPhyExo1Visible =
                         !isCorrectionPhyExo1Visible; // Mise à jour locale
@@ -376,8 +386,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                 }
 
                 if (ref
-                    .read(internetViewmodelProvider.notifier)
-                    .isConnected()) {
+                        .read(internetViewmodelProvider.notifier)
+                        .isConnected() &&
+                    ref
+                        .read(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
                   setState(() {
                     isCorrectionPhyExo2Visible =
                         !isCorrectionPhyExo2Visible; // Mise à jour locale
@@ -394,8 +407,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                 }
 
                 if (ref
-                    .read(internetViewmodelProvider.notifier)
-                    .isConnected()) {
+                        .read(internetViewmodelProvider.notifier)
+                        .isConnected() &&
+                    ref
+                        .read(authViewModelProvider.notifier)
+                        .isAuthenticated()) {
                   setState(() {
                     isCorrectionPhyExo3Visible =
                         !isCorrectionPhyExo3Visible; // Mise à jour locale

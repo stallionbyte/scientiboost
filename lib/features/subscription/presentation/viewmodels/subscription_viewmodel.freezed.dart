@@ -109,38 +109,6 @@ String toString() {
 /// @nodoc
 
 
-class SubscriptionInit implements SubscriptionState {
-  const SubscriptionInit();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubscriptionInit);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'SubscriptionState.subscriptionInit()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
 class SubscriptionPending implements SubscriptionState {
   const SubscriptionPending(this.subscription);
   

@@ -72,6 +72,9 @@ final justSignUpProvider = StateProvider<bool>((ref) => false);
 // Just SignOut provider
 final justSignOutProvider = StateProvider<bool>((ref) => false);
 
+// Just SignOut provider
+final noSubjectIsSelectedProvider = StateProvider<bool>((ref) => false);
+
 // Fournisseur pour InternetRepository
 @riverpod
 InternetRepository internetRepository(Ref ref) {
