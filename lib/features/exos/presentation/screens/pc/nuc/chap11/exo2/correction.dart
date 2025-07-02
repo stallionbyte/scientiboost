@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tex/flutter_tex.dart';
 
 class PcNucChap11Exo2Correction extends ConsumerStatefulWidget {
   const PcNucChap11Exo2Correction({super.key});

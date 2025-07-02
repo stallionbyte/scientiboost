@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tex/flutter_tex.dart';
 
 class PcBacD2024ChimExo1Correction extends ConsumerStatefulWidget {
   const PcBacD2024ChimExo1Correction({super.key});

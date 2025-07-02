@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_tex/flutter_tex.dart';
+
 // Centralisation des constantes pour une meilleure maintenabilité
 class Constants {
   static const String genericError =
@@ -8,7 +11,7 @@ class InternetConstants {
   static const String verificationError =
       'Vérification de la connexion internet impossible';
   static const String verificationTimeOutError =
-      'Problèmes de connexion internet';
+      'Problèmes de connexion internet (lente ou inexistante)';
 
   static const String connexionError = 'Connexion à internet impossible';
 }
@@ -69,12 +72,338 @@ class StorageKeysConstants {
   static const String favoritesExams = 'favorites_exams_routes';
 }
 
-class EnonceConstants {
+class ExoConstants {
   static const double fontSize = 16.0;
-  static const double displayFontSize = 25.0;
+  static const double displayFontSize = 20.0;
+  static const double displayFontSizeMultiLines = 80.0;
+  static const double richTextFontSize = 18.0;
 }
 
-class CorrectionConstants {
-  static const double fontSize = 16.0;
-  static const double displayFontSize = 25.0;
+class DonneesPhyNucLatexConstants {
+  static Widget u = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+      children: <InlineSpan>[
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: TeX2SVG(
+            math: r"1u = 931,5 \text{MeV}/c^2",
+
+            formulaWidgetBuilder: (context, svg) {
+              double displayFontSize = ExoConstants.displayFontSize;
+              return SvgPicture.string(
+                svg,
+                height: displayFontSize,
+                width: displayFontSize,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+
+  static Widget mp = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: TeX2SVG(
+            math: r"m_p = 1,007276u",
+
+            formulaWidgetBuilder: (context, svg) {
+              double displayFontSize = ExoConstants.displayFontSize;
+              return SvgPicture.string(
+                svg,
+                height: displayFontSize,
+                width: displayFontSize,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+
+  static Widget mn = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: TeX2SVG(
+            math: r"m_n = 1,008665u",
+
+            formulaWidgetBuilder: (context, svg) {
+              double displayFontSize = ExoConstants.displayFontSize;
+              return SvgPicture.string(
+                svg,
+                height: displayFontSize,
+                width: displayFontSize,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+
+  static Widget masseC14 = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: TeX2SVG(
+            math: r"m(_{\ 6}^{14}C) = 14,003242u",
+
+            formulaWidgetBuilder: (context, svg) {
+              double displayFontSize = ExoConstants.displayFontSize;
+              return SvgPicture.string(
+                svg,
+                height: displayFontSize,
+                width: displayFontSize,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class PhyNucLatexContants {
+  static const String masseProtonEnUValue = "1,007276";
+  static const String masseNeutronEnUValue = "1,008665";
+  static WidgetSpan delta = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: Transform.translate(
+      offset: const Offset(
+        0,
+        -3.0,
+      ), // Déplacement vertical (négatif = vers le haut)
+      child: TeX2SVG(
+        math: r"\Delta",
+        formulaWidgetBuilder: (context, svg) {
+          double displayFontSize = ExoConstants.richTextFontSize;
+          return SvgPicture.string(
+            svg,
+            height: displayFontSize,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
+          );
+        },
+      ),
+    ),
+  );
+
+  static WidgetSpan mn = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: Transform.translate(
+      offset: const Offset(
+        0,
+        5.0,
+      ), // Déplacement vertical (négatif = vers le haut)
+      child: TeX2SVG(
+        math: r"m_n",
+        formulaWidgetBuilder: (context, svg) {
+          double displayFontSize = ExoConstants.richTextFontSize;
+          return SvgPicture.string(
+            svg,
+            height: displayFontSize,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
+          );
+        },
+      ),
+    ),
+  );
+
+  static WidgetSpan mp = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: Transform.translate(
+      offset: const Offset(
+        0,
+        5.0,
+      ), // Déplacement vertical (négatif = vers le haut)
+      child: TeX2SVG(
+        math: r"m_p",
+        formulaWidgetBuilder: (context, svg) {
+          double displayFontSize = ExoConstants.richTextFontSize;
+          return SvgPicture.string(
+            svg,
+            height: displayFontSize,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
+          );
+        },
+      ),
+    ),
+  );
+
+  static Widget defautDeMasseFormule = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        delta,
+        const TextSpan(text: "m( "),
+        notationNoyau,
+        const TextSpan(text: ") = Z x "),
+        mp,
+        const TextSpan(text: "+ (A-Z) x "),
+        mn,
+        const TextSpan(text: "\n \n - m("),
+        notationNoyau,
+        const TextSpan(text: ")"),
+      ],
+    ),
+  );
+
+  static WidgetSpan mevc2 = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"\text{MeV}/c^2",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize,
+          width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan mevc2Bold = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"\mathbf{\text{MeV}/c^2}",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize,
+          width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan notationNoyau = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"_{Z}^{A}X",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          //width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan carbone12 = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"_{\ 6}^{12}C",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          //width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan carbone12Bold = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"\mathbf{_{\ 6}^{12}C}",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          //width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan carbone14 = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"_{\ 6}^{14}C",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          //width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan carbone14Bold = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"\mathbf{_{\ 6}^{14}C}",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          //width: displayFontSize,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
 }

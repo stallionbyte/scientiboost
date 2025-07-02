@@ -27,7 +27,7 @@ import 'package:scientiboost/features/profil/presentation/screens/profil_screen.
 
 import 'package:scientiboost/features/exos/presentation/screens/exo_screen.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/enonce.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/correction.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/correction/correction.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/correction.dart';
 
