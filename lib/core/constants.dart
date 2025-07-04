@@ -37,6 +37,15 @@ class SubscriptionConstants {
   static String alreadySubscribed(DateTime date) {
     return 'Abonnement PC valide en cours. Expire le : ${date.toString()}. Réabonnement PC possible uniquement après cette date.';
   }
+
+  static const String subscriptionInfosInitialMessage =
+      "Veuillez vérifier votre connexion internet avant de commencer";
+
+  static const String subscriptionInfosUnsubscribedMessage =
+      "Vous n'avez pas d'abonnement valide actuellement";
+
+  static const subscriptionInfosResubscriptionCondition =
+      'Vous devez attendre la fin de cet abonnement avant de vous réabonner';
 }
 
 class VideoConstants {

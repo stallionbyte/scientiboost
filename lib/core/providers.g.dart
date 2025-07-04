@@ -195,5 +195,74 @@ final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GoRouterRef = AutoDisposeProviderRef<GoRouter>;
+String _$justSignInHash() => r'f40774321ed561e2fba3b362c4e9c1c1276b8edc';
+
+/// See also [JustSignIn].
+@ProviderFor(JustSignIn)
+final justSignInProvider =
+    AutoDisposeNotifierProvider<JustSignIn, bool>.internal(
+      JustSignIn.new,
+      name: r'justSignInProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$justSignInHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+typedef _$JustSignIn = AutoDisposeNotifier<bool>;
+String _$justSignUpHash() => r'45fb298fc7c3d7d1c4cf7f08e83b0c2d2dcc7faa';
+
+/// See also [JustSignUp].
+@ProviderFor(JustSignUp)
+final justSignUpProvider =
+    AutoDisposeNotifierProvider<JustSignUp, bool>.internal(
+      JustSignUp.new,
+      name: r'justSignUpProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$justSignUpHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+typedef _$JustSignUp = AutoDisposeNotifier<bool>;
+String _$justSignOutHash() => r'e883d13c31c4dacc8c0d326a4ab9a91f8e690bd7';
+
+/// See also [JustSignOut].
+@ProviderFor(JustSignOut)
+final justSignOutProvider =
+    AutoDisposeNotifierProvider<JustSignOut, bool>.internal(
+      JustSignOut.new,
+      name: r'justSignOutProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$justSignOutHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+typedef _$JustSignOut = AutoDisposeNotifier<bool>;
+String _$noSubjectIsSelectedHash() =>
+    r'667ac60a120f2e1b17be0438a0f5cdc8e075cb0e';
+
+/// See also [NoSubjectIsSelected].
+@ProviderFor(NoSubjectIsSelected)
+final noSubjectIsSelectedProvider =
+    AutoDisposeNotifierProvider<NoSubjectIsSelected, bool>.internal(
+      NoSubjectIsSelected.new,
+      name: r'noSubjectIsSelectedProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$noSubjectIsSelectedHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+typedef _$NoSubjectIsSelected = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

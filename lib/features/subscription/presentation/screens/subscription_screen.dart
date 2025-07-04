@@ -33,20 +33,13 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
     final subscriptionState = ref.watch(subscriptionViewModelProvider);
 
     final internetState = ref.watch(internetViewmodelProvider);
-    final noSubjectIsSelected = ref.watch(noSubjectIsSelectedProvider);
+    ref.watch(noSubjectIsSelectedProvider);
 
-    if (noSubjectIsSelected) {
+    if (ref.read(noSubjectIsSelectedProvider.notifier).getState()) {
       helpers.scheduleShowSnackBar(
         context: context,
         content: Text(SubscriptionConstants.unselected),
         backgroundColor: Colors.red,
-      );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref.read(noSubjectIsSelectedProvider.notifier).state = false;
-        },
       );
     }
 
@@ -71,15 +64,6 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
         backgroundColor: Colors.red,
         duration: Duration(seconds: 10),
       );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref
-              .read(internetViewmodelProvider.notifier)
-              .setState(InternetState.internetInitial());
-        },
-      );
     } else if (internetState case InternetIsNotConnected()) {
       helpers.scheduleShowSnackBar(
         context: context,
@@ -101,15 +85,6 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
           ],
         ),
         backgroundColor: Colors.red,
-      );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref
-              .read(internetViewmodelProvider.notifier)
-              .setState(InternetState.internetInitial());
-        },
       );
     }
 
@@ -262,8 +237,9 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
                             _mathematiques,
                           );
                     } else {
-                      ref.read(noSubjectIsSelectedProvider.notifier).state =
-                          true;
+                      ref
+                          .read(noSubjectIsSelectedProvider.notifier)
+                          .setState(true);
                     }
                   }
                 },

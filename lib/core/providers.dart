@@ -63,17 +63,89 @@ import 'package:scientiboost/test_widget.dart';
 
 part 'providers.g.dart';
 
-// Just SignIn provider
-final justSignInProvider = StateProvider<bool>((ref) => false);
+@riverpod
+class JustSignIn extends _$JustSignIn {
+  // 1. La méthode `build` est obligatoire.
+  // Elle doit retourner l'état initial du provider.
+  @override
+  bool build() {
+    return false; // L'état initial est `false`
+  }
 
-// Just SignUp provider
-final justSignUpProvider = StateProvider<bool>((ref) => false);
+  // Ou une méthode plus générique
+  void setState(bool state_) {
+    state = state_;
+  }
 
-// Just SignOut provider
-final justSignOutProvider = StateProvider<bool>((ref) => false);
+  void justSignIn() {
+    state = true;
+  }
 
-// Just SignOut provider
-final noSubjectIsSelectedProvider = StateProvider<bool>((ref) => false);
+  void resetState() {
+    state = false;
+  }
+
+  bool getState() {
+    return state;
+  }
+}
+
+@riverpod
+class JustSignUp extends _$JustSignUp {
+  // 1. La méthode `build` est obligatoire.
+  // Elle doit retourner l'état initial du provider.
+  @override
+  bool build() {
+    return false; // L'état initial est `false`
+  }
+
+  // Ou une méthode plus générique
+  void setState(bool state_) {
+    state = state_;
+  }
+
+  bool getState() {
+    return state;
+  }
+}
+
+@riverpod
+class JustSignOut extends _$JustSignOut {
+  // 1. La méthode `build` est obligatoire.
+  // Elle doit retourner l'état initial du provider.
+  @override
+  bool build() {
+    return false; // L'état initial est `false`
+  }
+
+  // Ou une méthode plus générique
+  void setState(bool state_) {
+    state = state_;
+  }
+
+  bool getState() {
+    return state;
+  }
+}
+
+@riverpod
+class NoSubjectIsSelected extends _$NoSubjectIsSelected {
+  // 1. La méthode `build` est obligatoire.
+  // Elle doit retourner l'état initial du provider.
+  @override
+  bool build() {
+    return false; // L'état initial est `false`
+  }
+
+  // Ou une méthode plus générique
+  void setState(bool state_) {
+    state = state_;
+  }
+
+  bool getState() {
+    return state;
+  }
+}
 
 // Fournisseur pour InternetRepository
 @riverpod

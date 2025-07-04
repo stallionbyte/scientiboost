@@ -37,10 +37,7 @@ void scheduleShowSnackBar({
   });
 }
 
-void scheduleAction({
-  required BuildContext context,
-  required VoidCallback action,
-}) {
+void scheduleAction({required VoidCallback action}) {
   SchedulerBinding.instance.addPostFrameCallback((_) {
     action();
   });

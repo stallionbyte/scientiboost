@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 import 'package:scientiboost/core/common_widgets/subscription_button.dart';
-import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -12,98 +11,8 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(goRouterProvider);
+
     final router = ref.read(goRouterProvider);
-
-    final isJustSignIn = ref.watch(justSignInProvider);
-    final isJustSignUp = ref.watch(justSignUpProvider);
-    final isJustSignOut = ref.watch(justSignOutProvider);
-
-    if (isJustSignIn) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                'Vous êtes connecté(e)',
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(width: 8),
-            Icon(Icons.check_circle_rounded, color: Colors.white),
-          ],
-        ),
-      );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref.read(justSignInProvider.notifier).state = false;
-        },
-      );
-    }
-
-    if (isJustSignUp) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                'Vous êtes inscrit(e). Bienvenu(e)',
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(width: 8),
-            Icon(Icons.check_circle_rounded, color: Colors.white),
-          ],
-        ),
-      );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref.read(justSignUpProvider.notifier).state = false;
-        },
-      );
-    }
-
-    if (isJustSignOut) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                'Vous êtes déconnecté(e)',
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            //SizedBox(width: 8),
-            Icon(Icons.check_circle_rounded, color: Colors.white),
-          ],
-        ),
-      );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref.read(justSignOutProvider.notifier).state = false;
-        },
-      );
-    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -444,7 +353,6 @@ class HomeScreen extends ConsumerWidget {
                   text: 'voir formules',
                   onPressed: () {
                     router.push('/test');
-                    ;
                   },
                 ),
               ),
@@ -498,7 +406,6 @@ class HomeScreen extends ConsumerWidget {
                   text: 'voir astuces',
                   onPressed: () {
                     router.push('/test');
-                    ;
                   },
                 ),
               ),

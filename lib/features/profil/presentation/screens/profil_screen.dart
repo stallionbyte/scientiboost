@@ -52,14 +52,6 @@ class ProfilScreen extends ConsumerWidget {
             ButtonArrowForward(
               text: 'Mon abonnement',
               onPressed: () {
-                ref
-                    .read(subscriptionViewModelProvider.notifier)
-                    .setState(SubscriptionState.subscriptionInitial());
-
-                ref
-                    .read(internetViewmodelProvider.notifier)
-                    .setState(InternetState.internetInitial());
-
                 ref.read(goRouterProvider).push('/subscription-infos');
               },
             ),

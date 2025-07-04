@@ -53,6 +53,10 @@ class InternetViewmodel extends _$InternetViewmodel {
     state = state_;
   }
 
+  void setStateInitial() {
+    state = InternetState.internetInitial();
+  }
+
   bool isConnected() {
     if (state case InternetIsConnected()) {
       return true;

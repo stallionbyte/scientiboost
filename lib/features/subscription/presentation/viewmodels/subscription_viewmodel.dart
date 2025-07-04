@@ -37,6 +37,10 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     state = state_;
   }
 
+  void setStateInitial() {
+    state = SubscriptionInitial();
+  }
+
   bool isExpired({required DateTime date}) {
     return date.isBefore(DateTime.now());
   }

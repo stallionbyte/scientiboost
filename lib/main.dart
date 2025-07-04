@@ -6,6 +6,7 @@ import 'package:scientiboost/firebase_options.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_tex/flutter_tex.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:scientiboost/supabase_config.dart';
 
@@ -18,6 +19,6 @@ void main() async {
     url: SupabaseConfig.supabaseUrl,
     anonKey: SupabaseConfig.supabaseAnonKey,
   );
-
+  await initializeDateFormatting('fr_FR', null);
   runApp(const ProviderScope(child: MyApp()));
 }

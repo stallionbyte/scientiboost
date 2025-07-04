@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
@@ -8,79 +9,28 @@ import 'package:scientiboost/features/subscription/data/models/subscription_mode
 
 import 'package:scientiboost/core/constants.dart';
 
-import 'package:scientiboost/core/helpers.dart' as helpers;
-
-class SubscriptionInfosScreen extends ConsumerWidget {
+class SubscriptionInfosScreen extends ConsumerStatefulWidget {
   const SubscriptionInfosScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final subscriptionState = ref.watch(subscriptionViewModelProvider);
-    final internetState = ref.watch(internetViewmodelProvider);
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _SubscriptionInfosScreenState();
+}
 
-    if (internetState case InternetError(:final message)) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          children: [
-            Expanded(
-              child: Text(
-                message,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Icon(Icons.cloud_off_rounded, color: Colors.white),
-          ],
-        ),
+class _SubscriptionInfosScreenState
+    extends ConsumerState<SubscriptionInfosScreen> {
+  @override
+  void initState() {
+    super.initState();
 
-        backgroundColor: Colors.red,
-        duration: Duration(seconds: 10),
-      );
+    Future.microtask(() {
+      ref.read(internetViewmodelProvider.notifier).setStateInitial();
+      ref.read(subscriptionViewModelProvider.notifier).setStateInitial();
+    });
+  }
 
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref
-              .read(internetViewmodelProvider.notifier)
-              .setState(InternetState.internetInitial());
-        },
-      );
-    } else if (internetState case InternetIsNotConnected()) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          children: [
-            Expanded(
-              child: Text(
-                InternetConstants.connexionError,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-
-            SizedBox(width: 8),
-
-            Icon(Icons.cloud_off_rounded, color: Colors.white),
-          ],
-        ),
-        backgroundColor: Colors.red,
-      );
-
-      helpers.scheduleAction(
-        context: context,
-        action: () {
-          ref
-              .read(internetViewmodelProvider.notifier)
-              .setState(InternetState.internetInitial());
-        },
-      );
-    }
-
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -88,58 +38,13 @@ class SubscriptionInfosScreen extends ConsumerWidget {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      body: () {
-        if (subscriptionState case SubscriptionLoading()) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (internetState case InternetLoading()) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (subscriptionState case Subscribed(:final subscription)) {
-          return _buildPage(context, ref, subscription);
-        } else if (subscriptionState case SubscriptionError(:final message)) {
-          helpers.scheduleShowSnackBar(
-            context: context,
-            content: Text(message),
-            backgroundColor: Colors.red,
-          );
-          return Center(child: _checkButton(context, ref));
-        } else if (subscriptionState case Unsubscribed()) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Vous n'avez pas d'abonnement valide actuellement",
-                  ),
-                  SizedBox(height: 40),
-                  _checkButton(context, ref),
-                ],
-              ),
-            ),
-          );
-        } else {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Veuillez vérifier votre connexion internet avant de commencer",
-                  ),
-                  SizedBox(height: 40),
-                  _checkButton(context, ref),
-                ],
-              ),
-            ),
-          );
-        }
-      }(),
+      body: SafeArea(
+        child: Padding(padding: const EdgeInsets.all(20), child: _buildBody()),
+      ),
     );
   }
 
-  Widget _checkButton(BuildContext context, WidgetRef ref) {
+  Widget _checkButton() {
     return ElevatedButton(
       onPressed: () async {
         await ref
@@ -154,7 +59,7 @@ class SubscriptionInfosScreen extends ConsumerWidget {
         padding: EdgeInsets.all(12),
       ),
 
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
@@ -167,132 +72,140 @@ class SubscriptionInfosScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildPage(
-    BuildContext context,
-    WidgetRef ref,
-    SubscriptionModel subscription,
-  ) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Date de début:  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-
-                    TextSpan(text: subscription.startAt.toString()),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Date de fin:  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-
-                    TextSpan(text: subscription.expireAt.toString()),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Matière(s):  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-
-                    TextSpan(text: subscription.subjects?.join(", ")),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Prix:  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-
-                    TextSpan(
-                      text:
-                          '${subscription.price?.toStringAsFixed(2)} Franc CFA',
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Statut:  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-
-                    TextSpan(
-                      text: 'valide',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Important:  ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-
-                    TextSpan(
-                      text:
-                          'Vous devez attendre la fin de cet abonnement avant de vous réabonner',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 40),
-
-              _checkButton(context, ref),
-            ],
-          ),
+  Widget _buildInfoItem(String label, String value, {Color? valueColor}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: RichText(
+        text: TextSpan(
+          style: const TextStyle(fontSize: 20, color: Colors.black),
+          children: [
+            TextSpan(
+              text: '$label: ',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            TextSpan(
+              text: value,
+              style: TextStyle(color: valueColor ?? Colors.black),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _buildInitialContent() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            SubscriptionConstants.subscriptionInfosInitialMessage,
+            style: TextStyle(fontSize: 16.0),
+          ),
+          const SizedBox(height: 20.0),
+          _checkButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildContentWithIcon({
+    required String message,
+    required IconData icon_,
+  }) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon_, color: Colors.red, size: 50),
+
+          const SizedBox(height: 10),
+
+          Text(
+            message,
+            style: const TextStyle(fontSize: 16, color: Colors.red),
+          ),
+
+          const SizedBox(height: 20),
+
+          _checkButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSubscribedContent(SubscriptionModel subscription) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildInfoItem(
+            'Date de début',
+            DateFormat.yMMMd("fr_FR").format(subscription.startAt),
+          ),
+          _buildInfoItem(
+            'Date de fin',
+            DateFormat.yMMMd("fr_FR").format(subscription.expireAt),
+          ),
+          _buildInfoItem(
+            'Matière(s)',
+            subscription.subjects?.join(", ") ?? 'Aucune',
+          ),
+          _buildInfoItem(
+            'Prix',
+            '${subscription.price?.toStringAsFixed(2) ?? '0.00'} F CFA',
+          ),
+
+          _buildInfoItem(
+            'Important',
+            SubscriptionConstants.subscriptionInfosResubscriptionCondition,
+            valueColor: Colors.red,
+          ),
+
+          const SizedBox(height: 40),
+
+          _checkButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    return Consumer(
+      builder: (context, ref, child) {
+        final subscriptionState = ref.watch(subscriptionViewModelProvider);
+        final internetState = ref.watch(internetViewmodelProvider);
+
+        if (subscriptionState case SubscriptionLoading()) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (internetState case InternetLoading()) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (internetState case InternetIsNotConnected()) {
+          return _buildContentWithIcon(
+            message: InternetConstants.connexionError,
+            icon_: Icons.signal_wifi_off_rounded,
+          );
+        } else if (internetState case InternetError(:final message)) {
+          return _buildContentWithIcon(
+            message: message,
+            icon_: Icons.cloud_off_rounded,
+          );
+        } else if (subscriptionState case SubscriptionError(:final message)) {
+          return _buildContentWithIcon(
+            message: message,
+            icon_: Icons.error_rounded,
+          );
+        } else if (subscriptionState case Unsubscribed()) {
+          return _buildContentWithIcon(
+            message: SubscriptionConstants.subscriptionInfosUnsubscribedMessage,
+            icon_: Icons.error_rounded,
+          );
+        } else if (subscriptionState case Subscribed(:final subscription)) {
+          return _buildSubscribedContent(subscription);
+        } else {
+          return _buildInitialContent();
+        }
+      },
     );
   }
 }

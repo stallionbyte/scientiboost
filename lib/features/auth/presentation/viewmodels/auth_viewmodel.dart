@@ -69,7 +69,7 @@ class AuthViewModel extends _$AuthViewModel {
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
 
-      ref.read(justSignInProvider.notifier).state = true;
+      ref.read(justSignInProvider.notifier).justSignIn();
 
       ref
           .read(currentPageViewModelProvider.notifier)
@@ -93,7 +93,7 @@ class AuthViewModel extends _$AuthViewModel {
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
 
-      ref.read(justSignUpProvider.notifier).state = true;
+      ref.read(justSignUpProvider.notifier).setState(true);
 
       ref
           .read(currentPageViewModelProvider.notifier)
@@ -115,7 +115,7 @@ class AuthViewModel extends _$AuthViewModel {
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
 
-      ref.read(justSignOutProvider.notifier).state = true;
+      ref.read(justSignOutProvider.notifier).setState(true);
 
       ref
           .read(subscriptionViewModelProvider.notifier)
