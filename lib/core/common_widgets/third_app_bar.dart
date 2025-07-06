@@ -23,7 +23,7 @@ class _ThirdAppBarState extends ConsumerState<ThirdAppBar> {
     final storageFavoritesKeyValue =
         '${widget.storageFavoritesKey}|${widget.favoriteRoute}';
 
-    final isFavoriteAsync = ref.watch(
+    final isFavorite = ref.watch(
       isFavoriteRouteProvider(storageFavoritesKeyValue),
     );
 
@@ -36,68 +36,56 @@ class _ThirdAppBarState extends ConsumerState<ThirdAppBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          isFavoriteAsync.when(
-            data:
-                (isFavorite) => GestureDetector(
-                  onTap: () async {
-                    final storage = await ref.read(
-                      sharedPreferencesProvider.future,
-                    );
-                    final favorites =
-                        storage.getStringList(widget.storageFavoritesKey) ?? [];
+          GestureDetector(
+            onTap: () async {
+              final storage = ref.read(localStorageProvider);
+              final favorites =
+                  storage.getStringList(widget.storageFavoritesKey) ?? [];
 
-                    if (isFavorite) {
-                      favorites.remove(widget.favoriteRoute);
-                    } else {
-                      favorites.add(widget.favoriteRoute);
-                    }
+              if (isFavorite) {
+                favorites.remove(widget.favoriteRoute);
+              } else {
+                favorites.add(widget.favoriteRoute);
+              }
 
-                    await storage.setStringList(
-                      widget.storageFavoritesKey,
-                      favorites,
-                    );
-                    ref.invalidate(
-                      isFavoriteRouteProvider(storageFavoritesKeyValue),
-                    );
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: isFavorite ? Colors.red : Colors.blue,
-                        width: 1,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorite ? Colors.red : Colors.blue,
-                          size: 20,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          isFavorite
-                              ? 'Supprimer des favoris'
-                              : 'Ajouter aux favoris',
-                          style: TextStyle(
-                            color: isFavorite ? Colors.red : Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
+              await storage.setStringList(
+                widget.storageFavoritesKey,
+                favorites,
+              );
+              ref.invalidate(isFavoriteRouteProvider(storageFavoritesKeyValue));
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isFavorite ? Colors.red : Colors.blue,
+                  width: 1,
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : Colors.blue,
+                    size: 20,
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    isFavorite
+                        ? 'Supprimer des favoris'
+                        : 'Ajouter aux favoris',
+                    style: TextStyle(
+                      color: isFavorite ? Colors.red : Colors.blue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
                     ),
                   ),
-                ),
-            loading: () => CircularProgressIndicator(),
-            error: (error, stack) => Text('Erreur: $error'),
+                ],
+              ),
+            ),
           ),
         ],
       ),

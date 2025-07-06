@@ -1,12 +1,22 @@
+// 2. Implémentation mise à jour (shared_preferences_storage.dart)
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:scientiboost/data/storage/local_storage_interface.dart';
 
 class SharedPreferencesStorage implements LocalStorageInterface {
   SharedPreferencesWithCache? _prefs;
 
-  @override
-  Future<void> init() async {
+  // Constructor privé pour empêcher l'instanciation directe
+  SharedPreferencesStorage._();
+
+  // Factory constructor pour créer une instance initialisée
+  static Future<SharedPreferencesStorage> create() async {
+    final storage = SharedPreferencesStorage._();
+    await storage._init();
+    return storage;
+  }
+
+  // Méthode d'initialisation privée
+  Future<void> _init() async {
     _prefs = await SharedPreferencesWithCache.create(
       cacheOptions: SharedPreferencesWithCacheOptions(),
     );
@@ -80,11 +90,4 @@ class SharedPreferencesStorage implements LocalStorageInterface {
   bool? containsKey(String key) {
     return prefs?.containsKey(key);
   }
-
-  /*
-  @override
-  Set<String> getKeys() {
-    return prefs?.getKeys();
-  }
-  */
 }

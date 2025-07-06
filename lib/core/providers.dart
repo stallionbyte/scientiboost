@@ -54,79 +54,14 @@ import 'package:scientiboost/features/internet/data/repositories/internet_reposi
 
 import 'package:scientiboost/features/favorites/presentation/screens/favorites_screen.dart';
 
-import 'package:scientiboost/data/storage/shared_preference_storage.dart';
 import 'package:scientiboost/data/storage/local_storage_interface.dart';
+import 'package:scientiboost/data/storage/storage_container.dart';
 
 import 'package:scientiboost/core/constants.dart';
 
 import 'package:scientiboost/test_widget.dart';
 
 part 'providers.g.dart';
-
-@riverpod
-class JustSignIn extends _$JustSignIn {
-  // 1. La méthode `build` est obligatoire.
-  // Elle doit retourner l'état initial du provider.
-  @override
-  bool build() {
-    return false; // L'état initial est `false`
-  }
-
-  // Ou une méthode plus générique
-  void setState(bool state_) {
-    state = state_;
-  }
-
-  void justSignIn() {
-    state = true;
-  }
-
-  void resetState() {
-    state = false;
-  }
-
-  bool getState() {
-    return state;
-  }
-}
-
-@riverpod
-class JustSignUp extends _$JustSignUp {
-  // 1. La méthode `build` est obligatoire.
-  // Elle doit retourner l'état initial du provider.
-  @override
-  bool build() {
-    return false; // L'état initial est `false`
-  }
-
-  // Ou une méthode plus générique
-  void setState(bool state_) {
-    state = state_;
-  }
-
-  bool getState() {
-    return state;
-  }
-}
-
-@riverpod
-class JustSignOut extends _$JustSignOut {
-  // 1. La méthode `build` est obligatoire.
-  // Elle doit retourner l'état initial du provider.
-  @override
-  bool build() {
-    return false; // L'état initial est `false`
-  }
-
-  // Ou une méthode plus générique
-  void setState(bool state_) {
-    state = state_;
-  }
-
-  bool getState() {
-    return state;
-  }
-}
 
 @riverpod
 class NoSubjectIsSelected extends _$NoSubjectIsSelected {
@@ -195,8 +130,15 @@ SubscriptionRepository subscriptionRepository(Ref ref) =>
       ref.read(firebaseAuthInstanceProvider),
     );
 
-// Provider pour SharedPreferencesStorage
+// Provider synchrone qui retourne l'instance déjà initialisée
+@riverpod
+LocalStorageInterface localStorage(Ref ref) {
+  // Récupère l'instance depuis le container global
+  return StorageContainer.instance.storage;
+}
 
+// Provider pour SharedPreferencesStorage
+/*
 @riverpod
 Future<LocalStorageInterface> sharedPreferences(Ref ref) async {
   final storage = SharedPreferencesStorage();
@@ -205,16 +147,17 @@ Future<LocalStorageInterface> sharedPreferences(Ref ref) async {
   await storage.setStringList(StorageKeysConstants.favoritesExams, <String>[]);
   return storage;
 }
+*/
 
 // Provider pour vérifier si la route de l'exercice est dans les favoris
-final isFavoriteRouteProvider = FutureProvider.family<bool, String>((
+final isFavoriteRouteProvider = Provider.family<bool, String>((
   ref,
   routeParams,
-) async {
+) {
   List<String> parts = routeParams.split('|');
   String favoriteRouteGroup = parts[0];
   String route = parts[1];
-  final storage = await ref.watch(sharedPreferencesProvider.future);
+  final storage = ref.watch(localStorageProvider);
   final favorites = storage.getStringList(favoriteRouteGroup) ?? [];
   return favorites.contains(route);
 });

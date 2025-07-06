@@ -20,17 +20,11 @@ class PagesWrapper extends ConsumerStatefulWidget {
 class _PagesWrapperState extends ConsumerState<PagesWrapper> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(currentPageViewModelProvider);
     return Scaffold(
       appBar: FirstAppBar(),
       body: SafeArea(
         child: Column(
-          children: [
-            // Deuxième AppBar
-            _buildSecondAppBar(),
-            // Contenu de la page
-            Expanded(child: _buildPageContent()),
-          ],
+          children: [_buildSecondAppBar(), Expanded(child: _buildPage())],
         ),
       ),
     );
@@ -40,8 +34,8 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
     return SecondAppBar();
   }
 
-  Widget _buildPageContent() {
-    final currentPageState = ref.read(currentPageViewModelProvider);
+  Widget _buildPage() {
+    final currentPageState = ref.watch(currentPageViewModelProvider);
 
     if (currentPageState case Home()) {
       return _buildHomePage();
@@ -49,8 +43,6 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
       return _buildExercicesPage();
     } else if (currentPageState case Exams()) {
       return _buildExamensPage();
-    } else if (currentPageState case Profil()) {
-      return _buildProfilePage();
     } else if (currentPageState case Formules()) {
       return _buildFormulesPage();
     } else if (currentPageState case Astuces()) {
@@ -63,38 +55,27 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
 
 Widget _buildHomePage() {
   return SingleChildScrollView(
-    padding: EdgeInsets.all(16),
+    padding: EdgeInsets.all(20.0),
     child: HomeScreen(),
   );
 }
 
 Widget _buildExercicesPage() {
-  return SingleChildScrollView(
-    padding: EdgeInsets.all(16),
-    child: ExosScreen(),
+  return Container(
+    color: Colors.white,
+    child: SingleChildScrollView(
+      padding: const EdgeInsets.all(20.0),
+      child: ExosScreen(),
+    ),
   );
 }
 
 Widget _buildExamensPage() {
-  return SingleChildScrollView(
-    padding: EdgeInsets.all(16),
-    child: ExamsScreen(),
-  );
-}
-
-Widget _buildProfilePage() {
-  return SingleChildScrollView(
-    padding: EdgeInsets.all(16),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Profil Utilisateur',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 16),
-        _buildFakeContent('Gérez votre profil et vos paramètres.'),
-      ],
+  return Container(
+    color: Colors.white,
+    child: SingleChildScrollView(
+      padding: const EdgeInsets.all(20.0),
+      child: ExamsScreen(),
     ),
   );
 }

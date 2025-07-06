@@ -38,6 +38,10 @@ class AuthViewModel extends _$AuthViewModel {
     return const AuthState.authInitial();
   }
 
+  Future<void> goToSignIn() async {
+    await ref.read(goRouterProvider).push("/signin");
+  }
+
   bool isAuthenticated() {
     if (state case Authenticated()) {
       return true;
@@ -69,11 +73,7 @@ class AuthViewModel extends _$AuthViewModel {
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
 
-      ref.read(justSignInProvider.notifier).justSignIn();
-
-      ref
-          .read(currentPageViewModelProvider.notifier)
-          .setState(CurrentPageState.home());
+      ref.read(currentPageViewModelProvider.notifier).setHome();
 
       router.push('/pages-wrapper');
     }
@@ -93,11 +93,7 @@ class AuthViewModel extends _$AuthViewModel {
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
 
-      ref.read(justSignUpProvider.notifier).setState(true);
-
-      ref
-          .read(currentPageViewModelProvider.notifier)
-          .setState(CurrentPageState.home());
+      ref.read(currentPageViewModelProvider.notifier).setHome();
 
       router.push('/pages-wrapper');
     }
@@ -115,15 +111,11 @@ class AuthViewModel extends _$AuthViewModel {
     if (result.isSuccess()) {
       final router = ref.read(goRouterProvider);
 
-      ref.read(justSignOutProvider.notifier).setState(true);
-
       ref
           .read(subscriptionViewModelProvider.notifier)
           .setState(SubscriptionState.subscriptionInitial());
 
-      ref
-          .read(currentPageViewModelProvider.notifier)
-          .setState(CurrentPageState.home());
+      ref.read(currentPageViewModelProvider.notifier).setHome();
 
       router.push('/pages-wrapper');
     }

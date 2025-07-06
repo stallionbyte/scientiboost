@@ -205,6 +205,15 @@ class HomeScreen extends ConsumerWidget {
 
         SizedBox(height: 40),
 
+        ButtonArrowForward(
+          text: 'test',
+          onPressed: () {
+            router.push('/test');
+          },
+        ),
+
+        SizedBox(height: 40),
+
         Card(
           elevation: 4, // Ombre pour donner du relief
           shape: RoundedRectangleBorder(

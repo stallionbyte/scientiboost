@@ -7,6 +7,7 @@ import 'package:media_kit/media_kit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:scientiboost/data/storage/storage_container.dart';
 
 import 'package:scientiboost/supabase_config.dart';
 
@@ -15,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   MediaKit.ensureInitialized();
   await TeXRenderingServer.start();
+  await StorageContainer.instance.initialize();
   await Supabase.initialize(
     url: SupabaseConfig.supabaseUrl,
     anonKey: SupabaseConfig.supabaseAnonKey,

@@ -10,7 +10,6 @@ sealed class CurrentPageState with _$CurrentPageState {
   const factory CurrentPageState.home() = Home;
   const factory CurrentPageState.exercices() = Exercices;
   const factory CurrentPageState.exams() = Exams;
-  const factory CurrentPageState.profil() = Profil;
   const factory CurrentPageState.formules() = Formules;
   const factory CurrentPageState.astuces() = Astuces;
 }
@@ -24,6 +23,26 @@ class CurrentPageViewModel extends _$CurrentPageViewModel {
 
   void setState(CurrentPageState state_) {
     state = state_;
+  }
+
+  void setHome() {
+    state = CurrentPageState.home();
+  }
+
+  void setExercices() {
+    state = CurrentPageState.exercices();
+  }
+
+  void setExams() {
+    state = CurrentPageState.exams();
+  }
+
+  void setFormules() {
+    state = CurrentPageState.formules();
+  }
+
+  void setAstuces() {
+    state = CurrentPageState.astuces();
   }
 
   bool isExercices() {
@@ -52,14 +71,6 @@ class CurrentPageViewModel extends _$CurrentPageViewModel {
 
   bool isAstuces() {
     if (state case Astuces()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isProfil() {
-    if (state case Profil()) {
       return true;
     } else {
       return false;

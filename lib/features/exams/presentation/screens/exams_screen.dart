@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/features/exams/presentation/viewmodels/exam_viewmodel.dart';
-
-import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
+import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 
 class ExamsScreen extends ConsumerStatefulWidget {
   const ExamsScreen({super.key});
@@ -17,84 +14,69 @@ class ExamsScreen extends ConsumerStatefulWidget {
 class _ExamsScreenState extends ConsumerState<ExamsScreen> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(goRouterProvider);
-    ref.watch(examViewmodelProvider);
+    return _buildPage();
+  }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text: 'Classe:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: '   Terminale D'),
-                    ],
-                  ),
+  Widget _buildTitle({required String title, required double fontSize}) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHeaderInfo({required String label, required String value}) {
+    return Row(
+      children: [
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              style: const TextStyle(color: Colors.black, fontSize: 20),
+              children: <TextSpan>[
+                TextSpan(
+                  text: '$label: ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-              ),
-            ],
+                TextSpan(text: '   $value'),
+              ],
+            ),
           ),
+        ),
+      ],
+    );
+  }
 
-          SizedBox(height: 40),
+  Widget _buildPageHeader() {
+    return Column(
+      children: [
+        _buildHeaderInfo(label: "Classe", value: "Terminale D"),
 
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text: 'Matère:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: '   Physique-Chimie'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+        SizedBox(height: 20),
 
-          SizedBox(height: 40),
+        _buildHeaderInfo(label: "Matière", value: "Physique-Chimie"),
+      ],
+    );
+  }
 
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'BAC   D',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+  Widget _buildPage() {
+    return Column(
+      children: [
+        _buildPageHeader(),
 
-          SizedBox(height: 40),
+        SizedBox(height: 40),
 
-          ButtonArrowForward(
-            text: '2024',
-            onPressed: () {
-              ref
-                  .read(examViewmodelProvider.notifier)
-                  .goToExam(route: RoutesNamesConstants.pcBacD2024);
-            },
-          ),
+        _buildTitle(title: "BAC  D", fontSize: 30.0),
 
-          SizedBox(height: 20),
-        ],
-      ),
+        SizedBox(height: 40),
+
+        ButtonExoExam(text: "2024", route: RoutesNamesConstants.pcBacD2024),
+      ],
     );
   }
 }

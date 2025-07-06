@@ -28,7 +28,7 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(sharedPreferencesProvider);
+    ref.watch(localStorageProvider);
     ref.watch(goRouterProvider);
     ref.watch(exoViewmodelProvider);
     ref.watch(examViewmodelProvider);
@@ -93,7 +93,7 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
 
   Widget? _buildFavorites() {
     // Observer le FutureProvider
-    final localStorageAsync = ref.watch(sharedPreferencesProvider);
+    final localStorage = ref.watch(localStorageProvider);
 
     // Si l'un des deux choix n'est pas encore fait, on n'affiche rien
     // ou un message invitant à faire une sélection.
@@ -117,126 +117,109 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
     Widget? favorites;
 
     if (_selectedFavoritesGroup == 'exercices') {
-      favorites = localStorageAsync.when(
-        data: (localStorage) {
-          final routes =
-              localStorage.getStringList(StorageKeysConstants.favoritesExos) ??
-              [];
+      final routes =
+          localStorage.getStringList(StorageKeysConstants.favoritesExos) ?? [];
 
-          if (routes.isNotEmpty) {
-            return Column(
-              key: key,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (var route in routes)
-                  GestureDetector(
-                    onTap: () {
-                      ref.read(goRouterProvider).push(route);
-                    },
+      if (routes.isNotEmpty) {
+        favorites = Column(
+          key: key,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (var route in routes)
+              GestureDetector(
+                onTap: () {
+                  ref.read(goRouterProvider).push(route);
+                },
 
-                    child: Card(
-                      elevation: 4,
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: ListTile(
-                        title: Text(
-                          ref
-                                  .read(exoViewmodelProvider.notifier)
-                                  .getMatiereFromExoRoute(route) ??
-                              'Inconnu',
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Chapitre: ${ref.read(exoViewmodelProvider.notifier).getChapFromExoRoute(route) ?? 'Inconnu'}',
-                            ),
-                            Text(
-                              'Exercice: ${ref.read(exoViewmodelProvider.notifier).getExoNumFromExoRoute(route) ?? 'Inconnu'}',
-                            ),
-                          ],
-                        ),
-                        leading: const Icon(
-                          Icons.assignment,
-                          color: Colors.blue,
-                        ),
-                      ),
+                child: Card(
+                  elevation: 4,
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  child: ListTile(
+                    title: Text(
+                      ref
+                              .read(exoViewmodelProvider.notifier)
+                              .getMatiereFromExoRoute(route) ??
+                          'Inconnu',
+                      style: const TextStyle(fontSize: 16),
                     ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Chapitre: ${ref.read(exoViewmodelProvider.notifier).getChapFromExoRoute(route) ?? 'Inconnu'}',
+                        ),
+                        Text(
+                          'Exercice: ${ref.read(exoViewmodelProvider.notifier).getExoNumFromExoRoute(route) ?? 'Inconnu'}',
+                        ),
+                      ],
+                    ),
+                    leading: const Icon(Icons.assignment, color: Colors.blue),
                   ),
-              ],
-            );
-          } else {
-            return const Center(
-              key: ValueKey('favorites_exos_empty'),
-              child: Text(
-                'Aucun exercice favori enrégistré',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey),
+                ),
               ),
-            );
-          }
-        },
-        loading: () => const CircularProgressIndicator(),
-        error: (error, stack) => Text('Erreur : $error'),
-      );
+          ],
+        );
+      } else {
+        favorites = const Center(
+          key: ValueKey('favorites_exos_empty'),
+          child: Text(
+            'Aucun exercice favori enrégistré',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.grey),
+          ),
+        );
+      }
     } else if (_selectedFavoritesGroup == 'examens') {
-      favorites = localStorageAsync.when(
-        data: (localStorage) {
-          final routes =
-              localStorage.getStringList(StorageKeysConstants.favoritesExams) ??
-              [];
+      final routes =
+          localStorage.getStringList(StorageKeysConstants.favoritesExams) ?? [];
 
-          if (routes.isNotEmpty) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (var route in routes)
-                  GestureDetector(
-                    onTap: () {
-                      ref.read(goRouterProvider).push(route);
-                    },
+      if (routes.isNotEmpty) {
+        favorites = Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (var route in routes)
+              GestureDetector(
+                onTap: () {
+                  ref.read(goRouterProvider).push(route);
+                },
 
-                    child: Card(
-                      elevation: 4,
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: ListTile(
-                        title: Text(
-                          'Matiere:  ${ref.read(examViewmodelProvider.notifier).getMatiereFromExamRoute(route) ?? 'Inconnu'}',
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Examen: ${ref.read(examViewmodelProvider.notifier).getBacFromExamRoute(route)?.replaceAll("-", " ").toUpperCase() ?? 'Inconnu'}',
-                            ),
-                            Text(
-                              'Année: ${ref.read(examViewmodelProvider.notifier).getAnneeFromExamRoute(route) ?? 'Inconnu'}',
-                            ),
-                            Text(
-                              'Pays: ${ref.read(examViewmodelProvider.notifier).getPaysFromExamRoute(route) ?? 'Inconnu'}',
-                            ),
-                          ],
-                        ),
-                        leading: const Icon(Icons.school, color: Colors.blue),
-                      ),
+                child: Card(
+                  elevation: 4,
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  child: ListTile(
+                    title: Text(
+                      'Matiere:  ${ref.read(examViewmodelProvider.notifier).getMatiereFromExamRoute(route) ?? 'Inconnu'}',
                     ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Examen: ${ref.read(examViewmodelProvider.notifier).getBacFromExamRoute(route)?.replaceAll("-", " ").toUpperCase() ?? 'Inconnu'}',
+                        ),
+                        Text(
+                          'Année: ${ref.read(examViewmodelProvider.notifier).getAnneeFromExamRoute(route) ?? 'Inconnu'}',
+                        ),
+                        Text(
+                          'Pays: ${ref.read(examViewmodelProvider.notifier).getPaysFromExamRoute(route) ?? 'Inconnu'}',
+                        ),
+                      ],
+                    ),
+                    leading: const Icon(Icons.school, color: Colors.blue),
                   ),
-              ],
-            );
-          } else {
-            return const Center(
-              key: ValueKey('favorites_exams_empty'),
-              child: Text(
-                'Aucun examen favori enrégistré',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey),
+                ),
               ),
-            );
-          }
-        },
-        loading: () => const CircularProgressIndicator(),
-        error: (error, stack) => Text('Erreur : $error'),
-      );
+          ],
+        );
+      } else {
+        favorites = const Center(
+          key: ValueKey('favorites_exams_empty'),
+          child: Text(
+            'Aucun examen favori enrégistré',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.grey),
+          ),
+        );
+      }
     }
 
     // On retourne le contenu dans une carte stylisée

@@ -20,11 +20,11 @@ sealed class InternetState with _$InternetState {
 class InternetViewmodel extends _$InternetViewmodel {
   @override
   InternetState build() {
-    return const InternetState.internetInitial();
+    return InternetState.internetInitial();
   }
 
   Future<void> checkInternetAccess() async {
-    state = const InternetState.internetLoading();
+    state = InternetState.internetLoading();
 
     final result =
         await ref.read(internetRepositoryProvider).checkInternetAccess();
@@ -47,6 +47,10 @@ class InternetViewmodel extends _$InternetViewmodel {
         }
       },
     );
+
+    print('*******************************************');
+    print('in checkInternetAccess end');
+    print(state);
   }
 
   void setState(InternetState state_) {

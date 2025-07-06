@@ -1,8 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
-
 import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 
 import 'package:scientiboost/core/providers.dart';
@@ -22,9 +20,6 @@ class UnsubscribedMessage extends ConsumerWidget {
             text: 'vérifier mon abonnement',
             backgroundColor: Colors.amber,
             onPressed: () {
-              ref
-                  .read(subscriptionViewModelProvider.notifier)
-                  .setState(SubscriptionState.subscriptionInitial());
               ref.read(goRouterProvider).push('/subscription-infos');
             },
           ),

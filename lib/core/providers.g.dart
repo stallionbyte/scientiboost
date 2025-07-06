@@ -159,26 +159,25 @@ final subscriptionRepositoryProvider =
 // ignore: unused_element
 typedef SubscriptionRepositoryRef =
     AutoDisposeProviderRef<SubscriptionRepository>;
-String _$sharedPreferencesHash() => r'f2c436e3727638cee19f317e4537b9e02de4a8c9';
+String _$localStorageHash() => r'b298cb06cfcd529d4bdbc15e242392d128f833c9';
 
-/// See also [sharedPreferences].
-@ProviderFor(sharedPreferences)
-final sharedPreferencesProvider =
-    AutoDisposeFutureProvider<LocalStorageInterface>.internal(
-      sharedPreferences,
-      name: r'sharedPreferencesProvider',
+/// See also [localStorage].
+@ProviderFor(localStorage)
+final localStorageProvider =
+    AutoDisposeProvider<LocalStorageInterface>.internal(
+      localStorage,
+      name: r'localStorageProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$sharedPreferencesHash,
+              : _$localStorageHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef SharedPreferencesRef =
-    AutoDisposeFutureProviderRef<LocalStorageInterface>;
+typedef LocalStorageRef = AutoDisposeProviderRef<LocalStorageInterface>;
 String _$goRouterHash() => r'f22060469ab4cf6781815196b142b14f2173f337';
 
 /// See also [goRouter].
@@ -195,57 +194,6 @@ final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GoRouterRef = AutoDisposeProviderRef<GoRouter>;
-String _$justSignInHash() => r'f40774321ed561e2fba3b362c4e9c1c1276b8edc';
-
-/// See also [JustSignIn].
-@ProviderFor(JustSignIn)
-final justSignInProvider =
-    AutoDisposeNotifierProvider<JustSignIn, bool>.internal(
-      JustSignIn.new,
-      name: r'justSignInProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$justSignInHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$JustSignIn = AutoDisposeNotifier<bool>;
-String _$justSignUpHash() => r'45fb298fc7c3d7d1c4cf7f08e83b0c2d2dcc7faa';
-
-/// See also [JustSignUp].
-@ProviderFor(JustSignUp)
-final justSignUpProvider =
-    AutoDisposeNotifierProvider<JustSignUp, bool>.internal(
-      JustSignUp.new,
-      name: r'justSignUpProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$justSignUpHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$JustSignUp = AutoDisposeNotifier<bool>;
-String _$justSignOutHash() => r'e883d13c31c4dacc8c0d326a4ab9a91f8e690bd7';
-
-/// See also [JustSignOut].
-@ProviderFor(JustSignOut)
-final justSignOutProvider =
-    AutoDisposeNotifierProvider<JustSignOut, bool>.internal(
-      JustSignOut.new,
-      name: r'justSignOutProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$justSignOutHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$JustSignOut = AutoDisposeNotifier<bool>;
 String _$noSubjectIsSelectedHash() =>
     r'667ac60a120f2e1b17be0438a0f5cdc8e075cb0e';
 

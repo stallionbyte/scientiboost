@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
@@ -45,12 +47,28 @@ class _SubscriptionInfosScreenState
   }
 
   Widget _checkButton() {
+    final authState = ref.watch(authViewModelProvider);
+
+    bool isAuth = false;
+
+    if (authState case Authenticated()) {
+      isAuth = true;
+    }
+
     return ElevatedButton(
-      onPressed: () async {
-        await ref
-            .read(subscriptionViewModelProvider.notifier)
-            .checkSubscription();
-      },
+      onPressed:
+          isAuth
+              ? () {
+                ref
+                    .read(internetViewmodelProvider.notifier)
+                    .checkInternetAccess();
+                ref
+                    .read(subscriptionViewModelProvider.notifier)
+                    .checkSubscription();
+              }
+              : () {
+                ref.read(goRouterProvider).push("/signin");
+              },
 
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.amber,

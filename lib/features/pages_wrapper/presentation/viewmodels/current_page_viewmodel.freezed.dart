@@ -141,38 +141,6 @@ String toString() {
 /// @nodoc
 
 
-class Profil implements CurrentPageState {
-  const Profil();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Profil);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'CurrentPageState.profil()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
 class Formules implements CurrentPageState {
   const Formules();
   

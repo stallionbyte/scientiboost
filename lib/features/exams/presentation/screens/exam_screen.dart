@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
 import 'package:scientiboost/core/common_widgets/third_app_bar.dart';
-import 'package:scientiboost/core/common_widgets/miss_matiere_message.dart';
+
 import 'package:scientiboost/core/common_widgets/unsubscribed_message.dart';
 
+import 'package:scientiboost/core/providers.dart';
+
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
-import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-
-import 'package:scientiboost/core/constants.dart';
-
-import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class ExamScreen extends ConsumerStatefulWidget {
   const ExamScreen({
@@ -66,50 +62,28 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   bool isCorrectionPhyExo2Visible = false;
   bool isCorrectionPhyExo3Visible = false;
 
+  // Créer un ScrollController
+  final ScrollController _scrollController = ScrollController();
+
+  // Méthode pour déclencher un léger scroll vers le bas
+  void _scrollDown({required double offset}) {
+    // Défile de offset pixels vers le bas avec une animation fluide
+    _scrollController.animateTo(
+      _scrollController.offset + offset, // Déplace de offset pixels
+      duration: Duration(milliseconds: 300), // Durée de l'animation
+      curve: Curves.easeInOut, // Courbe d'animation
+    );
+  }
+
+  @override
+  void dispose() {
+    // Libérer le ScrollController
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final internetState = ref.watch(internetViewmodelProvider);
-
-    if (internetState case InternetError(:final message)) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          children: [
-            Expanded(
-              child: Text(
-                message,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Icon(Icons.cloud_off_rounded, color: Colors.white),
-          ],
-        ),
-
-        backgroundColor: Colors.red,
-        duration: Duration(seconds: 10),
-      );
-    } else if (internetState case InternetIsNotConnected()) {
-      helpers.scheduleShowSnackBar(
-        context: context,
-        content: Row(
-          children: [
-            Text(
-              InternetConstants.connexionError,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-
-            SizedBox(width: 8),
-
-            Icon(Icons.cloud_off_rounded, color: Colors.white),
-          ],
-        ),
-        backgroundColor: Colors.red,
-      );
-    }
-
     return Scaffold(
       appBar: FirstAppBar(),
 
@@ -129,83 +103,76 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     );
   }
 
+  Widget _buildHeaderInfo({required String label, required String value}) {
+    return Row(
+      children: [
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              style: const TextStyle(color: Colors.black, fontSize: 20),
+              children: <TextSpan>[
+                TextSpan(
+                  text: '$label:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(text: '   $value'),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHeader() {
+    return Column(
+      children: [
+        _buildHeaderInfo(label: "Pays", value: widget.pays),
+
+        SizedBox(height: 20.0),
+
+        _buildHeaderInfo(label: "Matière", value: widget.matiere),
+      ],
+    );
+  }
+
+  Widget _buildTitle({required String title, required double fontSize}) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildExam() {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20.0),
+      controller: _scrollController,
       child: Column(
         children: [
           SizedBox(height: 20),
 
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Pays:',
+          _buildHeader(),
 
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: '   ${widget.pays}'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Matère:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-
-                      TextSpan(text: '   ${widget.matiere}'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
           SizedBox(height: 40),
 
-          Text(
-            widget.examInfos,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
+          _buildTitle(title: widget.examInfos, fontSize: 35.0),
 
-              color: Colors.black,
-            ),
-          ),
-          SizedBox(height: 20),
-          Text(
-            'Chimie',
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
+          SizedBox(height: 40),
+
+          _buildTitle(title: "Chimie", fontSize: 30.0),
+
           SizedBox(height: 20),
 
-          Text(
-            'Exercice 1',
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
+          _buildTitle(title: "Exercice 1", fontSize: 25.0),
 
-              color: Colors.black,
-            ),
-          ),
+          SizedBox(height: 20),
 
           _buildExo(
             widget.enonceChimExo1,
@@ -214,15 +181,10 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
           ),
 
           SizedBox(height: 20),
-          Text(
-            'Exercice 2',
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
 
-              color: Colors.black,
-            ),
-          ),
+          _buildTitle(title: "Exercice 2", fontSize: 25.0),
+
+          SizedBox(height: 20),
 
           _buildExo(
             widget.enonceChimExo2,
@@ -231,51 +193,30 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
           ),
 
           SizedBox(height: 20),
-          Text(
-            'Physique',
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
 
-              color: Colors.black,
-            ),
-          ),
+          _buildTitle(title: "Physique", fontSize: 30.0),
+
           SizedBox(height: 20),
-          Text(
-            'Exercice 1',
-            style: const TextStyle(
-              fontSize: 25,
 
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
+          _buildTitle(title: "Exercice 1", fontSize: 25.0),
+
+          SizedBox(height: 20),
 
           _buildExo(widget.enoncePhyExo1, widget.correctionPhyExo1, 'phyExo1'),
 
           SizedBox(height: 20),
-          Text(
-            'Exercice 2',
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
 
-              color: Colors.black,
-            ),
-          ),
+          _buildTitle(title: "Exercice 2", fontSize: 25.0),
+
+          SizedBox(height: 20),
 
           _buildExo(widget.enoncePhyExo2, widget.correctionPhyExo2, 'phyExo2'),
 
           SizedBox(height: 20),
-          Text(
-            'Exercice 3',
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
 
-              color: Colors.black,
-            ),
-          ),
+          _buildTitle(title: "Exercice 3", fontSize: 25.0),
+
+          SizedBox(height: 20),
 
           _buildExo(widget.enoncePhyExo3, widget.correctionPhyExo3, 'phyExo3'),
 
@@ -285,9 +226,105 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     );
   }
 
-  Widget _buildExo(Widget enonce, Widget correction, String exo) {
-    final subscriptionState = ref.watch(subscriptionViewModelProvider);
+  Widget _buildToggleCorrectionButton({
+    required String exo,
+    required bool isCorrectionVisible,
+  }) {
+    final authState = ref.watch(authViewModelProvider);
 
+    bool isAuth = false;
+
+    if (authState case Authenticated()) {
+      isAuth = true;
+    }
+    return ElevatedButton(
+      onPressed:
+          isAuth
+              ? () {
+                switch (exo) {
+                  case 'chimExo1':
+                    setState(() {
+                      isCorrectionChimExo1Visible =
+                          !isCorrectionChimExo1Visible;
+                    });
+
+                    break;
+                  case 'chimExo2':
+                    setState(() {
+                      isCorrectionChimExo2Visible =
+                          !isCorrectionChimExo2Visible;
+                    });
+
+                    break;
+                  case 'phyExo1':
+                    setState(() {
+                      isCorrectionPhyExo1Visible = !isCorrectionPhyExo1Visible;
+                    });
+
+                    break;
+                  case 'phyExo2':
+                    setState(() {
+                      isCorrectionPhyExo2Visible = !isCorrectionPhyExo2Visible;
+                    });
+
+                    break;
+
+                  default:
+                    setState(() {
+                      isCorrectionPhyExo3Visible = !isCorrectionPhyExo3Visible;
+                    });
+
+                    if (isCorrectionPhyExo3Visible) {
+                      _scrollDown(offset: 150.0);
+                    }
+                }
+              }
+              : () {
+                ref.read(goRouterProvider).push("/signin");
+              },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white, // Texte et icône blancs
+        padding: const EdgeInsets.all(12.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            isCorrectionVisible ? 'Masquer correction' : 'Voir correction',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCorrection({required Widget correction}) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final subscriptionState = ref.watch(subscriptionViewModelProvider);
+
+        if (subscriptionState case Subscribed(:final subscription)) {
+          if (ref
+              .read(subscriptionViewModelProvider.notifier)
+              .isExpired(date: subscription.expireAt)) {
+            return UnsubscribedMessage();
+          } else {
+            return correction;
+          }
+        } else {
+          return UnsubscribedMessage();
+        }
+      },
+    );
+  }
+
+  Widget _buildExo(Widget enonce, Widget correction, String exo) {
     bool isCorrectionVisible;
     switch (exo) {
       case 'chimExo1':
@@ -308,173 +345,23 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
 
     return Column(
       children: [
-        SizedBox(height: 20),
-
         enonce,
 
-        SizedBox(height: 40),
+        SizedBox(height: 20),
 
-        // Bouton toggle correction
-        ElevatedButton(
-          onPressed: () async {
-            switch (exo) {
-              case 'chimExo1':
-                if (!isCorrectionChimExo1Visible) {
-                  await ref
-                      .read(subscriptionViewModelProvider.notifier)
-                      .checkSubscription();
-                }
-
-                if (ref
-                        .read(internetViewmodelProvider.notifier)
-                        .isConnected() &&
-                    ref
-                        .read(authViewModelProvider.notifier)
-                        .isAuthenticated()) {
-                  setState(() {
-                    isCorrectionChimExo1Visible =
-                        !isCorrectionChimExo1Visible; // Mise à jour locale
-                  });
-                }
-
-                break;
-              case 'chimExo2':
-                if (!isCorrectionChimExo2Visible) {
-                  await ref
-                      .read(subscriptionViewModelProvider.notifier)
-                      .checkSubscription();
-                }
-
-                if (ref
-                        .read(internetViewmodelProvider.notifier)
-                        .isConnected() &&
-                    ref
-                        .read(authViewModelProvider.notifier)
-                        .isAuthenticated()) {
-                  setState(() {
-                    isCorrectionChimExo2Visible =
-                        !isCorrectionChimExo2Visible; // Mise à jour locale
-                  });
-                }
-
-                break;
-              case 'phyExo1':
-                if (!isCorrectionPhyExo1Visible) {
-                  await ref
-                      .read(subscriptionViewModelProvider.notifier)
-                      .checkSubscription();
-                }
-
-                if (ref
-                        .read(internetViewmodelProvider.notifier)
-                        .isConnected() &&
-                    ref
-                        .read(authViewModelProvider.notifier)
-                        .isAuthenticated()) {
-                  setState(() {
-                    isCorrectionPhyExo1Visible =
-                        !isCorrectionPhyExo1Visible; // Mise à jour locale
-                  });
-                }
-
-                break;
-              case 'phyExo2':
-                if (!isCorrectionPhyExo2Visible) {
-                  await ref
-                      .read(subscriptionViewModelProvider.notifier)
-                      .checkSubscription();
-                }
-
-                if (ref
-                        .read(internetViewmodelProvider.notifier)
-                        .isConnected() &&
-                    ref
-                        .read(authViewModelProvider.notifier)
-                        .isAuthenticated()) {
-                  setState(() {
-                    isCorrectionPhyExo2Visible =
-                        !isCorrectionPhyExo2Visible; // Mise à jour locale
-                  });
-                }
-
-                break;
-
-              default:
-                if (!isCorrectionPhyExo3Visible) {
-                  await ref
-                      .read(subscriptionViewModelProvider.notifier)
-                      .checkSubscription();
-                }
-
-                if (ref
-                        .read(internetViewmodelProvider.notifier)
-                        .isConnected() &&
-                    ref
-                        .read(authViewModelProvider.notifier)
-                        .isAuthenticated()) {
-                  setState(() {
-                    isCorrectionPhyExo3Visible =
-                        !isCorrectionPhyExo3Visible; // Mise à jour locale
-                  });
-                }
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue, // Fond bleu
-            foregroundColor: Colors.white, // Texte et icône blancs
-            padding: const EdgeInsets.all(12.0), // Espacement interne
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18), // Coins arrondis
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                isCorrectionVisible ? 'Masquer correction' : 'Voir correction',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-
-              if (ref.watch(internetViewmodelProvider)
-                  case InternetLoading()) ...[
-                SizedBox(width: 8),
-                CircularProgressIndicator(color: Colors.white),
-              ],
-            ],
-          ),
+        _buildToggleCorrectionButton(
+          exo: exo,
+          isCorrectionVisible: isCorrectionVisible,
         ),
 
-        const SizedBox(height: 40),
+        const SizedBox(height: 20),
 
         // Afficher la correction seulement si elle est visible
         if (isCorrectionVisible) ...[
-          () {
-            if (subscriptionState case SubscriptionLoading()) {
-              return CircularProgressIndicator();
-            } else if (subscriptionState case Subscribed(:final subscription)) {
-              if (ref
-                  .read(subscriptionViewModelProvider.notifier)
-                  .isExpired(date: subscription.expireAt)) {
-                return UnsubscribedMessage();
-              } else {
-                if (subscription.subjects?.contains('pc') as bool) {
-                  return correction;
-                } else {
-                  return MissMatiereMessage(matieres: 'PC');
-                }
-              }
-            } else {
-              return UnsubscribedMessage();
-            }
-          }(),
+          _buildCorrection(correction: correction),
 
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
         ],
-        const SizedBox(height: 40),
       ],
     );
   }

@@ -46,6 +46,8 @@ class SubscriptionConstants {
 
   static const subscriptionInfosResubscriptionCondition =
       'Vous devez attendre la fin de cet abonnement avant de vous réabonner';
+
+  static const subscriptionInfosUnauthentificated = "Vous n'ête pas connecté";
 }
 
 class VideoConstants {

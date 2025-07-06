@@ -5,6 +5,7 @@ import 'package:result_dart/result_dart.dart';
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 
 import 'package:scientiboost/core/constants.dart';
+
 import 'package:scientiboost/core/error/firebase/error.dart';
 
 abstract class SubscriptionRepository {

@@ -1,5 +1,6 @@
+// 1. Interface mise à jour (local_storage_interface.dart)
 abstract class LocalStorageInterface {
-  Future<void> init();
+  // Removed Future<void> init() - initialization will be handled externally
 
   // String operations
   Future<void> setString(String key, String value);
@@ -26,8 +27,5 @@ abstract class LocalStorageInterface {
   Future<void> clear();
 
   // Check existence
-
   bool? containsKey(String key);
-
-  //Set<String> getKeys();
 }

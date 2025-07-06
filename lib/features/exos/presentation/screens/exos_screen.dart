@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 
-import 'package:scientiboost/features/exos/presentation/viewmodels/exo_viewmodel.dart';
+import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 
-import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/constants.dart';
 
 class ExosScreen extends ConsumerStatefulWidget {
@@ -17,102 +15,108 @@ class ExosScreen extends ConsumerStatefulWidget {
 class _ExosScreenState extends ConsumerState<ExosScreen> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(goRouterProvider);
-    ref.watch(exoViewmodelProvider);
+    return _buildPage();
+  }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text: 'Classe:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: '   Terminale D'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+  Widget _buildPage() {
+    return Column(
+      children: [
+        _buildPageHeader(),
 
-          SizedBox(height: 40),
+        SizedBox(height: 40),
 
-          Row(
-            children: [
-              Expanded(
-                child: RichText(
-                  text: TextSpan(
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text: 'Matère:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: '   Physique-Chimie'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+        _buildTitle(title: "Physique", fontSize: 30.0),
 
-          SizedBox(height: 40),
+        SizedBox(height: 40),
 
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'Physique',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+        _buildTitle(title: "Nucléaire", fontSize: 20.0),
 
-          SizedBox(height: 40),
+        SizedBox(height: 40),
 
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'Nucléaire',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+        _buildNuclaireAccordion(),
 
-          SizedBox(height: 40),
+        SizedBox(height: 40),
 
-          _buildNuclaireAccordion(context, ref),
-        ],
-      ),
+        _buildTitle(title: "Mécanique", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Electricité", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Chimie", fontSize: 30.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Organique", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Minérale", fontSize: 20.0),
+
+        SizedBox(height: 40),
+      ],
     );
   }
 
-  Widget _buildNuclaireAccordion(BuildContext context, WidgetRef ref) {
+  Widget _buildHeaderInfo({required String label, required String value}) {
+    return Row(
+      children: [
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              style: const TextStyle(color: Colors.black, fontSize: 20),
+              children: <TextSpan>[
+                TextSpan(
+                  text: '$label: ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(text: '   $value'),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPageHeader() {
+    return Column(
+      children: [
+        _buildHeaderInfo(label: "Classe", value: "Terminale D"),
+
+        SizedBox(height: 20),
+
+        _buildHeaderInfo(label: "Matière", value: "Physique-Chimie"),
+      ],
+    );
+  }
+
+  Widget _buildTitle({required String title, required double fontSize}) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNuclaireAccordion() {
     return ExpansionPanelList.radio(
-      elevation: 1,
+      elevation: 2,
       expandedHeaderPadding: EdgeInsets.zero,
+      expandIconColor: Colors.black,
       children: [
         ExpansionPanelRadio(
           value: 'phyNucChap11',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
@@ -125,37 +129,9 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-
-                  child: ButtonArrowForward(
-                    text: 'Exercice 1',
-
-                    onPressed: () {
-                      ref
-                          .read(exoViewmodelProvider.notifier)
-                          .goToExercice(
-                            route:
-                                RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
-                          );
-                    },
-                  ),
-                ),
-
-                Align(
-                  alignment: Alignment.centerLeft,
-
-                  child: ButtonArrowForward(
-                    text: 'Exercice 2',
-                    onPressed: () {
-                      ref
-                          .read(exoViewmodelProvider.notifier)
-                          .goToExercice(
-                            route:
-                                RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
-                          );
-                    },
-                  ),
+                ButtonExoExam(
+                  text: 'Exercice 1',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                 ),
               ],
             ),

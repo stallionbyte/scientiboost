@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 import 'package:scientiboost/core/providers.dart';
 
@@ -33,6 +32,12 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     return const SubscriptionState.subscriptionInitial();
   }
 
+  Future<void> goToExo({required String route}) async {
+    await ref.read(subscriptionViewModelProvider.notifier).checkSubscription();
+
+    await ref.read(goRouterProvider).push(route);
+  }
+
   void setState(SubscriptionState state_) {
     state = state_;
   }
@@ -41,31 +46,31 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     state = SubscriptionInitial();
   }
 
+  void setLoading() {
+    state = SubscriptionState.subscriptionLoading();
+  }
+
   bool isExpired({required DateTime date}) {
     return date.isBefore(DateTime.now());
   }
 
   Future<void> checkSubscription() async {
-    await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
+    state = SubscriptionState.subscriptionLoading();
 
-    if (ref.read(internetViewmodelProvider.notifier).isConnected()) {
-      if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-        state = SubscriptionState.subscriptionLoading();
+    final result =
+        await ref.read(subscriptionRepositoryProvider).validSubscription();
 
-        final result =
-            await ref.read(subscriptionRepositoryProvider).validSubscription();
-
-        if (result == null) {
-          state = SubscriptionState.unsubscribed();
-        } else {
-          state = result.fold(
-            (subscription) => SubscriptionState.subscribed(subscription),
-            (error) => SubscriptionState.subscriptionError(error),
-          );
-        }
-      } else {
-        ref.read(goRouterProvider).push('/signin');
-      }
+    if (result == null) {
+      state = SubscriptionState.unsubscribed();
+    } else {
+      state = result.fold(
+        (subscription) {
+          return SubscriptionState.subscribed(subscription);
+        },
+        (error) {
+          return SubscriptionState.subscriptionError(error);
+        },
+      );
     }
   }
 
