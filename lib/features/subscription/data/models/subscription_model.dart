@@ -12,7 +12,7 @@ abstract class SubscriptionModel with _$SubscriptionModel {
     required DateTime startAt,
     @JsonKey(fromJson: _timestampToDateTime, toJson: _dateTimeToTimestamp)
     required DateTime expireAt,
-    required List<String>? subjects,
+    required String subject,
     required double? price,
   }) = _SubscriptionModel;
 

@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:scientiboost/features/auth/data/models/user_model.dart';
 
@@ -50,12 +51,8 @@ class AuthViewModel extends _$AuthViewModel {
     }
   }
 
-  UserModel? getUser() {
-    if (state case Authenticated(:final user)) {
-      return user;
-    } else {
-      return null;
-    }
+  User? getUser() {
+    return ref.read(authRepositoryProvider).getUser();
   }
 
   // Gère la connexion

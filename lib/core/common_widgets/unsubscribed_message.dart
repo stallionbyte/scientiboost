@@ -6,15 +6,15 @@ import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 import 'package:scientiboost/core/providers.dart';
 
 class UnsubscribedMessage extends ConsumerWidget {
-  const UnsubscribedMessage({super.key});
-
+  const UnsubscribedMessage({super.key, required this.subject});
+  final String subject;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
-          Text("correction réservée aux abonnés"),
+          Text("correction réservée aux abonnés de $subject"),
           const SizedBox(height: 20),
           ButtonArrowForward(
             text: 'vérifier mon abonnement',

@@ -14,6 +14,7 @@ abstract class AuthRepository {
   Future<ResultDart<Unit, String>> signOut();
   Future<ResultDart<Unit, String>> sendPasswordResetEmail(String email);
   Future<ResultDart<Unit, String>> sendEmailVerification();
+  User? getUser();
 
   Stream<UserModel?> get authStateChanges;
 }
@@ -23,6 +24,11 @@ class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth _firebaseAuth;
 
   AuthRepositoryImpl(this._firebaseAuth);
+
+  @override
+  User? getUser() {
+    return _firebaseAuth.currentUser;
+  }
 
   @override
   Future<ResultDart<UserModel, String>> signIn(

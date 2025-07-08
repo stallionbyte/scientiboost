@@ -4,20 +4,18 @@ import 'package:result_dart/result_dart.dart';
 
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 
+import 'package:scientiboost/core/helpers.dart' as helpers;
+
 import 'package:scientiboost/core/constants.dart';
 
 import 'package:scientiboost/core/error/firebase/error.dart';
 
 abstract class SubscriptionRepository {
-  Future<ResultDart<SubscriptionModel, String>> addSubscription(
-    String? userUid,
-    DateTime startAt,
-    DateTime expireAt,
-    List<String>? subjects,
-    double? price,
-  );
+  Future<ResultDart<List<SubscriptionModel>, String>> addSubscriptions({
+    required List<SubscriptionModel> subscriptions,
+  });
 
-  Future<ResultDart<SubscriptionModel, String>?> validSubscription();
+  Future<ResultDart<List<SubscriptionModel>, String>?> validSubscriptions();
 }
 
 class SubscriptionRepositoryImpl implements SubscriptionRepository {
@@ -27,32 +25,38 @@ class SubscriptionRepositoryImpl implements SubscriptionRepository {
   SubscriptionRepositoryImpl(this._firebaseFirestore, this._firebaseAuth);
 
   @override
-  Future<ResultDart<SubscriptionModel, String>?> validSubscription() async {
+  Future<ResultDart<List<SubscriptionModel>, String>?>
+  validSubscriptions() async {
     DateTime? queryExpireAt;
     Map<String, dynamic>? subscription;
+    final userUid = _firebaseAuth.currentUser?.uid;
+    final subjects = ["pc", "svt", "math"];
+    List<SubscriptionModel> subscriptions = [];
     try {
-      final userUid = _firebaseAuth.currentUser?.uid;
+      externeLoop:
+      for (var subject in subjects) {
+        var query =
+            await _firebaseFirestore
+                .collection("subscriptions_$subject")
+                .where("userUid", isEqualTo: userUid)
+                .get();
 
-      final query =
-          await _firebaseFirestore
-              .collection("subscriptions")
-              .where("userUid", isEqualTo: userUid)
-              .get();
-
-      if (query.docs.isEmpty) {
-        return null;
-      } else {
-        for (var doc in query.docs) {
-          queryExpireAt = (doc.data()["expireAt"] as Timestamp).toDate();
-          if (queryExpireAt.isAfter(DateTime.now())) {
-            subscription = doc.data();
-            break;
+        if (query.docs.isEmpty) {
+          continue externeLoop;
+        } else {
+          for (var doc in query.docs) {
+            queryExpireAt = (doc.data()["expireAt"] as Timestamp).toDate();
+            if (queryExpireAt.isAfter(DateTime.now())) {
+              subscription = doc.data();
+              subscriptions.add(SubscriptionModel.fromJson(subscription));
+              continue externeLoop;
+            }
           }
         }
       }
 
-      if (subscription != null) {
-        return Success(SubscriptionModel.fromJson(subscription));
+      if (subscriptions.isNotEmpty) {
+        return Success(subscriptions);
       } else {
         return null;
       }
@@ -64,25 +68,35 @@ class SubscriptionRepositoryImpl implements SubscriptionRepository {
   }
 
   @override
-  Future<ResultDart<SubscriptionModel, String>> addSubscription(
-    String? userUid,
-    DateTime startAt,
-    DateTime expireAt,
-    List<String>? subjects,
-    double? price,
-  ) async {
+  Future<ResultDart<List<SubscriptionModel>, String>> addSubscriptions({
+    required List<SubscriptionModel> subscriptions,
+  }) async {
     try {
-      final subscription = <String, dynamic>{
-        "userUid": userUid,
-        "startAt": startAt,
-        "expireAt": expireAt,
-        "subjects": subjects,
-        "price": price,
-      };
+      List<SubscriptionModel> subscriptions_ = [];
 
-      await _firebaseFirestore.collection("subscriptions").add(subscription);
+      for (var subscription in subscriptions) {
+        var subscription_ = <String, dynamic>{
+          "userUid": subscription.userUid,
+          "startAt": subscription.startAt,
+          "expireAt": subscription.expireAt,
+          "subject": subscription.subject,
+          "price": subscription.price,
+        };
 
-      return Success(SubscriptionModel.fromJson(subscription));
+        await _firebaseFirestore
+            .collection(
+              "subscriptions_${helpers.getSubjectShortName(subject: subscription.subject)}",
+            )
+            .add(subscription_);
+
+        subscriptions_.add(SubscriptionModel.fromJson(subscription_));
+      }
+
+      if (subscriptions_.isNotEmpty) {
+        return Success(subscriptions_);
+      } else {
+        return Failure("Aucun abonnement enrégistré");
+      }
     } on FirebaseException catch (e) {
       return Failure(errorMessageWithCode(e: e) as String);
     } catch (e) {

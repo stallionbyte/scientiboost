@@ -11,10 +11,7 @@ _SubscriptionModel _$SubscriptionModelFromJson(Map<String, dynamic> json) =>
       userUid: json['userUid'] as String?,
       startAt: _timestampToDateTime(json['startAt']),
       expireAt: _timestampToDateTime(json['expireAt']),
-      subjects:
-          (json['subjects'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList(),
+      subject: json['subject'] as String,
       price: (json['price'] as num?)?.toDouble(),
     );
 
@@ -23,6 +20,6 @@ Map<String, dynamic> _$SubscriptionModelToJson(_SubscriptionModel instance) =>
       'userUid': instance.userUid,
       'startAt': _dateTimeToTimestamp(instance.startAt),
       'expireAt': _dateTimeToTimestamp(instance.expireAt),
-      'subjects': instance.subjects,
+      'subject': instance.subject,
       'price': instance.price,
     };

@@ -11,7 +11,7 @@ abstract class InternetRepository {
 class InternetRepositoryImpl implements InternetRepository {
   @override
   Future<ResultDart<int, String>> checkInternetAccess() async {
-    const int timeOut = 10;
+    const int timeOut = 5;
 
     try {
       final response = await http

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:scientiboost/core/providers.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 class ButtonExoExam extends ConsumerStatefulWidget {
   const ButtonExoExam({
@@ -46,7 +48,7 @@ class _ButtonExoExamState extends ConsumerState<ButtonExoExam> {
                     .goToExo(route: widget.route);
               }
               : () {
-                ref.read(authViewModelProvider.notifier).goToSignIn();
+                ref.read(goRouterProvider).push("/signin");
               },
       child: Row(
         mainAxisSize: MainAxisSize.min, // Ajuste la taille du Row au contenu
@@ -56,13 +58,18 @@ class _ButtonExoExamState extends ConsumerState<ButtonExoExam> {
             style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
           SizedBox(width: 8),
+
           Consumer(
             builder: (context, ref, child) {
               final subscriptionState = ref.watch(
                 subscriptionViewModelProvider,
               );
 
-              if (subscriptionState case SubscriptionLoading()) {
+              final internetState = ref.watch(internetViewmodelProvider);
+
+              if (internetState case InternetLoading()) {
+                return CircularProgressIndicator(color: Colors.white);
+              } else if (subscriptionState case SubscriptionLoading()) {
                 return CircularProgressIndicator(color: Colors.white);
               } else {
                 return Icon(Icons.arrow_forward, color: Colors.white, size: 20);

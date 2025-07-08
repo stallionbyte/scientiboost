@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
+import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
 class ExosScreen extends ConsumerStatefulWidget {
   const ExosScreen({super.key});
@@ -15,6 +17,38 @@ class ExosScreen extends ConsumerStatefulWidget {
 class _ExosScreenState extends ConsumerState<ExosScreen> {
   @override
   Widget build(BuildContext context) {
+    ref.listen(internetViewmodelProvider, (previous, next) {
+      if (next case InternetError(:final message)) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            backgroundColor: Colors.red,
+            content: Row(
+              children: [
+                Icon(Icons.cloud_off_rounded, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text(message)),
+              ],
+            ),
+          );
+        }
+      } else if (next case InternetIsNotConnected()) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            backgroundColor: Colors.red,
+            content: Row(
+              children: [
+                Icon(Icons.signal_wifi_off_rounded, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text(InternetConstants.connexionError)),
+              ],
+            ),
+          );
+        }
+      }
+    });
+
     return _buildPage();
   }
 
@@ -121,7 +155,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             return ListTile(
               title: const Text(
                 'chapitre 11: le noyau atomique',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 16),
               ),
             );
           },

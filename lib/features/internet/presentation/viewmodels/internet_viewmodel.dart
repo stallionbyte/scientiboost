@@ -47,10 +47,6 @@ class InternetViewmodel extends _$InternetViewmodel {
         }
       },
     );
-
-    print('*******************************************');
-    print('in checkInternetAccess end');
-    print(state);
   }
 
   void setState(InternetState state_) {

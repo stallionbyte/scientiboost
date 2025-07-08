@@ -6,7 +6,7 @@ part of 'internet_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$internetViewmodelHash() => r'1df8d053b1ef93afb694c13794fef7df3c10410b';
+String _$internetViewmodelHash() => r'8058feaaec62b04ece73f4d5fc1cd021eae4e4f4';
 
 /// See also [InternetViewmodel].
 @ProviderFor(InternetViewmodel)

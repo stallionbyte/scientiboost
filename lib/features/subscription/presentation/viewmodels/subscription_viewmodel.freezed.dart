@@ -109,76 +109,73 @@ String toString() {
 /// @nodoc
 
 
-class SubscriptionPending implements SubscriptionState {
-  const SubscriptionPending(this.subscription);
+class SubscriptionsPending implements SubscriptionState {
+  const SubscriptionsPending(final  List<SubscriptionModel> subscriptions): _subscriptions = subscriptions;
   
 
- final  SubscriptionModel subscription;
+ final  List<SubscriptionModel> _subscriptions;
+ List<SubscriptionModel> get subscriptions {
+  if (_subscriptions is EqualUnmodifiableListView) return _subscriptions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_subscriptions);
+}
+
 
 /// Create a copy of SubscriptionState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SubscriptionPendingCopyWith<SubscriptionPending> get copyWith => _$SubscriptionPendingCopyWithImpl<SubscriptionPending>(this, _$identity);
+$SubscriptionsPendingCopyWith<SubscriptionsPending> get copyWith => _$SubscriptionsPendingCopyWithImpl<SubscriptionsPending>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubscriptionPending&&(identical(other.subscription, subscription) || other.subscription == subscription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubscriptionsPending&&const DeepCollectionEquality().equals(other._subscriptions, _subscriptions));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,subscription);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_subscriptions));
 
 @override
 String toString() {
-  return 'SubscriptionState.subscriptionPending(subscription: $subscription)';
+  return 'SubscriptionState.subscriptionsPending(subscriptions: $subscriptions)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SubscriptionPendingCopyWith<$Res> implements $SubscriptionStateCopyWith<$Res> {
-  factory $SubscriptionPendingCopyWith(SubscriptionPending value, $Res Function(SubscriptionPending) _then) = _$SubscriptionPendingCopyWithImpl;
+abstract mixin class $SubscriptionsPendingCopyWith<$Res> implements $SubscriptionStateCopyWith<$Res> {
+  factory $SubscriptionsPendingCopyWith(SubscriptionsPending value, $Res Function(SubscriptionsPending) _then) = _$SubscriptionsPendingCopyWithImpl;
 @useResult
 $Res call({
- SubscriptionModel subscription
+ List<SubscriptionModel> subscriptions
 });
 
 
-$SubscriptionModelCopyWith<$Res> get subscription;
+
 
 }
 /// @nodoc
-class _$SubscriptionPendingCopyWithImpl<$Res>
-    implements $SubscriptionPendingCopyWith<$Res> {
-  _$SubscriptionPendingCopyWithImpl(this._self, this._then);
+class _$SubscriptionsPendingCopyWithImpl<$Res>
+    implements $SubscriptionsPendingCopyWith<$Res> {
+  _$SubscriptionsPendingCopyWithImpl(this._self, this._then);
 
-  final SubscriptionPending _self;
-  final $Res Function(SubscriptionPending) _then;
+  final SubscriptionsPending _self;
+  final $Res Function(SubscriptionsPending) _then;
 
 /// Create a copy of SubscriptionState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? subscription = null,}) {
-  return _then(SubscriptionPending(
-null == subscription ? _self.subscription : subscription // ignore: cast_nullable_to_non_nullable
-as SubscriptionModel,
+@pragma('vm:prefer-inline') $Res call({Object? subscriptions = null,}) {
+  return _then(SubscriptionsPending(
+null == subscriptions ? _self._subscriptions : subscriptions // ignore: cast_nullable_to_non_nullable
+as List<SubscriptionModel>,
   ));
 }
 
-/// Create a copy of SubscriptionState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SubscriptionModelCopyWith<$Res> get subscription {
-  
-  return $SubscriptionModelCopyWith<$Res>(_self.subscription, (value) {
-    return _then(_self.copyWith(subscription: value));
-  });
-}
+
 }
 
 /// @nodoc
@@ -217,10 +214,16 @@ String toString() {
 
 
 class Subscribed implements SubscriptionState {
-  const Subscribed(this.subscription);
+  const Subscribed(final  List<SubscriptionModel> subscriptions): _subscriptions = subscriptions;
   
 
- final  SubscriptionModel subscription;
+ final  List<SubscriptionModel> _subscriptions;
+ List<SubscriptionModel> get subscriptions {
+  if (_subscriptions is EqualUnmodifiableListView) return _subscriptions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_subscriptions);
+}
+
 
 /// Create a copy of SubscriptionState
 /// with the given fields replaced by the non-null parameter values.
@@ -232,16 +235,16 @@ $SubscribedCopyWith<Subscribed> get copyWith => _$SubscribedCopyWithImpl<Subscri
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Subscribed&&(identical(other.subscription, subscription) || other.subscription == subscription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Subscribed&&const DeepCollectionEquality().equals(other._subscriptions, _subscriptions));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,subscription);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_subscriptions));
 
 @override
 String toString() {
-  return 'SubscriptionState.subscribed(subscription: $subscription)';
+  return 'SubscriptionState.subscribed(subscriptions: $subscriptions)';
 }
 
 
@@ -252,11 +255,11 @@ abstract mixin class $SubscribedCopyWith<$Res> implements $SubscriptionStateCopy
   factory $SubscribedCopyWith(Subscribed value, $Res Function(Subscribed) _then) = _$SubscribedCopyWithImpl;
 @useResult
 $Res call({
- SubscriptionModel subscription
+ List<SubscriptionModel> subscriptions
 });
 
 
-$SubscriptionModelCopyWith<$Res> get subscription;
+
 
 }
 /// @nodoc
@@ -269,23 +272,14 @@ class _$SubscribedCopyWithImpl<$Res>
 
 /// Create a copy of SubscriptionState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? subscription = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? subscriptions = null,}) {
   return _then(Subscribed(
-null == subscription ? _self.subscription : subscription // ignore: cast_nullable_to_non_nullable
-as SubscriptionModel,
+null == subscriptions ? _self._subscriptions : subscriptions // ignore: cast_nullable_to_non_nullable
+as List<SubscriptionModel>,
   ));
 }
 
-/// Create a copy of SubscriptionState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SubscriptionModelCopyWith<$Res> get subscription {
-  
-  return $SubscriptionModelCopyWith<$Res>(_self.subscription, (value) {
-    return _then(_self.copyWith(subscription: value));
-  });
-}
+
 }
 
 /// @nodoc

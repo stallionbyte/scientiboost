@@ -175,16 +175,19 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
       builder: (context, ref, child) {
         final subscriptionState = ref.watch(subscriptionViewModelProvider);
 
-        if (subscriptionState case Subscribed(:final subscription)) {
+        if (subscriptionState case Subscribed(:final subscriptions)) {
           if (ref
               .read(subscriptionViewModelProvider.notifier)
-              .isExpired(date: subscription.expireAt)) {
-            return UnsubscribedMessage();
-          } else {
+              .isSubscribed(
+                subject: widget.matiere,
+                subscriptions: subscriptions,
+              )) {
             return widget.correction;
+          } else {
+            return UnsubscribedMessage(subject: widget.matiere);
           }
         } else {
-          return UnsubscribedMessage();
+          return UnsubscribedMessage(subject: widget.matiere);
         }
       },
     );

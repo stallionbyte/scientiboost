@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+
 import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
+
+import 'package:scientiboost/core/common_widgets/titre.dart';
+import 'package:scientiboost/core/helpers.dart' as helpers;
 
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 
@@ -33,10 +37,59 @@ class _SubscriptionInfosScreenState
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(internetViewmodelProvider, (previous, next) {
+      if (next case InternetError(:final message)) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            backgroundColor: Colors.red,
+            content: Row(
+              children: [
+                Icon(Icons.cloud_off_rounded, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text(message)),
+              ],
+            ),
+          );
+        }
+      } else if (next case InternetIsNotConnected()) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            backgroundColor: Colors.red,
+            content: Row(
+              children: [
+                Icon(Icons.signal_wifi_off_rounded, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text(InternetConstants.connexionError)),
+              ],
+            ),
+          );
+        }
+      }
+    });
+
+    ref.listen(subscriptionViewModelProvider, (previous, next) {
+      if (next case SubscriptionError(:final message)) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.error_rounded, color: Colors.white),
+                Text(message, style: const TextStyle(color: Colors.white)),
+              ],
+            ),
+            backgroundColor: Colors.red,
+          );
+        }
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Abonnement',
+          'Abonnements',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
@@ -60,11 +113,8 @@ class _SubscriptionInfosScreenState
           isAuth
               ? () {
                 ref
-                    .read(internetViewmodelProvider.notifier)
-                    .checkInternetAccess();
-                ref
                     .read(subscriptionViewModelProvider.notifier)
-                    .checkSubscription();
+                    .checkSubscriptionsInfos();
               }
               : () {
                 ref.read(goRouterProvider).push("/signin");
@@ -77,13 +127,32 @@ class _SubscriptionInfosScreenState
         padding: EdgeInsets.all(12),
       ),
 
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Vérifier mon abonnement",
+            "Vérifier abonnement(s)",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(width: 8),
+
+          Consumer(
+            builder: (context, ref, child) {
+              final subscriptionState = ref.watch(
+                subscriptionViewModelProvider,
+              );
+
+              final internetState = ref.watch(internetViewmodelProvider);
+
+              if (internetState case InternetLoading()) {
+                return CircularProgressIndicator(color: Colors.white);
+              } else if (subscriptionState case SubscriptionLoading()) {
+                return CircularProgressIndicator(color: Colors.white);
+              } else {
+                return Icon(Icons.arrow_forward, color: Colors.white, size: 20);
+              }
+            },
           ),
         ],
       ),
@@ -112,19 +181,7 @@ class _SubscriptionInfosScreenState
   }
 
   Widget _buildInitialContent() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            SubscriptionConstants.subscriptionInfosInitialMessage,
-            style: TextStyle(fontSize: 16.0),
-          ),
-          const SizedBox(height: 20.0),
-          _checkButton(),
-        ],
-      ),
-    );
+    return Center(child: _checkButton());
   }
 
   Widget _buildContentWithIcon({
@@ -152,37 +209,49 @@ class _SubscriptionInfosScreenState
     );
   }
 
-  Widget _buildSubscribedContent(SubscriptionModel subscription) {
+  Widget _buildSubscribedContent(List<SubscriptionModel> subscriptions) {
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildInfoItem(
-            'Date de début',
-            DateFormat.yMMMd("fr_FR").format(subscription.startAt),
-          ),
-          _buildInfoItem(
-            'Date de fin',
-            DateFormat.yMMMd("fr_FR").format(subscription.expireAt),
-          ),
-          _buildInfoItem(
-            'Matière(s)',
-            subscription.subjects?.join(", ") ?? 'Aucune',
-          ),
-          _buildInfoItem(
-            'Prix',
-            '${subscription.price?.toStringAsFixed(2) ?? '0.00'} F CFA',
-          ),
+          for (var subscription in subscriptions)
+            SizedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Titre(
+                    title: subscription.subject,
+                    fontSize: 25.0,
+                    color: Colors.blue,
+                  ),
+                  SizedBox(height: 40),
+                  _buildInfoItem(
+                    'Date de début',
+                    DateFormat.yMMMd("fr_FR").format(subscription.startAt),
+                  ),
+                  _buildInfoItem(
+                    'Date de fin',
+                    DateFormat.yMMMd("fr_FR").format(subscription.expireAt),
+                  ),
+                  _buildInfoItem('Matière', subscription.subject),
+                  _buildInfoItem(
+                    'Prix',
+                    '${subscription.price?.toStringAsFixed(2)} F CFA',
+                  ),
 
-          _buildInfoItem(
-            'Important',
-            SubscriptionConstants.subscriptionInfosResubscriptionCondition,
-            valueColor: Colors.red,
-          ),
+                  _buildInfoItem(
+                    'Important',
+                    "${SubscriptionConstants.subscriptionInfosResubscriptionCondition} à ${subscription.subject}",
+                    valueColor: Colors.red,
+                  ),
 
-          const SizedBox(height: 40),
+                  const SizedBox(height: 40),
+                ],
+              ),
+            ),
 
           _checkButton(),
+
+          const SizedBox(height: 80),
         ],
       ),
     );
@@ -192,34 +261,14 @@ class _SubscriptionInfosScreenState
     return Consumer(
       builder: (context, ref, child) {
         final subscriptionState = ref.watch(subscriptionViewModelProvider);
-        final internetState = ref.watch(internetViewmodelProvider);
 
-        if (subscriptionState case SubscriptionLoading()) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (internetState case InternetLoading()) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (internetState case InternetIsNotConnected()) {
-          return _buildContentWithIcon(
-            message: InternetConstants.connexionError,
-            icon_: Icons.signal_wifi_off_rounded,
-          );
-        } else if (internetState case InternetError(:final message)) {
-          return _buildContentWithIcon(
-            message: message,
-            icon_: Icons.cloud_off_rounded,
-          );
-        } else if (subscriptionState case SubscriptionError(:final message)) {
-          return _buildContentWithIcon(
-            message: message,
-            icon_: Icons.error_rounded,
-          );
-        } else if (subscriptionState case Unsubscribed()) {
+        if (subscriptionState case Unsubscribed()) {
           return _buildContentWithIcon(
             message: SubscriptionConstants.subscriptionInfosUnsubscribedMessage,
             icon_: Icons.error_rounded,
           );
-        } else if (subscriptionState case Subscribed(:final subscription)) {
-          return _buildSubscribedContent(subscription);
+        } else if (subscriptionState case Subscribed(:final subscriptions)) {
+          return _buildSubscribedContent(subscriptions);
         } else {
           return _buildInitialContent();
         }

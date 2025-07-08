@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
+import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 class ExamsScreen extends ConsumerStatefulWidget {
   const ExamsScreen({super.key});
@@ -14,6 +16,37 @@ class ExamsScreen extends ConsumerStatefulWidget {
 class _ExamsScreenState extends ConsumerState<ExamsScreen> {
   @override
   Widget build(BuildContext context) {
+    ref.listen(internetViewmodelProvider, (previous, next) {
+      if (next case InternetError(:final message)) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            backgroundColor: Colors.red,
+            content: Row(
+              children: [
+                Icon(Icons.cloud_off_rounded, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text(message)),
+              ],
+            ),
+          );
+        }
+      } else if (next case InternetIsNotConnected()) {
+        if (mounted) {
+          helpers.showSnackBar(
+            context: context,
+            backgroundColor: Colors.red,
+            content: Row(
+              children: [
+                Icon(Icons.signal_wifi_off_rounded, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text(InternetConstants.connexionError)),
+              ],
+            ),
+          );
+        }
+      }
+    });
     return _buildPage();
   }
 

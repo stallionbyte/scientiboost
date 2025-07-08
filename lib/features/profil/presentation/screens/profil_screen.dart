@@ -50,7 +50,7 @@ class ProfilScreen extends ConsumerWidget {
             const SizedBox(height: 20),
 
             ButtonArrowForward(
-              text: 'Mon abonnement',
+              text: 'abonnement(s)',
               onPressed: () {
                 ref.read(goRouterProvider).push('/subscription-infos');
               },

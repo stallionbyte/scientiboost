@@ -39,7 +39,7 @@ class SubscriptionConstants {
   }
 
   static const String subscriptionInfosInitialMessage =
-      "Veuillez vérifier votre connexion internet avant de commencer";
+      "Veuillez vérifier votre connexion internet avant de commencer.";
 
   static const String subscriptionInfosUnsubscribedMessage =
       "Vous n'avez pas d'abonnement valide actuellement";
@@ -48,6 +48,9 @@ class SubscriptionConstants {
       'Vous devez attendre la fin de cet abonnement avant de vous réabonner';
 
   static const subscriptionInfosUnauthentificated = "Vous n'ête pas connecté";
+
+  static const subscriptionsForbiden =
+      "Impossible de s'abonner dans une matière avant la date d'expiration";
 }
 
 class VideoConstants {
