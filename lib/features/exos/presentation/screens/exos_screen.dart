@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
 import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 import 'package:scientiboost/core/constants.dart';
@@ -53,44 +54,59 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
   }
 
   Widget _buildPage() {
-    return Column(
-      children: [
-        _buildPageHeader(),
+    return Consumer(
+      builder: (context, ref, child) {
+        final internetState = ref.watch(internetViewmodelProvider);
+        final subscriptionState = ref.watch(subscriptionViewModelProvider);
 
-        SizedBox(height: 40),
+        if (internetState case InternetLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else if (subscriptionState case SubscriptionLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildPageHeader(),
 
-        _buildTitle(title: "Physique", fontSize: 30.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "Physique", fontSize: 30.0),
 
-        _buildTitle(title: "Nucléaire", fontSize: 20.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "Nucléaire", fontSize: 20.0),
 
-        _buildNuclaireAccordion(),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildNuclaireAccordion(),
 
-        _buildTitle(title: "Mécanique", fontSize: 20.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "Mécanique", fontSize: 20.0),
 
-        _buildTitle(title: "Electricité", fontSize: 20.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "Electricité", fontSize: 20.0),
 
-        _buildTitle(title: "Chimie", fontSize: 30.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "Chimie", fontSize: 30.0),
 
-        _buildTitle(title: "Organique", fontSize: 20.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "Organique", fontSize: 20.0),
 
-        _buildTitle(title: "Minérale", fontSize: 20.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
-      ],
+                _buildTitle(title: "Minérale", fontSize: 20.0),
+
+                SizedBox(height: 40),
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 
@@ -166,6 +182,10 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 ButtonExoExam(
                   text: 'Exercice 1',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
+                ),
+                ButtonExoExam(
+                  text: 'Exercice 2',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
                 ),
               ],
             ),

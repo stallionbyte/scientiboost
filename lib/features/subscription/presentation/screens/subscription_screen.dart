@@ -91,7 +91,7 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: SafeArea(child: SingleChildScrollView(child: _buildForm())),
+      body: SafeArea(child: _buildForm()),
     );
   }
 
@@ -228,31 +228,46 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
   }
 
   Widget _buildForm() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    return Consumer(
+      builder: (context, ref, child) {
+        final internetState = ref.watch(internetViewmodelProvider);
+        final subscriptionState = ref.watch(subscriptionViewModelProvider);
 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(height: 40),
+        if (internetState case InternetLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else if (subscriptionState case SubscriptionLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
 
-          Titre(title: "Sélectionnez vos matières :"),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 40),
 
-          // Checkbox Physique-Chimie
-          _buildCheckBoxPc(),
+                  Titre(title: "Sélectionnez vos matières :"),
 
-          // Checkbox SVT
-          _buildCheckBoxSvt(),
+                  // Checkbox Physique-Chimie
+                  _buildCheckBoxPc(),
 
-          // Checkbox Mathématiques
-          _buildCheckBoxMath(),
+                  // Checkbox SVT
+                  _buildCheckBoxSvt(),
 
-          const SizedBox(height: 20),
+                  // Checkbox Mathématiques
+                  _buildCheckBoxMath(),
 
-          // Bouton S'abonner
-          _buildSubscriptionButton(),
-        ],
-      ),
+                  const SizedBox(height: 20),
+
+                  // Bouton S'abonner
+                  _buildSubscriptionButton(),
+                ],
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }

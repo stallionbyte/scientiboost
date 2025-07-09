@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
+
 import 'package:http/http.dart' as http;
 
 void showSnackBar({
@@ -77,5 +81,43 @@ Future<bool> hasInternet() async {
     return response.statusCode == 200;
   } catch (e) {
     return false;
+  }
+}
+
+Widget buildUnSignUpOrPasswordForgetOrSignInContent({
+  required GoRouter router,
+  required AuthState authState,
+  required String question,
+  required String routeText,
+  required String route,
+}) {
+  if (authState is! Authenticated) {
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(color: Colors.black, fontSize: 16.0),
+        children: <InlineSpan>[
+          TextSpan(text: question),
+          WidgetSpan(
+            alignment: PlaceholderAlignment.baseline,
+            baseline: TextBaseline.alphabetic,
+            child: GestureDetector(
+              onTap: () {
+                router.push(route);
+              },
+              child: Text(
+                routeText,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  } else {
+    return SizedBox.shrink();
   }
 }

@@ -14,7 +14,7 @@ part 'subscription_viewmodel.freezed.dart';
 part 'subscription_viewmodel.g.dart';
 
 List<SubscriptionModel> _subscriptionsPending = [];
-List<SubscriptionModel?> forbidenSubscriptions = [];
+List<SubscriptionModel?> _forbidenSubscriptions = [];
 
 // État immuable de la souscription
 @freezed
@@ -45,9 +45,10 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
 
     state = SubscriptionState.subscriptionLoading();
 
-    await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
-
-    final hasInternet = await helpers.hasInternet();
+    final hasInternet =
+        await ref
+            .read(internetViewmodelProvider.notifier)
+            .checkInternetAccess();
 
     if (hasInternet) {
       await checkSubscriptions();
@@ -61,9 +62,10 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
 
     state = SubscriptionState.subscriptionLoading();
 
-    await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
-
-    final hasInternet = await helpers.hasInternet();
+    final hasInternet =
+        await ref
+            .read(internetViewmodelProvider.notifier)
+            .checkInternetAccess();
 
     if (hasInternet) {
       await ref
@@ -151,17 +153,12 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     await ref.read(goRouterProvider).push("/checkout");
   }
 
-  Future<void> checkSubscriptionsAndInternet() async {
-    await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
-    await checkSubscriptions();
-  }
-
   void makeVerifiedSubscriptionPending({
     required String subject,
     required List<SubscriptionModel> subscriptions,
   }) {
     if (isSubscribed(subject: subject, subscriptions: subscriptions)) {
-      forbidenSubscriptions.add(
+      _forbidenSubscriptions.add(
         getSubscription(subject: subject, subscriptions: subscriptions),
       );
     } else {
@@ -178,9 +175,10 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
 
     state = SubscriptionState.subscriptionLoading();
 
-    await ref.read(internetViewmodelProvider.notifier).checkInternetAccess();
-
-    final hasInternet = await helpers.hasInternet();
+    final hasInternet =
+        await ref
+            .read(internetViewmodelProvider.notifier)
+            .checkInternetAccess();
 
     if (hasInternet) {
       _subscriptionsPending = [];
@@ -188,7 +186,7 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
       await checkSubscriptions();
 
       if (state case Subscribed(:final subscriptions)) {
-        forbidenSubscriptions = [];
+        _forbidenSubscriptions = [];
 
         if (physiqueChimie) {
           makeVerifiedSubscriptionPending(
@@ -224,14 +222,14 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
         }
       }
 
-      if (forbidenSubscriptions.isEmpty) {
+      if (_forbidenSubscriptions.isEmpty) {
         goToCheckout();
       } else {
         StringBuffer forbidenMessage = StringBuffer(
           "Vous êtes déja abonné(e) à: \n",
         );
 
-        for (var forbidenSubscription in forbidenSubscriptions) {
+        for (var forbidenSubscription in _forbidenSubscriptions) {
           forbidenMessage.write(
             "- ${helpers.getSubjectShortName(subject: forbidenSubscription?.subject as String).toUpperCase()}: expire le ${DateFormat.yMMMd("fr_FR").format(forbidenSubscription?.expireAt as DateTime)} \n",
           );

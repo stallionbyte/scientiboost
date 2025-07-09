@@ -7,7 +7,7 @@ part of 'subscription_viewmodel.dart';
 // **************************************************************************
 
 String _$subscriptionViewModelHash() =>
-    r'fa4a1dc4d460c74f5080bd213275b2d5516cf94d';
+    r'c4b2411c44f4e51d90ebc5878319b0b255f92c3c';
 
 /// See also [SubscriptionViewModel].
 @ProviderFor(SubscriptionViewModel)

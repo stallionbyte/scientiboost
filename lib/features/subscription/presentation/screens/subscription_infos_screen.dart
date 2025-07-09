@@ -101,8 +101,17 @@ class _SubscriptionInfosScreenState
 
   Widget _checkButton() {
     final authState = ref.watch(authViewModelProvider);
+    final subscriptionState = ref.watch(subscriptionViewModelProvider);
 
+    final internetState = ref.watch(internetViewmodelProvider);
     bool isAuth = false;
+    bool isLoading = false;
+
+    if (internetState case InternetLoading()) {
+      isLoading = true;
+    } else if (subscriptionState case SubscriptionLoading()) {
+      isLoading = true;
+    }
 
     if (authState case Authenticated()) {
       isAuth = true;
@@ -112,6 +121,9 @@ class _SubscriptionInfosScreenState
       onPressed:
           isAuth
               ? () {
+                if (isLoading) {
+                  return;
+                }
                 ref
                     .read(subscriptionViewModelProvider.notifier)
                     .checkSubscriptionsInfos();
@@ -137,23 +149,9 @@ class _SubscriptionInfosScreenState
           ),
           SizedBox(width: 8),
 
-          Consumer(
-            builder: (context, ref, child) {
-              final subscriptionState = ref.watch(
-                subscriptionViewModelProvider,
-              );
-
-              final internetState = ref.watch(internetViewmodelProvider);
-
-              if (internetState case InternetLoading()) {
-                return CircularProgressIndicator(color: Colors.white);
-              } else if (subscriptionState case SubscriptionLoading()) {
-                return CircularProgressIndicator(color: Colors.white);
-              } else {
-                return Icon(Icons.arrow_forward, color: Colors.white, size: 20);
-              }
-            },
-          ),
+          isLoading
+              ? CircularProgressIndicator(color: Colors.white)
+              : Icon(Icons.arrow_forward, color: Colors.white, size: 20),
         ],
       ),
     );

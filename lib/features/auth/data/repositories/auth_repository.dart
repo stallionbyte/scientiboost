@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:result_dart/result_dart.dart';
+import 'dart:async';
 
 import 'package:scientiboost/core/error/firebase/error.dart';
 
@@ -36,10 +37,9 @@ class AuthRepositoryImpl implements AuthRepository {
     String password,
   ) async {
     try {
-      final credential = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final credential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .timeout(Duration(seconds: 10));
       final user = credential.user!;
       return Success(
         UserModel(
@@ -48,9 +48,17 @@ class AuthRepositoryImpl implements AuthRepository {
           emailVerified: user.emailVerified,
         ),
       );
+
+      //rendre les messages d'erreur explicite
     } on FirebaseAuthException catch (e) {
-      return Failure(errorMessageWithCode(authE: e) as String);
+      print("*********************************************************");
+      print(e);
+      return Failure(errorMessageExplicit(authE: e) as String);
+    } on TimeoutException catch (e) {
+      return Failure(errorMessageExplicit(timeE: e) as String);
     } catch (e) {
+      print("*********************************************************");
+      print(e);
       return Failure(Constants.genericError);
     }
   }
@@ -61,10 +69,9 @@ class AuthRepositoryImpl implements AuthRepository {
     String password,
   ) async {
     try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final credential = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .timeout(Duration(seconds: 10));
       final user = credential.user!;
 
       return Success(
@@ -74,8 +81,12 @@ class AuthRepositoryImpl implements AuthRepository {
           emailVerified: user.emailVerified,
         ),
       );
+
+      //rendre les messages d'erreur explicite
     } on FirebaseAuthException catch (e) {
-      return Failure(errorMessageWithCode(authE: e) as String);
+      return Failure(errorMessageExplicit(authE: e) as String);
+    } on TimeoutException catch (e) {
+      return Failure(errorMessageExplicit(timeE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -84,10 +95,13 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<ResultDart<Unit, String>> signOut() async {
     try {
-      await _firebaseAuth.signOut();
+      await _firebaseAuth.signOut().timeout(Duration(seconds: 10));
       return const Success(unit);
+      //rendre les messages d'erreur explicite
     } on FirebaseAuthException catch (e) {
-      return Failure(errorMessageWithCode(authE: e) as String);
+      return Failure(errorMessageExplicit(authE: e) as String);
+    } on TimeoutException catch (e) {
+      return Failure(errorMessageExplicit(timeE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -96,10 +110,15 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<ResultDart<Unit, String>> sendPasswordResetEmail(String email) async {
     try {
-      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      await _firebaseAuth
+          .sendPasswordResetEmail(email: email)
+          .timeout(Duration(seconds: 10));
       return const Success(unit);
+      //rendre les messages d'erreur explicite
     } on FirebaseAuthException catch (e) {
-      return Failure(errorMessageWithCode(authE: e) as String);
+      return Failure(errorMessageExplicit(authE: e) as String);
+    } on TimeoutException catch (e) {
+      return Failure(errorMessageExplicit(timeE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }

@@ -23,8 +23,10 @@ class InternetViewmodel extends _$InternetViewmodel {
     return InternetState.internetInitial();
   }
 
-  Future<void> checkInternetAccess() async {
+  Future<bool> checkInternetAccess() async {
     state = InternetState.internetLoading();
+
+    bool hasInternet = false;
 
     final result =
         await ref.read(internetRepositoryProvider).checkInternetAccess();
@@ -33,6 +35,7 @@ class InternetViewmodel extends _$InternetViewmodel {
       (code) {
         // handle the success here
         if (code == 200) {
+          hasInternet = true;
           return InternetState.internetIsConnected();
         } else {
           return InternetState.internetIsNotConnected();
@@ -47,6 +50,8 @@ class InternetViewmodel extends _$InternetViewmodel {
         }
       },
     );
+
+    return hasInternet;
   }
 
   void setState(InternetState state_) {

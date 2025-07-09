@@ -5,78 +5,96 @@ import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmode
 
 import 'package:scientiboost/core/helpers.dart' as helpers;
 
-class SignOutScreen extends ConsumerWidget {
+class SignOutScreen extends ConsumerStatefulWidget {
   const SignOutScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authViewModelProvider);
-    return Scaffold(
-      appBar: AppBar(title: const Text('Déconnexion')),
-      body: () {
-        if (authState case AuthLoading() || AuthInitial()) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (authState case AuthError(:final message)) {
-          helpers.scheduleShowSnackBar(
+  ConsumerState<SignOutScreen> createState() => _SignOutScreenState();
+}
+
+class _SignOutScreenState extends ConsumerState<SignOutScreen> {
+  @override
+  Widget build(BuildContext context) {
+    ref.listen(authViewModelProvider, (previous, next) {
+      if (next case AuthError(:final message)) {
+        if (mounted) {
+          helpers.showSnackBar(
             context: context,
-            content: Text(message),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.error_rounded, color: Colors.white, size: 20),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    message,
+                    style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                  ),
+                ),
+              ],
+            ),
             backgroundColor: Colors.red,
           );
-          return _buildPage(context, ref);
-        } else {
-          return _buildPage(context, ref);
         }
-      }(),
-    );
-  }
-
-  Widget _checkButton(BuildContext context, WidgetRef ref) {
-    return ElevatedButton(
-      onPressed: () {
-        if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-          return () {
-            ref.read(authViewModelProvider.notifier).signOut();
-          };
-        } else {
-          return null;
-        }
-      }(),
-
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        padding: EdgeInsets.all(12),
+      }
+    });
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Déconnexion',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
       ),
-
-      child: Text(
-        "Se déconnecter",
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        overflow: TextOverflow.ellipsis,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Center(child: _buildBody()),
+        ),
       ),
     );
   }
 
-  Widget _buildPage(BuildContext context, WidgetRef ref) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (ref.read(authViewModelProvider.notifier).isAuthenticated())
-            Text(
-              'Vous etes sur le point de vous déconnecter',
-              style: const TextStyle(color: Colors.red),
-            ),
-          if (!ref.read(authViewModelProvider.notifier).isAuthenticated())
-            Text(
-              'Vous etes déconnecté(e)',
-              style: const TextStyle(color: Colors.red),
-            ),
+  Widget _buildBody() {
+    return Consumer(
+      builder: (context, ref, child) {
+        final authState = ref.watch(authViewModelProvider);
 
-          SizedBox(height: 40),
+        if (authState case AuthLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else {
+          return _buildPage(authState: authState);
+        }
+      },
+    );
+  }
 
-          _checkButton(context, ref),
-        ],
+  Widget _buildPage({required AuthState authState}) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white, // Texte et icône blancs
+          padding: const EdgeInsets.all(14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+        ),
+        onPressed:
+            authState is Authenticated
+                ? () {
+                  ref.read(authViewModelProvider.notifier).signOut();
+                }
+                : null,
+        child: Text(
+          "Se déconnecter",
+          style: const TextStyle(color: Colors.white, fontSize: 16),
+        ),
       ),
     );
   }

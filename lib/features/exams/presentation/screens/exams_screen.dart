@@ -5,6 +5,7 @@ import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
 import 'package:scientiboost/core/helpers.dart' as helpers;
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
+import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
 class ExamsScreen extends ConsumerStatefulWidget {
   const ExamsScreen({super.key});
@@ -98,18 +99,36 @@ class _ExamsScreenState extends ConsumerState<ExamsScreen> {
   }
 
   Widget _buildPage() {
-    return Column(
-      children: [
-        _buildPageHeader(),
+    return Consumer(
+      builder: (context, ref, child) {
+        final internetState = ref.watch(internetViewmodelProvider);
+        final subscriptionState = ref.watch(subscriptionViewModelProvider);
 
-        SizedBox(height: 40),
+        if (internetState case InternetLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else if (subscriptionState case SubscriptionLoading()) {
+          return Center(child: CircularProgressIndicator(color: Colors.blue));
+        } else {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildPageHeader(),
 
-        _buildTitle(title: "BAC  D", fontSize: 30.0),
+                SizedBox(height: 40),
 
-        SizedBox(height: 40),
+                _buildTitle(title: "BAC  D", fontSize: 30.0),
 
-        ButtonExoExam(text: "2024", route: RoutesNamesConstants.pcBacD2024),
-      ],
+                SizedBox(height: 40),
+
+                ButtonExoExam(
+                  text: "2024",
+                  route: RoutesNamesConstants.pcBacD2024,
+                ),
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 }
