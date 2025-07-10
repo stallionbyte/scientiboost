@@ -209,6 +209,81 @@ class DonneesPhyNucLatexConstants {
       ],
     ),
   );
+
+  static Widget masseChlore35 = RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: TeX2SVG(
+            math: r"m(_{17}^{35}Cl) = 34,969u",
+            formulaWidgetBuilder: (context, svg) {
+              double displayFontSize = ExoConstants.displayFontSize;
+              return SvgPicture.string(
+                svg,
+                height: displayFontSize,
+                width: displayFontSize,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+
+  static WidgetSpan chlore35 = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"_{17}^{35}Cl",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan chlore36 = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"_{17}^{36}Cl",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
+
+  static WidgetSpan chlore37 = WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: TeX2SVG(
+      math: r"_{17}^{37}Cl",
+      formulaWidgetBuilder: (context, svg) {
+        double displayFontSize = ExoConstants.displayFontSize;
+        return SvgPicture.string(
+          svg,
+          height: displayFontSize * 1.2,
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        );
+      },
+    ),
+  );
 }
 
 class PhyNucLatexContants {
