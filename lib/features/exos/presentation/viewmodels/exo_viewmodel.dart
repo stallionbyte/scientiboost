@@ -1,10 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-
-import 'package:scientiboost/core/providers.dart';
-
 part 'exo_viewmodel.freezed.dart';
 part 'exo_viewmodel.g.dart';
 
@@ -37,9 +33,5 @@ class ExoViewmodel extends _$ExoViewmodel {
   String? getExoNumFromExoRoute(String route) {
     final regex = RegExp(r'exo\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
-  }
-
-  void setState(ExoState state_) {
-    state = state_;
   }
 }

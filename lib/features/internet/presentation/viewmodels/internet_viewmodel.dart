@@ -20,11 +20,11 @@ sealed class InternetState with _$InternetState {
 class InternetViewmodel extends _$InternetViewmodel {
   @override
   InternetState build() {
-    return InternetState.internetInitial();
+    return const InternetState.internetInitial();
   }
 
   Future<bool> checkInternetAccess() async {
-    state = InternetState.internetLoading();
+    state = const InternetState.internetLoading();
 
     bool hasInternet = false;
 
@@ -36,15 +36,15 @@ class InternetViewmodel extends _$InternetViewmodel {
         // handle the success here
         if (code == 200) {
           hasInternet = true;
-          return InternetState.internetIsConnected();
+          return const InternetState.internetIsConnected();
         } else {
-          return InternetState.internetIsNotConnected();
+          return const InternetState.internetIsNotConnected();
         }
       },
       (error) {
         // handle the failure here
         if (error == InternetConstants.connexionError) {
-          return InternetState.internetIsNotConnected();
+          return const InternetState.internetIsNotConnected();
         } else {
           return InternetState.internetError(error);
         }
@@ -54,19 +54,7 @@ class InternetViewmodel extends _$InternetViewmodel {
     return hasInternet;
   }
 
-  void setState(InternetState state_) {
-    state = state_;
-  }
-
-  void setStateInitial() {
-    state = InternetState.internetInitial();
-  }
-
-  bool isConnected() {
-    if (state case InternetIsConnected()) {
-      return true;
-    } else {
-      return false;
-    }
+  void setInitial() {
+    state = const InternetState.internetInitial();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:scientiboost/core/constants.dart';
 
 import 'package:scientiboost/core/providers.dart';
 import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
@@ -63,10 +64,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ButtonArrowForward(
             text: 'test',
             onPressed: () {
-              router.push('/test');
+              ref.read(goRouterProvider).push('/test');
             },
           ),
           */
+          ButtonArrowForward(
+            text: 'testVideo',
+            onPressed: () {
+              ref
+                  .read(goRouterProvider)
+                  .push(VideoConstants.pathElementChimique);
+            },
+          ),
           SizedBox(height: 40),
 
           _buildHomeCard(

@@ -62,25 +62,6 @@ import 'package:scientiboost/test_widget.dart';
 
 part 'providers.g.dart';
 
-@riverpod
-class NoSubjectIsSelected extends _$NoSubjectIsSelected {
-  // 1. La méthode `build` est obligatoire.
-  // Elle doit retourner l'état initial du provider.
-  @override
-  bool build() {
-    return false; // L'état initial est `false`
-  }
-
-  // Ou une méthode plus générique
-  void setState(bool state_) {
-    state = state_;
-  }
-
-  bool getState() {
-    return state;
-  }
-}
-
 // Fournisseur pour InternetRepository
 @riverpod
 InternetRepository internetRepository(Ref ref) {
@@ -135,18 +116,6 @@ LocalStorageInterface localStorage(Ref ref) {
   // Récupère l'instance depuis le container global
   return StorageContainer.instance.storage;
 }
-
-// Provider pour SharedPreferencesStorage
-/*
-@riverpod
-Future<LocalStorageInterface> sharedPreferences(Ref ref) async {
-  final storage = SharedPreferencesStorage();
-  await storage.init();
-  await storage.setStringList(StorageKeysConstants.favoritesExos, <String>[]);
-  await storage.setStringList(StorageKeysConstants.favoritesExams, <String>[]);
-  return storage;
-}
-*/
 
 // Provider pour vérifier si la route de l'exercice est dans les favoris
 final isFavoriteRouteProvider = Provider.family<bool, String>((

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
@@ -14,10 +15,6 @@ class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(60);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(currentPageViewModelProvider);
-    ref.watch(goRouterProvider);
-    ref.watch(authViewModelProvider);
-
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
@@ -27,7 +24,13 @@ class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
       ),
 
       title: GestureDetector(
-        onTap: () => ref.read(currentPageViewModelProvider.notifier).goToHome(),
+        onTap: () {
+          if (GoRouterState.of(context).uri.toString() == "/pages-wrapper") {
+            ref.read(currentPageViewModelProvider.notifier).setHome();
+          } else {
+            ref.read(currentPageViewModelProvider.notifier).goToHome();
+          }
+        },
         child: Image.asset('assets/icon/icon.png', width: 44, height: 44),
       ),
 

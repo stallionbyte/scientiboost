@@ -40,6 +40,38 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     return const SubscriptionState.subscriptionInitial();
   }
 
+  // sets
+
+  void setInitial() {
+    state = const SubscriptionInitial();
+  }
+
+  void setLoading() {
+    state = const SubscriptionState.subscriptionLoading();
+  }
+
+  // checks
+
+  Future<void> checkSubscriptions() async {
+    state = const SubscriptionState.subscriptionLoading();
+
+    final result =
+        await ref.read(subscriptionRepositoryProvider).validSubscriptions();
+
+    if (result == null) {
+      state = const SubscriptionState.unsubscribed();
+    } else {
+      state = result.fold(
+        (subscriptions) {
+          return SubscriptionState.subscribed(subscriptions);
+        },
+        (error) {
+          return SubscriptionState.subscriptionError(error);
+        },
+      );
+    }
+  }
+
   Future<void> checkSubscriptionsInfos() async {
     final state_ = state;
 
@@ -57,46 +89,6 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     }
   }
 
-  Future<void> goToExo({required String route}) async {
-    final state_ = state;
-
-    state = SubscriptionState.subscriptionLoading();
-
-    final hasInternet =
-        await ref
-            .read(internetViewmodelProvider.notifier)
-            .checkInternetAccess();
-
-    if (hasInternet) {
-      await ref
-          .read(subscriptionViewModelProvider.notifier)
-          .checkSubscriptions();
-      ref.read(goRouterProvider).push(route);
-    } else {
-      state = state_;
-    }
-  }
-
-  void setState(SubscriptionState state_) {
-    state = state_;
-  }
-
-  List<SubscriptionModel> getSubscriptionsPending() {
-    return _subscriptionsPending;
-  }
-
-  void setInitial() {
-    state = SubscriptionInitial();
-  }
-
-  void setLoading() {
-    state = SubscriptionState.subscriptionLoading();
-  }
-
-  void initializeSubscriptionsPending() {
-    _subscriptionsPending = [];
-  }
-
   bool isSubscribed({
     required String subject,
     required List<SubscriptionModel> subscriptions,
@@ -112,39 +104,41 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     return isSubscribed;
   }
 
-  SubscriptionModel? getSubscription({
-    required String subject,
-    required List<SubscriptionModel> subscriptions,
-  }) {
-    SubscriptionModel? subscription_;
+  // handle exos
 
-    for (var subscription in subscriptions) {
-      if (subscription.subject == subject) {
-        subscription_ = subscription;
-      }
-    }
+  Future<void> goToExo({required String route}) async {
+    final state_ = state;
 
-    return subscription_;
-  }
-
-  Future<void> checkSubscriptions() async {
     state = SubscriptionState.subscriptionLoading();
 
-    final result =
-        await ref.read(subscriptionRepositoryProvider).validSubscriptions();
+    final hasInternet =
+        await ref
+            .read(internetViewmodelProvider.notifier)
+            .checkInternetAccess();
 
-    if (result == null) {
-      state = SubscriptionState.unsubscribed();
+    if (hasInternet) {
+      await checkSubscriptions();
+      ref.read(goRouterProvider).push(route);
     } else {
-      state = result.fold(
-        (subscriptions) {
-          return SubscriptionState.subscribed(subscriptions);
-        },
-        (error) {
-          return SubscriptionState.subscriptionError(error);
-        },
-      );
+      state = state_;
     }
+  }
+
+  // chekout
+
+  Future<void> addSubscriptions({
+    required List<SubscriptionModel> subscriptions,
+  }) async {
+    state = const SubscriptionState.subscriptionLoading();
+
+    final result = await ref
+        .read(subscriptionRepositoryProvider)
+        .addSubscriptions(subscriptions: subscriptions);
+
+    state = result.fold(
+      (subscriptions) => SubscriptionState.subscribed(subscriptions),
+      (error) => SubscriptionState.subscriptionError(error),
+    );
   }
 
   Future<void> goToCheckout() async {
@@ -152,6 +146,8 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     _subscriptionsPending = [];
     await ref.read(goRouterProvider).push("/checkout");
   }
+
+  // Handle Pending
 
   void makeVerifiedSubscriptionPending({
     required String subject,
@@ -166,6 +162,26 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     }
   }
 
+  void makeSubscriptionPending({required String subject}) {
+    final userUid = ref.read(authViewModelProvider.notifier).getUser()?.uid;
+
+    final price = 5000.0;
+
+    DateTime startAt = DateTime.now();
+
+    DateTime expireAt = DateTime.now().add(const Duration(days: 365));
+
+    final subscription = SubscriptionModel(
+      userUid: userUid,
+      startAt: startAt,
+      expireAt: expireAt,
+      subject: subject,
+      price: price,
+    );
+
+    _subscriptionsPending.add(subscription);
+  }
+
   Future<void> makeSubscriptionsPending({
     required bool physiqueChimie,
     required bool svt,
@@ -173,7 +189,7 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
   }) async {
     final state_ = state;
 
-    state = SubscriptionState.subscriptionLoading();
+    state = const SubscriptionState.subscriptionLoading();
 
     final hasInternet =
         await ref
@@ -244,48 +260,18 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     }
   }
 
-  void makeSubscriptionPending({required String subject}) {
-    final userUid = ref.read(authViewModelProvider.notifier).getUser()?.uid;
+  // others
 
-    final price = 5000.0;
-
-    DateTime startAt = DateTime.now();
-
-    DateTime expireAt = DateTime.now().add(const Duration(days: 365));
-
-    final subscription = SubscriptionModel(
-      userUid: userUid,
-      startAt: startAt,
-      expireAt: expireAt,
-      subject: subject,
-      price: price,
-    );
-
-    _subscriptionsPending.add(subscription);
-  }
-
-  // Gère l'abonnement
-
-  Future<void> addSubscriptions({
+  SubscriptionModel? getSubscription({
+    required String subject,
     required List<SubscriptionModel> subscriptions,
-  }) async {
-    state = const SubscriptionState.subscriptionLoading();
-
-    final result = await ref
-        .read(subscriptionRepositoryProvider)
-        .addSubscriptions(subscriptions: subscriptions);
-
-    state = result.fold(
-      (subscriptions) => SubscriptionState.subscribed(subscriptions),
-      (error) => SubscriptionState.subscriptionError(error),
-    );
-  }
-
-  List<SubscriptionModel> getsubscriptionsPending() {
-    if (state case SubscriptionsPending(:final subscriptions)) {
-      return subscriptions;
-    } else {
-      return [];
+  }) {
+    for (var subscription in subscriptions) {
+      if (subscription.subject == subject) {
+        return subscription;
+      }
     }
+
+    return null;
   }
 }

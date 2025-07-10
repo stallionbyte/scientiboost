@@ -86,55 +86,61 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: FirstAppBar(),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width * 9.0 / 16.0,
-              color: Colors.black,
-              // Afficher soit la vidéo, soit un message d'erreur
-              child:
-                  errorMessage != null
-                      ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            errorMessage!,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          ElevatedButton(
-                            onPressed: () => _initialize(),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              padding: EdgeInsets.all(8),
-                            ),
-                            child: const Text('Réessayer'),
-                          ),
-                        ],
-                      )
-                      : Video(controller: controller),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              widget.title,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ],
+    return Scaffold(appBar: FirstAppBar(), body: SafeArea(child: _buildPage()));
+  }
+
+  Widget _buildPage() {
+    return Column(
+      children: [
+        const SizedBox(height: 40),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width * 9.0 / 16.0,
+          color: Colors.black,
+          // Afficher soit la vidéo, soit un message d'erreur
+          child:
+              errorMessage != null
+                  ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildErrorMessage(message: errorMessage!),
+                      _buildRetryButton(),
+                    ],
+                  )
+                  : Video(controller: controller),
         ),
+        const SizedBox(height: 20),
+        // titre de la video
+        Text(
+          widget.title,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRetryButton() {
+    return ElevatedButton(
+      onPressed: () => _initialize(),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        padding: EdgeInsets.all(8),
       ),
+      child: const Text('Réessayer'),
+    );
+  }
+
+  Widget _buildErrorMessage({required String message}) {
+    return Text(
+      message,
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+      textAlign: TextAlign.center,
     );
   }
 }

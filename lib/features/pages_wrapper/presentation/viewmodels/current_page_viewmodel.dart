@@ -19,88 +19,44 @@ sealed class CurrentPageState with _$CurrentPageState {
 class CurrentPageViewModel extends _$CurrentPageViewModel {
   @override
   CurrentPageState build() {
-    return CurrentPageState.home();
-  }
-
-  void setState(CurrentPageState state_) {
-    state = state_;
+    return const CurrentPageState.home();
   }
 
   Future<void> goToFormules() async {
-    state = CurrentPageState.formules();
+    state = const CurrentPageState.formules();
 
     ref.read(goRouterProvider).push("/pages-wrapper");
   }
 
   Future<void> goToAstuces() async {
-    state = CurrentPageState.astuces();
+    state = const CurrentPageState.astuces();
 
     ref.read(goRouterProvider).push("/pages-wrapper");
   }
 
   Future<void> goToHome() async {
-    state = CurrentPageState.home();
+    state = const CurrentPageState.home();
 
     ref.read(goRouterProvider).push("/pages-wrapper");
   }
 
   void setHome() {
-    state = CurrentPageState.home();
+    state = const CurrentPageState.home();
   }
 
   void setExercices() {
-    state = CurrentPageState.exercices();
+    state = const CurrentPageState.exercices();
   }
 
   void setExams() {
-    state = CurrentPageState.exams();
+    state = const CurrentPageState.exams();
   }
 
   void setFormules() {
-    state = CurrentPageState.formules();
+    state = const CurrentPageState.formules();
   }
 
   void setAstuces() {
-    state = CurrentPageState.astuces();
-  }
-
-  bool isExercices() {
-    if (state case Exercices()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isExams() {
-    if (state case Exams()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isFormules() {
-    if (state case Formules()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isAstuces() {
-    if (state case Astuces()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isHome() {
-    if (state case Home()) {
-      return true;
-    } else {
-      return false;
-    }
+    state = const CurrentPageState.astuces();
   }
 }
