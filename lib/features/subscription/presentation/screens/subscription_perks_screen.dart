@@ -156,8 +156,7 @@ class SubscriptionPerksScreen extends ConsumerWidget {
             SizedBox(height: 20.0),
 
             _buildPerk(
-              perk:
-                  "Accès illimité aux sujets d\'examen corrigés de la matière",
+              perk: "Accès illimité aux sujets d'examen corrigés de la matière",
             ),
 
             SizedBox(height: 16),
