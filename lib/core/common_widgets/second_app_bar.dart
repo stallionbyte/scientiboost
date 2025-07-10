@@ -16,9 +16,7 @@ class SecondAppBar extends ConsumerStatefulWidget {
 class _SecondAppBarState extends ConsumerState<SecondAppBar> {
   @override
   Widget build(BuildContext context) {
-    ref.watch(currentPageViewModelProvider);
-    ref.watch(goRouterProvider);
-    ref.watch(exoViewmodelProvider);
+    final currentPageState = ref.watch(currentPageViewModelProvider);
 
     return Container(
       height: 50,
@@ -35,24 +33,17 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
               child: ElevatedButton(
                 onPressed: () {
                   ref
-                      .read(exoViewmodelProvider.notifier)
-                      .setState(ExoState.exoInitial());
-                  ref
                       .read(currentPageViewModelProvider.notifier)
-                      .setState(CurrentPageState.exercices());
+                      .setExercices();
                 },
 
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
-                      ref
-                              .read(currentPageViewModelProvider.notifier)
-                              .isExercices()
+                      currentPageState is Exercices
                           ? Colors.blue
                           : Colors.grey.shade300,
                   foregroundColor:
-                      ref
-                              .read(currentPageViewModelProvider.notifier)
-                              .isExercices()
+                      currentPageState is Exercices
                           ? Colors.white
                           : Colors.black,
                   shape: RoundedRectangleBorder(
@@ -74,19 +65,18 @@ class _SecondAppBarState extends ConsumerState<SecondAppBar> {
               height: 36,
               child: ElevatedButton(
                 onPressed:
-                    () => ref
-                        .read(currentPageViewModelProvider.notifier)
-                        .setState(CurrentPageState.exams()),
+                    () =>
+                        ref
+                            .read(currentPageViewModelProvider.notifier)
+                            .setExams(),
 
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
-                      ref.read(currentPageViewModelProvider.notifier).isExams()
+                      currentPageState is Exams
                           ? Colors.blue
                           : Colors.grey.shade300,
                   foregroundColor:
-                      ref.read(currentPageViewModelProvider.notifier).isExams()
-                          ? Colors.white
-                          : Colors.black,
+                      currentPageState is Exams ? Colors.white : Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18),
                   ),

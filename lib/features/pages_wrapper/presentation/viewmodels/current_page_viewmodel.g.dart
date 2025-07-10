@@ -7,7 +7,7 @@ part of 'current_page_viewmodel.dart';
 // **************************************************************************
 
 String _$currentPageViewModelHash() =>
-    r'375cbc959f1b7322bfdc622e555b1a462117f87e';
+    r'457bee5695558ca9b7cf1b514a00c754c2951c20';
 
 /// See also [CurrentPageViewModel].
 @ProviderFor(CurrentPageViewModel)

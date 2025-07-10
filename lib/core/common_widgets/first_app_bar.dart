@@ -27,10 +27,7 @@ class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
       ),
 
       title: GestureDetector(
-        onTap:
-            () => ref
-                .read(currentPageViewModelProvider.notifier)
-                .setState(CurrentPageState.home()),
+        onTap: () => ref.read(currentPageViewModelProvider.notifier).goToHome(),
         child: Image.asset('assets/icon/icon.png', width: 44, height: 44),
       ),
 
@@ -39,32 +36,47 @@ class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
         const SizedBox(width: 8),
 
-        if (ref.read(authViewModelProvider.notifier).isAuthenticated()) ...[
-          GestureDetector(
-            onTap: () {
-              ref.read(goRouterProvider).push('/favorites');
-            },
-            child: Icon(Icons.favorite, color: Colors.blue, size: 35),
-          ),
+        Consumer(
+          builder: (context, ref, child) {
+            final authState = ref.watch(authViewModelProvider);
+            return authState is Authenticated
+                ? GestureDetector(
+                  onTap: () {
+                    ref.read(goRouterProvider).push('/favorites');
+                  },
+                  child: Icon(Icons.favorite, color: Colors.blue, size: 35),
+                )
+                : SizedBox.shrink();
+          },
+        ),
 
-          const SizedBox(width: 8),
+        const SizedBox(width: 8),
 
-          GestureDetector(
-            onTap: () {
-              ref
-                  .read(goRouterProvider)
-                  .push(
-                    '/profil',
-                    extra: ref.read(authViewModelProvider.notifier).getUser(),
-                  );
-            },
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.blue,
-              child: Icon(Icons.person, color: Colors.white, size: 30),
-            ),
-          ),
-        ],
+        Consumer(
+          builder: (context, ref, child) {
+            final authState = ref.watch(authViewModelProvider);
+            return authState is Authenticated
+                ? GestureDetector(
+                  onTap: () {
+                    ref
+                        .read(goRouterProvider)
+                        .push(
+                          '/profil',
+                          extra:
+                              ref
+                                  .read(authViewModelProvider.notifier)
+                                  .getUser(),
+                        );
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.blue,
+                    child: Icon(Icons.person, color: Colors.white, size: 30),
+                  ),
+                )
+                : SizedBox.shrink();
+          },
+        ),
       ],
     );
   }

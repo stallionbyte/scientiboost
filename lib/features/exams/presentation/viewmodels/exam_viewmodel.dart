@@ -1,10 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-
-import 'package:scientiboost/core/providers.dart';
-
 part 'exam_viewmodel.freezed.dart';
 part 'exam_viewmodel.g.dart';
 
@@ -42,21 +38,5 @@ class ExamViewmodel extends _$ExamViewmodel {
   String? getPaysFromExamRoute(String route) {
     final regex = RegExp(r'pays\((.*?)\)');
     return regex.firstMatch(route)?.group(1);
-  }
-
-  Future<void> goToExam({required route}) async {
-    final router = ref.read(goRouterProvider);
-
-    state = ExamState.examInitial();
-
-    if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-      router.push(route);
-    } else {
-      router.push('/signin');
-    }
-  }
-
-  void setState(ExamState state_) {
-    state = state_;
   }
 }

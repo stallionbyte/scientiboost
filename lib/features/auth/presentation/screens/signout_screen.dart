@@ -59,6 +59,15 @@ class _SignOutScreenState extends ConsumerState<SignOutScreen> {
     );
   }
 
+  Widget _buildUnAuthContent() {
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity,
+        child: Text("Vous n'êtes pas connecté(e)"),
+      ),
+    );
+  }
+
   Widget _buildBody() {
     return Consumer(
       builder: (context, ref, child) {
@@ -66,34 +75,45 @@ class _SignOutScreenState extends ConsumerState<SignOutScreen> {
 
         if (authState case AuthLoading()) {
           return Center(child: CircularProgressIndicator(color: Colors.blue));
-        } else {
+        } else if (authState case Authenticated()) {
           return _buildPage(authState: authState);
+        } else {
+          return _buildUnAuthContent();
         }
       },
     );
   }
 
   Widget _buildPage({required AuthState authState}) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white, // Texte et icône blancs
-          padding: const EdgeInsets.all(14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
-          ),
-        ),
-        onPressed:
-            authState is Authenticated
-                ? () {
-                  ref.read(authViewModelProvider.notifier).signOut();
-                }
-                : null,
-        child: Text(
-          "Se déconnecter",
-          style: const TextStyle(color: Colors.white, fontSize: 16),
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text("Vous êtes sur le point de vous déconnecter"),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white, // Texte et icône blancs
+                padding: const EdgeInsets.all(14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
+              ),
+              onPressed:
+                  authState is Authenticated
+                      ? () {
+                        ref.read(authViewModelProvider.notifier).signOut();
+                      }
+                      : null,
+              child: Text(
+                "Se déconnecter",
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ),
+          ],
         ),
       ),
     );

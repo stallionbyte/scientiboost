@@ -39,18 +39,6 @@ class AuthViewModel extends _$AuthViewModel {
     return const AuthState.authInitial();
   }
 
-  Future<void> goToSignIn() async {
-    await ref.read(goRouterProvider).push("/signin");
-  }
-
-  bool isAuthenticated() {
-    if (state case Authenticated()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   User? getUser() {
     return ref.read(authRepositoryProvider).getUser();
   }
@@ -68,11 +56,7 @@ class AuthViewModel extends _$AuthViewModel {
     );
 
     if (result.isSuccess()) {
-      final router = ref.read(goRouterProvider);
-
-      ref.read(currentPageViewModelProvider.notifier).setHome();
-
-      router.push('/pages-wrapper');
+      ref.read(currentPageViewModelProvider.notifier).goToHome();
     }
   }
 
@@ -88,11 +72,7 @@ class AuthViewModel extends _$AuthViewModel {
     );
 
     if (result.isSuccess()) {
-      final router = ref.read(goRouterProvider);
-
-      ref.read(currentPageViewModelProvider.notifier).setHome();
-
-      router.push('/pages-wrapper');
+      ref.read(currentPageViewModelProvider.notifier).goToHome();
     }
   }
 
@@ -106,15 +86,9 @@ class AuthViewModel extends _$AuthViewModel {
     );
 
     if (result.isSuccess()) {
-      final router = ref.read(goRouterProvider);
+      ref.read(subscriptionViewModelProvider.notifier).setInitial();
 
-      ref
-          .read(subscriptionViewModelProvider.notifier)
-          .setState(SubscriptionState.subscriptionInitial());
-
-      ref.read(currentPageViewModelProvider.notifier).setHome();
-
-      router.push('/pages-wrapper');
+      ref.read(currentPageViewModelProvider.notifier).goToHome();
     }
   }
 }

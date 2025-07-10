@@ -83,12 +83,10 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
       appBar: AppBar(
         title: const Text(
           'Abonnement',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Colors.amber,
+        foregroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
       body: SafeArea(child: _buildForm()),

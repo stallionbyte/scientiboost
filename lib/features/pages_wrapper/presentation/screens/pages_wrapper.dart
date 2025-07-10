@@ -24,14 +24,10 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
       appBar: FirstAppBar(),
       body: SafeArea(
         child: Column(
-          children: [_buildSecondAppBar(), Expanded(child: _buildPage())],
+          children: [SecondAppBar(), Expanded(child: _buildPage())],
         ),
       ),
     );
-  }
-
-  Widget _buildSecondAppBar() {
-    return SecondAppBar();
   }
 
   Widget _buildPage() {
@@ -54,15 +50,27 @@ class _PagesWrapperState extends ConsumerState<PagesWrapper> {
 }
 
 Widget _buildHomePage() {
-  return Container(color: Colors.white, child: HomeScreen());
+  return Container(
+    color: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+    child: HomeScreen(),
+  );
 }
 
 Widget _buildExercicesPage() {
-  return Container(color: Colors.white, child: ExosScreen());
+  return Container(
+    color: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+    child: ExosScreen(),
+  );
 }
 
 Widget _buildExamensPage() {
-  return Container(color: Colors.white, child: ExamsScreen());
+  return Container(
+    color: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+    child: ExamsScreen(),
+  );
 }
 
 Widget _buildFormulesPage() {

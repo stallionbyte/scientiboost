@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:scientiboost/core/providers.dart';
 
 part 'current_page_viewmodel.freezed.dart';
 part 'current_page_viewmodel.g.dart';
@@ -23,6 +24,24 @@ class CurrentPageViewModel extends _$CurrentPageViewModel {
 
   void setState(CurrentPageState state_) {
     state = state_;
+  }
+
+  Future<void> goToFormules() async {
+    state = CurrentPageState.formules();
+
+    ref.read(goRouterProvider).push("/pages-wrapper");
+  }
+
+  Future<void> goToAstuces() async {
+    state = CurrentPageState.astuces();
+
+    ref.read(goRouterProvider).push("/pages-wrapper");
+  }
+
+  Future<void> goToHome() async {
+    state = CurrentPageState.home();
+
+    ref.read(goRouterProvider).push("/pages-wrapper");
   }
 
   void setHome() {

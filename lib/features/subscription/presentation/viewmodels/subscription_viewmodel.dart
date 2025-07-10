@@ -85,7 +85,7 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     return _subscriptionsPending;
   }
 
-  void setStateInitial() {
+  void setInitial() {
     state = SubscriptionInitial();
   }
 

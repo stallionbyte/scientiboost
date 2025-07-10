@@ -98,6 +98,23 @@ class _ExamsScreenState extends ConsumerState<ExamsScreen> {
     );
   }
 
+  Widget _buildPageContent() {
+    return Column(
+      children: [
+        SizedBox(height: 40),
+        _buildPageHeader(),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "BAC  D", fontSize: 30.0),
+
+        SizedBox(height: 40),
+
+        ButtonExoExam(text: "2024", route: RoutesNamesConstants.pcBacD2024),
+      ],
+    );
+  }
+
   Widget _buildPage() {
     return Consumer(
       builder: (context, ref, child) {
@@ -109,24 +126,7 @@ class _ExamsScreenState extends ConsumerState<ExamsScreen> {
         } else if (subscriptionState case SubscriptionLoading()) {
           return Center(child: CircularProgressIndicator(color: Colors.blue));
         } else {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildPageHeader(),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "BAC  D", fontSize: 30.0),
-
-                SizedBox(height: 40),
-
-                ButtonExoExam(
-                  text: "2024",
-                  route: RoutesNamesConstants.pcBacD2024,
-                ),
-              ],
-            ),
-          );
+          return SingleChildScrollView(child: _buildPageContent());
         }
       },
     );

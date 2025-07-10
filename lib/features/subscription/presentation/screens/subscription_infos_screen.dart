@@ -31,7 +31,7 @@ class _SubscriptionInfosScreenState
 
     Future.microtask(() {
       ref.read(internetViewmodelProvider.notifier).setStateInitial();
-      ref.read(subscriptionViewModelProvider.notifier).setStateInitial();
+      ref.read(subscriptionViewModelProvider.notifier).setInitial();
     });
   }
 

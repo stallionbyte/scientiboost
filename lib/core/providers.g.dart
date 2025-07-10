@@ -178,7 +178,7 @@ final localStorageProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LocalStorageRef = AutoDisposeProviderRef<LocalStorageInterface>;
-String _$goRouterHash() => r'f22060469ab4cf6781815196b142b14f2173f337';
+String _$goRouterHash() => r'e15d9cc9a31a41e18b5eac491d3e03d37b1c7187';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)

@@ -53,6 +53,49 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
     return _buildPage();
   }
 
+  Widget _buildPageContent() {
+    return Column(
+      children: [
+        SizedBox(height: 40),
+        _buildPageHeader(),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Physique", fontSize: 30.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Nucléaire", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildNuclaireAccordion(),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Mécanique", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Electricité", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Chimie", fontSize: 30.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Organique", fontSize: 20.0),
+
+        SizedBox(height: 40),
+
+        _buildTitle(title: "Minérale", fontSize: 20.0),
+
+        SizedBox(height: 40),
+      ],
+    );
+  }
+
   Widget _buildPage() {
     return Consumer(
       builder: (context, ref, child) {
@@ -64,47 +107,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
         } else if (subscriptionState case SubscriptionLoading()) {
           return Center(child: CircularProgressIndicator(color: Colors.blue));
         } else {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildPageHeader(),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Physique", fontSize: 30.0),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Nucléaire", fontSize: 20.0),
-
-                SizedBox(height: 40),
-
-                _buildNuclaireAccordion(),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Mécanique", fontSize: 20.0),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Electricité", fontSize: 20.0),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Chimie", fontSize: 30.0),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Organique", fontSize: 20.0),
-
-                SizedBox(height: 40),
-
-                _buildTitle(title: "Minérale", fontSize: 20.0),
-
-                SizedBox(height: 40),
-              ],
-            ),
-          );
+          return SingleChildScrollView(child: _buildPageContent());
         }
       },
     );

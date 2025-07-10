@@ -6,7 +6,7 @@ part of 'exo_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$exoViewmodelHash() => r'6106a64bb9139b9c0039d5c23fe15b7dd2478588';
+String _$exoViewmodelHash() => r'128755fbd0e6c4a235f9ae0ff5c567066f3665da';
 
 /// See also [ExoViewmodel].
 @ProviderFor(ExoViewmodel)

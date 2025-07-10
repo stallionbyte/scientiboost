@@ -14,7 +14,6 @@ abstract class AuthRepository {
   Future<ResultDart<UserModel, String>> signUp(String email, String password);
   Future<ResultDart<Unit, String>> signOut();
   Future<ResultDart<Unit, String>> sendPasswordResetEmail(String email);
-  Future<ResultDart<Unit, String>> sendEmailVerification();
   User? getUser();
 
   Stream<UserModel?> get authStateChanges;
@@ -51,14 +50,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
       //rendre les messages d'erreur explicite
     } on FirebaseAuthException catch (e) {
-      print("*********************************************************");
-      print(e);
       return Failure(errorMessageExplicit(authE: e) as String);
     } on TimeoutException catch (e) {
       return Failure(errorMessageExplicit(timeE: e) as String);
     } catch (e) {
-      print("*********************************************************");
-      print(e);
       return Failure(Constants.genericError);
     }
   }
@@ -95,13 +90,11 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<ResultDart<Unit, String>> signOut() async {
     try {
-      await _firebaseAuth.signOut().timeout(Duration(seconds: 10));
+      await _firebaseAuth.signOut();
       return const Success(unit);
       //rendre les messages d'erreur explicite
     } on FirebaseAuthException catch (e) {
       return Failure(errorMessageExplicit(authE: e) as String);
-    } on TimeoutException catch (e) {
-      return Failure(errorMessageExplicit(timeE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }
@@ -119,19 +112,6 @@ class AuthRepositoryImpl implements AuthRepository {
       return Failure(errorMessageExplicit(authE: e) as String);
     } on TimeoutException catch (e) {
       return Failure(errorMessageExplicit(timeE: e) as String);
-    } catch (e) {
-      return Failure(Constants.genericError);
-    }
-  }
-
-  @override
-  Future<ResultDart<Unit, String>> sendEmailVerification() async {
-    try {
-      await _firebaseAuth.currentUser?.sendEmailVerification();
-
-      return const Success(unit);
-    } on FirebaseAuthException catch (e) {
-      return Failure(errorMessageWithCode(authE: e) as String);
     } catch (e) {
       return Failure(Constants.genericError);
     }

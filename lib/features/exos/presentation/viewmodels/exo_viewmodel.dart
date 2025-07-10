@@ -39,16 +39,6 @@ class ExoViewmodel extends _$ExoViewmodel {
     return regex.firstMatch(route)?.group(1);
   }
 
-  Future<void> goToExercice({required route}) async {
-    final router = ref.read(goRouterProvider);
-
-    if (ref.read(authViewModelProvider.notifier).isAuthenticated()) {
-      router.push(route);
-    } else {
-      router.push('/signin');
-    }
-  }
-
   void setState(ExoState state_) {
     state = state_;
   }
