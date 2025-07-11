@@ -59,14 +59,11 @@ class MenuScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text(
           'Menu',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
         ),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: _buildMenu(authState: authState, menuItems: menuItems),
       ),

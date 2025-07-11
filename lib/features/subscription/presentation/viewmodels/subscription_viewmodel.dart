@@ -13,9 +13,6 @@ import 'package:scientiboost/core/constants.dart';
 part 'subscription_viewmodel.freezed.dart';
 part 'subscription_viewmodel.g.dart';
 
-List<SubscriptionModel> _subscriptionsPending = [];
-List<SubscriptionModel?> _forbidenSubscriptions = [];
-
 // État immuable de la souscription
 @freezed
 sealed class SubscriptionState with _$SubscriptionState {
@@ -142,27 +139,12 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
   }
 
   Future<void> goToCheckout() async {
-    state = SubscriptionState.subscriptionsPending(_subscriptionsPending);
-    _subscriptionsPending = [];
     await ref.read(goRouterProvider).push("/checkout");
   }
 
   // Handle Pending
 
-  void makeVerifiedSubscriptionPending({
-    required String subject,
-    required List<SubscriptionModel> subscriptions,
-  }) {
-    if (isSubscribed(subject: subject, subscriptions: subscriptions)) {
-      _forbidenSubscriptions.add(
-        getSubscription(subject: subject, subscriptions: subscriptions),
-      );
-    } else {
-      makeSubscriptionPending(subject: subject);
-    }
-  }
-
-  void makeSubscriptionPending({required String subject}) {
+  SubscriptionModel createPendingSubscription({required String subject}) {
     final userUid = ref.read(authViewModelProvider.notifier).getUser()?.uid;
 
     final price = 5000.0;
@@ -171,15 +153,13 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
 
     DateTime expireAt = DateTime.now().add(const Duration(days: 365));
 
-    final subscription = SubscriptionModel(
+    return SubscriptionModel(
       userUid: userUid,
       startAt: startAt,
       expireAt: expireAt,
       subject: subject,
       price: price,
     );
-
-    _subscriptionsPending.add(subscription);
   }
 
   Future<void> makeSubscriptionsPending({
@@ -191,61 +171,96 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
 
     state = const SubscriptionState.subscriptionLoading();
 
+    List<SubscriptionModel> subscriptionsPending = [];
+    List<SubscriptionModel?> forbidenSubscriptions = [];
+    final router = ref.read(goRouterProvider);
+
     final hasInternet =
         await ref
             .read(internetViewmodelProvider.notifier)
             .checkInternetAccess();
 
     if (hasInternet) {
-      _subscriptionsPending = [];
-
       await checkSubscriptions();
 
       if (state case Subscribed(:final subscriptions)) {
-        _forbidenSubscriptions = [];
-
         if (physiqueChimie) {
-          makeVerifiedSubscriptionPending(
+          if (isSubscribed(
             subject: "Physique-Chimie",
             subscriptions: subscriptions,
-          );
+          )) {
+            forbidenSubscriptions.add(
+              getSubscription(
+                subject: "Physique-Chimie",
+                subscriptions: subscriptions,
+              ),
+            );
+          } else {
+            subscriptionsPending.add(
+              createPendingSubscription(subject: "Physique-Chimie"),
+            );
+          }
         }
 
         if (svt) {
-          makeVerifiedSubscriptionPending(
-            subject: "SVT",
-            subscriptions: subscriptions,
-          );
+          if (isSubscribed(subject: "SVT", subscriptions: subscriptions)) {
+            forbidenSubscriptions.add(
+              getSubscription(subject: "SVT", subscriptions: subscriptions),
+            );
+          } else {
+            subscriptionsPending.add(createPendingSubscription(subject: "SVT"));
+          }
         }
 
         if (mathematiques) {
-          makeVerifiedSubscriptionPending(
+          if (isSubscribed(
             subject: "Mathématiques",
             subscriptions: subscriptions,
-          );
+          )) {
+            forbidenSubscriptions.add(
+              getSubscription(
+                subject: "Mathématiques",
+                subscriptions: subscriptions,
+              ),
+            );
+          } else {
+            subscriptionsPending.add(
+              createPendingSubscription(subject: "Mathématiques"),
+            );
+          }
+        }
+
+        if (forbidenSubscriptions.isEmpty) {
+          state = SubscriptionsPending(subscriptionsPending);
         }
       } else {
         if (physiqueChimie) {
-          makeSubscriptionPending(subject: "Physique-Chimie");
+          subscriptionsPending.add(
+            createPendingSubscription(subject: "Physique-Chimie"),
+          );
         }
 
         if (svt) {
-          makeSubscriptionPending(subject: "SVT");
+          subscriptionsPending.add(createPendingSubscription(subject: "SVT"));
         }
 
         if (mathematiques) {
-          makeSubscriptionPending(subject: "Mathématiques");
+          subscriptionsPending.add(
+            createPendingSubscription(subject: "Mathématiques"),
+          );
         }
+
+        state = SubscriptionsPending(subscriptionsPending);
       }
 
-      if (_forbidenSubscriptions.isEmpty) {
-        goToCheckout();
+      if (forbidenSubscriptions.isEmpty) {
+        router.push("/checkout");
       } else {
         StringBuffer forbidenMessage = StringBuffer(
           "Vous êtes déja abonné(e) à: \n",
         );
 
-        for (var forbidenSubscription in _forbidenSubscriptions) {
+        for (var forbidenSubscription in forbidenSubscriptions) {
           forbidenMessage.write(
             "- ${helpers.getSubjectShortName(subject: forbidenSubscription?.subject as String).toUpperCase()}: expire le ${DateFormat.yMMMd("fr_FR").format(forbidenSubscription?.expireAt as DateTime)} \n",
           );

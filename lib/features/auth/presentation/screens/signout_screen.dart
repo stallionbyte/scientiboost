@@ -42,12 +42,10 @@ class _SignOutScreenState extends ConsumerState<SignOutScreen> {
       appBar: AppBar(
         title: const Text(
           'Déconnexion',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
         ),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

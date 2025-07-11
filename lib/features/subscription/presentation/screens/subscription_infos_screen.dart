@@ -90,8 +90,10 @@ class _SubscriptionInfosScreenState
       appBar: AppBar(
         title: const Text(
           'Abonnements',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Colors.amber,
+        foregroundColor: Colors.white,
       ),
       body: SafeArea(
         child: Padding(padding: const EdgeInsets.all(20), child: _buildBody()),
