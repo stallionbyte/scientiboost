@@ -29,7 +29,7 @@ class _Correction3State extends ConsumerState<Correction3> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                PhyNucLatexContants.eln,
+                PhyNucConstants.eln,
 
                 const TextSpan(text: "(fer-56)"),
 
@@ -48,7 +48,7 @@ class _Correction3State extends ConsumerState<Correction3> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                PhyNucLatexContants.eln,
+                PhyNucConstants.eln,
 
                 const TextSpan(text: "(uranium-235)"),
 

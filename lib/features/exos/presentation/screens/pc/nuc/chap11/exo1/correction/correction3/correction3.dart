@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/helpers.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -31,8 +32,7 @@ class _Correction3State extends ConsumerState<Correction3> {
               ),
               children: <InlineSpan>[
                 const TextSpan(text: "1u = 931,5 "),
-
-                PhyNucLatexContants.mevc2,
+                PhyNucConstants.mevc2,
               ],
             ),
           ),
@@ -57,9 +57,10 @@ class _Correction3State extends ConsumerState<Correction3> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "m("),
-                PhyNucLatexContants.carbone14,
-                const TextSpan(text: ") = 14,003242u"),
+                const TextSpan(text: "m( "),
+
+                PhyNucConstants.carbone14,
+                const TextSpan(text: " ) = 14,003242u"),
               ],
             ),
           ),
@@ -84,9 +85,9 @@ class _Correction3State extends ConsumerState<Correction3> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "m("),
-                PhyNucLatexContants.carbone14,
-                const TextSpan(text: ") = 14,003242 x 931,5"),
+                const TextSpan(text: "m( "),
+                PhyNucConstants.carbone14,
+                const TextSpan(text: " ) = 14,003242 x 931,5"),
               ],
             ),
           ),
@@ -94,25 +95,20 @@ class _Correction3State extends ConsumerState<Correction3> {
           SizedBox(height: 20),
 
           BordersWrapper(
-            wrapped: RichText(
-              text: TextSpan(
-                style: TextStyle(
-                  fontSize: ExoConstants.richTextFontSize,
-                  color: Colors.black,
+            wrapped: result(
+              value: "13044,01992",
+              leftRichs: <InlineSpan>[
+                const TextSpan(
+                  text: "m( ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                children: <InlineSpan>[
-                  const TextSpan(
-                    text: "m(",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  PhyNucLatexContants.carbone14Bold,
-                  const TextSpan(
-                    text: ") = 13044,01992 ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  PhyNucLatexContants.mevc2Bold,
-                ],
-              ),
+                PhyNucConstants.carbone14Bold,
+                const TextSpan(
+                  text: " )",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+              unitRich: PhyNucConstants.mevc2Bold,
             ),
           ),
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_tex/flutter_tex.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-
-import 'package:http/http.dart' as http;
+import 'package:scientiboost/core/constants.dart';
 
 void showSnackBar({
   required BuildContext context,
@@ -70,20 +70,6 @@ String getSubjectShortName({required String subject}) {
   }
 }
 
-Future<bool> hasInternet() async {
-  const int timeOut = 5;
-
-  try {
-    final response = await http
-        .get(Uri.parse('https://www.google.com'))
-        .timeout(const Duration(seconds: timeOut));
-
-    return response.statusCode == 200;
-  } catch (e) {
-    return false;
-  }
-}
-
 Widget buildUnSignUpOrPasswordForgetOrSignInContent({
   required GoRouter router,
   required AuthState authState,
@@ -120,4 +106,58 @@ Widget buildUnSignUpOrPasswordForgetOrSignInContent({
   } else {
     return SizedBox.shrink();
   }
+}
+
+WidgetSpan buildTex2SvgInWidgetSpan({
+  required String math,
+  double offsetDx = 0,
+  double offsetDy = 0,
+  double scale = 1,
+}) {
+  return WidgetSpan(
+    alignment: PlaceholderAlignment.middle,
+    child: Transform.translate(
+      offset: Offset(
+        offsetDx,
+        offsetDy,
+      ), // Déplacement vertical (négatif = vers le haut)
+      child: TeX2SVG(
+        math: math,
+        formulaWidgetBuilder: (context, svg) {
+          double displayFontSize = ExoConstants.displayFontSize * scale;
+          return SvgPicture.string(
+            svg,
+            height: displayFontSize,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
+          );
+        },
+      ),
+    ),
+  );
+}
+
+Widget buildTex2SvgInRichText({
+  required String math,
+  double offsetDx = 0,
+  double offsetDy = 0,
+  double scale = 1,
+}) {
+  return RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+      children: <InlineSpan>[
+        buildTex2SvgInWidgetSpan(
+          math: math,
+          offsetDx: offsetDx,
+          offsetDy: offsetDy,
+          scale: scale,
+        ),
+      ],
+    ),
+  );
 }

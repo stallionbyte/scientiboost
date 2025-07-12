@@ -32,7 +32,7 @@ class _Correction1State extends ConsumerState<Correction1> {
               children: <InlineSpan>[
                 const TextSpan(text: "Un noyau de "),
 
-                PhyNucLatexContants.carbone14,
+                PhyNucConstants.carbone14,
 
                 const TextSpan(text: " est composé de:"),
               ],

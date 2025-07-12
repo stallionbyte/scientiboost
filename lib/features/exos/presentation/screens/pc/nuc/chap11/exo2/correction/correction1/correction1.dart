@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/formules_constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/helpers.dart';
-
-import 'detail1.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -28,7 +27,7 @@ class _Correction1State extends ConsumerState<Correction1> {
           SizedBox(height: 20),
 
           BordersWrapper(
-            wrapped: PhyNucLatexFormulesContants.energieDeLiaisonParNucleon,
+            wrapped: PhyNucFormulesConstants.energieDeLiaisonParNucleon,
             color: Colors.black,
           ),
 
@@ -44,17 +43,17 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           SizedBox(height: 20),
 
-          PhyNucLatexFormulesContants.energieDeLiaisonParNucleonU235,
+          PhyNucFormulesConstants.energieDeLiaisonParNucleonU235,
 
           SizedBox(height: 20),
 
           BordersWrapper(
-            wrapped: energieDeLiaisonParNucleonResult(value: "7,39"),
+            wrapped: result(
+              value: "7,39",
+              leftRich: PhyNucConstants.elnBold,
+              unit: "MeV/nucléon",
+            ),
           ),
-
-          SizedBox(height: 20),
-
-          Details1(),
 
           SizedBox(height: 20),
         ],

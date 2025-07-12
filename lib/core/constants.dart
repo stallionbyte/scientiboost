@@ -85,7 +85,7 @@ class StorageKeysConstants {
 
 class ExoConstants {
   static const double fontSize = 16.0;
-  static const double displayFontSize = 20.0;
+  static const double displayFontSize = 25.0;
   static const double displayFontSizeMultiLines = 80.0;
   static const double richTextFontSize = 18.0;
 }

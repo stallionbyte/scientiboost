@@ -29,9 +29,10 @@ class _Correction5State extends ConsumerState<Correction5> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "m(nucléons de "),
-                PhyNucLatexContants.carbone14,
-                const TextSpan(text: ")"),
+                const TextSpan(text: "m( nucléons de "),
+
+                PhyNucConstants.carbone14,
+                const TextSpan(text: " )"),
                 const TextSpan(text: " = 14,112976u"),
               ],
             ),
@@ -47,9 +48,9 @@ class _Correction5State extends ConsumerState<Correction5> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "m("),
-                PhyNucLatexContants.carbone14,
-                const TextSpan(text: ") = 14,003242u"),
+                const TextSpan(text: "m( "),
+                PhyNucConstants.carbone14,
+                const TextSpan(text: " ) = 14,003242u"),
               ],
             ),
           ),
@@ -64,11 +65,11 @@ class _Correction5State extends ConsumerState<Correction5> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "m(nucléons de "),
-                PhyNucLatexContants.carbone14,
-                const TextSpan(text: ") > m("),
-                PhyNucLatexContants.carbone14,
-                const TextSpan(text: ")"),
+                const TextSpan(text: "m( nucléons de "),
+                PhyNucConstants.carbone14,
+                const TextSpan(text: " ) > m( "),
+                PhyNucConstants.carbone14,
+                const TextSpan(text: " )"),
               ],
             ),
           ),
@@ -76,7 +77,7 @@ class _Correction5State extends ConsumerState<Correction5> {
           SizedBox(height: 20),
 
           Text(
-            "La différence correspond au défaut de masse transformé en énergie de liaison",
+            "La différence correspond au défaut de masse",
             style: const TextStyle(fontSize: ExoConstants.fontSize),
           ),
 

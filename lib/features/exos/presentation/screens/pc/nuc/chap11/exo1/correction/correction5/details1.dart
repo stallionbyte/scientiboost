@@ -22,7 +22,7 @@ class _Details1State extends ConsumerState<Details1> {
         children: [
           SizedBox(height: 20),
 
-          PhyNucLatexFormulesContants.defautDeMasse,
+          PhyNucFormulesConstants.defautDeMasse,
 
           SizedBox(height: 20),
 
@@ -44,12 +44,14 @@ class _Details1State extends ConsumerState<Details1> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "m(nucléons de "),
-                PhyNucLatexContants.notationNoyau,
-                const TextSpan(text: ") = Z x "),
-                PhyNucLatexContants.mp,
-                const TextSpan(text: "\n \n + (A-Z) x "),
-                PhyNucLatexContants.mn,
+                const TextSpan(text: "m( nucléons de "),
+
+                PhyNucConstants.notationNoyau,
+                const TextSpan(text: " ) = Z x "),
+
+                PhyNucConstants.mp,
+                const TextSpan(text: "\n \n + ( A-Z ) x "),
+                PhyNucConstants.mn,
               ],
             ),
           ),
@@ -74,15 +76,49 @@ class _Details1State extends ConsumerState<Details1> {
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                PhyNucLatexContants.delta,
-                const TextSpan(text: "m("),
-                PhyNucLatexContants.notationNoyau,
-                const TextSpan(text: ") = m(nucléons de "),
-                PhyNucLatexContants.notationNoyau,
-                const TextSpan(text: ")"),
-                const TextSpan(text: "\n \n - m("),
-                PhyNucLatexContants.notationNoyau,
-                const TextSpan(text: ")"),
+                PhyNucConstants.delta,
+                const TextSpan(text: "m( "),
+
+                PhyNucConstants.notationNoyau,
+                const TextSpan(text: " ) = m( nucléons de "),
+                PhyNucConstants.notationNoyau,
+                const TextSpan(text: " )"),
+                const TextSpan(text: "\n \n - m( "),
+                PhyNucConstants.notationNoyau,
+                const TextSpan(text: " )"),
+              ],
+            ),
+          ),
+
+          SizedBox(height: 20),
+
+          RichText(
+            text: TextSpan(
+              style: TextStyle(
+                fontSize: ExoConstants.richTextFontSize,
+
+                color: Colors.black,
+              ),
+              children: <InlineSpan>[
+                const TextSpan(text: "Ainsi le défaut de masse "),
+
+                PhyNucConstants.delta,
+
+                const TextSpan(text: "m( "),
+
+                PhyNucConstants.notationNoyau,
+
+                const TextSpan(
+                  text: " ) correspond à la différence entre m( nucléons de ",
+                ),
+
+                PhyNucConstants.notationNoyau,
+
+                const TextSpan(text: " ) et m( "),
+
+                PhyNucConstants.notationNoyau,
+
+                const TextSpan(text: " ) "),
               ],
             ),
           ),

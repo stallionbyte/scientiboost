@@ -33,7 +33,7 @@ class Donnees extends ConsumerWidget {
             ),
             children: <InlineSpan>[
               const TextSpan(text: "Notation du carbone-14: "),
-              PhyNucLatexContants.carbone14,
+              PhyNucConstants.carbone14,
             ],
           ),
         ),
@@ -49,24 +49,26 @@ class Donnees extends ConsumerWidget {
             ),
             children: <InlineSpan>[
               const TextSpan(text: "Notation du carbone-12: "),
-              PhyNucLatexContants.carbone12,
+              PhyNucConstants.carbone12,
             ],
           ),
         ),
 
         SizedBox(height: 20),
-        DonneesPhyNucLatexConstants.uEnMeVC2,
-        SizedBox(height: 20),
 
-        DonneesPhyNucLatexConstants.masseC14EnU,
+        PhyNucDonneesConstants.uEnMeVC2,
 
         SizedBox(height: 20),
 
-        DonneesPhyNucLatexConstants.mp,
+        PhyNucDonneesConstants.masseC14EnU,
 
         SizedBox(height: 20),
 
-        DonneesPhyNucLatexConstants.mn,
+        PhyNucDonneesConstants.mp,
+
+        SizedBox(height: 20),
+
+        PhyNucDonneesConstants.mn,
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
+
 import 'details1.dart';
 
 class Correction2 extends ConsumerStatefulWidget {
@@ -26,21 +27,21 @@ class _Correction2State extends ConsumerState<Correction2> {
             text: TextSpan(
               style: TextStyle(
                 fontSize: ExoConstants.richTextFontSize,
-
+                height: 2,
                 color: Colors.black,
               ),
               children: <InlineSpan>[
-                const TextSpan(text: "le carbone-14 ("),
+                const TextSpan(text: "le carbone-14 ( "),
 
-                PhyNucLatexContants.carbone14,
+                PhyNucConstants.carbone14,
 
-                const TextSpan(text: ") est un isotope du carbone-12 ("),
+                const TextSpan(text: " ) est un isotope du carbone-12 ( "),
 
-                PhyNucLatexContants.carbone12,
+                PhyNucConstants.carbone12,
 
                 const TextSpan(
                   text:
-                      ") car ils ont le même nombre de protons (Z=6) mais des nombres de neutrons différents",
+                      " ) car ils ont le même nombre de protons (Z=6) mais des nombres de neutrons différents",
                 ),
               ],
             ),

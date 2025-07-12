@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data_constants.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/helpers.dart';
 
 class Correction4 extends ConsumerStatefulWidget {
   const Correction4({super.key});
@@ -45,7 +47,8 @@ class _Correction4State extends ConsumerState<Correction4> {
               ),
               children: <InlineSpan>[
                 const TextSpan(text: "masse(protons) = Z x "),
-                PhyNucLatexContants.mp,
+
+                PhyNucConstants.mp,
               ],
             ),
           ),
@@ -68,7 +71,7 @@ class _Correction4State extends ConsumerState<Correction4> {
               ),
               children: <InlineSpan>[
                 const TextSpan(text: "masse(neutrons) = (A-Z) x "),
-                PhyNucLatexContants.mn,
+                PhyNucConstants.mn,
               ],
             ),
           ),
@@ -87,9 +90,9 @@ class _Correction4State extends ConsumerState<Correction4> {
                     ),
                     children: <InlineSpan>[
                       const TextSpan(text: "masse(nucléons) = Z x "),
-                      PhyNucLatexContants.mp,
+                      PhyNucConstants.mp,
                       const TextSpan(text: "\n \n + (A-Z) x "),
-                      PhyNucLatexContants.mn,
+                      PhyNucConstants.mn,
                     ],
                   ),
                 ),
@@ -111,27 +114,19 @@ class _Correction4State extends ConsumerState<Correction4> {
           SizedBox(height: 20),
 
           Text(
-            "masse(nucléons) = 6 x ${PhyNucLatexContants.masseProtonEnUValue} + (14 - 6) x ${PhyNucLatexContants.masseNeutronEnUValue}",
+            "masse(nucléons) = 6 x ${PhyNucValuesConstants.masseProtonEnU} + (14 - 6) x ${PhyNucValuesConstants.masseNeutronEnU}",
             style: const TextStyle(fontSize: ExoConstants.fontSize),
           ),
 
           SizedBox(height: 20),
 
           BordersWrapper(
-            wrapped: Wrap(
-              children: [
-                Text(
-                  "masse(nucléons) = 14,112976u",
-                  style: const TextStyle(
-                    fontSize: ExoConstants.fontSize,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            wrapped: result(
+              value: "14,112976",
+              left: "masse(nucléons)",
+              unit: "u",
             ),
           ),
-
-          SizedBox(height: 20),
 
           SizedBox(height: 20),
         ],

@@ -43,7 +43,7 @@ class PcNucChap11Exo1Enonce extends ConsumerWidget {
             children: <InlineSpan>[
               const TextSpan(text: "2) Calculez la masse en "),
 
-              PhyNucLatexContants.mevc2,
+              PhyNucConstants.mevc2,
 
               const TextSpan(text: "  d'un noyau de carbone-14 "),
             ],

@@ -33,7 +33,7 @@ class Donnees extends ConsumerWidget {
             ),
             children: <InlineSpan>[
               const TextSpan(text: "Notation de l'uranium-235: "),
-              PhyNucLatexContants.uranium235,
+              PhyNucConstants.uranium235,
             ],
           ),
         ),
@@ -49,26 +49,26 @@ class Donnees extends ConsumerWidget {
             ),
             children: <InlineSpan>[
               const TextSpan(text: "Notation du fer-56: "),
-              PhyNucLatexContants.fer56,
+              PhyNucConstants.fer56,
             ],
           ),
         ),
 
         SizedBox(height: 20),
-        DonneesPhyNucLatexConstants.uEnMeVC2,
+        PhyNucDonneesConstants.uEnMeVC2,
         SizedBox(height: 20),
 
-        DonneesPhyNucLatexConstants.masseU235EnU,
+        PhyNucDonneesConstants.masseU235EnU,
 
         SizedBox(height: 20),
-        DonneesPhyNucLatexConstants.masseFe56EnU,
+        PhyNucDonneesConstants.masseFe56EnU,
         SizedBox(height: 20),
 
-        DonneesPhyNucLatexConstants.mp,
+        PhyNucDonneesConstants.mp,
 
         SizedBox(height: 20),
 
-        DonneesPhyNucLatexConstants.mn,
+        PhyNucDonneesConstants.mn,
       ],
     );
   }

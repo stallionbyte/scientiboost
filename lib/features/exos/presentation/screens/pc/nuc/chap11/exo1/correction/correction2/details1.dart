@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
-
 import 'package:scientiboost/core/constants.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
 
@@ -30,7 +29,7 @@ class _Details1State extends ConsumerState<Details1> {
               children: <InlineSpan>[
                 const TextSpan(text: "Un noyau de "),
 
-                PhyNucLatexContants.carbone14,
+                PhyNucConstants.carbone14,
 
                 const TextSpan(text: " est composé de:"),
               ],
@@ -65,7 +64,7 @@ class _Details1State extends ConsumerState<Details1> {
               children: <InlineSpan>[
                 const TextSpan(text: "Un noyau de "),
 
-                PhyNucLatexContants.carbone12,
+                PhyNucConstants.carbone12,
 
                 const TextSpan(text: " est composé de:"),
               ],
