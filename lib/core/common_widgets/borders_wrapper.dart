@@ -5,17 +5,17 @@ class BordersWrapper extends ConsumerWidget {
   const BordersWrapper({
     super.key,
     required this.wrapped,
-    required this.color_,
+    this.color = Colors.blue,
   });
 
   final Widget wrapped;
-  final Color color_;
+  final Color color;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border.all(color: color_, width: 2.0),
+        border: Border.all(color: color, width: 2.0),
         borderRadius: BorderRadius.circular(10.0), // Coins arrondis
       ),
       child: Padding(

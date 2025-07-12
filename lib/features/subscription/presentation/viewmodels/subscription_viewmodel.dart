@@ -138,10 +138,6 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
     );
   }
 
-  Future<void> goToCheckout() async {
-    await ref.read(goRouterProvider).push("/checkout");
-  }
-
   // Handle Pending
 
   SubscriptionModel createPendingSubscription({required String subject}) {

@@ -28,7 +28,7 @@ import 'package:scientiboost/features/exos/presentation/screens/exo_screen.dart'
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/enonce.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/correction/correction.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/correction.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/correction/correction.dart';
 
 import 'package:scientiboost/features/exams/presentation/screens/exam_screen.dart';
 import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/enonce.dart';

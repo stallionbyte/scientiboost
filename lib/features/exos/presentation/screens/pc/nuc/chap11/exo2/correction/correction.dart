@@ -6,26 +6,23 @@ import 'package:scientiboost/core/constants.dart';
 import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
-import 'correction4/correction4.dart';
-import 'correction5/correction5.dart';
 
-class PcNucChap11Exo1Correction extends ConsumerStatefulWidget {
-  const PcNucChap11Exo1Correction({super.key});
+class PcNucChap11Exo2Correction extends ConsumerStatefulWidget {
+  const PcNucChap11Exo2Correction({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PcNucChap11Exo1CorrectionState();
+      _PcNucChap11Exo2CorrectionState();
 }
 
-class _PcNucChap11Exo1CorrectionState
-    extends ConsumerState<PcNucChap11Exo1Correction> {
+class _PcNucChap11Exo2CorrectionState
+    extends ConsumerState<PcNucChap11Exo2Correction> {
   @override
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
       elevation: 1,
       expandedHeaderPadding: EdgeInsets.zero,
       expandIconColor: Colors.blue,
-
       children: [
         ExpansionPanelRadio(
           value: 'correction-1',
@@ -34,7 +31,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "1) a) Composition du noyau",
+                "1) Energie de liaison par nucléon de l'uranium-235",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -55,7 +52,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'b) Expliquons',
+                '2) Energie de liaison par nucléon du fer-56',
 
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
@@ -78,7 +75,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) Calculons",
+                "3) Comparons",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: ExoConstants.fontSize,
@@ -89,51 +86,6 @@ class _PcNucChap11Exo1CorrectionState
           },
 
           body: Correction3(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-4',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: Text(
-                "3) a) Calculons la masse",
-                style: const TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction4(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-5',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: const Text(
-                'b) Comparons',
-
-                style: TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction5(),
         ),
       ],
     );

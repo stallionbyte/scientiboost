@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
@@ -113,7 +114,6 @@ class _Correction3State extends ConsumerState<Correction3> {
                 ],
               ),
             ),
-            color_: Colors.blue,
           ),
 
           SizedBox(height: 20),

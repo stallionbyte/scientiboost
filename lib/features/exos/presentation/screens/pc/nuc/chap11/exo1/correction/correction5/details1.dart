@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/formules_constants.dart';
 
 class Details1 extends ConsumerStatefulWidget {
   const Details1({super.key});
@@ -20,7 +22,7 @@ class _Details1State extends ConsumerState<Details1> {
         children: [
           SizedBox(height: 20),
 
-          PhyNucLatexContants.defautDeMasseFormule,
+          PhyNucLatexFormulesContants.defautDeMasse,
 
           SizedBox(height: 20),
 
