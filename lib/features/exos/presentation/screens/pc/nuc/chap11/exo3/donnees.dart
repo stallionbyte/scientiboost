@@ -1,9 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter/material.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -18,10 +20,10 @@ class Donnees extends ConsumerWidget {
           "Données:",
           style: const TextStyle(
             fontSize: ExoConstants.fontSize,
+
             fontWeight: FontWeight.bold,
           ),
         ),
-
         SizedBox(height: 20),
 
         RichText(
@@ -32,8 +34,9 @@ class Donnees extends ConsumerWidget {
               color: Colors.black,
             ),
             children: <InlineSpan>[
-              const TextSpan(text: "Notation du carbone-14: "),
-              PhyNucConstants.carbone14,
+              const TextSpan(text: "Notation du cobalt-60: "),
+
+              PhyNucConstants.cobalt60,
             ],
           ),
         ),
@@ -48,19 +51,26 @@ class Donnees extends ConsumerWidget {
               color: Colors.black,
             ),
             children: <InlineSpan>[
-              const TextSpan(text: "Notation du carbone-12: "),
-              PhyNucConstants.carbone12,
+              const TextSpan(text: "Energie de masse d'un noyau de "),
+
+              PhyNucConstants.cobalt60,
+
+              const TextSpan(text: " : 8,9325 . "),
+
+              exp(exp: r"-9"),
+
+              const TextSpan(text: " J "),
             ],
           ),
         ),
 
         SizedBox(height: 20),
 
-        PhyNucDonneesConstants.uEnMeVC2,
+        PhyNucDonneesConstants.c,
 
         SizedBox(height: 20),
 
-        PhyNucDonneesConstants.masseC14EnU,
+        PhyNucDonneesConstants.uEnKg,
 
         SizedBox(height: 20),
 
@@ -69,6 +79,8 @@ class Donnees extends ConsumerWidget {
         SizedBox(height: 20),
 
         PhyNucDonneesConstants.mn,
+
+        SizedBox(height: 20),
       ],
     );
   }

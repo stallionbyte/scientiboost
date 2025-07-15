@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 
 import 'details1.dart';
 
@@ -83,7 +83,7 @@ class _Correction5State extends ConsumerState<Correction5> {
 
           SizedBox(height: 20),
           Details1(),
-          SizedBox(height: 20),
+          SizedBox(height: 40),
         ],
       ),
     );

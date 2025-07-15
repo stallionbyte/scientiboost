@@ -6,7 +6,7 @@ import 'package:scientiboost/core/providers.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
-import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});

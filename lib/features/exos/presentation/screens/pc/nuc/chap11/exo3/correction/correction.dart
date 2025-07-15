@@ -6,35 +6,36 @@ import 'package:scientiboost/core/constants/constants.dart';
 import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
-import 'correction4/correction4.dart';
-import 'correction5/correction5.dart';
 
-class PcNucChap11Exo1Correction extends ConsumerStatefulWidget {
-  const PcNucChap11Exo1Correction({super.key});
+class PcNucChap11Exo3Correction extends ConsumerStatefulWidget {
+  const PcNucChap11Exo3Correction({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PcNucChap11Exo1CorrectionState();
+      _PcNucChap11Exo3CorrectionState();
 }
 
-class _PcNucChap11Exo1CorrectionState
-    extends ConsumerState<PcNucChap11Exo1Correction> {
+class _PcNucChap11Exo3CorrectionState
+    extends ConsumerState<PcNucChap11Exo3Correction> {
   @override
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
       elevation: 1,
-      expandedHeaderPadding: EdgeInsets.zero,
+
       expandIconColor: Colors.blue,
 
+      expandedHeaderPadding: EdgeInsets.zero,
       children: [
         ExpansionPanelRadio(
-          value: 'correction-1',
+          value: 'question-1',
           canTapOnHeader: true,
           backgroundColor: Colors.white,
+
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "1) a) Composition du noyau",
+                '1) Donnons la composition',
+
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -43,11 +44,12 @@ class _PcNucChap11Exo1CorrectionState
               ),
             );
           },
+
           body: Correction1(),
         ),
 
         ExpansionPanelRadio(
-          value: 'correction-2',
+          value: 'question-2',
           canTapOnHeader: true,
 
           backgroundColor: Colors.white,
@@ -55,7 +57,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'b) Expliquons',
+                '2) Calculons',
 
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
@@ -70,7 +72,7 @@ class _PcNucChap11Exo1CorrectionState
         ),
 
         ExpansionPanelRadio(
-          value: 'correction-3',
+          value: 'question-3',
           canTapOnHeader: true,
 
           backgroundColor: Colors.white,
@@ -78,10 +80,11 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) Calculons",
+                '3) Calculons',
+
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
                   fontSize: ExoConstants.fontSize,
+                  fontWeight: FontWeight.bold,
                   color: Colors.blue,
                 ),
               ),
@@ -89,51 +92,6 @@ class _PcNucChap11Exo1CorrectionState
           },
 
           body: Correction3(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-4',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: Text(
-                "3) a) Calculons la masse",
-                style: const TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction4(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-5',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: const Text(
-                'b) Comparons',
-
-                style: TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction5(),
         ),
       ],
     );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/helpers.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -97,24 +97,25 @@ class _Correction3State extends ConsumerState<Correction3> {
           BordersWrapper(
             wrapped: result(
               value: "13044,01992",
-              leftRichs: <InlineSpan>[
-                const TextSpan(
-                  text: "m( ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                PhyNucConstants.carbone14Bold,
-                const TextSpan(
-                  text: " )",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+              leftRichs: _buildResultLeft(),
               unitRich: PhyNucConstants.mevc2Bold,
             ),
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 40),
         ],
       ),
     );
+  }
+
+  List<InlineSpan> _buildResultLeft() {
+    return <InlineSpan>[
+      const TextSpan(
+        text: "m( ",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      PhyNucConstants.carbone14Bold,
+      const TextSpan(text: " )", style: TextStyle(fontWeight: FontWeight.bold)),
+    ];
   }
 }

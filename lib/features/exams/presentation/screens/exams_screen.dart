@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
-import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 

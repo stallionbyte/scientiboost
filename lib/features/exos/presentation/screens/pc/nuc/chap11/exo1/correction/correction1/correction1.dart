@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -56,7 +56,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             style: const TextStyle(fontSize: ExoConstants.fontSize),
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 40),
         ],
       ),
     );

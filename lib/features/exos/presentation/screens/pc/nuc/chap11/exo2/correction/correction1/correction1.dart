@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/formules_constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/formules_builders.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/helpers.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -27,7 +28,7 @@ class _Correction1State extends ConsumerState<Correction1> {
           SizedBox(height: 20),
 
           BordersWrapper(
-            wrapped: PhyNucFormulesConstants.energieDeLiaisonParNucleon,
+            wrapped: energieDeLiaisonParNucleon(),
             color: Colors.black,
           ),
 
@@ -43,7 +44,15 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           SizedBox(height: 20),
 
-          PhyNucFormulesConstants.energieDeLiaisonParNucleonU235,
+          energieDeLiaisonParNucleon(
+            A: "235",
+            Z: "92",
+            X: "U",
+            mp: PhyNucValuesConstants.masseProtonEnU,
+            mn: PhyNucValuesConstants.masseNeutronEnU,
+            uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
+            masseNoyau: PhyNucValuesConstants.masseU235EnU,
+          ),
 
           SizedBox(height: 20),
 
@@ -55,7 +64,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 40),
         ],
       ),
     );

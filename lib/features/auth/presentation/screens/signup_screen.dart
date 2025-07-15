@@ -7,7 +7,7 @@ import 'package:scientiboost/core/common_widgets/input_email.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
-import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 
 class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});

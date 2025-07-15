@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';

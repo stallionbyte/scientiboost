@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -60,14 +60,14 @@ class _Correction3State extends ConsumerState<Correction3> {
           SizedBox(height: 20),
 
           Text(
-            "8,55 > 7,39 donc le fer-56 est plus stable que l'uranium-235",
+            "8,55 > 7,39 donc un noyau de fer-56 est plus stable qu'un noyau d'uranium-235",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: ExoConstants.fontSize,
             ),
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 40),
         ],
       ),
     );

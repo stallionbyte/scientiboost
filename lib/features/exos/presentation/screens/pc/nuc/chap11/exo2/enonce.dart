@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
-import 'donnes.dart';
+import 'donnees.dart';
 
 class PcNucChap11Exo2Enonce extends ConsumerWidget {
   const PcNucChap11Exo2Enonce({super.key});

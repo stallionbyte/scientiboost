@@ -9,11 +9,11 @@ import 'package:scientiboost/features/subscription/presentation/viewmodels/subsc
 import 'package:scientiboost/features/internet/presentation/viewmodels/internet_viewmodel.dart';
 
 import 'package:scientiboost/core/common_widgets/titre.dart';
-import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 
 import 'package:scientiboost/features/subscription/data/models/subscription_model.dart';
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class SubscriptionInfosScreen extends ConsumerStatefulWidget {
   const SubscriptionInfosScreen({super.key});

@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:scientiboost/core/error/firebase/error.dart';
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'package:scientiboost/features/auth/data/models/user_model.dart';
 

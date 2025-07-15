@@ -1,6 +1,6 @@
 import 'package:scientiboost/data/storage/local_storage_interface.dart';
 import 'package:scientiboost/data/storage/shared_preference_storage.dart';
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 // 4. Container global pour le storage (storage_container.dart)
 class StorageContainer {

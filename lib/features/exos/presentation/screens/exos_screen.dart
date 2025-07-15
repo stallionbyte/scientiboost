@@ -5,8 +5,8 @@ import 'package:scientiboost/features/internet/presentation/viewmodels/internet_
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 
 import 'package:scientiboost/core/common_widgets/button_exo_exam.dart';
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 
 class ExosScreen extends ConsumerStatefulWidget {
   const ExosScreen({super.key});
@@ -182,14 +182,22 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
+                SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 1',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                 ),
+                SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 2',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
                 ),
+                SizedBox(height: 20),
+                ButtonExoExam(
+                  text: 'Exercice 3',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
+                ),
+                SizedBox(height: 20),
               ],
             ),
           ),

@@ -1,3 +1,5 @@
+//constants.dart
+
 // Centralisation des constantes pour une meilleure maintenabilité
 class Constants {
   static const String genericError =

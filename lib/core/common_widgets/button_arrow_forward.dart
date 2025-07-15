@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:scientiboost/core/providers.dart';
+
 class ButtonArrowForward extends ConsumerWidget {
   const ButtonArrowForward({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.backgroundColor,
+    this.route,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String text;
   final Color? backgroundColor;
+  final String? route;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +28,11 @@ class ButtonArrowForward extends ConsumerWidget {
           borderRadius: BorderRadius.circular(18), // Coins arrondis
         ),
       ),
-      onPressed: onPressed,
+      onPressed:
+          onPressed ??
+          () {
+            ref.read(goRouterProvider).push(route as String);
+          },
       child: Row(
         mainAxisSize: MainAxisSize.min, // Ajuste la taille du Row au contenu
         children: [

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import 'package:scientiboost/core/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/constants.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -32,8 +32,8 @@ class Donnees extends ConsumerWidget {
               color: Colors.black,
             ),
             children: <InlineSpan>[
-              const TextSpan(text: "Notation de l'uranium-235: "),
-              PhyNucConstants.uranium235,
+              const TextSpan(text: "Notation du carbone-14: "),
+              PhyNucConstants.carbone14,
             ],
           ),
         ),
@@ -48,20 +48,20 @@ class Donnees extends ConsumerWidget {
               color: Colors.black,
             ),
             children: <InlineSpan>[
-              const TextSpan(text: "Notation du fer-56: "),
-              PhyNucConstants.fer56,
+              const TextSpan(text: "Notation du carbone-12: "),
+              PhyNucConstants.carbone12,
             ],
           ),
         ),
 
         SizedBox(height: 20),
+
         PhyNucDonneesConstants.uEnMeVC2,
-        SizedBox(height: 20),
-
-        PhyNucDonneesConstants.masseU235EnU,
 
         SizedBox(height: 20),
-        PhyNucDonneesConstants.masseFe56EnU,
+
+        PhyNucDonneesConstants.masseC14EnU,
+
         SizedBox(height: 20),
 
         PhyNucDonneesConstants.mp,

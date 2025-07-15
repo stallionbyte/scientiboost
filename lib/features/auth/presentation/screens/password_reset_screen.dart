@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/common_widgets/input_email.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/password_reset_viewmodel.dart';
-import 'package:scientiboost/core/helpers.dart' as helpers;
+import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 
 class PasswordResetScreen extends ConsumerStatefulWidget {
   const PasswordResetScreen({super.key});

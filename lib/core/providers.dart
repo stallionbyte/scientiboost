@@ -30,6 +30,9 @@ import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/ex
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/correction/correction.dart';
 
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo3/enonce.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo3/correction/correction.dart';
+
 import 'package:scientiboost/features/exams/presentation/screens/exam_screen.dart';
 import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/enonce.dart';
 import 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/correction.dart';
@@ -56,7 +59,7 @@ import 'package:scientiboost/features/favorites/presentation/screens/favorites_s
 import 'package:scientiboost/data/storage/local_storage_interface.dart';
 import 'package:scientiboost/data/storage/storage_container.dart';
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'package:scientiboost/test_widget.dart';
 
@@ -224,6 +227,22 @@ GoRouter goRouter(Ref ref) => GoRouter(
           enonce: PcNucChap11Exo2Enonce(),
           correction: PcNucChap11Exo2Correction(),
           route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
+          favorites: StorageKeysConstants.favoritesExos,
+        );
+      },
+    ),
+
+    GoRoute(
+      path: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
+      builder: (context, state) {
+        return ExoScreen(
+          matiere: 'Physique-Chimie',
+          chapNum: 11,
+          chapTitle: 'Le noyau atomique',
+          exoNum: 3,
+          enonce: PcNucChap11Exo3Enonce(),
+          correction: PcNucChap11Exo3Correction(),
+          route: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
           favorites: StorageKeysConstants.favoritesExos,
         );
       },

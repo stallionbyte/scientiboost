@@ -6,7 +6,7 @@ import 'package:scientiboost/features/subscription/data/models/subscription_mode
 
 import 'package:scientiboost/core/helpers.dart' as helpers;
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'package:scientiboost/core/error/firebase/error.dart';
 

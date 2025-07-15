@@ -2,7 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:scientiboost/core/providers.dart';
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 part 'internet_viewmodel.freezed.dart';
 part 'internet_viewmodel.g.dart';

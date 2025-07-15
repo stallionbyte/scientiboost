@@ -2,7 +2,7 @@ import 'package:result_dart/result_dart.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-import 'package:scientiboost/core/constants.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 abstract class InternetRepository {
   Future<ResultDart<int, String>> checkInternetAccess();
