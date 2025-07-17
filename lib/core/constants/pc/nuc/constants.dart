@@ -7,11 +7,17 @@ class PhyNucTex2SvgMathContants {
   static const String delta = r"\Delta";
   static const String deltaBold = r"\mathbf{\Delta}";
 
+  static const String deltaM = r"\Delta m";
+  static const String deltaMBold = r"\mathbf{\Delta m}";
+
   static const String c2 = r"c^2";
   static const String c2Bold = r"\mathbf{c^2}";
 
   static const String eln = r"E_{l/nuc}";
   static const String elnBold = r"\mathbf{E_{l/nuc}}";
+
+  static const String el = r"E_l";
+  static const String elBold = r"\mathbf{E_l}";
 
   static const String mn = r"m_n";
   static const String mnBold = r"\mathbf{m_n}";
@@ -24,16 +30,6 @@ class PhyNucTex2SvgMathContants {
 }
 
 class PhyNucConstants {
-  static final eSurC2 = buildTex2SvgInWidgetSpan(
-    math: buildTex2SvgMathESurC2(),
-    scale: 2.0,
-  );
-
-  static final eSurC2Bold = buildTex2SvgInWidgetSpan(
-    math: buildTex2SvgMathESurC2(bold: true),
-    scale: 2.0,
-  );
-
   static final delta = buildTex2SvgInWidgetSpan(
     math: PhyNucTex2SvgMathContants.delta,
     scale: 0.8,
@@ -41,6 +37,16 @@ class PhyNucConstants {
 
   static final deltaBold = buildTex2SvgInWidgetSpan(
     math: PhyNucTex2SvgMathContants.deltaBold,
+    scale: 0.8,
+  );
+
+  static final deltaM = buildTex2SvgInWidgetSpan(
+    math: PhyNucTex2SvgMathContants.deltaM,
+    scale: 0.8,
+  );
+
+  static final deltaMBold = buildTex2SvgInWidgetSpan(
+    math: PhyNucTex2SvgMathContants.deltaMBold,
     scale: 0.8,
   );
 
@@ -60,6 +66,14 @@ class PhyNucConstants {
 
   static final elnBold = buildTex2SvgInWidgetSpan(
     math: PhyNucTex2SvgMathContants.elnBold,
+  );
+
+  static final el = buildTex2SvgInWidgetSpan(
+    math: PhyNucTex2SvgMathContants.el,
+  );
+
+  static final elBold = buildTex2SvgInWidgetSpan(
+    math: PhyNucTex2SvgMathContants.elBold,
   );
 
   static final mn = buildTex2SvgInWidgetSpan(
@@ -153,6 +167,32 @@ class PhyNucConstants {
       A: r"56",
       Z: r"26",
       X: r"F2",
+      bold: true,
+    ),
+  );
+
+  static final elementX300 = buildTex2SvgInWidgetSpan(
+    math: buildTex2SvgMathNotationNoyau(X: r"X", A: r"300", Z: r"120"),
+  );
+
+  static final elementX300Bold = buildTex2SvgInWidgetSpan(
+    math: buildTex2SvgMathNotationNoyau(
+      X: r"X",
+      A: r"300",
+      Z: r"120",
+      bold: true,
+    ),
+  );
+
+  static final uranium238 = buildTex2SvgInWidgetSpan(
+    math: buildTex2SvgMathNotationNoyau(A: r"238", Z: r"92", X: r"U"),
+  );
+
+  static final uranium238Bold = buildTex2SvgInWidgetSpan(
+    math: buildTex2SvgMathNotationNoyau(
+      A: r"238",
+      Z: r"92",
+      X: r"U",
       bold: true,
     ),
   );

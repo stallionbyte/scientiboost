@@ -57,7 +57,7 @@ class _PcNucChap11Exo3CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                '2) Calculons',
+                '2) Calculons la masse',
 
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
@@ -80,7 +80,7 @@ class _PcNucChap11Exo3CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                '3) Calculons',
+                '3) Calculons le défaut de masse',
 
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,

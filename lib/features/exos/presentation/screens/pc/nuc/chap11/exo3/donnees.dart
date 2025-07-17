@@ -51,11 +51,9 @@ class Donnees extends ConsumerWidget {
               color: Colors.black,
             ),
             children: <InlineSpan>[
-              const TextSpan(text: "Energie de masse d'un noyau de "),
-
-              PhyNucConstants.cobalt60,
-
-              const TextSpan(text: " : 8,9325 . "),
+              const TextSpan(
+                text: "Energie de masse d'un noyau de cobalt-60: 8,9325 . ",
+              ),
 
               exp(exp: r"-9"),
 

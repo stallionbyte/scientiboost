@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
-
-// envoyer dans widgetBuilders
-
-const _scale = 6.0;
-
-Widget mEgaleESurC2({String E = r" E ", String c = r" c ", bool bold = false}) {
-  return buildTex2SvgInRichText(
-    math: buildTex2SvgMathmEgaleESurC2(E: E, c: c, bold: bold),
-    scale: 2.0,
-  );
-}
+import 'tex2svg_math.dart';
 
 Widget relationEinstein({
   String E = r" E ",
   String m = "m",
   String c = r" c ",
   bool bold = false,
+  double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathRelationEinstein(E: E, m: m, c: c, bold: bold),
+    scale: scale,
+  );
+}
+
+Widget energieDeLiaison({
+  String m = r"m",
+  String c = r" c ",
+  bool bold = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathEnergieDeLiaison(m: m, c: c, bold: bold),
+    scale: scale,
   );
 }
 
@@ -33,7 +36,7 @@ Widget defautDeMasse({
   String mn = r" m_n ",
   String? masseNoyau,
   bool bold = false,
-  double? scale,
+  double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathDefautDeMasse(
@@ -45,7 +48,7 @@ Widget defautDeMasse({
       masseNoyau: masseNoyau,
       bold: bold,
     ),
-    scale: scale ?? _scale,
+    scale: scale,
   );
 }
 
@@ -58,7 +61,7 @@ Widget energieDeLiaisonParNucleon({
   String? uEnMeVC2,
   String? masseNoyau,
   bool bold = false,
-  double? scale,
+  double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathEnergieDeLiaisonParNucleon(
@@ -71,6 +74,6 @@ Widget energieDeLiaisonParNucleon({
       masseNoyau: masseNoyau,
       bold: bold,
     ),
-    scale: scale ?? _scale,
+    scale: scale,
   );
 }

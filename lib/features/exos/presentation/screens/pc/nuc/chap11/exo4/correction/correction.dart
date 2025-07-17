@@ -6,19 +6,17 @@ import 'package:scientiboost/core/constants/constants.dart';
 import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
-import 'correction4/correction4.dart';
-import 'correction5/correction5.dart';
 
-class PcNucChap11Exo1Correction extends ConsumerStatefulWidget {
-  const PcNucChap11Exo1Correction({super.key});
+class PcNucChap11Exo4Correction extends ConsumerStatefulWidget {
+  const PcNucChap11Exo4Correction({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PcNucChap11Exo1CorrectionState();
+      _PcNucChap11Exo4CorrectionState();
 }
 
-class _PcNucChap11Exo1CorrectionState
-    extends ConsumerState<PcNucChap11Exo1Correction> {
+class _PcNucChap11Exo4CorrectionState
+    extends ConsumerState<PcNucChap11Exo4Correction> {
   @override
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
@@ -34,7 +32,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "1) a) Composition du noyau",
+                "1) Calculons le défaut de masse",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -49,14 +47,11 @@ class _PcNucChap11Exo1CorrectionState
         ExpansionPanelRadio(
           value: 'correction-2',
           canTapOnHeader: true,
-
           backgroundColor: Colors.white,
-
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'b) Expliquons',
-
+                '2) Calculons la masse de ce noyau',
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -65,20 +60,17 @@ class _PcNucChap11Exo1CorrectionState
               ),
             );
           },
-
           body: Correction2(),
         ),
 
         ExpansionPanelRadio(
           value: 'correction-3',
           canTapOnHeader: true,
-
           backgroundColor: Colors.white,
-
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) Calculons la masse d'un noyau",
+                "3) Calculons l'énergie nécessaire",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: ExoConstants.fontSize,
@@ -87,53 +79,7 @@ class _PcNucChap11Exo1CorrectionState
               ),
             );
           },
-
           body: Correction3(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-4',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: Text(
-                "3) a) Calculons la masse",
-                style: const TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction4(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-5',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: const Text(
-                'b) Comparons',
-
-                style: TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction5(),
         ),
       ],
     );

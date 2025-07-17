@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/formules_builders.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 
 class Details1 extends ConsumerStatefulWidget {
   const Details1({super.key});
@@ -22,17 +23,11 @@ class _Details1State extends ConsumerState<Details1> {
         children: [
           SizedBox(height: 20),
 
-          defautDeMasse(),
+          defautDeMasse(scale: 6.0),
 
           SizedBox(height: 20),
 
-          Text(
-            "Or",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          transition(transition: "Or"),
 
           SizedBox(height: 20),
 
@@ -58,13 +53,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           SizedBox(height: 20),
 
-          Text(
-            "D'où",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          transition(transition: "D'où"),
 
           SizedBox(height: 20),
 

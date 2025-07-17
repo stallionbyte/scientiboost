@@ -1,4 +1,4 @@
-// data_constants.dart
+// pc/nuc/data_constants.dart
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
@@ -25,6 +25,7 @@ class PhyNucDonneesTex2SvgMathConstants {
   static const String masseC14EnU = r"m(_{\ 6}^{14}C) = 14,003242 \ u";
   static const String masseU235EnU = r"m(_{\ 92}^{235}U) = 235,0439 \ u";
   static const String masseFe56EnU = r"m(_{\ 26}^{96}Fe) = 55,934936 \ u";
+  static const String masseU238EnU = r"m(_{\ 92}^{238}U) = 238,0508 \ u";
 }
 
 class PhyNucDonneesConstants {
@@ -60,5 +61,9 @@ class PhyNucDonneesConstants {
 
   static final masseFe56EnU = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.masseFe56EnU,
+  );
+
+  static final masseU238EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseU238EnU,
   );
 }

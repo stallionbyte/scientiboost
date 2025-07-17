@@ -46,7 +46,9 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
 
         if (showDetails) ...[
           Divider(color: Colors.blue),
+          SizedBox(height: 20),
           widget.details,
+          SizedBox(height: 20),
           Divider(color: Colors.blue),
         ],
       ],

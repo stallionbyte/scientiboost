@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/formules_builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
@@ -28,7 +28,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           SizedBox(height: 20),
 
           BordersWrapper(
-            wrapped: energieDeLiaisonParNucleon(),
+            wrapped: energieDeLiaisonParNucleon(scale: 6.0),
             color: Colors.black,
           ),
 
@@ -52,6 +52,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             mn: PhyNucValuesConstants.masseNeutronEnU,
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
             masseNoyau: PhyNucValuesConstants.masseFe56EnU,
+            scale: 6.0,
           ),
 
           SizedBox(height: 20),

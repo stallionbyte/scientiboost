@@ -6,26 +6,24 @@ import 'package:scientiboost/core/common_widgets/details_handler.dart';
 
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'builders.dart';
 
-class Details1 extends ConsumerStatefulWidget {
-  const Details1({super.key});
+class Details2 extends ConsumerStatefulWidget {
+  const Details2({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _Details1State();
+  ConsumerState<ConsumerStatefulWidget> createState() => _Details2State();
 }
 
-class _Details1State extends ConsumerState<Details1> {
+class _Details2State extends ConsumerState<Details2> {
   @override
   Widget build(BuildContext context) {
     return DetailsHandler(
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
-
           PhyNucDonneesConstants.mp,
 
           SizedBox(height: 20),
@@ -35,22 +33,9 @@ class _Details1State extends ConsumerState<Details1> {
           SizedBox(height: 20),
 
           result(
-            leftRichs: <InlineSpan>[
-              const TextSpan(text: "m( "),
-
-              PhyNucConstants.cobalt60,
-
-              const TextSpan(text: " ) "),
-            ],
-
-            valueRichs: <InlineSpan>[
-              const TextSpan(text: " 9,938746  . "),
-
-              exp(exp: r" -26 "),
-            ],
-
-            unit: "kg",
-
+            leftRich: PhyNucConstants.deltaM,
+            value: "2250",
+            unitRich: PhyNucConstants.mevc2,
             bold: false,
           ),
 
@@ -60,7 +45,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           SizedBox(height: 20),
 
-          PhyNucDonneesConstants.uEnKg,
+          PhyNucDonneesConstants.uEnMeVC2,
 
           SizedBox(height: 20),
 
@@ -72,10 +57,9 @@ class _Details1State extends ConsumerState<Details1> {
             leftRich: PhyNucConstants.mp,
             valueRichs: <InlineSpan>[
               const TextSpan(text: PhyNucValuesConstants.masseProtonEnU),
-              const TextSpan(text: " . "),
-              PhyNucValuesConstants.uEnKg,
+              const TextSpan(text: " . ${PhyNucValuesConstants.uEnMeVC2} "),
             ],
-            unit: "kg",
+            unitRich: PhyNucConstants.mevc2,
             bold: false,
           ),
 
@@ -85,10 +69,9 @@ class _Details1State extends ConsumerState<Details1> {
             leftRich: PhyNucConstants.mn,
             valueRichs: <InlineSpan>[
               const TextSpan(text: PhyNucValuesConstants.masseNeutronEnU),
-              const TextSpan(text: " . "),
-              PhyNucValuesConstants.uEnKg,
+              const TextSpan(text: " . ${PhyNucValuesConstants.uEnMeVC2} "),
             ],
-            unit: "kg",
+            unitRich: PhyNucConstants.mevc2,
             bold: false,
           ),
 
@@ -98,20 +81,19 @@ class _Details1State extends ConsumerState<Details1> {
 
           SizedBox(height: 20),
 
-          defautDeMasse(
-            X: r"Co",
-            Z: r"27",
-            A: r"60",
+          defautDeMasseInverse5(
+            Z: r"120",
+            A: r"300",
+            defautDeMasse: r"2250",
             mp:
                 PhyNucValuesConstants.masseProtonEnU +
-                r"\  . \  " +
-                PhyNucValuesConstants.uEnKgMath,
+                r"\ \cdot \ " +
+                PhyNucValuesConstants.uEnMeVC2,
             mn:
                 PhyNucValuesConstants.masseNeutronEnU +
-                r"\  . \  " +
-                PhyNucValuesConstants.uEnKgMath,
-            masseNoyau: r" 9,938746 . 10^{-26}",
-            scale: 5.0,
+                r"\ \cdot \ " +
+                PhyNucValuesConstants.uEnMeVC2,
+            scale: 6.0,
           ),
         ],
       ),
