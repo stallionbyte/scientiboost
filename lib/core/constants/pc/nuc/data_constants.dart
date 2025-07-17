@@ -11,13 +11,20 @@ class PhyNucValuesConstants {
   static final uEnKg = buildTex2SvgInWidgetSpan(math: uEnKgMath);
   static const String masseProtonEnU = r"1,007276";
   static const String masseNeutronEnU = r"1,008665";
+  static final nombreAvogadro = buildTex2SvgInWidgetSpan(
+    math: nombreAvogadroMath,
+  );
 
   //MathConstants
   static const String uEnKgMath = r"1,66 . 10^{-27}";
+  static const String nombreAvogadroMath = r"6,02 . 10^{23}";
 }
 
 class PhyNucDonneesTex2SvgMathConstants {
   static const String c = r"c = 299792458 \ m/s";
+  static const String nombreAvogadro =
+      r"\mathcal{N}_A = 6,02 . 10^{23} mol^{-1}";
+  static const String notationAvogadro = r"\mathcal{N}_A";
   static const String uEnMeVC2 = r"1u = 931,5 \ \text{MeV}/c^2";
   static const String uEnKg = r"1u = 1,66 . 10^{-27} \ \text{kg}";
   static const String mp = r"m_p = 1,007276 \ u";
@@ -26,11 +33,16 @@ class PhyNucDonneesTex2SvgMathConstants {
   static const String masseU235EnU = r"m(_{\ 92}^{235}U) = 235,0439 \ u";
   static const String masseFe56EnU = r"m(_{\ 26}^{96}Fe) = 55,934936 \ u";
   static const String masseU238EnU = r"m(_{\ 92}^{238}U) = 238,0508 \ u";
+  static const String massePu238EnU = r"m(_{\ 94}^{238}Pu) = 238,050 \ u";
 }
 
 class PhyNucDonneesConstants {
   static final uEnKg = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.uEnKg,
+  );
+
+  static final nombreAvogadro = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.nombreAvogadro,
   );
 
   static final c = buildTex2SvgInRichText(
@@ -65,5 +77,9 @@ class PhyNucDonneesConstants {
 
   static final masseU238EnU = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.masseU238EnU,
+  );
+
+  static final massePu238EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.massePu238EnU,
   );
 }

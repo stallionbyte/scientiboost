@@ -44,6 +44,24 @@ void scheduleShowSnackBar({
   });
 }
 
+List<InlineSpan> valueWithExp({
+  required String value,
+  required String expo,
+  bool bold = false,
+}) {
+  return <InlineSpan>[
+    TextSpan(
+      text: value,
+      style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal),
+    ),
+    TextSpan(
+      text: " . ",
+      style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal),
+    ),
+    exp(exp: expo, bold: bold),
+  ];
+}
+
 Widget result({
   WidgetSpan? leftRich,
   List<InlineSpan>? leftRichs,

@@ -196,4 +196,12 @@ class PhyNucConstants {
       bold: true,
     ),
   );
+
+  static final plutonium238 = buildTex2SvgInWidgetSpan(
+    math: buildTex2SvgMathNotationNoyau(X: r"Pu", A: r"238", Z: r"94"),
+  );
+
+  static final plutonium238Bold = buildTex2SvgInWidgetSpan(
+    math: buildTex2SvgMathNotationNoyau(X: r"Pu", A: r"238", Z: r"94", bold: true),
+  );
 }

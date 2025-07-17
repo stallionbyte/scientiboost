@@ -28,6 +28,26 @@ Widget energieDeLiaison({
   );
 }
 
+Widget energieDeLiaisonAvecDefautDeMase({
+  String el = r"E_l",
+  String c = r" c ",
+  String defautDeMasse = r" \Delta m ",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathEnergieDeLiaisonAvecDefautDeMase(
+      el: el,
+      c: c,
+      defautDeMasse: defautDeMasse,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
+    scale: scale,
+  );
+}
+
 Widget defautDeMasse({
   String X = r" X ",
   String A = r" A ",
@@ -72,6 +92,28 @@ Widget energieDeLiaisonParNucleon({
       mn: mn,
       uEnMeVC2: uEnMeVC2,
       masseNoyau: masseNoyau,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget nombreDeNoyauAvecMasse({
+  String N = r"N",
+  String m = r"m",
+  String M = r"M",
+  String avogadro = r"\mathcal{N}_A",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathNombreDeNoyauAvecMasse(
+      N: N,
+      m: m,
+      M: M,
+      avogadro: avogadro,
+      entraineQue: entraineQue,
       bold: bold,
     ),
     scale: scale,

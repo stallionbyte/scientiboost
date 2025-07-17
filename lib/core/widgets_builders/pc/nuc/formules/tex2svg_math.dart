@@ -57,6 +57,42 @@ String buildTex2SvgMathEnergieDeLiaison({
   return math.toString();
 }
 
+String buildTex2SvgMathEnergieDeLiaisonAvecDefautDeMase({
+  String el = r" E_l ",
+  String defautDeMasse = r" \Delta m ",
+  String c = r" c ",
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  math.write(el);
+
+  math.write(r" = ");
+
+  math.write(defautDeMasse);
+
+  math.write(r" { ");
+
+  math.write(c);
+
+  math.write(r" } ^ 2 ");
+
+  if (bold) {
+    math.write(r" } ");
+  }
+
+  return math.toString();
+}
+
 String buildTex2SvgMathDefautDeMasse({
   String X = r" X ",
   String A = r" A ",
@@ -190,6 +226,49 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
   math.write(A);
 
   math.write(r" } \end{array} ");
+
+  if (bold) {
+    math.write(r" } ");
+  }
+
+  return math.toString();
+}
+
+String buildTex2SvgMathNombreDeNoyauAvecMasse({
+  String N = r"N",
+  String m = r"m",
+  String M = r"M",
+  String avogadro = r"\mathcal{N}_A",
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  math.write(N);
+
+  math.write(r" = ");
+
+  math.write(r"\frac{");
+
+  math.write(m);
+
+  math.write(r"\ \cdot \ ");
+
+  math.write(avogadro);
+
+  math.write(r"}{");
+
+  math.write(M);
+
+  math.write(r"}");
 
   if (bold) {
     math.write(r" } ");
