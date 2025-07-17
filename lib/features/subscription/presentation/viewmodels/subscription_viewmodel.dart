@@ -106,18 +106,21 @@ class SubscriptionViewModel extends _$SubscriptionViewModel {
   Future<void> goToExo({required String route}) async {
     final state_ = state;
 
-    state = SubscriptionState.subscriptionLoading();
-
-    final hasInternet =
-        await ref
-            .read(internetViewmodelProvider.notifier)
-            .checkInternetAccess();
-
-    if (hasInternet) {
-      await checkSubscriptions();
+    if (state case Subscribed()) {
       ref.read(goRouterProvider).push(route);
     } else {
-      state = state_;
+      state = SubscriptionState.subscriptionLoading();
+      final hasInternet =
+          await ref
+              .read(internetViewmodelProvider.notifier)
+              .checkInternetAccess();
+
+      if (hasInternet) {
+        await checkSubscriptions();
+        ref.read(goRouterProvider).push(route);
+      } else {
+        state = state_;
+      }
     }
   }
 
