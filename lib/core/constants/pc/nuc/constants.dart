@@ -27,6 +27,9 @@ class PhyNucTex2SvgMathContants {
 
   static const String mevc2 = r"\text{MeV}/c^2";
   static const String mevc2Bold = r"\mathbf{\text{MeV}/c^2}";
+
+  static const String notationAvogadro = r"\mathcal{N}_A";
+  static const String notationAvogadroBold = r"\mathbf{\mathcal{N}_A}";
 }
 
 class PhyNucConstants {
@@ -202,6 +205,11 @@ class PhyNucConstants {
   );
 
   static final plutonium238Bold = buildTex2SvgInWidgetSpan(
-    math: buildTex2SvgMathNotationNoyau(X: r"Pu", A: r"238", Z: r"94", bold: true),
+    math: buildTex2SvgMathNotationNoyau(
+      X: r"Pu",
+      A: r"238",
+      Z: r"94",
+      bold: true,
+    ),
   );
 }

@@ -5,8 +5,6 @@ import 'package:scientiboost/core/widgets_builders/builders.dart';
 class PhyNucValuesConstants {
   // Utiliser la notation r".." partout
   static const String cEnMetreParSeconde = r"299792458";
-  static const String masseU235EnU = r"235,0439";
-  static const String masseFe56EnU = r"55,934936";
   static const String uEnMeVC2 = r"931,5";
   static final uEnKg = buildTex2SvgInWidgetSpan(math: uEnKgMath);
   static const String masseProtonEnU = r"1,007276";
@@ -14,6 +12,11 @@ class PhyNucValuesConstants {
   static final nombreAvogadro = buildTex2SvgInWidgetSpan(
     math: nombreAvogadroMath,
   );
+  static const String masseC14EnU = r"14,003242";
+  static const String masseU235EnU = r"235,0439";
+  static const String masseFe56EnU = r"55,934936";
+  static const String masseU238EnU = r"238,0508";
+  static const String massePu238EnU = r"238,050";
 
   //MathConstants
   static const String uEnKgMath = r"1,66 . 10^{-27}";
@@ -21,19 +24,36 @@ class PhyNucValuesConstants {
 }
 
 class PhyNucDonneesTex2SvgMathConstants {
-  static const String c = r"c = 299792458 \ m/s";
+  static const String c =
+      r"c = " + PhyNucValuesConstants.cEnMetreParSeconde + r" \ m/s";
   static const String nombreAvogadro =
-      r"\mathcal{N}_A = 6,02 . 10^{23} mol^{-1}";
-  static const String notationAvogadro = r"\mathcal{N}_A";
-  static const String uEnMeVC2 = r"1u = 931,5 \ \text{MeV}/c^2";
-  static const String uEnKg = r"1u = 1,66 . 10^{-27} \ \text{kg}";
-  static const String mp = r"m_p = 1,007276 \ u";
-  static const String mn = r"m_n = 1,008665 \ u";
-  static const String masseC14EnU = r"m(_{\ 6}^{14}C) = 14,003242 \ u";
-  static const String masseU235EnU = r"m(_{\ 92}^{235}U) = 235,0439 \ u";
-  static const String masseFe56EnU = r"m(_{\ 26}^{96}Fe) = 55,934936 \ u";
-  static const String masseU238EnU = r"m(_{\ 92}^{238}U) = 238,0508 \ u";
-  static const String massePu238EnU = r"m(_{\ 94}^{238}Pu) = 238,050 \ u";
+      r"\mathcal{N}_A = " +
+      PhyNucValuesConstants.nombreAvogadroMath +
+      r" mol^{-1}";
+
+  static const String uEnMeVC2 =
+      r"1u = " + PhyNucValuesConstants.uEnMeVC2 + r" \ \text{MeV}/c^2";
+  static const String uEnKg =
+      r"1u = " + PhyNucValuesConstants.uEnKgMath + r" \ \text{kg}";
+  static const String mp =
+      r"m_p = " + PhyNucValuesConstants.masseProtonEnU + r" \ u";
+  static const String mn =
+      r"m_n = " + PhyNucValuesConstants.masseNeutronEnU + r" \ u";
+
+  static const String masseC14EnU =
+      r"m(_{\ 6}^{14}C) = " + PhyNucValuesConstants.masseC14EnU + r" \ u";
+
+  static const String masseU235EnU =
+      r"m(_{\ 92}^{235}U) = " + PhyNucValuesConstants.masseU235EnU + r" \ u";
+
+  static const String masseFe56EnU =
+      r"m(_{\ 26}^{56}Fe) = " + PhyNucValuesConstants.masseFe56EnU + r" \ u";
+
+  static const String masseU238EnU =
+      r"m(_{\ 92}^{238}U) = " + PhyNucValuesConstants.masseU238EnU + r" \ u";
+
+  static const String massePu238EnU =
+      r"m(_{\ 94}^{238}Pu) = " + PhyNucValuesConstants.massePu238EnU + r" \ u";
 }
 
 class PhyNucDonneesConstants {

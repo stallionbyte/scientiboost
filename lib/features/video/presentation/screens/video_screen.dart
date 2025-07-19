@@ -10,7 +10,7 @@ import 'package:media_kit/media_kit.dart'; // Provides [Player], [Media], [Playl
 import 'package:media_kit_video/media_kit_video.dart'; // Provides [VideoController] & [Video] etc.
 
 import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 class VideoPlayerScreen extends ConsumerStatefulWidget {
   const VideoPlayerScreen({

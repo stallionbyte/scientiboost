@@ -7,7 +7,7 @@ import 'package:scientiboost/features/subscription/data/models/subscription_mode
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 
 import 'package:scientiboost/core/helpers.dart' as helpers;
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 
 part 'subscription_viewmodel.freezed.dart';

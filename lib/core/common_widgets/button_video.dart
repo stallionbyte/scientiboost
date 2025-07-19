@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 class ButtonVideo extends ConsumerWidget {
   const ButtonVideo({

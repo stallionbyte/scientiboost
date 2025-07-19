@@ -8,7 +8,7 @@ import 'package:scientiboost/features/internet/presentation/viewmodels/internet_
 import 'package:scientiboost/core/common_widgets/titre.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 class SubscriptionSreen extends ConsumerStatefulWidget {
   const SubscriptionSreen({super.key});

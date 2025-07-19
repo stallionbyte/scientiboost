@@ -7,7 +7,7 @@ import 'package:scientiboost/features/auth/data/models/user_model.dart';
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
 
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 part 'auth_viewmodel.freezed.dart';
 part 'auth_viewmodel.g.dart';

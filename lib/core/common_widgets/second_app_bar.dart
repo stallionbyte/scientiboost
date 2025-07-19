@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/current_page_viewmodel.dart';
 
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 class SecondAppBar extends ConsumerStatefulWidget {
   const SecondAppBar({super.key});

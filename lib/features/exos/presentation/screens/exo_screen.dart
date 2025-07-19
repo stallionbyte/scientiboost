@@ -5,7 +5,7 @@ import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
 import 'package:scientiboost/core/common_widgets/third_app_bar.dart';
 
 import 'package:scientiboost/core/common_widgets/unsubscribed_message.dart';
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';

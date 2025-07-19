@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 import 'package:scientiboost/core/common_widgets/titre.dart';
 
 class SubscriptionPerksScreen extends ConsumerWidget {

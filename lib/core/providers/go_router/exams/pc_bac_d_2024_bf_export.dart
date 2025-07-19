@@ -1,0 +1,10 @@
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/enonce.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo1/correction.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo2/enonce.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/chim/exo2/correction.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo1/enonce.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo1/correction.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo2/enonce.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo2/correction.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo3/enonce.dart';
+export 'package:scientiboost/features/exams/presentation/screens/d/pc/2024/phy/exo3/correction.dart';

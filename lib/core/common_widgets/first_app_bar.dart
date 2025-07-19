@@ -7,7 +7,7 @@ import 'package:scientiboost/features/pages_wrapper/presentation/viewmodels/curr
 
 import 'package:scientiboost/core/common_widgets/subscription_button.dart';
 
-import 'package:scientiboost/core/providers.dart';
+import 'package:scientiboost/core/providers/providers.dart';
 
 class FirstAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const FirstAppBar({super.key});
