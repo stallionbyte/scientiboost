@@ -8,22 +8,17 @@ Widget relationEinstein({
   String m = "m",
   String c = r" c ",
   bool bold = false,
+  bool entraineQue = false,
   double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
-    math: buildTex2SvgMathRelationEinstein(E: E, m: m, c: c, bold: bold),
-    scale: scale,
-  );
-}
-
-Widget energieDeLiaison({
-  String m = r"m",
-  String c = r" c ",
-  bool bold = false,
-  double scale = 1.0,
-}) {
-  return buildTex2SvgInRichText(
-    math: buildTex2SvgMathEnergieDeLiaison(m: m, c: c, bold: bold),
+    math: buildTex2SvgMathRelationEinstein(
+      E: E,
+      m: m,
+      c: c,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
     scale: scale,
   );
 }
@@ -55,6 +50,7 @@ Widget defautDeMasse({
   String mp = r" m_p ",
   String mn = r" m_n ",
   String? masseNoyau,
+  String? defautDeMasse,
   bool bold = false,
   double scale = 1.0,
 }) {
@@ -66,6 +62,7 @@ Widget defautDeMasse({
       mp: mp,
       mn: mn,
       masseNoyau: masseNoyau,
+      defautDeMasse: defautDeMasse,
       bold: bold,
     ),
     scale: scale,
@@ -73,6 +70,7 @@ Widget defautDeMasse({
 }
 
 Widget energieDeLiaisonParNucleon({
+  String eln = r"E_{l/nuc}",
   String A = r"A",
   String Z = r"Z",
   String X = r"X",
@@ -81,10 +79,12 @@ Widget energieDeLiaisonParNucleon({
   String? uEnMeVC2,
   String? masseNoyau,
   bool bold = false,
+  bool entraineQue = false,
   double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathEnergieDeLiaisonParNucleon(
+      eln: eln,
       X: X,
       Z: Z,
       A: A,
@@ -92,6 +92,37 @@ Widget energieDeLiaisonParNucleon({
       mn: mn,
       uEnMeVC2: uEnMeVC2,
       masseNoyau: masseNoyau,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget energieDeLiaison({
+  String el = r"E_l",
+  String A = r"A",
+  String Z = r"Z",
+  String X = r"X",
+  String mp = r"m_p",
+  String mn = r"m_n",
+  String? uEnMeVC2,
+  String? masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathEnergieDeLiaison(
+      el: el,
+      X: X,
+      Z: Z,
+      A: A,
+      mp: mp,
+      mn: mn,
+      uEnMeVC2: uEnMeVC2,
+      masseNoyau: masseNoyau,
+      entraineQue: entraineQue,
       bold: bold,
     ),
     scale: scale,

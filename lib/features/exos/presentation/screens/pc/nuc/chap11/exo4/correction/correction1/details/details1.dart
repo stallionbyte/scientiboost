@@ -22,7 +22,7 @@ class _Details1State extends ConsumerState<Details1> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          energieDeLiaison(scale: 1.0),
+          energieDeLiaisonAvecDefautDeMase(scale: 1.0),
 
           SizedBox(height: 20),
 

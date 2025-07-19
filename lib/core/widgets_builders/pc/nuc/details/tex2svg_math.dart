@@ -4,6 +4,7 @@ String buildTex2SvgMathDefautDeMasseInverse({
   String Z = r" Z ",
   String mp = r" m_p ",
   String mn = r" m_n ",
+  String? defautDeMasse,
   String? masseNoyau,
   bool bold = false,
   bool entraineQue = false,
@@ -42,13 +43,17 @@ String buildTex2SvgMathDefautDeMasseInverse({
     math.write(r") = \\");
   }
 
-  math.write(r"\Delta m(_{");
-  math.write(Z);
-  math.write(r"}^{");
-  math.write(A);
-  math.write(r"} ");
-  math.write(X);
-  math.write(r")");
+  if (defautDeMasse != null) {
+    math.write(defautDeMasse);
+  } else {
+    math.write(r"\Delta m(_{");
+    math.write(Z);
+    math.write(r"}^{");
+    math.write(A);
+    math.write(r"} ");
+    math.write(X);
+    math.write(r")");
+  }
 
   if (bold) {
     math.write(r"}");
@@ -61,11 +66,16 @@ String buildTex2SvgMathESurC2({
   String E = r" E ",
   String c = r" c ",
   bool bold = false,
+  bool entraineQue = false,
 }) {
   StringBuffer math = StringBuffer();
 
   if (bold) {
     math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r"\Rightarrow");
   }
 
   math.write(r" \frac{ ");
@@ -86,6 +96,7 @@ String buildTex2SvgMathESurC2({
 }
 
 String buildTex2SvgMathmEgaleESurC2({
+  String m = r"m",
   String E = r" E ",
   String c = r" c ",
   bool bold = false,
@@ -101,7 +112,9 @@ String buildTex2SvgMathmEgaleESurC2({
     math.write(r"\Rightarrow");
   }
 
-  math.write(r" m = \frac{ ");
+  math.write(m);
+
+  math.write(r" = \frac{ ");
 
   math.write(E);
 
@@ -119,8 +132,9 @@ String buildTex2SvgMathmEgaleESurC2({
 }
 
 String buildTex2SvgMathEnergieDeLiaisonInverse({
-  String m = r" m ",
   String c = r" c ",
+  String? defautDeMasse,
+  String? energieDeLiaison,
   bool bold = false,
   bool entraineQue = false,
 }) {
@@ -134,9 +148,11 @@ String buildTex2SvgMathEnergieDeLiaisonInverse({
     math.write(r" \Rightarrow ");
   }
 
-  math.write(r" \Delta ");
-
-  math.write(m);
+  if (defautDeMasse != null) {
+    math.write(defautDeMasse);
+  } else {
+    math.write(r" \Delta m");
+  }
 
   math.write(r" \cdot {");
 
@@ -144,7 +160,13 @@ String buildTex2SvgMathEnergieDeLiaisonInverse({
 
   math.write(r" } ^ 2 ");
 
-  math.write(r" = E_l ");
+  math.write(r" = ");
+
+  if (energieDeLiaison != null) {
+    math.write(energieDeLiaison);
+  } else {
+    math.write(r"E_l");
+  }
 
   if (bold) {
     math.write(r" } ");

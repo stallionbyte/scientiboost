@@ -25,16 +25,23 @@ WidgetSpan eSurC2({
   String E = r" E ",
   String c = r" c ",
   bool bold = false,
+  bool entraineQue = false,
   double scale = 1.0,
 }) {
   return buildTex2SvgInWidgetSpan(
-    math: buildTex2SvgMathESurC2(E: E, c: c, bold: bold),
+    math: buildTex2SvgMathESurC2(
+      E: E,
+      c: c,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
     scale: scale,
   );
 }
 
 Widget energieDeLiaisonInverse({
-  String m = r"m",
+  String? defautDeMasse,
+  String? energieDeLiaison,
   String c = r" c ",
   bool bold = false,
   bool entraineQue = false,
@@ -42,7 +49,8 @@ Widget energieDeLiaisonInverse({
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathEnergieDeLiaisonInverse(
-      m: m,
+      defautDeMasse: defautDeMasse,
+      energieDeLiaison: energieDeLiaison,
       c: c,
       bold: bold,
       entraineQue: entraineQue,
@@ -57,6 +65,7 @@ Widget defautDeMasseInverse({
   String Z = r" Z ",
   String mp = r" m_p ",
   String mn = r" m_n ",
+  String? defautDeMasse,
   String? masseNoyau,
   bool bold = false,
   double scale = 1.0,
@@ -69,6 +78,7 @@ Widget defautDeMasseInverse({
       Z: Z,
       mp: mp,
       mn: mn,
+      defautDeMasse: defautDeMasse,
       masseNoyau: masseNoyau,
       entraineQue: entraineQue,
       bold: bold,
