@@ -2,6 +2,7 @@ String buildTex2SvgMathRelationEinstein({
   String E = r" E ",
   String m = r" m ",
   String c = r" c ",
+  String? uEnMeVC2,
   bool bold = false,
   bool entraineQue = false,
 }) {
@@ -21,11 +22,14 @@ String buildTex2SvgMathRelationEinstein({
 
   math.write(m);
 
-  math.write(r" \cdot {");
-
-  math.write(c);
-
-  math.write(r" } ^ 2 ");
+  if (uEnMeVC2 != null) {
+    math.write(r" \cdot ");
+    math.write(uEnMeVC2);
+  } else {
+    math.write(r" \cdot {");
+    math.write(c);
+    math.write(r" } ^ 2 ");
+  }
 
   if (bold) {
     math.write(r" } ");
@@ -37,6 +41,7 @@ String buildTex2SvgMathRelationEinstein({
 String buildTex2SvgMathEnergieDeLiaisonAvecDefautDeMase({
   String el = r" E_l ",
   String defautDeMasse = r" \Delta m ",
+  String? uEnMeVC2,
   String c = r" c ",
   bool bold = false,
   bool entraineQue = false,
@@ -57,11 +62,14 @@ String buildTex2SvgMathEnergieDeLiaisonAvecDefautDeMase({
 
   math.write(defautDeMasse);
 
-  math.write(r" { ");
-
-  math.write(c);
-
-  math.write(r" } ^ 2 ");
+  if (uEnMeVC2 != null) {
+    math.write(r" \cdot ");
+    math.write(uEnMeVC2);
+  } else {
+    math.write(r" \cdot {");
+    math.write(c);
+    math.write(r" } ^ 2 ");
+  }
 
   if (bold) {
     math.write(r" } ");

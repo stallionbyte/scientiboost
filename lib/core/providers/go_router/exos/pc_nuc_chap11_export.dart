@@ -11,3 +11,6 @@ export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/ex
 
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo5/enonce.dart';
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo5/correction/correction.dart';
+
+export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo6/enonce.dart';
+export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo6/correction/correction.dart';

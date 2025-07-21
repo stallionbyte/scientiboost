@@ -63,6 +63,27 @@ WidgetSpan notationNoyau({
   );
 }
 
+Widget notationSymbolique({
+  required String X,
+  required String Z,
+  required String A,
+  required String nomNoyau,
+}) {
+  return RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        TextSpan(text: "notation symbolique $nomNoyau : "),
+        notationNoyau(X: X, Z: Z, A: A),
+      ],
+    ),
+  );
+}
+
 //------------------TeXSVG-MATH-----------------------------------------
 
 String buildTex2SvgMathNotationNoyau({
