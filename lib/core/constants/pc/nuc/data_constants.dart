@@ -3,7 +3,10 @@
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class PhyNucValuesConstants {
-  // Utiliser la notation r".." partout
+  static const String masseCl35EnU = r"34,968852";
+  static const String masseCl36EnU = r"35,968306";
+  static const String masseCl37EnU = r"36,965903";
+
   static const String cEnMetreParSeconde = r"299792458";
   static const String uEnMeVC2 = r"931,5";
   static final uEnKg = buildTex2SvgInWidgetSpan(math: uEnKgMath);
@@ -58,6 +61,14 @@ class PhyNucDonneesTex2SvgMathConstants {
 
   static const String masseRa226EnU =
       r"m(_{\ 88}^{226}Ra) = " + PhyNucValuesConstants.masseRa226EnU + r" \ u";
+
+  static const String masseCl35EnU =
+      r"m(_{\ 17}^{35}Cl) = " + PhyNucValuesConstants.masseCl35EnU + r" \ u";
+  static const String masseCl36EnU =
+      r"m(_{\ 17}^{36}Cl) = " + PhyNucValuesConstants.masseCl36EnU + r" \ u";
+
+  static const String masseCl37EnU =
+      r"m(_{\ 17}^{37}Cl) = " + PhyNucValuesConstants.masseCl37EnU + r" \ u";
 }
 
 class PhyNucDonneesConstants {
@@ -109,5 +120,15 @@ class PhyNucDonneesConstants {
 
   static final masseRa226EnU = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.masseRa226EnU,
+  );
+
+  static final masseCl35EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseCl35EnU,
+  );
+  static final masseCl36EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseCl36EnU,
+  );
+  static final masseCl37EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseCl37EnU,
   );
 }
