@@ -363,3 +363,70 @@ String buildTex2SvgMathNombreDeNoyauAvecMasse({
 
   return math.toString();
 }
+
+String buildTex2SvgMathRegleDe3({
+  required String part1,
+  required String part2,
+  required String part3,
+  required String left,
+  bool border = false,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  // Utilisation d'un array à 3 colonnes de largeur égale
+  math.write(r"\begin{array}{l} ");
+
+  // Ligne 1
+  math.write(part1);
+  math.write(r"\ \ ");
+  math.write(r" \longrightarrow ");
+  math.write(r"\ \ ");
+  math.write(part2);
+  math.write(r" \\ ");
+
+  // Ligne 2
+  math.write(part3);
+  math.write(r"\ \ ");
+  math.write(r" \longrightarrow ");
+  math.write(r"\ \ ");
+  math.write(r" ? ");
+  math.write(r" \\ ");
+  math.write(r" \\ ");
+
+  // Ligne 3 : calcul
+
+  if (border) {
+    math.write(r"\boxed{");
+  }
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  math.write(left);
+  math.write(r" = \displaystyle \frac{ ");
+  math.write(part2);
+  math.write(r" \cdot ");
+  math.write(part3);
+  math.write(r" }{ ");
+  math.write(part1);
+  math.write(r" } ");
+
+  if (bold) {
+    math.write(r" }");
+  }
+
+  if (border) {
+    math.write(r" } ");
+  }
+
+  math.write(r"\end{array} ");
+
+  return math.toString();
+}

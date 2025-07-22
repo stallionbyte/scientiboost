@@ -154,3 +154,27 @@ Widget nombreDeNoyauAvecMasse({
     scale: scale,
   );
 }
+
+Widget regleDe3({
+  required String part1,
+  required String part2,
+  required String part3,
+  required String left,
+  bool border = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathRegleDe3(
+      part1: part1,
+      part2: part2,
+      part3: part3,
+      left: left,
+      border: border,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
+    scale: scale,
+  );
+}

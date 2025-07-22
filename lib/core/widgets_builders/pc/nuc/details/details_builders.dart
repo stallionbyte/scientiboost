@@ -59,6 +59,36 @@ Widget energieDeLiaisonInverse({
   );
 }
 
+Widget energieDeLiaisonParNucleonInverse({
+  String eln = r"E_{l/nuc}",
+  String A = r"A",
+  String Z = r"Z",
+  String X = r"X",
+  String mp = r"m_p",
+  String mn = r"m_n",
+  String? masseNoyau,
+  String? uEnMeVC2,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathEnergieDeLiaisonParNucleonInverse(
+      eln: eln,
+      A: A,
+      Z: Z,
+      X: X,
+      mp: mp,
+      mn: mn,
+      masseNoyau: masseNoyau,
+      uEnMeVC2: uEnMeVC2,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
+    scale: scale,
+  );
+}
+
 Widget defautDeMasseInverse({
   String X = r" X ",
   String A = r" A ",

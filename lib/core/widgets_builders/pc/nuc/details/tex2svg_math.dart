@@ -175,6 +175,95 @@ String buildTex2SvgMathEnergieDeLiaisonInverse({
   return math.toString();
 }
 
+String buildTex2SvgMathEnergieDeLiaisonParNucleonInverse({
+  String eln = r"E_{l/nuc}",
+  String A = r"A",
+  String Z = r"Z",
+  String X = r"X",
+  String mp = r"m_p",
+  String mn = r"m_n",
+  String? masseNoyau,
+  String? uEnMeVC2,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  math.write(r" \begin{array}{l} ");
+
+  math.write(r" \displaystyle \frac{ \left[ \begin{array}{l} ");
+
+  math.write(Z);
+
+  math.write(r" \cdot ");
+
+  math.write(mp);
+
+  math.write(r" \\ + ( ");
+
+  math.write(A);
+
+  math.write(r" - ");
+
+  math.write(Z);
+
+  math.write(r" ) \cdot ");
+
+  math.write(mn);
+
+  math.write(r" \\  - ");
+
+  if (masseNoyau != null) {
+    math.write(masseNoyau);
+  } else {
+    math.write(r" m(_{ ");
+
+    math.write(Z);
+
+    math.write(r" }^{ ");
+
+    math.write(A);
+
+    math.write(r" } ");
+
+    math.write(X);
+
+    math.write(r" ) ");
+  }
+
+  math.write(r" \end{array} \right] \cdot ");
+
+  if (uEnMeVC2 != null) {
+    math.write(uEnMeVC2);
+  } else {
+    math.write(r"c^2");
+  }
+
+  math.write(r" }{ ");
+
+  math.write(A);
+
+  math.write(r" } = ");
+
+  math.write(eln);
+
+  math.write(r"\end{array} ");
+
+  if (bold) {
+    math.write(r" } ");
+  }
+
+  return math.toString();
+}
+
 String buildTex2SvgMathRelationEinsteinInverse({
   String E = r" E ",
   String m = r" m ",

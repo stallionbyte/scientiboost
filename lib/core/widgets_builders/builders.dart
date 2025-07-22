@@ -67,16 +67,18 @@ Widget result({
   List<InlineSpan>? leftRichs,
   String? value,
   List<InlineSpan>? valueRichs,
+  WidgetSpan? valueRich,
   WidgetSpan? unitRich,
   String? left,
   String? unit,
   bool bold = true,
+  double height = 1.5,
 }) {
   return RichText(
     text: TextSpan(
       style: TextStyle(
         fontSize: ExoConstants.richTextFontSize,
-
+        height: height,
         color: Colors.black,
       ),
       children: <InlineSpan>[
@@ -100,6 +102,8 @@ Widget result({
         ),
 
         if (valueRichs != null) ...valueRichs,
+
+        if (valueRich != null) valueRich,
 
         if (value != null)
           TextSpan(

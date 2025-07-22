@@ -27,7 +27,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             content: Row(
               children: [
                 Icon(Icons.cloud_off_rounded, color: Colors.white),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(child: Text(message)),
               ],
             ),
@@ -41,7 +41,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             content: Row(
               children: [
                 Icon(Icons.signal_wifi_off_rounded, color: Colors.white),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(child: Text(InternetConstants.connexionError)),
               ],
             ),
@@ -56,42 +56,42 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
   Widget _buildPageContent() {
     return Column(
       children: [
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
         _buildPageHeader(),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Physique", fontSize: 30.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Nucléaire", fontSize: 20.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildNuclaireAccordion(),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Mécanique", fontSize: 20.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Electricité", fontSize: 20.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Chimie", fontSize: 30.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Organique", fontSize: 20.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
 
         _buildTitle(title: "Minérale", fontSize: 20.0),
 
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
       ],
     );
   }
@@ -139,7 +139,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
       children: [
         _buildHeaderInfo(label: "Classe", value: "Terminale D"),
 
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
 
         _buildHeaderInfo(label: "Matière", value: "Physique-Chimie"),
       ],
@@ -182,42 +182,47 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 1',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 2',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 3',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 4',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo4,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 5',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo5,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 6',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo6,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ButtonExoExam(
                   text: 'Exercice 7',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo7,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
+                ButtonExoExam(
+                  text: 'Exercice 8',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo8,
+                ),
+                const SizedBox(height: 20),
               ],
             ),
           ),
