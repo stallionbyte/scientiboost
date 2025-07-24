@@ -21,6 +21,7 @@ class PhyNucValuesConstants {
   static const String masseU238EnU = r"238,0508";
   static const String massePu238EnU = r"238,050";
   static const String masseRa226EnU = r"226,0254";
+  static const String masseO16EnU = r"15,9994";
 
   //MathConstants
   static const String uEnKgMath = r"1,66 . 10^{-27}";
@@ -69,6 +70,9 @@ class PhyNucDonneesTex2SvgMathConstants {
 
   static const String masseCl37EnU =
       r"m(_{\ 17}^{37}Cl) = " + PhyNucValuesConstants.masseCl37EnU + r" \ u";
+
+  static const String masseO16EnU =
+      r"m(_{\ 8}^{16}O) = " + PhyNucValuesConstants.masseO16EnU + r" \ u";
 }
 
 class PhyNucDonneesConstants {
@@ -130,5 +134,8 @@ class PhyNucDonneesConstants {
   );
   static final masseCl37EnU = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.masseCl37EnU,
+  );
+  static final masseO16EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseO16EnU,
   );
 }

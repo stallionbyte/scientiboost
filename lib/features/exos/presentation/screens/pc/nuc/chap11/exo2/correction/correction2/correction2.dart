@@ -8,6 +8,8 @@ import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_buil
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
+import 'details/details1.dart';
+
 class Correction2 extends ConsumerStatefulWidget {
   const Correction2({super.key});
 
@@ -54,6 +56,10 @@ class _Correction2State extends ConsumerState<Correction2> {
             masseNoyau: PhyNucValuesConstants.masseFe56EnU,
             scale: 6.0,
           ),
+
+          SizedBox(height: 20),
+
+          Details1(),
 
           SizedBox(height: 20),
 

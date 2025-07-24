@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
-import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
+import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 
 import 'details/details1.dart';
 
@@ -25,53 +24,46 @@ class _Correction1State extends ConsumerState<Correction1> {
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           BordersWrapper(
             wrapped: energieDeLiaisonParNucleon(scale: 6.0),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-          Text(
-            "AN: ",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          transition(transition: "AN"),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           energieDeLiaisonParNucleon(
-            A: "235",
-            Z: "92",
-            X: "U",
+            Z: r"8",
+            A: r"16",
+            scale: 6.0,
+            X: r"O",
             mp: PhyNucValuesConstants.masseProtonEnU,
             mn: PhyNucValuesConstants.masseNeutronEnU,
+            masseNoyau: PhyNucValuesConstants.masseO16EnU,
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
-            masseNoyau: PhyNucValuesConstants.masseU235EnU,
-            scale: 6.0,
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           Details1(),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           BordersWrapper(
             wrapped: result(
-              value: "7,39",
               leftRich: PhyNucConstants.elnBold,
+              value: "7,45",
               unit: "MeV/nucléon",
             ),
           ),
 
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
         ],
       ),
     );

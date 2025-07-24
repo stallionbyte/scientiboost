@@ -1,3 +1,5 @@
+import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+
 String buildTex2SvgMathDefautDeMasseInverse({
   String X = r" X ",
   String A = r" A ",
@@ -297,3 +299,281 @@ String buildTex2SvgMathRelationEinsteinInverse({
 
   return math.toString();
 }
+
+// Details calcul energie de liaison par nucléon en MeV
+
+String buildTex2SvgMathCalculEnergieDeLiaison1({
+  String el = r"E_l",
+  String Z = r"Z",
+  String mp = r"m_p",
+  String A = r"A",
+  String mn = r"m_n",
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  math.write(r" \begin{array}{l} ");
+
+  math.write(el);
+  math.write(r" = \\");
+  math.write(r" \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r" \text{u} \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r" \text{u} \\ - ");
+
+  math.write(masseNoyau);
+  math.write(r" \text{u} ");
+
+  math.write(r" \end{array} \right] \cdot c^2 ");
+  math.write(r" \end{array} ");
+
+  if (bold) {
+    math.write(r" } ");
+  }
+
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculEnergieDeLiaison2({
+  String el = r"E_l",
+  String Z = r"Z",
+  String mp = r"m_p",
+  String A = r"A",
+  String mn = r"m_n",
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  math.write(r" \begin{array}{l} ");
+
+  math.write(el);
+  math.write(r" = \\");
+  math.write(r" \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r" \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r" \\ - ");
+
+  math.write(masseNoyau);
+
+  math.write(r" \end{array} \right] \text{u} \cdot c^2 ");
+  math.write(r" \end{array} ");
+
+  if (bold) {
+    math.write(r" } ");
+  }
+
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculEnergieDeLiaison3({
+  String el = r"E_l",
+  String Z = r"Z",
+  String mp = r"m_p",
+  String A = r"A",
+  String mn = r"m_n",
+  String uMeVC2 = PhyNucValuesConstants.uEnMeVC2,
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  math.write(r" \begin{array}{l} ");
+
+  math.write(el);
+  math.write(r" = \\");
+  math.write(r" \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r" \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r" \\ - ");
+
+  math.write(masseNoyau);
+
+  math.write(r" \end{array} \right]");
+  math.write(uMeVC2);
+  math.write(r" MeV ");
+  math.write(r" \end{array} ");
+
+  if (bold) {
+    math.write(r" } ");
+  }
+
+  return math.toString();
+}
+
+// Details calcul energie de liaison par nucléon en MeV
+
+String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon2({
+  String eln = r"E_{l/n}",
+  String Z = r"Z",
+  String A = r"A",
+  String mp = r"m_p",
+  String mn = r"m_n",
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(eln);
+  math.write(r" = \\");
+  math.write(r" \frac{ \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r" \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r" \\ - ");
+  math.write(masseNoyau);
+  math.write(r" \end{array} \right] \text{u} \cdot c^2 }{ ");
+  math.write(A);
+  math.write(r" } ");
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon1({
+  String eln = r"E_{l/n}",
+  String Z = r"Z",
+  String A = r"A",
+  String mp = r"m_p",
+  String mn = r"m_n",
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(eln);
+  math.write(r" = \\");
+  math.write(r" \frac{ \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r"\ \text{u} \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r"\ \text{u} \\ - ");
+  math.write(masseNoyau);
+  math.write(r"\ \text{u} ");
+  math.write(r" \end{array} \right] \cdot c^2 }{ ");
+  math.write(A);
+  math.write(r" } ");
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon3({
+  String eln = r"E_{l/n}",
+  String Z = r"Z",
+  String A = r"A",
+  String mp = r"m_p",
+  String mn = r"m_n",
+  String uMeVC2 = PhyNucValuesConstants.uEnMeVC2,
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(eln);
+  math.write(r" = \\");
+  math.write(r" \frac{ \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r" \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r" \\ - ");
+  math.write(masseNoyau);
+  math.write(r" \end{array} \right] ");
+  math.write(uMeVC2);
+  math.write(r" MeV }{ ");
+  math.write(A);
+  math.write(r" } ");
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+//--------------------------------------------------------------------

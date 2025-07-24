@@ -223,6 +223,11 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo8,
                 ),
                 const SizedBox(height: 20),
+                ButtonExoExam(
+                  text: 'Exercice 9',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo9,
+                ),
+                const SizedBox(height: 20),
               ],
             ),
           ),
