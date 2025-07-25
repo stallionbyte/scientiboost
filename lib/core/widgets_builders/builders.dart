@@ -66,12 +66,15 @@ Widget result({
   WidgetSpan? leftRich,
   List<InlineSpan>? leftRichs,
   String? value,
+  String? valueTex2SvgMath,
+  double valueTex2SvgMathScale = 1.0,
   List<InlineSpan>? valueRichs,
   WidgetSpan? valueRich,
   WidgetSpan? unitRich,
   String? left,
   String? unit,
   bool bold = true,
+
   double height = 1.5,
 }) {
   return RichText(
@@ -104,6 +107,13 @@ Widget result({
         if (valueRichs != null) ...valueRichs,
 
         if (valueRich != null) valueRich,
+
+        if (valueTex2SvgMath != null)
+          buildTex2SvgInWidgetSpan(
+            math:
+                bold ? r"\mathbf{" + valueTex2SvgMath + r"}" : valueTex2SvgMath,
+            scale: valueTex2SvgMathScale,
+          ),
 
         if (value != null)
           TextSpan(

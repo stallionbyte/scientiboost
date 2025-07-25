@@ -18,7 +18,7 @@ String buildTex2SvgMathDefautDeMasseInverse({
   }
 
   if (entraineQue) {
-    math.write(r"\Rightarrow");
+    math.write(r"\Rightarrow ");
   }
 
   math.write(r" \left[ \begin{array}{l} ");
@@ -77,7 +77,7 @@ String buildTex2SvgMathESurC2({
   }
 
   if (entraineQue) {
-    math.write(r"\Rightarrow");
+    math.write(r"\Rightarrow ");
   }
 
   math.write(r" \frac{ ");
@@ -111,7 +111,7 @@ String buildTex2SvgMathmEgaleESurC2({
   }
 
   if (entraineQue) {
-    math.write(r"\Rightarrow");
+    math.write(r"\Rightarrow ");
   }
 
   math.write(m);

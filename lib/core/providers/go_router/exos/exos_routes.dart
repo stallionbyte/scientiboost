@@ -144,4 +144,20 @@ final exoRoutes = [
       );
     },
   ),
+
+  GoRoute(
+    path: RoutesNamesConstants.pcNucChap11ExosRoutesExo10,
+    builder: (context, state) {
+      return ExoScreen(
+        matiere: 'Physique-Chimie',
+        chapNum: 11,
+        chapTitle: 'Le noyau atomique',
+        exoNum: 10,
+        enonce: PcNucChap11Exo10Enonce(),
+        correction: PcNucChap11Exo10Correction(),
+        route: RoutesNamesConstants.pcNucChap11ExosRoutesExo10,
+        favorites: StorageKeysConstants.favoritesExos,
+      );
+    },
+  ),
 ];
