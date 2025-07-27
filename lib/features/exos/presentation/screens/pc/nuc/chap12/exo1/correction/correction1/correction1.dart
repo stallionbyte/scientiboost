@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:scientiboost/core/constants/constants.dart';
+
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
@@ -21,36 +23,37 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(
-            transition:
-                "L'énergie de liaison par nucléon est l'énergie nécessaire pour séparer un nucléon de son noyau.",
+          Text(
+            "D'une part, par définition l'activité radioactive est le nombre de désintégrations par seconde. \n D'autre part dans l'énoncé l'activité est donnée en desintégrations par minute (60 secondes). \n  L'activité du tissu vivant (13,6 désintégrations par minute) correspond à l'activité initiale",
+            style: const TextStyle(fontSize: ExoConstants.fontSize),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
+
+          transition(transition: "D'où"),
+
+          EspConstants.esp20,
 
           regleDe3(
-            part1: r"3 \ \text{nucléons}",
-            part2: r"25,5 \ MeV",
-            part3: r"1 \ \text{nucléon}",
-            left: r"E_{l/nuc}",
+            part1: r"60\ seconde",
+            part2: r"13,6\ désintégrations",
+            part3: r"1\ seconde",
+            left: r"A_0",
             border: true,
-            bold: true,
             scale: 6.0,
           ),
 
-          const SizedBox(height: 20),
-
           BordersWrapper(
             wrapped: result(
-              leftRich: PhyNucConstants.elnBold,
-              value: "8,5",
-              unit: "MeV",
+              leftTex2SvgMath: r"A_0",
+              value: r"0,226",
+              unit: r"Bq",
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

@@ -1,0 +1,22 @@
+import 'package:scientiboost/core/providers/go_router/exos/exos_exports.dart';
+import 'package:scientiboost/core/constants/constants.dart';
+
+final matiere = 'Physique-Chimie';
+
+final pcNucChap12Routes = [
+  GoRoute(
+    path: RoutesNamesConstants.pcNucChap12ExosRoutesExo1,
+    builder: (context, state) {
+      return ExoScreen(
+        matiere: matiere,
+        chapNum: 12,
+        chapTitle: PcChaptitlesConstants.chap12,
+        exoNum: 1,
+        enonce: PcNucChap12Exo1Enonce(),
+        correction: PcNucChap12Exo1Correction(),
+        route: RoutesNamesConstants.pcNucChap12ExosRoutesExo1,
+        favorites: StorageKeysConstants.favoritesExos,
+      );
+    },
+  ),
+];

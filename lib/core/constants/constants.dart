@@ -1,4 +1,4 @@
-//constants.dart
+import 'package:flutter/material.dart';
 
 // Centralisation des constantes pour une meilleure maintenabilité
 class Constants {
@@ -57,6 +57,12 @@ class VideoConstants {
       '/video?matiere=pc&nameOnDataBase=element_chimique.mp4&title=élément chimique';
 }
 
+class PcChaptitlesConstants {
+  static const String chap11 = "Le noyau atomique";
+  static const String chap12 =
+      "Les réactions nucléaires spontanées : la radioactivité";
+}
+
 class RoutesNamesConstants {
   static const String pcNucChap11ExosRoutesExo1 =
       '/matiere(PC)/nuc/chap(11)/exo(1)';
@@ -78,6 +84,10 @@ class RoutesNamesConstants {
       '/matiere(PC)/nuc/chap(11)/exo(9)';
   static const String pcNucChap11ExosRoutesExo10 =
       '/matiere(PC)/nuc/chap(11)/exo(10)';
+
+  static const String pcNucChap12ExosRoutesExo1 =
+      '/matiere(PC)/nuc/chap(12)/exo(1)';
+
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
   static const String pcBacD2024 =
@@ -100,4 +110,10 @@ class ExoConstants {
   static const double displayFontSize = 25.0;
   static const double displayFontSizeMultiLines = 80.0;
   static const double richTextFontSize = 20.0;
+}
+
+class EspConstants {
+  static const esp20 = SizedBox(height: 20);
+  static const esp30 = SizedBox(height: 30);
+  static const esp40 = SizedBox(height: 40);
 }

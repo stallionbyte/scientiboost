@@ -65,6 +65,8 @@ List<InlineSpan> valueWithExp({
 Widget result({
   WidgetSpan? leftRich,
   List<InlineSpan>? leftRichs,
+  String? leftTex2SvgMath,
+  double leftTex2SvgMathScale = 1.0,
   String? value,
   String? valueTex2SvgMath,
   double valueTex2SvgMathScale = 1.0,
@@ -73,6 +75,8 @@ Widget result({
   WidgetSpan? unitRich,
   String? left,
   String? unit,
+  String? unitTex2SvgMath,
+  double unitTex2SvgMathScale = 1.0,
   bool bold = true,
 
   double height = 1.5,
@@ -95,6 +99,12 @@ Widget result({
             style: TextStyle(
               fontWeight: bold ? FontWeight.bold : FontWeight.normal,
             ),
+          ),
+
+        if (leftTex2SvgMath != null)
+          buildTex2SvgInWidgetSpan(
+            math: bold ? r"\mathbf{" + leftTex2SvgMath + r"}" : leftTex2SvgMath,
+            scale: leftTex2SvgMathScale,
           ),
 
         TextSpan(
@@ -131,6 +141,12 @@ Widget result({
             style: TextStyle(
               fontWeight: bold ? FontWeight.bold : FontWeight.normal,
             ),
+          ),
+
+        if (unitTex2SvgMath != null)
+          buildTex2SvgInWidgetSpan(
+            math: bold ? r"\mathbf{" + unitTex2SvgMath + r"}" : unitTex2SvgMath,
+            scale: unitTex2SvgMathScale,
           ),
       ],
     ),
@@ -265,4 +281,97 @@ Widget buildTex2SvgInRichText({
       ],
     ),
   );
+}
+
+Widget regleDe3({
+  required String part1,
+  required String part2,
+  required String part3,
+  required String left,
+  bool border = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathRegleDe3(
+      part1: part1,
+      part2: part2,
+      part3: part3,
+      left: left,
+      border: border,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
+    scale: scale,
+  );
+}
+
+//------------------TeXSVG-MATH-----------------------------------------
+
+String buildTex2SvgMathRegleDe3({
+  required String part1,
+  required String part2,
+  required String part3,
+  required String left,
+  bool border = false,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  // Utilisation d'un array à 3 colonnes de largeur égale
+  math.write(r"\begin{array}{l} ");
+
+  // Ligne 1
+  math.write(part1);
+  math.write(r"\ \ ");
+  math.write(r" \longrightarrow ");
+  math.write(r"\ \ ");
+  math.write(part2);
+  math.write(r" \\ ");
+
+  // Ligne 2
+  math.write(part3);
+  math.write(r"\ \ ");
+  math.write(r" \longrightarrow ");
+  math.write(r"\ \ ");
+  math.write(r" ? ");
+  math.write(r" \\ ");
+  math.write(r" \\ ");
+
+  // Ligne 3 : calcul
+
+  if (border) {
+    math.write(r"\boxed{");
+  }
+
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+
+  math.write(left);
+  math.write(r" = \displaystyle \frac{ ");
+  math.write(part2);
+  math.write(r" \cdot ");
+  math.write(part3);
+  math.write(r" }{ ");
+  math.write(part1);
+  math.write(r" } ");
+
+  if (bold) {
+    math.write(r" }");
+  }
+
+  if (border) {
+    math.write(r" } ");
+  }
+
+  math.write(r"\end{array} ");
+
+  return math.toString();
 }

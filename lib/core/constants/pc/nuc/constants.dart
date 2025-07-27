@@ -13,6 +13,9 @@ class PhyNucTex2SvgMathContants {
   static const String c2 = r"c^2";
   static const String c2Bold = r"\mathbf{c^2}";
 
+  static const String lambda = r"\lambda";
+  static const String lambdaBold = r"\mathbf{\lambda}";
+
   static const String eln = r"E_{l/nuc}";
   static const String elnBold = r"\mathbf{E_{l/nuc}}";
 
@@ -33,6 +36,16 @@ class PhyNucTex2SvgMathContants {
 }
 
 class PhyNucConstants {
+  static final lambda = buildTex2SvgInWidgetSpan(
+    math: PhyNucTex2SvgMathContants.lambda,
+    scale: 0.6,
+  );
+
+  static final lambdaBold = buildTex2SvgInWidgetSpan(
+    math: PhyNucTex2SvgMathContants.lambdaBold,
+    scale: 0.8,
+  );
+
   static final delta = buildTex2SvgInWidgetSpan(
     math: PhyNucTex2SvgMathContants.delta,
     scale: 0.8,

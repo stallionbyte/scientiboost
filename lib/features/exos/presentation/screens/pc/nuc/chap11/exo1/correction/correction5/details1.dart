@@ -45,7 +45,7 @@ class _Details1State extends ConsumerState<Details1> {
                 const TextSpan(text: " ) = Z x "),
 
                 PhyNucConstants.mp,
-                const TextSpan(text: "\n \n + ( A-Z ) x "),
+                const TextSpan(text: " + ( A-Z ) x "),
                 PhyNucConstants.mn,
               ],
             ),
@@ -72,7 +72,7 @@ class _Details1State extends ConsumerState<Details1> {
                 const TextSpan(text: " ) = m( nucléons de "),
                 PhyNucConstants.notationNoyau,
                 const TextSpan(text: " )"),
-                const TextSpan(text: "\n \n - m( "),
+                const TextSpan(text: " - m( "),
                 PhyNucConstants.notationNoyau,
                 const TextSpan(text: " )"),
               ],

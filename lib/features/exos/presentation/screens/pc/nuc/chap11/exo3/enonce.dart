@@ -14,7 +14,7 @@ class PcNucChap11Exo3Enonce extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          "En tant que physicien médical, vous devez étudier l'isotope cobalt-60 utilisé en radiothérapie.",
+          "     En tant que physicien médical, vous devez étudier l'isotope cobalt-60 utilisé en radiothérapie.",
           style: TextStyle(fontSize: ExoConstants.fontSize),
         ),
 

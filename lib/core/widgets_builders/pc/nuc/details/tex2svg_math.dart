@@ -1,11 +1,9 @@
-import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-
 String buildTex2SvgMathDefautDeMasseInverse({
-  String X = r" X ",
-  String A = r" A ",
-  String Z = r" Z ",
-  String mp = r" m_p ",
-  String mn = r" m_n ",
+  required String X,
+  required String A,
+  required String Z,
+  required String mp,
+  required String mn,
   String? defautDeMasse,
   String? masseNoyau,
   bool bold = false,
@@ -65,8 +63,8 @@ String buildTex2SvgMathDefautDeMasseInverse({
 }
 
 String buildTex2SvgMathESurC2({
-  String E = r" E ",
-  String c = r" c ",
+  required String E,
+  required String c,
   bool bold = false,
   bool entraineQue = false,
 }) {
@@ -98,9 +96,9 @@ String buildTex2SvgMathESurC2({
 }
 
 String buildTex2SvgMathmEgaleESurC2({
-  String m = r"m",
-  String E = r" E ",
-  String c = r" c ",
+  required String m,
+  required String E,
+  required String c,
   bool bold = false,
   bool entraineQue = false,
 }) {
@@ -134,7 +132,7 @@ String buildTex2SvgMathmEgaleESurC2({
 }
 
 String buildTex2SvgMathEnergieDeLiaisonInverse({
-  String c = r" c ",
+  required String c,
   String? defautDeMasse,
   String? energieDeLiaison,
   bool bold = false,
@@ -147,7 +145,7 @@ String buildTex2SvgMathEnergieDeLiaisonInverse({
   }
 
   if (entraineQue) {
-    math.write(r" \Rightarrow ");
+    math.write(r" \Rightarrow \ ");
   }
 
   if (defautDeMasse != null) {
@@ -178,12 +176,12 @@ String buildTex2SvgMathEnergieDeLiaisonInverse({
 }
 
 String buildTex2SvgMathEnergieDeLiaisonParNucleonInverse({
-  String eln = r"E_{l/nuc}",
-  String A = r"A",
-  String Z = r"Z",
-  String X = r"X",
-  String mp = r"m_p",
-  String mn = r"m_n",
+  required String eln,
+  required String A,
+  required String Z,
+  required String X,
+  required String mp,
+  required String mn,
   String? masseNoyau,
   String? uEnMeVC2,
   bool bold = false,
@@ -196,7 +194,7 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleonInverse({
   }
 
   if (entraineQue) {
-    math.write(r" \Rightarrow ");
+    math.write(r" \Rightarrow \ ");
   }
 
   math.write(r" \begin{array}{l} ");
@@ -267,9 +265,9 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleonInverse({
 }
 
 String buildTex2SvgMathRelationEinsteinInverse({
-  String E = r" E ",
-  String m = r" m ",
-  String c = r" c ",
+  required String E,
+  required String m,
+  required String c,
   bool bold = false,
   bool entraineQue = false,
 }) {
@@ -280,7 +278,7 @@ String buildTex2SvgMathRelationEinsteinInverse({
   }
 
   if (entraineQue) {
-    math.write(r" \Rightarrow ");
+    math.write(r" \Rightarrow \ ");
   }
 
   math.write(m);
@@ -303,11 +301,11 @@ String buildTex2SvgMathRelationEinsteinInverse({
 // Details calcul energie de liaison par nucléon en MeV
 
 String buildTex2SvgMathCalculEnergieDeLiaison1({
-  String el = r"E_l",
-  String Z = r"Z",
-  String mp = r"m_p",
-  String A = r"A",
-  String mn = r"m_n",
+  required String el,
+  required String Z,
+  required String mp,
+  required String A,
+  required String mn,
   required String masseNoyau,
   bool bold = false,
   bool entraineQue = false,
@@ -319,7 +317,7 @@ String buildTex2SvgMathCalculEnergieDeLiaison1({
   }
 
   if (entraineQue) {
-    math.write(r" \Rightarrow ");
+    math.write(r" \Rightarrow \ ");
   }
 
   math.write(r" \begin{array}{l} ");
@@ -352,11 +350,11 @@ String buildTex2SvgMathCalculEnergieDeLiaison1({
 }
 
 String buildTex2SvgMathCalculEnergieDeLiaison2({
-  String el = r"E_l",
-  String Z = r"Z",
-  String mp = r"m_p",
-  String A = r"A",
-  String mn = r"m_n",
+  required String el,
+  required String Z,
+  required String mp,
+  required String A,
+  required String mn,
   required String masseNoyau,
   bool bold = false,
   bool entraineQue = false,
@@ -368,7 +366,7 @@ String buildTex2SvgMathCalculEnergieDeLiaison2({
   }
 
   if (entraineQue) {
-    math.write(r" \Rightarrow ");
+    math.write(r" \Rightarrow \ ");
   }
 
   math.write(r" \begin{array}{l} ");
@@ -400,12 +398,12 @@ String buildTex2SvgMathCalculEnergieDeLiaison2({
 }
 
 String buildTex2SvgMathCalculEnergieDeLiaison3({
-  String el = r"E_l",
-  String Z = r"Z",
-  String mp = r"m_p",
-  String A = r"A",
-  String mn = r"m_n",
-  String uMeVC2 = PhyNucValuesConstants.uEnMeVC2,
+  required String el,
+  required String Z,
+  required String mp,
+  required String A,
+  required String mn,
+  required String uMeVC2,
   required String masseNoyau,
   bool bold = false,
   bool entraineQue = false,
@@ -417,7 +415,7 @@ String buildTex2SvgMathCalculEnergieDeLiaison3({
   }
 
   if (entraineQue) {
-    math.write(r" \Rightarrow ");
+    math.write(r" \Rightarrow \ ");
   }
 
   math.write(r" \begin{array}{l} ");
@@ -450,54 +448,38 @@ String buildTex2SvgMathCalculEnergieDeLiaison3({
   return math.toString();
 }
 
-// Details calcul energie de liaison par nucléon en MeV
-
-String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon2({
-  String eln = r"E_{l/n}",
-  String Z = r"Z",
-  String A = r"A",
-  String mp = r"m_p",
-  String mn = r"m_n",
-  required String masseNoyau,
+String buildTex2SvgMathActiviteInverse({
+  required String A,
+  required String Ao,
+  required String lambda,
+  required String t,
   bool bold = false,
   bool entraineQue = false,
 }) {
   StringBuffer math = StringBuffer();
-
   if (bold) math.write(r" \mathbf{ ");
-  if (entraineQue) math.write(r" \Rightarrow ");
-
+  if (entraineQue) math.write(r" \Rightarrow \ ");
   math.write(r" \begin{array}{l} ");
-  math.write(eln);
-  math.write(r" = \\");
-  math.write(r" \frac{ \left[ \begin{array}{l} ");
-  math.write(Z);
-  math.write(r" \cdot ");
-  math.write(mp);
-  math.write(r" \\ + (");
+  math.write(Ao);
+  math.write(r" \Large{e}^{ - ");
+  math.write(lambda);
+  math.write(r" ");
+  math.write(t);
+  math.write(r"} = ");
   math.write(A);
-  math.write(r" - ");
-  math.write(Z);
-  math.write(r") ");
-  math.write(mn);
-  math.write(r" \\ - ");
-  math.write(masseNoyau);
-  math.write(r" \end{array} \right] \text{u} \cdot c^2 }{ ");
-  math.write(A);
-  math.write(r" } ");
   math.write(r" \end{array} ");
-
   if (bold) math.write(r" } ");
-
   return math.toString();
 }
 
+// Details calcul energie de liaison par nucléon en MeV
+
 String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon1({
-  String eln = r"E_{l/n}",
-  String Z = r"Z",
-  String A = r"A",
-  String mp = r"m_p",
-  String mn = r"m_n",
+  required String eln,
+  required String Z,
+  required String A,
+  required String mp,
+  required String mn,
   required String masseNoyau,
   bool bold = false,
   bool entraineQue = false,
@@ -505,7 +487,7 @@ String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon1({
   StringBuffer math = StringBuffer();
 
   if (bold) math.write(r" \mathbf{ ");
-  if (entraineQue) math.write(r" \Rightarrow ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
 
   math.write(r" \begin{array}{l} ");
   math.write(eln);
@@ -533,13 +515,12 @@ String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon1({
   return math.toString();
 }
 
-String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon3({
-  String eln = r"E_{l/n}",
-  String Z = r"Z",
-  String A = r"A",
-  String mp = r"m_p",
-  String mn = r"m_n",
-  String uMeVC2 = PhyNucValuesConstants.uEnMeVC2,
+String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon2({
+  required String eln,
+  required String Z,
+  required String A,
+  required String mp,
+  required String mn,
   required String masseNoyau,
   bool bold = false,
   bool entraineQue = false,
@@ -547,7 +528,48 @@ String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon3({
   StringBuffer math = StringBuffer();
 
   if (bold) math.write(r" \mathbf{ ");
-  if (entraineQue) math.write(r" \Rightarrow ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(eln);
+  math.write(r" = \\");
+  math.write(r" \frac{ \left[ \begin{array}{l} ");
+  math.write(Z);
+  math.write(r" \cdot ");
+  math.write(mp);
+  math.write(r" \\ + (");
+  math.write(A);
+  math.write(r" - ");
+  math.write(Z);
+  math.write(r") ");
+  math.write(mn);
+  math.write(r" \\ - ");
+  math.write(masseNoyau);
+  math.write(r" \end{array} \right] \text{u} \cdot c^2 }{ ");
+  math.write(A);
+  math.write(r" } ");
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon3({
+  required String eln,
+  required String Z,
+  required String A,
+  required String mp,
+  required String mn,
+  required String uMeVC2,
+  required String masseNoyau,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
 
   math.write(r" \begin{array}{l} ");
   math.write(eln);
@@ -576,4 +598,100 @@ String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon3({
   return math.toString();
 }
 
-//--------------------------------------------------------------------
+// Details calcul du temps avec A et A0
+
+String buildTex2SvgMathCalculTempsAvecXEtXo3({
+  required String A,
+  required String Ao,
+  required String lambda,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+  math.write(r" \begin{array}{l} \Large{e}^{ - ");
+  math.write(lambda);
+  math.write(r" ");
+  math.write(t);
+  math.write(r"} = \frac{");
+  math.write(A);
+  math.write(r"}{");
+  math.write(Ao);
+  math.write(r"} \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculTempsAvecXEtXo4({
+  required String A,
+  required String Ao,
+  required String lambda,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+  math.write(r" \begin{array}{l} -");
+  math.write(lambda);
+  math.write(r" ");
+  math.write(t);
+  math.write(r" = \ln \frac{");
+  math.write(A);
+  math.write(r"}{");
+  math.write(Ao);
+  math.write(r"} \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculTempsAvecXEtXo5({
+  required String A,
+  required String Ao,
+  required String lambda,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+  math.write(r" \begin{array}{l} -");
+  math.write(t);
+  math.write(r" = \frac{1}{");
+  math.write(lambda);
+  math.write(r"} \ln \frac{");
+  math.write(A);
+  math.write(r"}{");
+  math.write(Ao);
+  math.write(r"} \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathCalculTempsAvecXEtXo6({
+  required String A,
+  required String Ao,
+  required String lambda,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+  math.write(r" \begin{array}{l} ");
+  math.write(t);
+  math.write(r" = - \frac{1}{");
+  math.write(lambda);
+  math.write(r"} \ln \frac{");
+  math.write(A);
+  math.write(r"}{");
+  math.write(Ao);
+  math.write(r"} \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}

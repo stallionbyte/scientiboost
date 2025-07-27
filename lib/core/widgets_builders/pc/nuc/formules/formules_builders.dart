@@ -155,25 +155,65 @@ Widget nombreDeNoyauAvecMasse({
   );
 }
 
-Widget regleDe3({
-  required String part1,
-  required String part2,
-  required String part3,
-  required String left,
-  bool border = false,
+Widget constanteRadioactivite({
+  String constanteRadioActive = r"\lambda",
+  String T = r"T",
   bool bold = false,
   bool entraineQue = false,
   double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
-    math: buildTex2SvgMathRegleDe3(
-      part1: part1,
-      part2: part2,
-      part3: part3,
-      left: left,
-      border: border,
-      bold: bold,
+    math: buildTex2SvgMathConstanteRadioactivite(
+      constanteRadioActive: constanteRadioActive,
+      T: T,
       entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget activite({
+  String A = r"A",
+  String Ao = r"A_o",
+  String lambda = r"\lambda",
+  String T = r"T",
+  String t = r"t",
+  bool developpe = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathLoiDeDecroissanceLike(
+      X: A,
+      Xo: Ao,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
+      t: t,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget tempsAvecLambdaAEtAo({
+  String A = r"A",
+  String Ao = r"A_o",
+  String lambda = r"\lambda",
+  String t = r"t",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathTempsAvecLambdaAEtAo(
+      A: A,
+      Ao: Ao,
+      lambda: lambda,
+      t: t,
+      entraineQue: entraineQue,
+      bold: bold,
     ),
     scale: scale,
   );

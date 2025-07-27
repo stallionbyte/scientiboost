@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 
 class Correction2 extends ConsumerStatefulWidget {
   const Correction2({super.key});

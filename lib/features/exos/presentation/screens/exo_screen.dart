@@ -106,7 +106,10 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
 
         SizedBox(height: 20.0),
 
-        _buildHeaderInfo(label: "Chapitre 11", value: widget.chapTitle),
+        _buildHeaderInfo(
+          label: "Chapitre ${widget.chapNum}",
+          value: widget.chapTitle,
+        ),
       ],
     );
   }

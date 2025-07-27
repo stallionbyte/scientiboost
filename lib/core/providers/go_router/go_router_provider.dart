@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'export.dart';
+import 'exports.dart';
 import 'exos/exos_routes.dart';
 import 'exams/exams_routes.dart';
 part 'go_router_provider.g.dart';
@@ -80,7 +80,7 @@ GoRouter goRouter(Ref ref) => GoRouter(
       },
     ),
 
-    ...exoRoutes,
+    ...exosRoutes,
 
     ...examsRoutes,
   ],

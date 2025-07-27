@@ -77,6 +77,8 @@ class PhyNucDonneesTex2SvgMathConstants {
 
 class PhyNucDonneesConstants {
   static const unAnEnJours = "1 an = 365 jours";
+  static const periodeCarbone14EnAnnee = "T = 5730 ans";
+
   static final uEnKg = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.uEnKg,
   );

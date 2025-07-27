@@ -26,37 +26,19 @@ class _Details1State extends ConsumerState<Details1> {
         children: [
           SizedBox(height: 20),
 
+          defautDeMasse(scale: 6.0),
+
+          const SizedBox(height: 20),
+
+          transition(transition: "Or"),
+
+          const SizedBox(height: 20),
+
           PhyNucDonneesConstants.mp,
 
           SizedBox(height: 20),
 
           PhyNucDonneesConstants.mn,
-
-          SizedBox(height: 20),
-
-          result(
-            leftRichs: <InlineSpan>[
-              const TextSpan(text: "m( "),
-
-              PhyNucConstants.cobalt60,
-
-              const TextSpan(text: " ) "),
-            ],
-
-            valueRichs: <InlineSpan>[
-              const TextSpan(text: " 9,938746  . "),
-
-              exp(exp: r" -26 "),
-            ],
-
-            unit: "kg",
-
-            bold: false,
-          ),
-
-          SizedBox(height: 20),
-
-          transition(transition: "Or"),
 
           SizedBox(height: 20),
 
@@ -94,7 +76,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           SizedBox(height: 20),
 
-          transition(transition: "D'où"),
+          transition(transition: "Ainsi"),
 
           SizedBox(height: 20),
 

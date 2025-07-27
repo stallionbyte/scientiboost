@@ -10,6 +10,7 @@ import 'tex2svg_math.dart';
 Widget mEgaleESurC2({
   String E = r" E ",
   String c = r" c ",
+  String m = r"m",
   bool bold = false,
   bool entraineQue = false,
   double scale = 1.0,
@@ -18,6 +19,7 @@ Widget mEgaleESurC2({
     math: buildTex2SvgMathmEgaleESurC2(
       E: E,
       c: c,
+      m: m,
       bold: bold,
       entraineQue: entraineQue,
     ),
@@ -266,6 +268,7 @@ Widget calculEnergieDeLiaison({
           A: A,
           mn: mn,
           masseNoyau: masseNoyau,
+          uMeVC2: uEnMeVC2,
           bold: bold,
           entraineQue: entraineQue,
         ),
@@ -402,6 +405,110 @@ Widget calculEnergieDeLiaisonParNucleon({
           A: A,
           mn: mn,
           masseNoyau: masseNoyau,
+          uMeVC2: uEnMeVC2,
+          bold: bold,
+          entraineQue: entraineQue,
+        ),
+        scale: scale,
+      ),
+    ],
+  );
+}
+
+Widget activiteInverse({
+  String A = r"A",
+  String Ao = r"A_o",
+  String lambda = r"\lambda",
+  String t = r"t",
+  String T = r"T",
+  bool developpe = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathActiviteInverse(
+      A: A,
+      Ao: Ao,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
+      t: t,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget calculTempsAvecAEtAo({
+  String A = r"A",
+  String Ao = r"A_0",
+  String lambda = r"\lambda",
+  String T = r"T",
+  String t = r"t",
+  bool developpe = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      activite(scale: scale),
+
+      const SizedBox(height: 40),
+
+      activiteInverse(entraineQue: entraineQue, scale: scale),
+
+      const SizedBox(height: 40),
+
+      buildTex2SvgInRichText(
+        math: buildTex2SvgMathCalculTempsAvecXEtXo3(
+          A: A,
+          Ao: Ao,
+          lambda: lambda,
+          t: t,
+          bold: bold,
+          entraineQue: entraineQue,
+        ),
+        scale: scale,
+      ),
+
+      const SizedBox(height: 40),
+
+      buildTex2SvgInRichText(
+        math: buildTex2SvgMathCalculTempsAvecXEtXo4(
+          A: A,
+          Ao: Ao,
+          lambda: lambda,
+          t: t,
+          bold: bold,
+          entraineQue: entraineQue,
+        ),
+        scale: scale,
+      ),
+
+      const SizedBox(height: 40),
+
+      buildTex2SvgInRichText(
+        math: buildTex2SvgMathCalculTempsAvecXEtXo5(
+          A: A,
+          Ao: Ao,
+          lambda: lambda,
+          t: t,
+          bold: bold,
+          entraineQue: entraineQue,
+        ),
+        scale: scale,
+      ),
+
+      const SizedBox(height: 40),
+
+      buildTex2SvgInRichText(
+        math: buildTex2SvgMathCalculTempsAvecXEtXo6(
+          A: A,
+          Ao: Ao,
+          lambda: lambda,
+          t: t,
           bold: bold,
           entraineQue: entraineQue,
         ),
