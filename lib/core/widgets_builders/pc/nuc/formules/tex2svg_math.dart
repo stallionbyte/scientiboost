@@ -396,6 +396,7 @@ String buildTex2SvgMathConstanteRadioactivite({
 
 String buildTex2SvgMathLoiDeDecroissanceLike({
   required String X,
+  // ignore: non_constant_identifier_names
   required String Xo,
   required String lambda,
   required String t,
@@ -420,8 +421,9 @@ String buildTex2SvgMathLoiDeDecroissanceLike({
   return math.toString();
 }
 
-String buildTex2SvgMathTempsAvecLambdaAEtAo({
+String buildTex2SvgMathTempsAvecLambdaXEtXo({
   required String A,
+  // ignore: non_constant_identifier_names
   required String Ao,
   required String lambda,
   required String t,
@@ -441,5 +443,157 @@ String buildTex2SvgMathTempsAvecLambdaAEtAo({
   math.write(Ao);
   math.write(r"} \end{array} ");
   if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathActivite4({
+  required String A,
+  required String m,
+  required String M,
+
+  required String T,
+  // ignore: non_constant_identifier_names
+  required String Na,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(A);
+  math.write(r" = ");
+  math.write(r" \frac{");
+  math.write(m);
+  math.write(r"}{");
+  math.write(M);
+  math.write(r"} \cdot ");
+  math.write(r" \frac{");
+  math.write(r"ln2");
+  math.write(r"}{");
+  math.write(T);
+  math.write(r"} \cdot ");
+  math.write(Na);
+  math.write(r" ");
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathActivite2({
+  required String A,
+  required String lambda,
+  required String N,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(A);
+  math.write(r" = ");
+  math.write(lambda);
+  math.write(r" \cdot ");
+  math.write(N);
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathActivite3({
+  required String A,
+  required String lambda,
+  required String m,
+  required String M,
+  // ignore: non_constant_identifier_names
+  required String Na,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(A);
+  math.write(r" = ");
+  math.write(lambda);
+  math.write(r" \cdot \frac{");
+  math.write(m);
+  math.write(r"}{");
+  math.write(M);
+  math.write(r"} \cdot ");
+  math.write(Na);
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathMasseAvecAMNaLambda({
+  required String m,
+  required String A,
+  required String M,
+  required String lambda,
+  required String Na,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(m);
+  math.write(r" = \frac{");
+  math.write(A);
+  math.write(r" \cdot ");
+  math.write(M);
+  math.write(r"}{");
+  math.write(lambda);
+  math.write(r" \cdot ");
+  math.write(Na);
+  math.write(r"}");
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+String buildTex2SvgMathMasseAvecAMNaTln2({
+  required String m,
+  required String A,
+  required String M,
+  required String T,
+  required String N,
+
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(m);
+  math.write(r" = \frac{");
+  math.write(A);
+  math.write(r" \cdot ");
+  math.write(M);
+  math.write(r" \cdot ");
+  math.write(T);
+  math.write(r"}{");
+  math.write(N);
+  math.write(r" \cdot ");
+  math.write(r"ln2");
+  math.write(r"}");
+
+  if (bold) math.write(r" } ");
+
   return math.toString();
 }

@@ -88,6 +88,9 @@ class RoutesNamesConstants {
   static const String pcNucChap12ExosRoutesExo1 =
       '/matiere(PC)/nuc/chap(12)/exo(1)';
 
+  static const String pcNucChap12ExosRoutesExo2 =
+      '/matiere(PC)/nuc/chap(12)/exo(2)';
+
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
   static const String pcBacD2024 =
@@ -116,4 +119,86 @@ class EspConstants {
   static const esp20 = SizedBox(height: 20);
   static const esp30 = SizedBox(height: 30);
   static const esp40 = SizedBox(height: 40);
+}
+
+class TransitionConstants {
+  static const dou = Text(
+    "D'où",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const or = Text(
+    "Or",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const ainsi = Text(
+    "Ainsi",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const et = Text(
+    "Et",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const parconsequent = Text(
+    "Par conséquent",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const premierement = Text(
+    "Premièrement",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const deuxiemement = Text(
+    "Deuxièmement",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const troisiemement = Text(
+    "Troisièmement",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const quatiemement = Text(
+    "Quatièmement",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const cinquiemement = Text(
+    "Cinquièmement",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
 }

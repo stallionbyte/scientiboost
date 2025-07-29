@@ -450,6 +450,7 @@ String buildTex2SvgMathCalculEnergieDeLiaison3({
 
 String buildTex2SvgMathActiviteInverse({
   required String A,
+  // ignore: non_constant_identifier_names
   required String Ao,
   required String lambda,
   required String t,
@@ -602,6 +603,7 @@ String buildTex2SvgMathCalculEnergieDeLiaisonParNucleon3({
 
 String buildTex2SvgMathCalculTempsAvecXEtXo3({
   required String A,
+  // ignore: non_constant_identifier_names
   required String Ao,
   required String lambda,
   required String t,
@@ -626,6 +628,7 @@ String buildTex2SvgMathCalculTempsAvecXEtXo3({
 
 String buildTex2SvgMathCalculTempsAvecXEtXo4({
   required String A,
+  // ignore: non_constant_identifier_names
   required String Ao,
   required String lambda,
   required String t,
@@ -650,6 +653,7 @@ String buildTex2SvgMathCalculTempsAvecXEtXo4({
 
 String buildTex2SvgMathCalculTempsAvecXEtXo5({
   required String A,
+  // ignore: non_constant_identifier_names
   required String Ao,
   required String lambda,
   required String t,
@@ -674,6 +678,7 @@ String buildTex2SvgMathCalculTempsAvecXEtXo5({
 
 String buildTex2SvgMathCalculTempsAvecXEtXo6({
   required String A,
+  // ignore: non_constant_identifier_names
   required String Ao,
   required String lambda,
   required String t,
@@ -693,5 +698,170 @@ String buildTex2SvgMathCalculTempsAvecXEtXo6({
   math.write(Ao);
   math.write(r"} \end{array} ");
   if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathAoAvecALambdaTemps({
+  // ignore: non_constant_identifier_names
+  required String Ao,
+  required String A,
+  required String lambda,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(Ao);
+  math.write(r" = ");
+  math.write(r" \frac{ ");
+  math.write(A);
+  math.write(r" }{ \Large{e}^{ - ");
+  math.write(lambda);
+  math.write(r" ");
+  math.write(t);
+  math.write(r" } } ");
+  math.write(r" \end{array} ");
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+// MasseAvecAMNaLambda----------------------------------------------------------------
+
+/// Génère le code LaTeX pour la première étape de la démonstration.
+/// Formule: λ ⋅ (m/M) ⋅ N = A
+String buildTex2SvgMathActivite3Inverse({
+  required String lambda,
+  required String m,
+  required String M,
+  required String Na,
+  required String A,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(lambda);
+  math.write(r" \cdot \frac{");
+  math.write(m);
+  math.write(r"}{");
+  math.write(M);
+  math.write(r"} \cdot ");
+  math.write(Na);
+  math.write(r" = ");
+  math.write(A);
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+/// Génère le code LaTeX pour la deuxième étape de la démonstration.
+/// Formule: λ ⋅ m ⋅ N = A ⋅ M
+String buildTex2SvgMathMasseAvecAMNaLambdaEtape2({
+  required String lambda,
+  required String m,
+  required String M,
+  required String Na,
+  required String A,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(lambda);
+  math.write(r" \cdot ");
+  math.write(m);
+  math.write(r" \cdot ");
+  math.write(Na);
+  math.write(r" = ");
+  math.write(A);
+  math.write(r" \cdot ");
+  math.write(M);
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+// MasseAvecAMNaTln2-----------------------------------------------------------------
+
+/// Génère le code LaTeX pour la première étape de la deuxième démonstration.
+/// Formule: (m/M) ⋅ (ln2/T) ⋅ N = A
+String buildTex2SvgMathActivite4Inverse({
+  required String m,
+  required String M,
+  required String T,
+  required String N,
+  required String A,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(r" \frac{");
+  math.write(m);
+  math.write(r"}{");
+  math.write(M);
+  math.write(r"} \cdot \frac{");
+  math.write(r"ln2");
+  math.write(r"}{");
+  math.write(T);
+  math.write(r"} \cdot ");
+  math.write(N);
+  math.write(r" = ");
+  math.write(A);
+
+  if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+/// Génère le code LaTeX pour la deuxième étape de la deuxième démonstration.
+/// Formule: m ⋅ ln2 ⋅ N = A ⋅ M ⋅ T
+String buildTex2SvgMathMasseAvecAMNaTln2Etape2({
+  required String m,
+
+  required String N,
+  required String A,
+  required String M,
+  required String T,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(m);
+  math.write(r" \cdot ");
+  math.write(r"ln2");
+  math.write(r" \cdot ");
+  math.write(N);
+  math.write(r" = ");
+  math.write(A);
+  math.write(r" \cdot ");
+  math.write(M);
+  math.write(r" \cdot ");
+  math.write(T);
+
+  if (bold) math.write(r" } ");
+
   return math.toString();
 }

@@ -32,9 +32,9 @@ class PhyNucDonneesTex2SvgMathConstants {
   static const String c =
       r"c = " + PhyNucValuesConstants.cEnMetreParSeconde + r" \ m/s";
   static const String nombreAvogadro =
-      r"\mathcal{N}_A = " +
+      r"\mathcal{N} = " +
       PhyNucValuesConstants.nombreAvogadroMath +
-      r" mol^{-1}";
+      r"\ mol^{-1}";
 
   static const String uEnMeVC2 =
       r"1u = " + PhyNucValuesConstants.uEnMeVC2 + r" \ \text{MeV}/c^2";
@@ -78,6 +78,7 @@ class PhyNucDonneesTex2SvgMathConstants {
 class PhyNucDonneesConstants {
   static const unAnEnJours = "1 an = 365 jours";
   static const periodeCarbone14EnAnnee = "T = 5730 ans";
+  static const periodeIode131EnJour = "T = 8,02 jours";
 
   static final uEnKg = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.uEnKg,

@@ -417,6 +417,7 @@ Widget calculEnergieDeLiaisonParNucleon({
 
 Widget activiteInverse({
   String A = r"A",
+  // ignore: non_constant_identifier_names
   String Ao = r"A_o",
   String lambda = r"\lambda",
   String t = r"t",
@@ -441,6 +442,7 @@ Widget activiteInverse({
 
 Widget calculTempsAvecAEtAo({
   String A = r"A",
+  // ignore: non_constant_identifier_names
   String Ao = r"A_0",
   String lambda = r"\lambda",
   String T = r"T",
@@ -515,5 +517,221 @@ Widget calculTempsAvecAEtAo({
         scale: scale,
       ),
     ],
+  );
+}
+
+// calculAoAvecALambdaTemps
+
+Widget aoAvecALambdaTemps({
+  // ignore: non_constant_identifier_names
+  String Ao = r"A_0",
+  String A = r"A",
+  String lambda = r"\lambda",
+  String t = r"t",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathAoAvecALambdaTemps(
+      A: A,
+      Ao: Ao,
+      t: t,
+      lambda: lambda,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget calculAoAvecALambdaTemps({
+  // ignore: non_constant_identifier_names
+  String Ao = r"A_0",
+  String A = r"A",
+  String lambda = r"\lambda",
+  String t = r"t",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return Column(
+    children: [
+      activite(scale: scale),
+
+      const SizedBox(height: 40),
+
+      activiteInverse(entraineQue: entraineQue, scale: scale),
+
+      const SizedBox(height: 40),
+
+      aoAvecALambdaTemps(
+        A: A,
+        Ao: Ao,
+        lambda: lambda,
+        t: t,
+        entraineQue: entraineQue,
+        bold: bold,
+        scale: scale,
+      ),
+    ],
+  );
+}
+
+// MasseAvecAMNaLambda-----------------------------------------------------------
+
+Widget masseAvecAMNaLambdaEtapes({
+  String lambda = r"\lambda",
+  String m = r"m",
+  String M = r"M",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  String A = r"A",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return Column(
+    children: [
+      activite3(lambda: lambda, m: m, M: M, Na: Na, A: A, scale: 1.5),
+
+      EspConstants.esp40,
+
+      activite3Inverse(
+        lambda: lambda,
+        m: m,
+        M: M,
+        Na: Na,
+        A: A,
+        scale: 2.0,
+        entraineQue: true,
+      ),
+
+      EspConstants.esp40,
+
+      masseAvecAMNaLambdaEtape2(
+        lambda: lambda,
+        m: m,
+        M: M,
+        Na: Na,
+        A: A,
+        scale: 2.0,
+        entraineQue: true,
+      ),
+
+      EspConstants.esp40,
+
+      masseAvecAMNaLambda(
+        lambda: lambda,
+        m: m,
+        M: M,
+        Na: Na,
+        A: A,
+        scale: 3.0,
+        entraineQue: true,
+      ),
+    ],
+  );
+}
+
+Widget activite3Inverse({
+  String lambda = r"\lambda",
+  String m = r"m",
+  String M = r"M",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  String A = r"A",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathActivite3Inverse(
+      lambda: lambda,
+      m: m,
+      M: M,
+      Na: Na,
+      A: A,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget masseAvecAMNaLambdaEtape2({
+  String lambda = r"\lambda",
+  String m = r"m",
+  String M = r"M",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  String A = r"A",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathMasseAvecAMNaLambdaEtape2(
+      lambda: lambda,
+      m: m,
+      M: M,
+      Na: Na,
+      A: A,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+// MasseAvecAMNaTln2-----------------------------------------------------------------
+
+Widget activite4Inverse({
+  String m = r"m",
+  String M = r"M",
+
+  String T = r"T",
+  String N = r"N",
+  String A = r"A",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathActivite4Inverse(
+      m: m,
+      M: M,
+      T: T,
+      N: N,
+      A: A,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget masseAvecAMNaTln2Etape2({
+  String m = r"m",
+  String M = r"M",
+
+  String T = r"T",
+  String N = r"N",
+  String A = r"A",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathMasseAvecAMNaTln2Etape2(
+      m: m,
+      M: M,
+      T: T,
+      N: N,
+      A: A,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
   );
 }

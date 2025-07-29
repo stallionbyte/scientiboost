@@ -175,6 +175,7 @@ Widget constanteRadioactivite({
 
 Widget activite({
   String A = r"A",
+  // ignore: non_constant_identifier_names
   String Ao = r"A_o",
   String lambda = r"\lambda",
   String T = r"T",
@@ -199,6 +200,7 @@ Widget activite({
 
 Widget tempsAvecLambdaAEtAo({
   String A = r"A",
+  // ignore: non_constant_identifier_names
   String Ao = r"A_o",
   String lambda = r"\lambda",
   String t = r"t",
@@ -207,11 +209,130 @@ Widget tempsAvecLambdaAEtAo({
   double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
-    math: buildTex2SvgMathTempsAvecLambdaAEtAo(
+    math: buildTex2SvgMathTempsAvecLambdaXEtXo(
       A: A,
       Ao: Ao,
       lambda: lambda,
       t: t,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget activite2({
+  String A = r"A",
+  String lambda = r"\lambda",
+  String N = r"N",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathActivite2(
+      A: A,
+      lambda: lambda,
+      N: N,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget activite3({
+  String A = r"A",
+  String lambda = r"\lambda",
+  String m = r"m",
+  String M = r"M",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathActivite3(
+      A: A,
+      lambda: lambda,
+      m: m,
+      M: M,
+      Na: Na,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget activite4({
+  String A = r"A",
+  String T = r"T",
+  String m = r"m",
+  String M = r"M",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathActivite4(
+      A: A,
+      T: T,
+      m: m,
+      M: M,
+      Na: Na,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget masseAvecAMNaLambda({
+  String m = r"m",
+  String A = r"A",
+  String M = r"M",
+  String lambda = r"\lambda",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathMasseAvecAMNaLambda(
+      A: A,
+      M: M,
+      lambda: lambda,
+      Na: Na,
+      m: m,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget masseAvecAMNaTln2({
+  String m = r"m",
+  String A = r"A",
+  String M = r"M",
+  String T = r"T",
+  String N = r"N",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathMasseAvecAMNaTln2(
+      A: A,
+      M: M,
+      T: T,
+      N: N,
+      m: m,
       entraineQue: entraineQue,
       bold: bold,
     ),

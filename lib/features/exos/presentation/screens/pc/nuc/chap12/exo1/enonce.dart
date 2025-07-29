@@ -23,7 +23,7 @@ class PcNucChap12Exo1Enonce extends ConsumerWidget {
             children: <InlineSpan>[
               const TextSpan(
                 text:
-                    "Vous êtes archéologue et venez de découvrir une momie dans une tombe égyptienne. Pour dater cette découverte, vous prélevez un échantillon de tissu qui présente une activité en carbone-14 de 8,2 désintégrations par minute. Un tissu vivant présente une activité en carbone-14 de 13,6 désintégrations par minute. \n \n",
+                    "Vous êtes archéologue et venez de découvrir une momie dans une tombe égyptienne. Pour dater cette découverte, vous prélevez un échantillon de tissu qui présente une activité en carbone-14 de 8,2 désintégrations par minute par gramme. Un tissu vivant présente une activité en carbone-14 de 13,6 désintégrations par minute par gramme. \n \n",
               ),
 
               const TextSpan(
