@@ -540,6 +540,7 @@ String buildTex2SvgMathMasseAvecAMNaLambda({
   required String A,
   required String M,
   required String lambda,
+  // ignore: non_constant_identifier_names
   required String Na,
   bool bold = false,
   bool entraineQue = false,

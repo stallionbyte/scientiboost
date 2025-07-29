@@ -7,7 +7,7 @@ import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/details_builders.dart';
 
 class Details2 extends ConsumerStatefulWidget {
   const Details2({super.key});

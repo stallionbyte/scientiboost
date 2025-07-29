@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/details_builders.dart';
 
 import 'details/details1.dart';
 import 'details/details2.dart';

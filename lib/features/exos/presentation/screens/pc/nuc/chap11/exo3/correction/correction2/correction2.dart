@@ -5,7 +5,7 @@ import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/details_builders.dart';
 
 class Correction2 extends ConsumerStatefulWidget {
   const Correction2({super.key});
