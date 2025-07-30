@@ -3,6 +3,8 @@
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class PhyNucValuesConstants {
+  static const String masseTh234EnU = r"234,0436";
+
   static const String masseCl35EnU = r"34,968852";
   static const String masseCl36EnU = r"35,968306";
   static const String masseCl37EnU = r"36,965903";
@@ -12,6 +14,7 @@ class PhyNucValuesConstants {
   static final uEnKg = buildTex2SvgInWidgetSpan(math: uEnKgMath);
   static const String masseProtonEnU = r"1,007276";
   static const String masseNeutronEnU = r"1,008665";
+  static const String masseParticuleAlphaEnU = r" 4,0026";
   static final nombreAvogadro = buildTex2SvgInWidgetSpan(
     math: nombreAvogadroMath,
   );
@@ -44,6 +47,14 @@ class PhyNucDonneesTex2SvgMathConstants {
       r"m_p = " + PhyNucValuesConstants.masseProtonEnU + r" \ u";
   static const String mn =
       r"m_n = " + PhyNucValuesConstants.masseNeutronEnU + r" \ u";
+
+  static const String masseParticuleAlphaEnU =
+      r"m(_{2}^{4}He) = " +
+      PhyNucValuesConstants.masseParticuleAlphaEnU +
+      r" \ u";
+
+  static const String masseTh234EnU =
+      r"m(_{\ 90}^{234}Th) = " + PhyNucValuesConstants.masseTh234EnU + r" \ u";
 
   static const String masseC14EnU =
       r"m(_{\ 6}^{14}C) = " + PhyNucValuesConstants.masseC14EnU + r" \ u";
@@ -106,6 +117,10 @@ class PhyNucDonneesConstants {
     scale: 0.8,
   );
 
+  static final masseParticuleAlphaEnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseParticuleAlphaEnU,
+  );
+
   static final masseC14EnU = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.masseC14EnU,
   );
@@ -141,5 +156,9 @@ class PhyNucDonneesConstants {
   );
   static final masseO16EnU = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.masseO16EnU,
+  );
+
+  static final masseTh234EnU = buildTex2SvgInRichText(
+    math: PhyNucDonneesTex2SvgMathConstants.masseTh234EnU,
   );
 }

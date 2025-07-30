@@ -339,3 +339,119 @@ Widget masseAvecAMNaTln2({
     scale: scale,
   );
 }
+
+Widget perteDeMasseReaction12({
+  // ignore: non_constant_identifier_names
+  String X1 = r"X",
+  // ignore: non_constant_identifier_names
+  String Z1 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A1 = r"A",
+
+  // ignore: non_constant_identifier_names
+  String X2 = r"X",
+  // ignore: non_constant_identifier_names
+  String Z2 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A2 = r"A",
+
+  // ignore: non_constant_identifier_names
+  String X3 = r"X",
+  // ignore: non_constant_identifier_names
+  String Z3 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A3 = r"A",
+
+  String perteDeMasse = r"\Delta m",
+
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathPerteDeMasseReaction12(
+      A1: A1,
+      Z1: Z1,
+      X1: X1,
+
+      A2: A2,
+      Z2: Z2,
+      X2: X2,
+
+      A3: A3,
+      Z3: Z3,
+      X3: X3,
+
+      perteDeMasse: perteDeMasse,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget energieReaction12({
+  // ignore: non_constant_identifier_names
+  String X1 = r"X",
+  // ignore: non_constant_identifier_names
+  String Z1 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A1 = r"A",
+
+  // ignore: non_constant_identifier_names
+  String X2 = r"X",
+  // ignore: non_constant_identifier_names
+  String Z2 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A2 = r"A",
+
+  // ignore: non_constant_identifier_names
+  String X3 = r"X",
+  // ignore: non_constant_identifier_names
+  String Z3 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A3 = r"A",
+
+  String E = r"E",
+
+  String c = r"c",
+
+  String? m1,
+
+  String? m2,
+
+  String? m3,
+
+  String? uEnMeVC2,
+
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathEnergieReaction12(
+      A1: A1,
+      Z1: Z1,
+      X1: X1,
+
+      A2: A2,
+      Z2: Z2,
+      X2: X2,
+
+      A3: A3,
+      Z3: Z3,
+      X3: X3,
+
+      E: E,
+      c: c,
+      m1: m1,
+      m2: m2,
+      m3: m3,
+      uEnMeVC2: uEnMeVC2,
+
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}

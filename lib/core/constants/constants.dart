@@ -91,6 +91,9 @@ class RoutesNamesConstants {
   static const String pcNucChap12ExosRoutesExo2 =
       '/matiere(PC)/nuc/chap(12)/exo(2)';
 
+  static const String pcNucChap12ExosRoutesExo3 =
+      '/matiere(PC)/nuc/chap(12)/exo(3)';
+
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
   static const String pcBacD2024 =
@@ -130,6 +133,14 @@ class TransitionConstants {
     ),
   );
 
+  static const an = Text(
+    "AN",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
   static const or = Text(
     "Or",
     style: TextStyle(
@@ -148,6 +159,14 @@ class TransitionConstants {
 
   static const et = Text(
     "Et",
+    style: TextStyle(
+      fontSize: ExoConstants.fontSize,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
+  static const donnees = Text(
+    "Donnees",
     style: TextStyle(
       fontSize: ExoConstants.fontSize,
       fontWeight: FontWeight.bold,

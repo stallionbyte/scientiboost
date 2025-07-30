@@ -307,6 +307,10 @@ Widget regleDe3({
   );
 }
 
+Widget sbTxt({required String txt}) {
+  return Text(txt, style: const TextStyle(fontSize: ExoConstants.fontSize));
+}
+
 //------------------TeXSVG-MATH-----------------------------------------
 
 String buildTex2SvgMathRegleDe3({

@@ -1,3 +1,5 @@
+import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
+
 String buildTex2SvgMathRelationEinstein({
   required String E,
   required String m,
@@ -595,6 +597,180 @@ String buildTex2SvgMathMasseAvecAMNaTln2({
   math.write(r"}");
 
   if (bold) math.write(r" } ");
+
+  return math.toString();
+}
+
+String buildTex2SvgMathPerteDeMasseReaction12({
+  // ignore: non_constant_identifier_names
+  required String X1,
+  // ignore: non_constant_identifier_names
+  required String Z1,
+  // ignore: non_constant_identifier_names
+  required String A1,
+  // ignore: non_constant_identifier_names
+  required String X2,
+  // ignore: non_constant_identifier_names
+  required String Z2,
+  // ignore: non_constant_identifier_names
+  required String A2,
+  // ignore: non_constant_identifier_names
+  required String X3,
+  // ignore: non_constant_identifier_names
+  required String Z3,
+  // ignore: non_constant_identifier_names
+  required String A3,
+
+  required String perteDeMasse,
+
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+  math.write(r" \begin{array}{l} ");
+
+  math.write(perteDeMasse);
+
+  math.write(r"\ = \ ");
+
+  math.write(r"m(\ ");
+
+  math.write(buildTex2SvgMathNotationNoyau(X: X1, A: A1, Z: Z1));
+
+  math.write(r"\ ) \\");
+
+  math.write(r" - ");
+
+  math.write(r"\left[");
+
+  math.write(r"m(\ ");
+
+  math.write(buildTex2SvgMathNotationNoyau(X: X2, A: A2, Z: Z2));
+
+  math.write(r"\ )");
+
+  math.write(r" + ");
+
+  math.write(r"m(\ ");
+
+  math.write(buildTex2SvgMathNotationNoyau(X: X3, A: A3, Z: Z3));
+
+  math.write(r"\ )");
+
+  math.write(r"\right]");
+
+  math.write(r" \end{array} ");
+  if (bold) {
+    math.write(r" } ");
+  }
+  return math.toString();
+}
+
+String buildTex2SvgMathEnergieReaction12({
+  // ignore: non_constant_identifier_names
+  required String X1,
+  // ignore: non_constant_identifier_names
+  required String Z1,
+  // ignore: non_constant_identifier_names
+  required String A1,
+  // ignore: non_constant_identifier_names
+  required String X2,
+  // ignore: non_constant_identifier_names
+  required String Z2,
+  // ignore: non_constant_identifier_names
+  required String A2,
+  // ignore: non_constant_identifier_names
+  required String X3,
+  // ignore: non_constant_identifier_names
+  required String Z3,
+  // ignore: non_constant_identifier_names
+  required String A3,
+
+  required String E,
+
+  required String c,
+
+  String? m1,
+
+  String? m2,
+
+  String? m3,
+
+  String? uEnMeVC2,
+
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+  math.write(r" \begin{array}{l} ");
+
+  math.write(E);
+
+  math.write(r"\ =  \mathbf{(} \ ");
+
+  if (m1 != null) {
+    math.write(m1);
+  } else {
+    math.write(r"m(\ ");
+
+    math.write(buildTex2SvgMathNotationNoyau(X: X1, A: A1, Z: Z1));
+
+    math.write(r"\ ) ");
+  }
+
+  math.write(r"\\ - ");
+
+  math.write(r"(");
+
+  if (m2 != null) {
+    math.write(m2);
+  } else {
+    math.write(r"m(\ ");
+
+    math.write(buildTex2SvgMathNotationNoyau(X: X2, A: A2, Z: Z2));
+
+    math.write(r"\ )");
+  }
+
+  math.write(r" + ");
+
+  if (m3 != null) {
+    math.write(m3);
+  } else {
+    math.write(r"m(\ ");
+
+    math.write(buildTex2SvgMathNotationNoyau(X: X3, A: A3, Z: Z3));
+
+    math.write(r"\ )");
+  }
+
+  math.write(r"\ ) \ ");
+
+  math.write(r" \mathbf{)} \cdot ");
+
+  if (uEnMeVC2 != null) {
+    math.write(uEnMeVC2);
+  } else {
+    math.write(c);
+    math.write(r"^2");
+  }
+
+  math.write(r" \end{array} ");
+  if (bold) {
+    math.write(r" } ");
+  }
 
   return math.toString();
 }

@@ -1,5 +1,7 @@
 import 'package:scientiboost/core/providers/go_router/exos/exos_exports.dart';
 
+import '../exports/chap11_exports.dart';
+
 final pcNucChap11Routes = [
   GoRoute(
     path: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
