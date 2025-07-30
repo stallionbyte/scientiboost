@@ -7,14 +7,12 @@ import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_buil
 
 import '../tex2svg_math/tex2svg_math.dart';
 
-Widget calculTempsAvecAEtAo({
+Widget calculTempsAvecLambdaAEtAo({
   String A = r"A",
   // ignore: non_constant_identifier_names
   String Ao = r"A_0",
   String lambda = r"\lambda",
-  String T = r"T",
   String t = r"t",
-  bool developpe = false,
   bool bold = false,
   bool entraineQue = false,
   double scale = 1.0,

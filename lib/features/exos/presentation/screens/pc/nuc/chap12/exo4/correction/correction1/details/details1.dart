@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
-
 import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/details_builders.dart';
 
 class Details1 extends ConsumerStatefulWidget {
@@ -19,7 +17,7 @@ class _Details1State extends ConsumerState<Details1> {
     return DetailsHandler(
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [calculTempsAvecLambdaAEtAo(scale: 1.7, entraineQue: true)],
+        children: [tempsAvecTAetAo(scale: 2.0, entraineQue: true)],
       ),
     );
   }

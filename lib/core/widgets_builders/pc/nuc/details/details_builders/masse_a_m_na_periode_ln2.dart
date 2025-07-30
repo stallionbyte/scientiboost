@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 export 'inverses.dart';
-export 'cal_ao_a_lambda_t.dart';
-export 'cal_ener_liaison.dart';
-export 'cal_ener_liaison_nuc.dart';
+export 'ao_a_lambda_t.dart';
+export 'ener_liaison.dart';
+export 'ener_liaison_nuc.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 import '../tex2svg_math/tex2svg_math.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 export 'inverses.dart';
-export 'cal_ao_a_lambda_t.dart';
+export 'ao_a_lambda_t.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';

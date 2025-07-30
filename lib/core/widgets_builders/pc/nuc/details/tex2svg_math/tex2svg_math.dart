@@ -1,6 +1,7 @@
-export 'cal_ener_liaison.dart';
-export 'cal_ener_liaison_nuc.dart';
-export 'cal_t_x_xo.dart';
+export 'ener_liaison.dart';
+export 'ener_liaison_nuc.dart';
+export 't_lambda_x_xo.dart';
+export 't_period_x_xo.dart';
 export 'masse_a_m_na_lambda.dart';
 export 'masse_a_m_na_periode_ln2.dart';
 export 'inverses.dart';

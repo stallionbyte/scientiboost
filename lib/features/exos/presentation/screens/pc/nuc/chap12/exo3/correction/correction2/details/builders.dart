@@ -30,6 +30,12 @@ Widget calculDetails() {
       EspConstants.esp40,
 
       buildTex2SvgInRichText(
+        math: tex2SvgMathcalculDetailsEtape2(),
+        scale: 2.0,
+      ),
+      EspConstants.esp40,
+
+      buildTex2SvgInRichText(
         math: tex2SvgMathcalculDetailsEtape3(),
         scale: 2.0,
       ),
@@ -37,6 +43,12 @@ Widget calculDetails() {
 
       buildTex2SvgInRichText(
         math: tex2SvgMathcalculDetailsEtape4(),
+        scale: 2.0,
+      ),
+      EspConstants.esp40,
+
+      buildTex2SvgInRichText(
+        math: tex2SvgMathcalculDetailsEtape5(),
         scale: 2.0,
       ),
       EspConstants.esp40,
@@ -55,24 +67,12 @@ Widget calculDetails() {
 
       buildTex2SvgInRichText(
         math: tex2SvgMathcalculDetailsEtape8(),
-        scale: 2.0,
-      ),
-      EspConstants.esp40,
-
-      buildTex2SvgInRichText(
-        math: tex2SvgMathcalculDetailsEtape9(),
-        scale: 2.0,
-      ),
-      EspConstants.esp40,
-
-      buildTex2SvgInRichText(
-        math: tex2SvgMathcalculDetailsEtape10(),
         scale: 1.0,
       ),
       EspConstants.esp40,
 
       buildTex2SvgInRichText(
-        math: tex2SvgMathcalculDetailsEtape11(),
+        math: tex2SvgMathcalculDetailsEtape9(),
         scale: 2.0,
       ),
       EspConstants.esp40,

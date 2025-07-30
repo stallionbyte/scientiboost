@@ -54,7 +54,7 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
         if (showDetails) ...[
           DottedBorder(
             options: RoundedRectDottedBorderOptions(
-              radius: Radius.circular(4.0),
+              radius: Radius.circular(12.0),
               color: Colors.blue,
               dashPattern: [10, 5],
               strokeWidth: 2,

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 export 'inverses.dart';
-export 'cal_ao_a_lambda_t.dart';
-export 'cal_ener_liaison.dart';
-export 'cal_ener_liaison_nuc.dart';
-export 'cal_t_a_ao.dart';
+export 'ao_a_lambda_t.dart';
+export 'ener_liaison.dart';
+export 'ener_liaison_nuc.dart';
+export 't_lambda_a_ao.dart';
+export 't_period_a_ao.dart';
 export 'masse_a_m_na_lambda.dart';
 export 'masse_a_m_na_periode_ln2.dart';
 
