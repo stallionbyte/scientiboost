@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-
-import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
