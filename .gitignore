@@ -46,3 +46,4 @@ app.*.map.json
 
 # own
 lib/supabase_config.dart
+gen_exo.dart

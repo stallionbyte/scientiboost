@@ -455,3 +455,26 @@ Widget energieReaction12({
     scale: scale,
   );
 }
+
+Widget loiDeDecroissance({
+  String N = r"N",
+  // ignore: non_constant_identifier_names
+  String No = r"N_0",
+  String lambda = r"\lambda",
+  String t = r"t",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathLoiDeDecroissanceLike(
+      X: N,
+      Xo: No,
+      lambda: lambda,
+      t: t,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
+    scale: scale,
+  );
+}

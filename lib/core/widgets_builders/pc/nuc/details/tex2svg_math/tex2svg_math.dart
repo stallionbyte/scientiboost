@@ -5,6 +5,7 @@ export 't_period_x_xo.dart';
 export 'masse_a_m_na_lambda.dart';
 export 'masse_a_m_na_periode_ln2.dart';
 export 'inverses.dart';
+export 'grandeur_disparue.dart';
 
 String buildTex2SvgMathESurC2({
   required String E,

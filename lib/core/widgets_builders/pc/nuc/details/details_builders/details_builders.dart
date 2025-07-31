@@ -8,6 +8,7 @@ export 't_lambda_a_ao.dart';
 export 't_period_a_ao.dart';
 export 'masse_a_m_na_lambda.dart';
 export 'masse_a_m_na_periode_ln2.dart';
+export 'nombre_disparu.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import '../tex2svg_math/tex2svg_math.dart';

@@ -45,8 +45,6 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        EspConstants.esp20,
-
         showButton,
 
         EspConstants.esp40,
@@ -64,8 +62,6 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
               children: [widget.details, EspConstants.esp40, showButton],
             ),
           ),
-
-          EspConstants.esp40,
         ],
       ],
     );

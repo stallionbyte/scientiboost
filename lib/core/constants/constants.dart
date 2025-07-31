@@ -97,6 +97,9 @@ class RoutesNamesConstants {
   static const String pcNucChap12ExosRoutesExo4 =
       '/matiere(PC)/nuc/chap(12)/exo(4)';
 
+  static const String pcNucChap12ExosRoutesExo5 =
+      '/matiere(PC)/nuc/chap(12)/exo(5)';
+
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
   static const String pcBacD2024 =
@@ -115,7 +118,7 @@ class StorageKeysConstants {
 }
 
 class ExoConstants {
-  static const double fontSize = 16.0;
+  static const double fontSize = 18.0;
   static const double displayFontSize = 25.0;
   static const double displayFontSizeMultiLines = 80.0;
   static const double richTextFontSize = 20.0;

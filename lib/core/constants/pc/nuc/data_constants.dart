@@ -90,7 +90,8 @@ class PhyNucDonneesConstants {
   static const unAnEnJours = "1 an = 365 jours";
   static const periodeCarbone14EnAnnee = "T = 5730 ans";
   static const periodeIode131EnJour = "T = 8,02 jours";
-  static const periodeAmericiumEnAnnee = "T = 432 ans";
+  static const periodeAmericium241EnAnnee = "T = 432 ans";
+  static const periodeYttrium90EnHeures = "T = 64,1 heures";
 
   static final uEnKg = buildTex2SvgInRichText(
     math: PhyNucDonneesTex2SvgMathConstants.uEnKg,

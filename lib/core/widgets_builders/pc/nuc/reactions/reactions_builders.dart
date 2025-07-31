@@ -76,7 +76,7 @@ Widget betaMoins({
   // ignore: non_constant_identifier_names
   String Z3 = r"-1",
   // ignore: non_constant_identifier_names
-  String A3 = r"0",
+  String A3 = r"\ \ \ 0",
   // ignore: non_constant_identifier_names
   String X4 = r"\bar{\nu}",
   // ignore: non_constant_identifier_names
