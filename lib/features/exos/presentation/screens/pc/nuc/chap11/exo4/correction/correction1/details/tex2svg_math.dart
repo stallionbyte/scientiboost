@@ -144,7 +144,9 @@ String buildTex2SvgMathDefautDeMasseAvecEnergieDeLiaisonParNucleon({
     math.write(r"\Rightarrow");
   }
 
-  math.write(r"\Delta m = \frac{ ");
+  math.write(r" \begin{array}{l} ");
+
+  math.write(r"\Delta m = \\ \frac{ ");
 
   math.write(eln);
 
@@ -158,9 +160,28 @@ String buildTex2SvgMathDefautDeMasseAvecEnergieDeLiaisonParNucleon({
 
   math.write(r" ^2} ");
 
+  math.write(r" \end{array} ");
+
   if (bold) {
     math.write(r" } ");
   }
 
+  return math.toString();
+}
+
+String buildTex2SvgMathXXXX({bool bold = false, bool entraineQue = false}) {
+  StringBuffer math = StringBuffer();
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+  math.write(r" \begin{array}{l} ");
+  /*code*/
+  math.write(r" \end{array} ");
+  if (bold) {
+    math.write(r" } ");
+  }
   return math.toString();
 }

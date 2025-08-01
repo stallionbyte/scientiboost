@@ -138,6 +138,8 @@ String buildTex2SvgMathDefautDeMasseInverse4({
     math.write(r"\Rightarrow");
   }
 
+  math.write(r" \begin{array}{l} ");
+
   if (masseNoyau != null) {
     math.write(masseNoyau);
   } else {
@@ -169,6 +171,8 @@ String buildTex2SvgMathDefautDeMasseInverse4({
   math.write(r"} ");
   math.write(X);
   math.write(r" ) ");
+
+  math.write(r" \end{array} ");
 
   if (bold) {
     math.write(r"}");

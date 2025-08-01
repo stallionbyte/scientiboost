@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
-import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/details_builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'builders.dart';
 
@@ -24,43 +24,43 @@ class _Details1State extends ConsumerState<Details1> {
         children: [
           energieDeLiaisonAvecDefautDeMase(scale: 1.0),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonInverse(entraineQue: true, scale: 1.0),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonInverse2(entraineQue: true, scale: 2.0),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "Or"),
+          TransitionConstants.or,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleonAvecEnergieDeLiaison(scale: 2.0),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleonAvecEnergieDeLiaisonInverse(
             entraineQue: true,
             scale: 2.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonAvecEnergieDeLiaisonParNucleon(
             entraineQue: true,
             scale: 1.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          defautDeMasseAvecEnergieDeLiaisonParNucleon(scale: 2.0),
+          defautDeMasseAvecEnergieDeLiaisonParNucleon(scale: 4.0),
         ],
       ),
     );

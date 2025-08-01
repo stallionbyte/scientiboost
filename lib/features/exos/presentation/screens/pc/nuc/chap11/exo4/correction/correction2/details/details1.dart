@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/details_builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 
@@ -23,7 +24,7 @@ class _Details1State extends ConsumerState<Details1> {
         children: [
           defautDeMasse(scale: 4.0),
 
-          SizedBox(height: 20.0),
+          EspConstants.esp20,
 
           defautDeMasseInverse(scale: 3.0, entraineQue: true),
 

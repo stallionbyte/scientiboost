@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
-
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Details2 extends ConsumerStatefulWidget {
   const Details2({super.key});
@@ -26,60 +23,59 @@ class _Details2State extends ConsumerState<Details2> {
         children: [
           PhyNucDonneesConstants.mp,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.mn,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: PhyNucConstants.deltaM,
-            value: "2250",
-            unitRich: PhyNucConstants.mevc2,
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"\Delta m",
+            leftTex2SvgMathScale: 0.7,
+            rightTex2SvgMath: r"2250\ MeV/c^2",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "Or"),
+          TransitionConstants.or,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.uEnMeVC2,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: PhyNucConstants.mp,
-            valueRichs: <InlineSpan>[
-              const TextSpan(text: PhyNucValuesConstants.masseProtonEnU),
-              const TextSpan(text: " . ${PhyNucValuesConstants.uEnMeVC2} "),
-            ],
-            unitRich: PhyNucConstants.mevc2,
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"m_p",
+            leftTex2SvgMathScale: 0.7,
+            rightTex2SvgMath:
+                PhyNucValuesConstants.masseProtonEnU +
+                r" \cdot " +
+                PhyNucValuesConstants.uEnMeVC2 +
+                r"\ MeV/c^2",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: PhyNucConstants.mn,
-            valueRichs: <InlineSpan>[
-              const TextSpan(text: PhyNucValuesConstants.masseNeutronEnU),
-              const TextSpan(text: " . ${PhyNucValuesConstants.uEnMeVC2} "),
-            ],
-            unitRich: PhyNucConstants.mevc2,
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"m_n",
+            leftTex2SvgMathScale: 0.6,
+            rightTex2SvgMath:
+                PhyNucValuesConstants.masseNeutronEnU +
+                r" \cdot " +
+                PhyNucValuesConstants.uEnMeVC2 +
+                r"\ MeV/c^2",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           defautDeMasseInverse5(
             Z: r"120",

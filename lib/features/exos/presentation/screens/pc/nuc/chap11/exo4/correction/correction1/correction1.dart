@@ -4,6 +4,7 @@ import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'details/details1.dart';
 import 'details/builders.dart';
@@ -24,34 +25,34 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
-            wrapped: defautDeMasseAvecEnergieDeLiaisonParNucleon(scale: 2.0),
+            wrapped: defautDeMasseAvecEnergieDeLiaisonParNucleon(scale: 5.0),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           defautDeMasseAvecEnergieDeLiaisonParNucleon(
             eln: r"7,5",
             A: r"300 \  MeV",
-            scale: 2.0,
+            scale: 4.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details2(),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -61,7 +62,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

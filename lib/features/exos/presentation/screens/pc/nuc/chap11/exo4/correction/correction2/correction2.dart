@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'details/details1.dart';
 import 'details/details2.dart';
@@ -26,22 +25,22 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
-            wrapped: defautDeMasseInverse4(scale: 3.0),
+            wrapped: defautDeMasseInverse4(scale: 4.0),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           defautDeMasseInverse5(
             Z: r"120",
@@ -58,17 +57,17 @@ class _Correction2State extends ConsumerState<Correction2> {
             scale: 6.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details2(),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
-              leftRichs: buildResultLeft(),
+              leftTex2SvgMath: r"m(\ _{120}^{300}X \ )",
               value: "279466",
-              unitRich: PhyNucConstants.mevc2Bold,
+              unitTex2SvgMath: r"MeV/c^2",
             ),
           ),
 
@@ -76,19 +75,5 @@ class _Correction2State extends ConsumerState<Correction2> {
         ],
       ),
     );
-  }
-
-  List<InlineSpan> buildResultLeft() {
-    return <InlineSpan>[
-      const TextSpan(
-        text: "m( ",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      notationNoyau(A: r"300", Z: r"120"),
-      const TextSpan(
-        text: " ) ",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-    ];
   }
 }

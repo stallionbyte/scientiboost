@@ -15,15 +15,15 @@ class Donnees extends ConsumerWidget {
       children: [
         TransitionConstants.donnees,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnMeVC2,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
       ],

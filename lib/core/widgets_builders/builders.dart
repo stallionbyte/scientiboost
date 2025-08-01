@@ -358,8 +358,12 @@ Widget regleDe3({
   );
 }
 
-Widget sbTxt({required String txt}) {
-  return Text(txt, style: const TextStyle(fontSize: ExoConstants.fontSize));
+Widget sbTxt({required final String txt}) {
+  final texte = Text(
+    txt,
+    style: const TextStyle(fontSize: ExoConstants.fontSize),
+  );
+  return texte;
 }
 
 //------------------TeXSVG-MATH-----------------------------------------

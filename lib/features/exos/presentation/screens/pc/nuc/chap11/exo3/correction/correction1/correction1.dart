@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/providers/go_router/exports.dart';
 
