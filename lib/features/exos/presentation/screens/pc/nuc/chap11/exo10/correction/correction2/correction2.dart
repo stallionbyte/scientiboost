@@ -21,7 +21,7 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           regleDe3(
             part1: r"1,4 . 10^{17}\ kg",
@@ -32,7 +32,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             scale: 8.0,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -42,7 +42,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           RichText(
             text: TextSpan(
@@ -64,7 +64,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

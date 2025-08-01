@@ -27,34 +27,34 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Selon la relation d'Einstein:"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           relationEinstein(),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           relationEinsteinInverse(entraineQue: true),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           mEgaleESurC2(entraineQue: true, scale: 2.0),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: mEgaleESurC2(scale: 2.0),
             color: Colors.black,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           TransitionConstants.an,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           mEgaleESurC2(
             E: r"3,46 . 10^{31}",
@@ -62,7 +62,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             scale: 2.0,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -72,7 +72,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           RichText(
             text: TextSpan(
@@ -92,13 +92,13 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(
             transition: "Calculons la diminution de masse du soleil en 1 an:",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           regleDe3(
             part1: r"1\ jour \ \",
@@ -109,7 +109,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             scale: 6.0,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(

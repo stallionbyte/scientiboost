@@ -19,7 +19,7 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           RichText(
             text: TextSpan(
@@ -54,7 +54,7 @@ class _Correction3State extends ConsumerState<Correction3> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

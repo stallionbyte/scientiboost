@@ -24,7 +24,9 @@ class PcNucChap11Exo10Enonce extends ConsumerWidget {
                 text:
                     "les réactions nucléaires qui se produisent dans le soleil libèrent une énergie voisine de 3,46 . ",
               ),
-              exp(exp: r"31"),
+
+              buildTex2SvgInWidgetSpan(math: r"10^{31}"),
+
               const TextSpan(text: " J par jour. \n \n"),
 
               const TextSpan(
@@ -37,18 +39,18 @@ class PcNucChap11Exo10Enonce extends ConsumerWidget {
                     "2) Calculer la durée de vie du soleil si toute sa masse devait être convertie en énergie sachant que sa masse est d'environ 2 . ",
               ),
 
-              exp(exp: r"30"),
+              buildTex2SvgInWidgetSpan(math: r"10^{30}"),
 
               const TextSpan(text: " kg \n \n"),
 
               const TextSpan(
                 text:
-                    "3) Comparer cette durée de vie avec la durée de vie réelle du soleil qui est d'environ 10 milliards d'années. Conclure",
+                    "3) Comparer cette durée de vie avec la durée de vie réelle du soleil qui est d'environ 10 milliards d'années. Conclure \n \n",
               ),
             ],
           ),
         ),
-        const SizedBox(height: 30),
+
         Donnees(),
       ],
     );
