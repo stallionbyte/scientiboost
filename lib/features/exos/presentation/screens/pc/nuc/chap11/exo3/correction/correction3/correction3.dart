@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
@@ -28,24 +25,18 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: defautDeMasse(scale: 6.0),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "AN: ",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           defautDeMasse(
             X: r"Co",
@@ -63,17 +54,17 @@ class _Correction3State extends ConsumerState<Correction3> {
             scale: 5.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
-              leftRichs: buildResultLeft(),
-              valueRichs: buildResultValue(),
+              leftTex2SvgMath: r"m(\ _{27}^{60}Co \ )",
+              valueTex2SvgMath: r"1,0133 \cdot 10^{-27}",
               unit: "kg",
             ),
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
@@ -81,30 +72,5 @@ class _Correction3State extends ConsumerState<Correction3> {
         ],
       ),
     );
-  }
-
-  List<InlineSpan> buildResultLeft() {
-    return <InlineSpan>[
-      PhyNucConstants.deltaBold,
-      const TextSpan(
-        text: " m( ",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      PhyNucConstants.cobalt60Bold,
-      const TextSpan(
-        text: " ) ",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-    ];
-  }
-
-  List<InlineSpan> buildResultValue() {
-    return <InlineSpan>[
-      const TextSpan(
-        text: " 1,0133 ",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      exp(exp: r" -27 ", bold: true),
-    ];
   }
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
-
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
@@ -24,61 +22,59 @@ class _Details1State extends ConsumerState<Details1> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           defautDeMasse(scale: 6.0),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "Or"),
+          TransitionConstants.or,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.mp,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.mn,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.uEnKg,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: PhyNucConstants.mp,
-            valueRichs: <InlineSpan>[
-              const TextSpan(text: PhyNucValuesConstants.masseProtonEnU),
-              const TextSpan(text: " . "),
-              PhyNucValuesConstants.uEnKg,
-            ],
-            unit: "kg",
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"m_p",
+            leftTex2SvgMathScale: 0.8,
+            rightTex2SvgMath:
+                PhyNucValuesConstants.masseProtonEnU +
+                r" \cdot " +
+                PhyNucValuesConstants.uEnKgMath +
+                r"\ kg",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: PhyNucConstants.mn,
-            valueRichs: <InlineSpan>[
-              const TextSpan(text: PhyNucValuesConstants.masseNeutronEnU),
-              const TextSpan(text: " . "),
-              PhyNucValuesConstants.uEnKg,
-            ],
-            unit: "kg",
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"m_n",
+            leftTex2SvgMathScale: 0.7,
+            rightTex2SvgMath:
+                PhyNucValuesConstants.masseNeutronEnU +
+                r" \cdot " +
+                PhyNucValuesConstants.uEnKgMath +
+                r"\ kg",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "Ainsi"),
+          TransitionConstants.ainsi,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           defautDeMasse(
             X: r"Co",

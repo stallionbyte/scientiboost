@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/providers/go_router/exports.dart';
 
 import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 
@@ -22,13 +23,13 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
           donnerCompositionNucleide(
             nucleide: PhyNucConstants.cobalt60,
             A: 60,
             Z: 26,
           ),
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

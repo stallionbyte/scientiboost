@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -16,32 +16,17 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
+        TransitionConstants.donnees,
+        EspConstants.esp20,
 
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 20),
-
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "Notation du cobalt-60: "),
-
-              PhyNucConstants.cobalt60,
-            ],
-          ),
+        notationSymbolique(
+          X: r"Co",
+          Z: r"27",
+          A: r"60",
+          nomNoyau: r"du cobalt-60",
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         RichText(
           text: TextSpan(
@@ -55,30 +40,30 @@ class Donnees extends ConsumerWidget {
                 text: "Energie de masse d'un noyau de cobalt-60: 8,9325 . ",
               ),
 
-              exp(exp: r"-9"),
+              buildTex2SvgInWidgetSpan(math: r"10^{-9}", scale: 0.7),
 
               const TextSpan(text: " J "),
             ],
           ),
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.c,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnKg,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
       ],
     );
   }
