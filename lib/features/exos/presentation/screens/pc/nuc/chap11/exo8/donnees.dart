@@ -15,33 +15,26 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
+        TransitionConstants.donnees,
 
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         notationSymbolique(
           X: r"Sn",
           Z: r"50",
           A: r"120",
-          nomNoyau: r"étain-120",
+          nomNoyau: r"de l'étain-120",
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnMeVC2,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
       ],

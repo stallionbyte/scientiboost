@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'builders.dart';
 
@@ -30,74 +31,67 @@ class _Details2State extends ConsumerState<Details2> {
             mn: PhyNucValuesConstants.masseNeutronEnU + r"\ u",
             scale: 6.0,
           ),
-          const SizedBox(height: 20),
+          EspConstants.esp20,
           transition(transition: "D'une part:"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.mp,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.mn,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "Or"),
+          TransitionConstants.or,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           PhyNucDonneesConstants.uEnMeVC2,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildTex2SvgInWidgetSpan(math: r"m_p", scale: 0.8),
-            value:
+          expression(
+            leftTex2SvgMath: r"m_p",
+            rightTex2SvgMath:
                 PhyNucValuesConstants.masseProtonEnU +
-                r" . " +
-                PhyNucValuesConstants.uEnMeVC2,
-            unitRich: buildTex2SvgInWidgetSpan(math: r"MeV/c^2"),
-            bold: false,
+                r" \cdot " +
+                PhyNucValuesConstants.uEnMeVC2 +
+                r"MeV/c^2",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildTex2SvgInWidgetSpan(math: r"m_n", scale: 0.7),
-            value:
+          expression(
+            leftTex2SvgMath: r"m_n",
+            rightTex2SvgMath:
                 PhyNucValuesConstants.masseNeutronEnU +
-                r" . " +
-                PhyNucValuesConstants.uEnMeVC2,
-            unitRich: buildTex2SvgInWidgetSpan(math: r"MeV/c^2"),
-            bold: false,
+                r" \cdot " +
+                PhyNucValuesConstants.uEnMeVC2 +
+                r"\ MeV/c^2",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Et d'autre part:"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildTex2SvgInWidgetSpan(
-              math: r"\frac{A \cdot 8,5 MeV}{c^2}",
-              scale: 2.0,
-            ),
-            valueRich: buildTex2SvgInWidgetSpan(math: r"120 \cdot 8,5 MeV/c^2"),
-            height: 2.0,
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"\frac{A \cdot 8,5 MeV}{c^2}",
+            rightTex2SvgMath: r"120 \cdot 8,5 MeV/c^2",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           demoMasseNoyauFromEnergieDeLiaisonParNucleon5(
             scale: 4.0,

@@ -26,21 +26,21 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: demoMasseNoyauFromEnergieDeLiaisonParNucleon4(scale: 6.0),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           TransitionConstants.an,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           demoMasseNoyauFromEnergieDeLiaisonParNucleon5(
             scale: 4.0,
@@ -58,33 +58,23 @@ class _Correction2State extends ConsumerState<Correction2> {
             eln: r"8,5",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details2(),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
-              leftRichs: buildResultleft(),
+              leftTex2SvgMath: r"m(\ _{50}^{120}Sn \ )",
               value: "111663,88",
-              unitRich: buildTex2SvgInWidgetSpan(math: r"\mathbf{MeV/c^2}"),
+              unitTex2SvgMath: r"MeV/c^2",
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
-  }
-
-  List<InlineSpan> buildResultleft() {
-    return <InlineSpan>[
-      TextSpan(text: 'm(', style: TextStyle(fontWeight: FontWeight.bold)),
-
-      buildTex2SvgInWidgetSpan(math: r"\mathbf{_{50}^{120}Sn}"),
-
-      TextSpan(text: ')', style: TextStyle(fontWeight: FontWeight.bold)),
-    ];
   }
 }

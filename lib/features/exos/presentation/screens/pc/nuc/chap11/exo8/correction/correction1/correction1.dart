@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -21,14 +21,14 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(
             transition:
                 "L'énergie de liaison par nucléon est l'énergie nécessaire pour séparer un nucléon de son noyau.",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           regleDe3(
             part1: r"3 \ \text{nucléons}",
@@ -40,17 +40,17 @@ class _Correction1State extends ConsumerState<Correction1> {
             scale: 6.0,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
-              leftRich: PhyNucConstants.elnBold,
+              leftTex2SvgMath: r"E_{l/nucléon}",
               value: "8,5",
               unit: "MeV",
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
