@@ -21,7 +21,7 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           RichText(
             text: TextSpan(
@@ -47,9 +47,9 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
           Details1(),
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

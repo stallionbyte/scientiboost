@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 import 'details1.dart';
 
@@ -21,69 +21,33 @@ class _Correction5State extends ConsumerState<Correction5> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "m( nucléons de "),
-
-                PhyNucConstants.carbone14,
-                const TextSpan(text: " )"),
-                const TextSpan(text: " = 14,112976u"),
-              ],
-            ),
+          expression(
+            leftTex2SvgMath: r"m(\ nucléons\ de\ _{\ \ 6}^{14}C\ )",
+            right: r"14,112976 u",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "m( "),
-                PhyNucConstants.carbone14,
-                const TextSpan(text: " ) = 14,003242u"),
-              ],
-            ),
+          expression(
+            leftTex2SvgMath: r"m(\ _{\ \ 6}^{14}C\ )",
+            right: r"14,003242 u",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "m( nucléons de "),
-                PhyNucConstants.carbone14,
-                const TextSpan(text: " ) > m( "),
-                PhyNucConstants.carbone14,
-                const TextSpan(text: " )"),
-              ],
-            ),
+          expression(
+            leftTex2SvgMath: r"m(\ nucléons\ de\ _{\ \ 6}^{14}C\ )",
+            operateur: r" > ",
+            rightTex2SvgMath: r"m(\ _{\ \ 6}^{14}C\ )",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "La différence correspond au défaut de masse",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
-          ),
+          sbTxt(txt: "La différence correspond au défaut de masse"),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
           Details1(),
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

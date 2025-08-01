@@ -14,15 +14,9 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        TransitionConstants.donnees,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         RichText(
           text: TextSpan(
@@ -38,7 +32,7 @@ class Donnees extends ConsumerWidget {
           ),
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         RichText(
           text: TextSpan(
@@ -54,19 +48,19 @@ class Donnees extends ConsumerWidget {
           ),
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.uEnMeVC2,
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseU235EnU,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.masseFe56EnU,
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
       ],

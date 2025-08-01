@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 import 'donnees.dart';
 
@@ -13,26 +14,19 @@ class PcNucChap11Exo1Enonce extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          '     En tant que technicien dans un laboratoire de physique nucléaire, vous devez analyser un échantillon contenant du carbone-14 utilisé pour la datation archéologique.',
-          style: const TextStyle(fontSize: ExoConstants.fontSize),
+        sbTxt(
+          txt:
+              'En tant que technicien dans un laboratoire de physique nucléaire, vous devez analyser un échantillon contenant du carbone-14 utilisé pour la datation archéologique. \n \n',
         ),
 
-        SizedBox(height: 30),
-
-        Text(
-          "1) a) Déterminer précisément la composition d'un noyau de carbone-14",
-          style: const TextStyle(fontSize: ExoConstants.fontSize),
+        sbTxt(
+          txt:
+              "1) a) Déterminer précisément la composition d'un noyau de carbone-14 \n \n",
         ),
 
-        SizedBox(height: 20),
-
-        Text(
-          "b) Pourquoi le carbone-14 est un isotope du carbone-12",
-          style: const TextStyle(fontSize: ExoConstants.fontSize),
+        sbTxt(
+          txt: "b) Pourquoi le carbone-14 est un isotope du carbone-12 \n \n",
         ),
-
-        SizedBox(height: 20),
 
         RichText(
           text: TextSpan(
@@ -45,26 +39,20 @@ class PcNucChap11Exo1Enonce extends ConsumerWidget {
 
               PhyNucConstants.mevc2,
 
-              const TextSpan(text: "  d'un noyau de carbone-14 "),
+              const TextSpan(text: "  d'un noyau de carbone-14 \n \n"),
             ],
           ),
         ),
 
-        SizedBox(height: 20),
-
-        Text(
-          "3) a) Calculer la masse obtenue en additionnant les masses des nucléons séparés d'un noyau de carbone-14",
-          style: const TextStyle(fontSize: ExoConstants.fontSize),
+        sbTxt(
+          txt:
+              "3) a) Calculer la masse obtenue en additionnant les masses des nucléons séparés d'un noyau de carbone-14 \n \n",
         ),
 
-        SizedBox(height: 20),
-
-        Text(
-          "b) Comparer cette masse avec la masse du noyau de carbone-14. Expliquer la différence.",
-          style: const TextStyle(fontSize: ExoConstants.fontSize),
+        sbTxt(
+          txt:
+              "b) Comparer cette masse avec la masse du noyau de carbone-14. Expliquer la différence. \n \n",
         ),
-
-        SizedBox(height: 20),
 
         Donnees(),
       ],

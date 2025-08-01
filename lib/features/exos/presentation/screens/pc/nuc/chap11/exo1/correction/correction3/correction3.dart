@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
@@ -21,101 +20,45 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
+          expression(left: r"1 u", rightTex2SvgMath: r"931,5\ MeV/c^2"),
 
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "1u = 931,5 "),
-                PhyNucConstants.mevc2,
-              ],
-            ),
+          EspConstants.esp20,
+
+          TransitionConstants.et,
+
+          EspConstants.esp20,
+
+          expression(
+            leftTex2SvgMath: r"m(\ _{6}^{14}C \ )",
+            right: r"14,003242 u",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "Et",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
+          TransitionConstants.dou,
+
+          EspConstants.esp20,
+
+          expression(
+            leftTex2SvgMath: r"m(\ _{6}^{14}C \ )",
+            right: r"14,003242 . 931,5",
           ),
 
-          SizedBox(height: 20),
-
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "m( "),
-
-                PhyNucConstants.carbone14,
-                const TextSpan(text: " ) = 14,003242u"),
-              ],
-            ),
-          ),
-
-          SizedBox(height: 20),
-
-          Text(
-            "D'où",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          SizedBox(height: 20),
-
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "m( "),
-                PhyNucConstants.carbone14,
-                const TextSpan(text: " ) = 14,003242 x 931,5"),
-              ],
-            ),
-          ),
-
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
               value: "13044,01992",
-              leftRichs: _buildResultLeft(),
-              unitRich: PhyNucConstants.mevc2Bold,
+              leftTex2SvgMath: r"m(\ _{6}^{14}C \ )",
+              unitTex2SvgMath: r"MeV/c^2",
             ),
           ),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
-  }
-
-  List<InlineSpan> _buildResultLeft() {
-    return <InlineSpan>[
-      const TextSpan(
-        text: "m( ",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      PhyNucConstants.carbone14Bold,
-      const TextSpan(text: " )", style: TextStyle(fontWeight: FontWeight.bold)),
-    ];
   }
 }

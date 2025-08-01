@@ -26,7 +26,7 @@ class _PcNucChap11Exo6CorrectionState
       expandedHeaderPadding: EdgeInsets.zero,
       children: [
         ExpansionPanelRadio(
-          value: 'question-1',
+          value: 'correction-1',
           canTapOnHeader: true,
           backgroundColor: Colors.white,
 
@@ -50,7 +50,6 @@ class _PcNucChap11Exo6CorrectionState
         ExpansionPanelRadio(
           value: 'correction-2',
           canTapOnHeader: true,
-
           backgroundColor: Colors.white,
 
           headerBuilder: (context, isExpanded) {

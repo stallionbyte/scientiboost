@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -21,7 +22,7 @@ class _Correction1State extends ConsumerState<Correction1> {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           RichText(
             text: TextSpan(
@@ -39,24 +40,15 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "14 nucléons au total (A = 14)",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
-          ),
+          sbTxt(txt: "14 nucléons au total (A = 14)"),
 
-          Text(
-            "6 protons (Z = 6)",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
-          ),
+          sbTxt(txt: "6 protons (Z = 6)"),
 
-          Text(
-            "8 neutrons (N = A - Z => N = 8)",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
-          ),
+          sbTxt(txt: "8 neutrons (N = A - Z => N = 8)"),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

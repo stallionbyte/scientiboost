@@ -13,13 +13,7 @@ class Donnees extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        TransitionConstants.donnees,
         SizedBox(height: 20),
         RichText(
           text: TextSpan(

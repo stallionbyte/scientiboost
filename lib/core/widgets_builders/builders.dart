@@ -162,6 +162,10 @@ Widget expression({
   String? rightTex2SvgMath,
   double rightTex2SvgMathScale = 1.0,
 
+  String operateur = " = ",
+  String? operateurTex2SvgMath,
+  double operateurTex2SvgMathScale = 1.0,
+
   double height = 1.5,
 }) {
   return RichText(
@@ -180,7 +184,13 @@ Widget expression({
             scale: leftTex2SvgMathScale,
           ),
 
-        TextSpan(text: " = "),
+        if (operateurTex2SvgMath != null)
+          buildTex2SvgInWidgetSpan(
+            math: operateurTex2SvgMath,
+            scale: operateurTex2SvgMathScale,
+          ),
+
+        if (operateurTex2SvgMath == null) TextSpan(text: operateur),
 
         if (right != null) TextSpan(text: right),
 

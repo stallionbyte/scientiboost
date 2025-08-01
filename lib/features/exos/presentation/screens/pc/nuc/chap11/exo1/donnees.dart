@@ -14,13 +14,7 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        TransitionConstants.donnees,
 
         SizedBox(height: 20),
 

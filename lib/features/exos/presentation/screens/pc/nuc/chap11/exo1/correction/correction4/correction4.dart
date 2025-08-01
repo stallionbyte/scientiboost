@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
@@ -22,103 +21,54 @@ class _Correction4State extends ConsumerState<Correction4> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "m(nucléons) = masse(neutrons) + masse(protons)",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
+          sbTxt(txt: "m(nucléons) = masse(neutrons) + masse(protons)"),
+
+          EspConstants.esp20,
+
+          sbTxt(txt: "masse(protons) = nombre de protons x masse d'un proton"),
+
+          EspConstants.esp20,
+
+          expression(left: r"masse(protons)", rightTex2SvgMath: r"Z \cdot m_p"),
+
+          EspConstants.esp20,
+
+          sbTxt(
+            txt: "masse(neutrons) = nombre de neutrons x masse d'un neutron",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "masse(protons) = nombre de protons x masse d'un proton",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
+          expression(
+            left: r"masse(neutrons)",
+            rightTex2SvgMath: r"(A-Z) \cdot m_n",
           ),
 
-          SizedBox(height: 20),
-
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "masse(protons) = Z x "),
-
-                PhyNucConstants.mp,
-              ],
-            ),
-          ),
-
-          SizedBox(height: 20),
-
-          Text(
-            "masse(neutrons) = nombre de neutrons x masse d'un neutron",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
-          ),
-
-          SizedBox(height: 20),
-
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "masse(neutrons) = (A-Z) x "),
-                PhyNucConstants.mn,
-              ],
-            ),
-          ),
-
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
-            wrapped: Wrap(
-              children: [
-                RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                      fontSize: ExoConstants.richTextFontSize,
-
-                      color: Colors.black,
-                    ),
-                    children: <InlineSpan>[
-                      const TextSpan(text: "masse(nucléons) = Z x "),
-                      PhyNucConstants.mp,
-                      const TextSpan(text: "\n \n + (A-Z) x "),
-                      PhyNucConstants.mn,
-                    ],
-                  ),
-                ),
-              ],
+            wrapped: expression(
+              left: r"masse(nucléons)",
+              rightTex2SvgMath: r"Z \cdot m_p + (A-Z) \cdot m_n",
             ),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "AN: ",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
+          TransitionConstants.an,
+
+          EspConstants.esp20,
+
+          expression(
+            left: r"masse(nucléons)",
+            right:
+                "${PhyNucValuesConstants.masseProtonEnU} + (14 - 6) x ${PhyNucValuesConstants.masseNeutronEnU}",
           ),
 
-          SizedBox(height: 20),
-
-          Text(
-            "masse(nucléons) = 6 x ${PhyNucValuesConstants.masseProtonEnU} + (14 - 6) x ${PhyNucValuesConstants.masseNeutronEnU}",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
-          ),
-
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -128,7 +78,7 @@ class _Correction4State extends ConsumerState<Correction4> {
             ),
           ),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

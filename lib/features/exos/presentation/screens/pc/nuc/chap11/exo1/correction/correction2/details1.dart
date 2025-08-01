@@ -5,6 +5,7 @@ import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Details1 extends ConsumerStatefulWidget {
   const Details1({super.key});
@@ -27,11 +28,11 @@ class _Details1State extends ConsumerState<Details1> {
             Z: 6,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Et"),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           donnerCompositionNucleide(
             nucleide: PhyNucConstants.carbone12,
