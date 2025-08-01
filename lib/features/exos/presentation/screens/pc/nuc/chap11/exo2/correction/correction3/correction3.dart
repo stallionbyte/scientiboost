@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -19,55 +19,28 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                PhyNucConstants.eln,
-
-                const TextSpan(text: "(fer-56)"),
-
-                const TextSpan(text: " = 8,55 MeV/nucléon"),
-              ],
-            ),
+          expression(
+            leftTex2SvgMath: r"E_{l/n}(\ fer-56\ )",
+            right: r"8,55 MeV/nucléon",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                PhyNucConstants.eln,
-
-                const TextSpan(text: "(uranium-235)"),
-
-                const TextSpan(text: " = 7,39 MeV/nucléon"),
-              ],
-            ),
+          expression(
+            leftTex2SvgMath: r"E_{l/n}(\ uranium-235\ )",
+            right: r"7,39 MeV/nucléon",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "8,55 > 7,39 donc un noyau de fer-56 est plus stable qu'un noyau d'uranium-235",
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: ExoConstants.fontSize,
-            ),
+          sbTxt(
+            txt:
+                "8,55 > 7,39 donc un noyau de fer-56 est plus stable qu'un noyau d'uranium-235",
           ),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -18,34 +18,20 @@ class Donnees extends ConsumerWidget {
 
         EspConstants.esp20,
 
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "Notation de l'uranium-235: "),
-              PhyNucConstants.uranium235,
-            ],
-          ),
+        notationSymbolique(
+          X: r"U",
+          Z: r"92",
+          A: r"235",
+          nomNoyau: r"de l'uranium-235",
         ),
 
         EspConstants.esp20,
 
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "Notation du fer-56: "),
-              PhyNucConstants.fer56,
-            ],
-          ),
+        notationSymbolique(
+          X: r"Fe",
+          Z: r"26",
+          A: r"56",
+          nomNoyau: r"du fer-56",
         ),
 
         EspConstants.esp20,

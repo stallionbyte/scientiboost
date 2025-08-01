@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -16,51 +16,37 @@ class Donnees extends ConsumerWidget {
       children: [
         TransitionConstants.donnees,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "Notation du carbone-14: "),
-              PhyNucConstants.carbone14,
-            ],
-          ),
+        notationSymbolique(
+          X: "C",
+          Z: r"\ \ 6",
+          A: r"14",
+          nomNoyau: "du carbone-14",
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "Notation du carbone-12: "),
-              PhyNucConstants.carbone12,
-            ],
-          ),
+        notationSymbolique(
+          X: "C",
+          Z: r"\ \ 6",
+          A: r"12",
+          nomNoyau: "du carbone-12",
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnMeVC2,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseC14EnU,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
       ],

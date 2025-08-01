@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -24,20 +24,10 @@ class _Correction1State extends ConsumerState<Correction1> {
         children: [
           EspConstants.esp20,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "Un noyau de "),
-
-                PhyNucConstants.carbone14,
-
-                const TextSpan(text: " est composé de:"),
-              ],
-            ),
+          donnerCompositionNucleide(
+            nucleide: notationNoyau(X: r"C", Z: r"\ \ 6", A: r"14"),
+            A: 14,
+            Z: 6,
           ),
 
           EspConstants.esp20,

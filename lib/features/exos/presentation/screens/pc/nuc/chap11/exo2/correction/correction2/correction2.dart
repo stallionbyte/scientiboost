@@ -27,24 +27,18 @@ class _Correction2State extends ConsumerState<Correction2> {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: energieDeLiaisonParNucleon(scale: 6.0),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          Text(
-            "AN: ",
-            style: const TextStyle(
-              fontSize: ExoConstants.fontSize,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleon(
             A: "56",
@@ -57,11 +51,11 @@ class _Correction2State extends ConsumerState<Correction2> {
             scale: 6.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -71,7 +65,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

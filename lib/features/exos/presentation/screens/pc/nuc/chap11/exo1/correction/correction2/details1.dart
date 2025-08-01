@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
-import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 
@@ -30,7 +29,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp20,
 
-          transition(transition: "Et"),
+          TransitionConstants.et,
 
           EspConstants.esp20,
 
