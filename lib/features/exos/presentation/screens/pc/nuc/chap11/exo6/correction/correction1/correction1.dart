@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
@@ -24,18 +23,18 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: energieDeLiaison(scale: 6.0),
             color: Colors.black,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           TransitionConstants.an,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaison(
             Z: r"88",
@@ -48,17 +47,17 @@ class _Correction1State extends ConsumerState<Correction1> {
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
-              leftRich: PhyNucConstants.elBold,
+              leftTex2SvgMath: r"E_{l/nucléon}",
               value: "1686,62",
               unit: "MeV",
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

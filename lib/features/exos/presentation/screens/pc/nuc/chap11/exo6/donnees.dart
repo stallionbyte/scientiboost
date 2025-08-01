@@ -14,41 +14,34 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
+        TransitionConstants.donnees,
 
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         notationSymbolique(
           X: r"Ra",
-          Z: r"88",
+          Z: r"\ 88",
           A: r"226",
-          nomNoyau: "radium-226",
+          nomNoyau: "du radium-226",
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseRa226EnU,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnMeVC2,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
       ],
     );
   }

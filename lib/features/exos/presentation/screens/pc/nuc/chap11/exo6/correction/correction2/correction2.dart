@@ -23,43 +23,43 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(
             transition:
                 "L'énergie d'un noyau au repos correspond à l'énergie de masse",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Selon la relation d'Einstein:"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          BordersWrapper(wrapped: relationEinstein()),
+          BordersWrapper(wrapped: relationEinstein(), color: Colors.black),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           TransitionConstants.an,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           relationEinstein(
             m: PhyNucValuesConstants.masseRa226EnU,
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(left: "E", value: "210542,66", unit: "MeV"),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Comparaison avec l'énergie de liaison:"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           buildComparaisonAvecEnergieDeLiaison(),
 
@@ -91,7 +91,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           ),
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         RichText(
           text: TextSpan(
@@ -107,7 +107,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           ),
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         RichText(
           text: TextSpan(
@@ -123,7 +123,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           ),
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         RichText(
           text: TextSpan(
@@ -142,7 +142,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           ),
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         transition(
           transition:
