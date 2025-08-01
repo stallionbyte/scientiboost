@@ -16,15 +16,8 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
-
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 20),
+        TransitionConstants.donnees,
+        EspConstants.esp20,
 
         notationSymbolique(
           X: r"O",
@@ -33,19 +26,19 @@ class Donnees extends ConsumerWidget {
           nomNoyau: r"de l'oxygène-16",
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnMeVC2,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseO16EnU,
       ],

@@ -19,7 +19,7 @@ class PcNucChap11Exo9Enonce extends ConsumerWidget {
               fontSize: ExoConstants.fontSize * 1.2,
               color: Colors.black,
             ),
-            children: <InlineSpan>[
+            children: const <InlineSpan>[
               TextSpan(
                 text:
                     "     Tu es membre d’une équipe de physiciens nucléaires qui analyse la stabilité des noyaux d’éléments présents dans l’atmosphère terrestre. Ton équipe s’intéresse à l’isotope oxygène-16, un noyau très abondant dans la nature.\n \n",
@@ -42,8 +42,6 @@ class PcNucChap11Exo9Enonce extends ConsumerWidget {
             ],
           ),
         ),
-
-        const SizedBox(height: 30),
 
         Donnees(),
       ],

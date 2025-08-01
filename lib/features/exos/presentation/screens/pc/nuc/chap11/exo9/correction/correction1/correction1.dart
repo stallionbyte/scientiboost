@@ -26,18 +26,18 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: energieDeLiaisonParNucleon(scale: 6.0),
             color: Colors.black,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           TransitionConstants.an,
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleon(
             Z: r"8",
@@ -50,11 +50,11 @@ class _Correction1State extends ConsumerState<Correction1> {
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -64,7 +64,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
