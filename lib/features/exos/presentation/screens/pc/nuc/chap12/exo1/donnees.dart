@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 
 class Donnees extends ConsumerWidget {
@@ -15,20 +15,10 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
+        TransitionConstants.donnees,
+        EspConstants.esp20,
 
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 20),
-
-        Text(
-          PhyNucDonneesConstants.periodeCarbone14EnAnnee,
-          style: const TextStyle(fontSize: ExoConstants.fontSize),
-        ),
+        sbTxt(txt: PhyNucDonneesConstants.periodeCarbone14EnAnnee),
       ],
     );
   }

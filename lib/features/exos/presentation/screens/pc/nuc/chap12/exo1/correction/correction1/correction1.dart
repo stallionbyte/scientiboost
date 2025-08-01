@@ -25,14 +25,14 @@ class _Correction1State extends ConsumerState<Correction1> {
         children: [
           EspConstants.esp20,
 
-          Text(
-            "D'une part, par définition l'activité radioactive est le nombre de désintégrations par seconde. \n D'autre part dans l'énoncé l'activité est donnée en desintégrations par minute (60 secondes). \n  L'activité du tissu vivant (13,6 désintégrations par minute) correspond à l'activité initiale",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
+          sbTxt(
+            txt:
+                "D'une part, par définition l'activité radioactive est le nombre de désintégrations par seconde. \n D'autre part dans l'énoncé l'activité est donnée en desintégrations par minute (60 secondes). \n  L'activité du tissu vivant (13,6 désintégrations par minute) correspond à l'activité initiale",
           ),
 
           EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
           EspConstants.esp20,
 

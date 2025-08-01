@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'donnees.dart';
 
@@ -37,18 +36,15 @@ class PcNucChap12Exo1Enonce extends ConsumerWidget {
 
               const TextSpan(text: "2) Calculez la constante radioactive "),
 
-              buildTex2SvgInWidgetSpan(
-                math: PhyNucTex2SvgMathContants.lambda,
-                scale: 0.7,
-              ),
+              buildTex2SvgInWidgetSpan(math: r"\lambda", scale: 0.7),
 
               const TextSpan(text: " du carbone-14 \n \n"),
 
-              const TextSpan(text: "3) Calculez l'âge de la momie"),
+              const TextSpan(text: "3) Calculez l'âge de la momie \n \n"),
             ],
           ),
         ),
-        const SizedBox(height: 30),
+
         Donnees(),
       ],
     );

@@ -24,7 +24,7 @@ class _Correction4State extends ConsumerState<Correction4> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: tempsAvecLambdaAEtAo(scale: 2.0),
@@ -52,7 +52,7 @@ class _Correction4State extends ConsumerState<Correction4> {
             wrapped: result(left: "t", value: r"4200,82", unit: "ans"),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
