@@ -6,6 +6,7 @@ import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Correction2 extends ConsumerStatefulWidget {
   const Correction2({super.key});
@@ -23,15 +24,15 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleon(scale: 6.0),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Cas du chlore-35"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleon(
             Z: r"17",
@@ -44,7 +45,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -54,11 +55,11 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Cas du chlore-36"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleon(
             Z: r"17",
@@ -71,7 +72,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -81,11 +82,11 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Cas du chlore-37"),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonParNucleon(
             Z: r"17",
@@ -98,7 +99,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             uEnMeVC2: PhyNucValuesConstants.uEnMeVC2,
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -108,7 +109,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

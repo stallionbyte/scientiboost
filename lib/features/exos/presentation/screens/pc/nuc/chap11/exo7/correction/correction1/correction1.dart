@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -19,12 +20,14 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
-          Text(
-            "Ces nuléides appartienent au même élément chimique car ils ont le même nombre de protons (Z = 17)",
-            style: const TextStyle(fontSize: ExoConstants.fontSize),
+          EspConstants.esp20,
+
+          sbTxt(
+            txt:
+                "Ces nuléides appartienent au même élément chimique car ils ont le même nombre de protons (Z = 17)",
           ),
-          const SizedBox(height: 40),
+
+          EspConstants.esp40,
         ],
       ),
     );

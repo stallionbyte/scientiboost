@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -19,46 +20,41 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildResultLeft(Z: r"17", A: "35"),
-            value: "8,27",
-            unit: "MeV",
+          expression(
+            leftTex2SvgMath: buildExpressionLeft(Z: r"17", A: "35"),
+            right: r"8,27 MeV",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildResultLeft(Z: r"17", A: "36"),
-            value: "8,28",
-            unit: "MeV",
+          expression(
+            leftTex2SvgMath: buildExpressionLeft(Z: r"17", A: "36"),
+            right: r"8,28 MeV",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildResultLeft(Z: r"17", A: "37"),
-            value: "8,33",
-            unit: "MeV",
+          expression(
+            leftTex2SvgMath: buildExpressionLeft(Z: r"17", A: "37"),
+            right: r"8,33 MeV",
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(
             transition:
                 "8,27 MeV < 8,28 MeV < 8,33 MeV, donc le chlore-35 est moins stable que le chlore-36 qui est moins stable que le chlore-37.",
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
   }
 
-  WidgetSpan buildResultLeft({required String Z, required String A}) {
-    return buildTex2SvgInWidgetSpan(
-      math: r"E_{l/nuc} \ (_{" + Z + r"}^{" + A + r"}Cl)",
-    );
+  String buildExpressionLeft({required String Z, required String A}) {
+    return r"E_{l/nuc} \ (_{" + Z + r"}^{" + A + r"}Cl)";
   }
 }

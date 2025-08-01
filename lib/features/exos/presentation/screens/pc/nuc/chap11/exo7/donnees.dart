@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -11,103 +12,72 @@ class Donnees extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Données:",
-          style: const TextStyle(
-            fontSize: ExoConstants.fontSize,
+        TransitionConstants.donnees,
 
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mp,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.mn,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.uEnMeVC2,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseCl35EnU,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseCl36EnU,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         PhyNucDonneesConstants.masseCl37EnU,
 
-        const SizedBox(height: 20),
+        EspConstants.esp20,
 
         Table(
           border: TableBorder.all(),
           children: [
             TableRow(
               children: [
-                Center(
-                  child: Text(
-                    'Isotopes',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-
-                Center(
-                  child: Text(
-                    'Z',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'N',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'A',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
+                Center(child: sbTxt(txt: 'Isotopes')),
+                Center(child: sbTxt(txt: 'Z')),
+                Center(child: sbTxt(txt: 'N')),
+                Center(child: sbTxt(txt: 'A')),
               ],
             ),
             TableRow(
               children: [
-                Center(child: Text('Chlore-35')),
-
-                Center(child: Text('17')),
-                Center(child: Text('18')),
-                Center(child: Text('35')),
+                Center(child: sbTxt(txt: 'Chlore-35')),
+                Center(child: sbTxt(txt: '17')),
+                Center(child: sbTxt(txt: '18')),
+                Center(child: sbTxt(txt: '35')),
               ],
             ),
             TableRow(
               children: [
-                Center(child: Text('Chlore-36')),
-
-                Center(child: Text('17')),
-                Center(child: Text('19')),
-                Center(child: Text('36')),
+                Center(child: sbTxt(txt: 'Chlore-36')),
+                Center(child: sbTxt(txt: '17')),
+                Center(child: sbTxt(txt: '19')),
+                Center(child: sbTxt(txt: '36')),
               ],
             ),
             TableRow(
               children: [
-                Center(child: Text('Chlore-37')),
-
-                Center(child: Text('17')),
-                Center(child: Text('20')),
-                Center(child: Text('37')),
+                Center(child: sbTxt(txt: 'Chlore-37')),
+                Center(child: sbTxt(txt: '17')),
+                Center(child: sbTxt(txt: '20')),
+                Center(child: sbTxt(txt: '37')),
               ],
             ),
           ],
         ),
-        const SizedBox(height: 20),
+        EspConstants.esp20,
       ],
     );
   }
