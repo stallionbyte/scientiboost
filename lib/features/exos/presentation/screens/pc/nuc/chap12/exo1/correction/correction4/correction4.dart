@@ -35,7 +35,7 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           Details1(),
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
           EspConstants.esp20,
 

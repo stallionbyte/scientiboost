@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 import 'details/details1.dart';
 import 'details/details2.dart';
@@ -37,7 +38,7 @@ class _Correction2State extends ConsumerState<Correction2> {
 
           const SizedBox(height: 20),
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
           const SizedBox(height: 20),
 

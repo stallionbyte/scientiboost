@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
 import 'details/details1.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Correction2 extends ConsumerStatefulWidget {
   const Correction2({super.key});
@@ -22,28 +24,26 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          EspConstants.esp20,
           transition(
             transition: "Energie de liaison d'un noyau de plutonium-238",
           ),
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           energieDeLiaisonAvecDefautDeMase(scale: 1.5),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "AN:"),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: PhyNucConstants.el,
-            value: r"1,88 . " + PhyNucValuesConstants.uEnMeVC2,
-            unit: "MeV",
-            bold: false,
+          expression(
+            leftTex2SvgMath: r"E_l",
+            right: r"1,88 . " + PhyNucValuesConstants.uEnMeVC2 + r" MeV",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
@@ -55,19 +55,19 @@ class _Correction2State extends ConsumerState<Correction2> {
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(transition: "Nombre de noyaux de plutonium-238 dans 1 kg"),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           nombreDeNoyauAvecMasse(scale: 2.0),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           nombreDeNoyauAvecMasse(
             m: r"1000",
@@ -76,88 +76,59 @@ class _Correction2State extends ConsumerState<Correction2> {
             scale: 2.0,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           Details1(),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
               left: "N",
-              valueRichs: valueWithExp(value: "2,5294", expo: r"24"),
+              valueTex2SvgMath: r"2,5294 \cdot 10^{24}",
               unit: "noyaux",
               bold: false,
             ),
             color: Colors.black,
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           transition(
             transition: "Energie de liaison totale dans 1 kg de plutonium-238",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildEnergieDeliaisonTotaleLeft(),
-            valueRichs: buildEnergieDeliaisonTotaleValueRichs(),
+          expression(
+            leftTex2SvgMath: r"E_{l/totale}",
+            rightTex2SvgMath: r"nombre\ de\ noyaux \cdot E_l\ d'un\ noyau",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
-          result(
-            leftRich: buildEnergieDeliaisonTotaleLeft(),
-            valueRichs: buildEnergieDeliaisonTotaleValueRichs2(),
+          expression(
+            leftTex2SvgMath: r"E_{l/totale}",
+            rightTex2SvgMath: r"2,5294 \cdot 10^{24} \cdot 1751,22",
           ),
 
-          SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: result(
-              leftRich: buildEnergieDeliaisonTotaleLeftBold(),
-              valueRichs: valueWithExp(
-                value: "4,4295",
-                expo: r"27",
-                bold: true,
-              ),
+              leftTex2SvgMath: r"E_{l/totale}",
+              valueTex2SvgMath: r"4,4295 \cdot 10^{27}",
               unit: "MeV",
             ),
           ),
 
-          SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
-  }
-
-  WidgetSpan buildEnergieDeliaisonTotaleLeft() {
-    return buildTex2SvgInWidgetSpan(math: r"E_{l/totale}");
-  }
-
-  WidgetSpan buildEnergieDeliaisonTotaleLeftBold() {
-    return buildTex2SvgInWidgetSpan(math: r"\mathbf{E_{l/totale}}");
-  }
-
-  List<InlineSpan> buildEnergieDeliaisonTotaleValueRichs2() {
-    return <InlineSpan>[
-      ...valueWithExp(value: "2,5294", expo: r"24"),
-      const TextSpan(text: " . "),
-
-      const TextSpan(text: "1751,22"),
-    ];
-  }
-
-  List<InlineSpan> buildEnergieDeliaisonTotaleValueRichs() {
-    return <InlineSpan>[
-      const TextSpan(text: "nombre de noyaux . "),
-      buildTex2SvgInWidgetSpan(math: r"E_l"),
-      const TextSpan(text: " d'un nouyau"),
-    ];
   }
 }

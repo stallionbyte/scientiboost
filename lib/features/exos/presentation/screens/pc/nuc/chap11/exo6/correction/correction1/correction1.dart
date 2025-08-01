@@ -6,6 +6,7 @@ import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/widgets_builders/pc/nuc/formules/formules_builders.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -32,7 +33,7 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           const SizedBox(height: 20),
 
-          transition(transition: "AN"),
+          TransitionConstants.an,
 
           const SizedBox(height: 20),
 

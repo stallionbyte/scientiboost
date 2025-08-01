@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -14,31 +14,24 @@ class Donnees extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TransitionConstants.donnees,
-        SizedBox(height: 20),
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
+        EspConstants.esp20,
 
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "notation du plutonium-238: "),
-
-              PhyNucConstants.plutonium238,
-            ],
-          ),
+        notationSymbolique(
+          X: r"Pu",
+          Z: r"\ \ 94",
+          A: r"238",
+          nomNoyau: r"du plutonium-238",
         ),
 
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.uEnMeVC2,
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.mp,
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.mn,
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.massePu238EnU,
-        SizedBox(height: 20),
+        EspConstants.esp20,
         PhyNucDonneesConstants.nombreAvogadro,
       ],
     );

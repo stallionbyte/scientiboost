@@ -40,7 +40,7 @@ class _Correction2State extends ConsumerState<Correction2> {
 
           const SizedBox(height: 20),
 
-          transition(transition: "AN:"),
+          TransitionConstants.an,
 
           const SizedBox(height: 20),
 
