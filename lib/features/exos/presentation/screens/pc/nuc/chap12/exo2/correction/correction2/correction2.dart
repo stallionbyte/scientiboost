@@ -25,7 +25,7 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: aoAvecALambdaTemps(scale: 1.8),
@@ -63,7 +63,7 @@ class _Correction2State extends ConsumerState<Correction2> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

@@ -25,7 +25,7 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: masseAvecAMNaLambda(m: r"m_0", A: r"A_0", scale: 2.0),
@@ -66,7 +66,7 @@ class _Correction3State extends ConsumerState<Correction3> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );

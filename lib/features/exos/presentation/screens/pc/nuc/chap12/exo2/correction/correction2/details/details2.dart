@@ -27,88 +27,72 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          transition(transition: "Premièrement"),
+          TransitionConstants.premierement,
 
           EspConstants.esp20,
 
-          result(left: r"A", value: r"3,7", unit: r"GBq", bold: false),
+          expression(left: r"A", right: r"3,7 GBq"),
 
           EspConstants.esp20,
 
-          transition(transition: "Or"),
+          TransitionConstants.or,
 
           EspConstants.esp20,
 
-          result(
-            left: r"1 GBq",
-            valueTex2SvgMath: r"10^9",
-            unit: r"Bq",
-            bold: false,
-          ),
+          expression(left: r"1 GBq", rightTex2SvgMath: r"10^9 \ Bq"),
 
           EspConstants.esp20,
 
-          transition(transition: "D'où"),
+          TransitionConstants.dou,
 
           EspConstants.esp20,
 
-          result(
-            left: r"A",
-            valueTex2SvgMath: r"3,7 \cdot 10^9",
-            unit: r"Bq",
-            bold: false,
-          ),
+          expression(left: r"A", rightTex2SvgMath: r"3,7 \cdot 10^9 \ Bq"),
 
           EspConstants.esp20,
 
-          transition(transition: "Deuxièmement"),
+          TransitionConstants.deuxiemement,
 
           EspConstants.esp20,
 
-          result(left: r"t", value: r"48", unit: r"heures", bold: false),
+          expression(left: r"t", right: r"48 heures"),
 
           EspConstants.esp20,
 
-          transition(transition: "troisèmenent"),
+          TransitionConstants.troisiemement,
 
           EspConstants.esp20,
 
-          result(
+          expression(
             leftTex2SvgMath: r"\lambda",
-            valueTex2SvgMath: r"8,61 \cdot 10^{-2}",
-            unitTex2SvgMath: r"jour^{-1}",
-            bold: false,
+            rightTex2SvgMath: r"8,61 \cdot 10^{-2} \ jour^{-1}",
           ),
 
           EspConstants.esp20,
 
-          result(
+          expression(
             leftTex2SvgMath: r"\Rightarrow \ \lambda",
-            valueTex2SvgMath: r" \frac{8,61 \cdot 10^{-2}}{jour}",
-            valueTex2SvgMathScale: 2.2,
-            bold: false,
+            rightTex2SvgMath: r" \frac{8,61 \cdot 10^{-2}}{jour}",
           ),
 
           EspConstants.esp20,
 
-          transition(transition: "Or"),
+          TransitionConstants.or,
 
           EspConstants.esp20,
 
-          result(left: r"1 jour", value: r"24", unit: r"heures", bold: false),
+          expression(left: r"1 jour", right: r"24 heures"),
 
           EspConstants.esp20,
 
-          result(
+          expression(
             leftTex2SvgMath: r"\Rightarrow \ \lambda",
-            valueTex2SvgMath: r" \frac{8,61 \cdot 10^{-2}}{24\ heures}",
-            valueTex2SvgMathScale: 2.2,
-            bold: false,
+            rightTex2SvgMath: r" \frac{8,61 \cdot 10^{-2}}{24\ heures}",
           ),
 
           EspConstants.esp20,
 
-          transition(transition: "Ainsi"),
+          TransitionConstants.ainsi,
 
           EspConstants.esp20,
 

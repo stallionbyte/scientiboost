@@ -27,18 +27,17 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp20,
           TransitionConstants.premierement,
           EspConstants.esp20,
-          result(
+          expression(
             leftTex2SvgMath: r"A_0",
-            valueTex2SvgMath: r"4,39 \cdot 10^9",
-            unit: "Bq",
-            bold: false,
+            rightTex2SvgMath: r"4,39 \cdot 10^9 \ Bq",
           ),
           EspConstants.esp20,
           TransitionConstants.deuxiemement,
           EspConstants.esp20,
-          const Text(
-            "Quand on dit iode-131, le 131 correspond au nombre de masse A de l'iode. Le nombre de masse peut être utilisé comme masse molaire, par conséquent: M = 131 g/mol",
-            style: TextStyle(fontSize: ExoConstants.fontSize),
+
+          sbTxt(
+            txt:
+                "Quand on dit iode-131, le 131 correspond au nombre de masse A de l'iode. Le nombre de masse peut être utilisé comme masse molaire, par conséquent: M = 131 g/mol",
           ),
           EspConstants.esp20,
           TransitionConstants.troisiemement,
@@ -47,38 +46,32 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp20,
           TransitionConstants.quatiemement,
           EspConstants.esp20,
-          result(
-            bold: false,
+          expression(
             leftTex2SvgMath: r"\lambda",
-            valueTex2SvgMath: r"8,61 \cdot 10^{-2}",
-            unitTex2SvgMath: r"jour^{-1}",
+            rightTex2SvgMath: r"8,61 \cdot 10^{-2} \ jour^{-1}",
           ),
           EspConstants.esp20,
-          result(
-            bold: false,
+          expression(
             leftTex2SvgMath: r"\Rightarrow \ \lambda",
-            valueTex2SvgMath: r"\frac{8,61 \cdot 10^{-2}}{jour}",
-            valueTex2SvgMathScale: 2.0,
+            rightTex2SvgMath: r"\frac{8,61 \cdot 10^{-2}}{jour}",
           ),
           EspConstants.esp20,
           TransitionConstants.or,
           EspConstants.esp20,
-          result(bold: false, left: r"1 jour", value: r"24", unit: r"heures"),
+          expression(left: r"1 jour", right: r"24 heures"),
           EspConstants.esp20,
           TransitionConstants.et,
           EspConstants.esp20,
-          result(bold: false, left: r"1 heure", value: r"3600", unit: r"s"),
+          expression(left: r"1 heure", right: r"3600 s"),
           EspConstants.esp20,
           TransitionConstants.dou,
           EspConstants.esp20,
-          result(bold: false, left: r"1 jour", value: r"24 . 3600", unit: r"s"),
+          expression(left: r"1 jour", right: r"24 . 3600 s"),
 
           EspConstants.esp20,
-          result(
-            bold: false,
+          expression(
             leftTex2SvgMath: r"\Rightarrow \ \lambda",
-            valueTex2SvgMath: r"\frac{8,61 \cdot 10^{-2}}{24 \cdot 3600}",
-            valueTex2SvgMathScale: 2.0,
+            rightTex2SvgMath: r"\frac{8,61 \cdot 10^{-2}}{24 \cdot 3600}",
           ),
           EspConstants.esp20,
           TransitionConstants.ainsi,

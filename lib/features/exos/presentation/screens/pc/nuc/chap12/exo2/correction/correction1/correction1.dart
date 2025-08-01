@@ -22,7 +22,7 @@ class _Correction1State extends ConsumerState<Correction1> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp20,
 
           BordersWrapper(
             wrapped: constanteRadioactivite(scale: 2.0),
@@ -47,7 +47,7 @@ class _Correction1State extends ConsumerState<Correction1> {
             ),
           ),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
         ],
       ),
     );
