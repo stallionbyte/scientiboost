@@ -774,3 +774,35 @@ String buildTex2SvgMathEnergieReaction12({
 
   return math.toString();
 }
+
+String buildTex2SvgMathPeriodeAvecLambda({
+  required T,
+  required lambda,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+  math.write(r" \begin{array}{l} ");
+
+  math.write(T);
+
+  math.write(r"\ =\ ");
+
+  math.write(r"\frac{ln2}{");
+
+  math.write(lambda);
+
+  math.write(r"}");
+
+  math.write(r" \end{array} ");
+  if (bold) {
+    math.write(r" } ");
+  }
+  return math.toString();
+}

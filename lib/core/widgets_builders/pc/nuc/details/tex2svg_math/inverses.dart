@@ -315,3 +315,33 @@ String buildTex2SvgMathActivite4Inverse({
 
   return math.toString();
 }
+
+String buildTex2SvgMathConstanteRadioactiviteInverse({
+  required String constanteRadioActive,
+  required String T,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+  if (entraineQue) {
+    math.write(r" \Rightarrow \ ");
+  }
+
+  math.write(r"\frac{ln2}{");
+
+  math.write(T);
+
+  math.write(r"}");
+
+  math.write(r"\ =\ ");
+
+  math.write(constanteRadioActive);
+
+  if (bold) {
+    math.write(r" } ");
+  }
+  return math.toString();
+}

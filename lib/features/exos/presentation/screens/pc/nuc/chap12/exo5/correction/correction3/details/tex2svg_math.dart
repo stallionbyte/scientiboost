@@ -177,7 +177,7 @@ String buildTex2SvgMathNombreDisparueSuite8({
   if (entraineQue) math.write(r" \Rightarrow \ ");
   math.write(r" \begin{array}{l} ");
   math.write(NPrime);
-  math.write(r" = \frac{");
+  math.write(r" = \\ \frac{");
   math.write(Ao);
   math.write(r".");
   math.write(T);

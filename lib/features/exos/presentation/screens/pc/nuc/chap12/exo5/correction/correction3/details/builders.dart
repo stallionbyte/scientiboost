@@ -265,7 +265,7 @@ Widget nombreDisparueSuite({
         t: t,
         bold: bold,
         entraineQue: entraineQue,
-        scale: scale,
+        scale: 4.0,
       ),
       EspConstants.esp40,
 

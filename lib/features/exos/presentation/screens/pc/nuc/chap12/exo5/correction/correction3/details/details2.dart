@@ -26,7 +26,7 @@ class _Details2State extends ConsumerState<Details2> {
             NPrime: r"N'",
             Ao: r"A_0",
             t: r"t",
-            scale: 2.0,
+            scale: 4.0,
           ),
 
           EspConstants.esp20,
@@ -35,12 +35,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          result(
-            leftTex2SvgMath: r"A_o",
-            value: r"2",
-            unit: r"GBq",
-            bold: false,
-          ),
+          expression(leftTex2SvgMath: r"A_o", right: r"2 Gbq"),
 
           EspConstants.esp20,
 
@@ -48,12 +43,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          result(
-            bold: false,
-            left: r"1 GBq",
-            valueTex2SvgMath: r"10^9",
-            unit: r"Bq",
-          ),
+          expression(left: r"1 GBq", rightTex2SvgMath: r"10^9\ Bq"),
 
           EspConstants.esp20,
 
@@ -61,11 +51,9 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          result(
+          expression(
             leftTex2SvgMath: r"A_o",
-            valueTex2SvgMath: r"2 \cdot 10^9",
-            unit: r"Bq",
-            bold: false,
+            rightTex2SvgMath: r"2 \cdot 10^9 \ Bq",
           ),
 
           EspConstants.esp20,
@@ -74,7 +62,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          result(left: r"T", value: r"64,1", unit: r"heures", bold: false),
+          expression(left: r"T", right: r"64,1 heures"),
 
           EspConstants.esp20,
 
@@ -82,7 +70,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          result(left: r"t", value: r"10", unit: r"jours", bold: false),
+          expression(left: r"t", right: r"10 jours"),
 
           EspConstants.esp20,
 
@@ -112,7 +100,7 @@ class _Details2State extends ConsumerState<Details2> {
             NPrime: r"N'",
             Ao: r"2 \cdot 10^9",
             t: r"10 \cdot 24",
-            scale: 2.0,
+            scale: 4.0,
           ),
         ],
       ),

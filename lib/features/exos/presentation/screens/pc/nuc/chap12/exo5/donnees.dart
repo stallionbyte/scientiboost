@@ -25,12 +25,7 @@ class Donnees extends ConsumerWidget {
 
         EspConstants.esp20,
 
-        result(
-          bold: false,
-          left: r"1 GBq",
-          valueTex2SvgMath: r"10^9",
-          unit: r"Bq",
-        ),
+        expression(left: r"1 GBq", rightTex2SvgMath: r"10^9 \ Bq"),
 
         EspConstants.esp20,
 

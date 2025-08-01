@@ -4,10 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/core/widgets_builders/pc/nuc/details/details_builders/t_fraction_grandeur_restante_helpers.dart';
 
 import 'details/details1.dart';
-import 'details/details2.dart';
-import 'details/builders.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -27,12 +26,10 @@ class _Correction3State extends ConsumerState<Correction3> {
           EspConstants.esp20,
 
           BordersWrapper(
-            wrapped: nombreDisparueSuite8(
-              T: r"T",
-              NPrime: r"N'",
-              Ao: r"A_0",
+            wrapped: tempsFractionGrandeurRestante8(
+              scale: 2.0,
+              lambda: r"\lambda",
               t: r"t",
-              scale: 4.0,
             ),
             color: Colors.black,
           ),
@@ -47,26 +44,16 @@ class _Correction3State extends ConsumerState<Correction3> {
 
           EspConstants.esp20,
 
-          nombreDisparueSuite8(
-            T: r"64,1",
-            NPrime: r"N'",
-            Ao: r"2 \cdot 10^9",
-            t: r"10 \cdot 24",
-            scale: 4.0,
+          tempsFractionGrandeurRestante8(
+            scale: 2.0,
+            lambda: r"1,05 \cdot 10^{-4}",
+            t: r"t",
           ),
 
           EspConstants.esp20,
 
-          Details2(),
-
-          EspConstants.esp20,
-
           BordersWrapper(
-            wrapped: result(
-              left: r"N'",
-              valueTex2SvgMath: r"1,7 \cdot 10^{11}",
-              unit: r"noyaux",
-            ),
+            wrapped: result(left: r"t", value: r"3861,57", unit: r"s"),
           ),
 
           EspConstants.esp40,

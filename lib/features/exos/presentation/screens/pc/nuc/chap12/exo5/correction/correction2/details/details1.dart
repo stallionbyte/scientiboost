@@ -28,12 +28,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp20,
 
-          result(
-            leftTex2SvgMath: r"A_o",
-            value: r"2",
-            unit: r"GBq",
-            bold: false,
-          ),
+          expression(leftTex2SvgMath: r"A_o", right: r"2 GBq"),
 
           EspConstants.esp20,
 
@@ -41,12 +36,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp20,
 
-          result(
-            bold: false,
-            left: r"1 GBq",
-            valueTex2SvgMath: r"10^9",
-            unit: r"Bq",
-          ),
+          expression(left: r"1 GBq", rightTex2SvgMath: r"10^9\ Bq"),
 
           EspConstants.esp20,
 
@@ -54,11 +44,9 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp20,
 
-          result(
+          expression(
             leftTex2SvgMath: r"A_o",
-            valueTex2SvgMath: r"2 \cdot 10^9",
-            unit: r"Bq",
-            bold: false,
+            rightTex2SvgMath: r"2 \cdot 10^9 \ Bq",
           ),
 
           EspConstants.esp20,
@@ -67,7 +55,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp20,
 
-          result(left: r"T", value: r"64,1", unit: r"heures", bold: false),
+          expression(left: r"T", right: r"64,1 heures"),
 
           EspConstants.esp20,
 
@@ -75,7 +63,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp20,
 
-          result(left: r"t", value: r"5", unit: r"jours", bold: false),
+          expression(left: r"t", right: r"5 jours"),
 
           EspConstants.esp20,
 

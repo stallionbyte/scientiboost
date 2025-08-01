@@ -153,6 +153,47 @@ Widget result({
   );
 }
 
+Widget expression({
+  String? left,
+  String? leftTex2SvgMath,
+  double leftTex2SvgMathScale = 1.0,
+
+  String? right,
+  String? rightTex2SvgMath,
+  double rightTex2SvgMathScale = 1.0,
+
+  double height = 1.5,
+}) {
+  return RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+        height: height,
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        if (left != null) TextSpan(text: left),
+
+        if (leftTex2SvgMath != null)
+          buildTex2SvgInWidgetSpan(
+            math: leftTex2SvgMath,
+            scale: leftTex2SvgMathScale,
+          ),
+
+        TextSpan(text: " = "),
+
+        if (right != null) TextSpan(text: right),
+
+        if (rightTex2SvgMath != null)
+          buildTex2SvgInWidgetSpan(
+            math: rightTex2SvgMath,
+            scale: rightTex2SvgMathScale,
+          ),
+      ],
+    ),
+  );
+}
+
 Widget transition({required String transition}) {
   return Text(
     transition,

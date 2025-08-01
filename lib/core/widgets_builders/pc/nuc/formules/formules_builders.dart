@@ -478,3 +478,21 @@ Widget loiDeDecroissance({
     scale: scale,
   );
 }
+
+Widget periodeAvecLambda({
+  String T = r"T",
+  String lambda = r"\lambda",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathPeriodeAvecLambda(
+      T: T,
+      lambda: lambda,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}

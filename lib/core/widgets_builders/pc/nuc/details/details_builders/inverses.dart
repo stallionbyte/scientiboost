@@ -176,3 +176,21 @@ Widget activite4Inverse({
     scale: scale,
   );
 }
+
+Widget constanteRadioActiveInverse({
+  String T = r"T",
+  String constanteRadioactive = r"\lambda",
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return buildTex2SvgInRichText(
+    math: buildTex2SvgMathConstanteRadioactiviteInverse(
+      T: T,
+      constanteRadioActive: constanteRadioactive,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
