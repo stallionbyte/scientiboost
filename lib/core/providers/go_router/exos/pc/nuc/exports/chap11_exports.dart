@@ -1,5 +1,7 @@
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/enonce.dart';
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo1/correction/correction.dart';
+
+/*
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/enonce.dart';
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo2/correction/correction.dart';
 
@@ -26,3 +28,5 @@ export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/ex
 
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo10/enonce.dart';
 export 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/exo10/correction/correction.dart';
+
+*/

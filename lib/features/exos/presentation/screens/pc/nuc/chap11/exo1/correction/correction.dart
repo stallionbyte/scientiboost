@@ -7,7 +7,6 @@ import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
 import 'correction4/correction4.dart';
-import 'correction5/correction5.dart';
 
 class PcNucChap11Exo1Correction extends ConsumerStatefulWidget {
   const PcNucChap11Exo1Correction({super.key});
@@ -34,7 +33,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "1) a) Composition du noyau",
+                "1) La masse totale de l'atome",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -55,7 +54,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'b) Expliquons',
+                '2) Calculons la masse du noyau',
 
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
@@ -78,7 +77,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) Calculons la masse d'un noyau",
+                "3) Comparaison et conclusion",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: ExoConstants.fontSize,
@@ -100,7 +99,7 @@ class _PcNucChap11Exo1CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: Text(
-                "3) a) Calculons la masse",
+                "4) Calculons le défaut de masse",
                 style: const TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -111,29 +110,6 @@ class _PcNucChap11Exo1CorrectionState
           },
 
           body: Correction4(),
-        ),
-
-        ExpansionPanelRadio(
-          value: 'correction-5',
-          canTapOnHeader: true,
-
-          backgroundColor: Colors.white,
-
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: const Text(
-                'b) Comparons',
-
-                style: TextStyle(
-                  fontSize: ExoConstants.fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            );
-          },
-
-          body: Correction5(),
         ),
       ],
     );

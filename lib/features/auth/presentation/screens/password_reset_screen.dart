@@ -5,6 +5,7 @@ import 'package:scientiboost/core/common_widgets/input_email.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/password_reset_viewmodel.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
+import 'package:scientiboost/core/constants/constants.dart';
 
 class PasswordResetScreen extends ConsumerStatefulWidget {
   const PasswordResetScreen({super.key});
@@ -135,7 +136,7 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
               //helpers.builInputEmail(controller: _emailController),
               InputEmail(controller: _emailController),
 
-              const SizedBox(height: 40),
+              EspConstants.esp40,
 
               // Bouton Se connecter
               _buildPasswordResetButton(authState: authState),

@@ -187,6 +187,8 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                   text: 'Exercice 1',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                 ),
+
+                /*
                 EspConstants.esp20,
                 ButtonExoExam(
                   text: 'Exercice 2',
@@ -233,6 +235,8 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo10,
                 ),
                 EspConstants.esp40,
+
+                */
               ],
             ),
           ),
@@ -254,6 +258,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
+                /*
                 EspConstants.esp20,
                 ButtonExoExam(
                   text: 'Exercice 1',
@@ -290,6 +295,8 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                   route: RoutesNamesConstants.pcNucChap12ExosRoutesExo7,
                 ),
                 EspConstants.esp40,
+
+                */
               ],
             ),
           ),

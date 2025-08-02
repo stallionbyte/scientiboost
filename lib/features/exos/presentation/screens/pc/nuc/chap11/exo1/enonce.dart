@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
 import 'donnees.dart';
 
 class PcNucChap11Exo1Enonce extends ConsumerWidget {
   const PcNucChap11Exo1Enonce({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
@@ -16,42 +15,22 @@ class PcNucChap11Exo1Enonce extends ConsumerWidget {
       children: [
         sbTxt(
           txt:
-              'En tant que technicien dans un laboratoire de physique nucléaire, vous devez analyser un échantillon contenant du carbone-14 utilisé pour la datation archéologique. \n \n',
+              "Vous êtes ingénieur(e) en physique nucléaire dans une centrale. Le laboratoire de contrôle qualité vient de recevoir un échantillon d'uranium-235 provenant d'un nouveau fournisseur. Pour valider la conformité de cet échantillon et s'assurer de sa pureté, vous devez effectuer une analyse complète de ses propriétés nucléaires. Le spectromètre de masse du laboratoire a mesuré l'énergie de masse d'un atome d'uranium-235 : E₀ = 3,515 x 10⁻⁸ J \n \n",
         ),
 
         sbTxt(
           txt:
-              "1) a) Déterminer précisément la composition d'un noyau de carbone-14 \n \n",
+              "1) À partir de l'énergie de masse mesurée, calculer la masse totale de l'atome d'uranium-235 \n \n",
         ),
 
         sbTxt(
-          txt: "b) Pourquoi le carbone-14 est un isotope du carbone-12 \n \n",
+          txt: "2) Calculer la masse du noyau de l'atome d'uranium-235 \n \n",
         ),
 
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "2) Calculez la masse en "),
-
-              PhyNucConstants.mevc2,
-
-              const TextSpan(text: "  d'un noyau de carbone-14 \n \n"),
-            ],
-          ),
-        ),
+        sbTxt(txt: "3) Comparer ces deux(2) masses et conclure \n \n"),
 
         sbTxt(
-          txt:
-              "3) a) Calculer la masse obtenue en additionnant les masses des nucléons séparés d'un noyau de carbone-14 \n \n",
-        ),
-
-        sbTxt(
-          txt:
-              "b) Comparer cette masse avec la masse du noyau de carbone-14. Expliquer la différence. \n \n",
+          txt: "4) Calculer le défaut de masse d'un noyau d'uranium-235  \n \n",
         ),
 
         Donnees(),

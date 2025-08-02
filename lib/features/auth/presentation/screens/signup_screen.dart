@@ -6,7 +6,7 @@ import 'package:scientiboost/core/providers/providers.dart';
 import 'package:scientiboost/core/common_widgets/input_email.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
-
+import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart' as helpers;
 
 class SignUpScreen extends ConsumerStatefulWidget {
@@ -134,13 +134,13 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 40),
+              EspConstants.esp40,
 
               // Input Email
               //helpers.builInputEmail(controller: _emailController),
               InputEmail(controller: _emailController),
 
-              const SizedBox(height: 20),
+              EspConstants.esp40,
 
               // Input Mot de passe
               InputPassword(controller: _passwordController),

@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -19,36 +19,31 @@ class Donnees extends ConsumerWidget {
         EspConstants.esp20,
 
         notationSymbolique(
-          X: "C",
-          Z: r"\ \ 6",
-          A: r"14",
-          nomNoyau: "du carbone-14",
+          X: r"U",
+          Z: r"92",
+          A: r"235",
+          nomNoyau: r"de l'uranium-235",
         ),
 
         EspConstants.esp20,
 
-        notationSymbolique(
-          X: "C",
-          Z: r"\ \ 6",
-          A: r"12",
-          nomNoyau: "du carbone-12",
-        ),
+        PhyNucData.cEnMParS,
 
         EspConstants.esp20,
 
-        PhyNucDonneesConstants.uEnMeVC2,
+        PhyNucData.masseElectronEnU,
 
         EspConstants.esp20,
 
-        PhyNucDonneesConstants.masseC14EnU,
+        PhyNucData.masseProtonEnU,
 
         EspConstants.esp20,
 
-        PhyNucDonneesConstants.mp,
+        PhyNucData.masseNeutronEnU,
 
         EspConstants.esp20,
 
-        PhyNucDonneesConstants.mn,
+        PhyNucData.uEnKg,
       ],
     );
   }

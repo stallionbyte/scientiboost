@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/core/widgets_builders/pc/nuc/builders.dart';
+
+import 'details1.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -22,21 +24,41 @@ class _Correction1State extends ConsumerState<Correction1> {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          EspConstants.esp20,
+          EspConstants.esp40,
 
-          donnerCompositionNucleide(
-            nucleide: notationNoyau(X: r"C", Z: r"\ \ 6", A: r"14"),
-            A: 14,
-            Z: 6,
+          BordersWrapper(
+            wrapped: buildTex2SvgInRichText(
+              math: r"m = \frac{E}{c^2}",
+              scale: 3.0,
+            ),
+            color: Colors.black,
           ),
 
-          EspConstants.esp20,
+          EspConstants.esp40,
 
-          sbTxt(txt: "14 nucléons au total (A = 14)"),
+          Details1(),
 
-          sbTxt(txt: "6 protons (Z = 6)"),
+          EspConstants.esp40,
 
-          sbTxt(txt: "8 neutrons (N = A - Z => N = 8)"),
+          TransitionConstants.an,
+
+          EspConstants.esp40,
+
+          buildTex2SvgInRichText(
+            math: r"m = \frac{3,515 \cdot 10^{-8}}{(3 \cdot 10^8)^2}",
+            scale: 3.0,
+          ),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: result(
+              leftTex2SvgMath: r"\text{m}",
+              leftTex2SvgMathScale: 0.7,
+              valueTex2SvgMath: r"3,9 \cdot 10^{-25}",
+              unitTex2SvgMath: r"\text{kg}",
+            ),
+          ),
 
           EspConstants.esp40,
         ],

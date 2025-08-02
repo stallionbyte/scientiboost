@@ -19,6 +19,8 @@ final pcNucChap11Routes = [
     },
   ),
 
+  /*
+
   GoRoute(
     path: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
     builder: (context, state) {
@@ -162,4 +164,6 @@ final pcNucChap11Routes = [
       );
     },
   ),
+
+  */
 ];

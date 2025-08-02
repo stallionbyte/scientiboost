@@ -10,6 +10,7 @@ import 'package:scientiboost/core/providers/providers.dart';
 
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class ExamScreen extends ConsumerStatefulWidget {
   const ExamScreen({
@@ -357,13 +358,13 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
           isCorrectionVisible: isCorrectionVisible,
         ),
 
-        const SizedBox(height: 20),
+        EspConstants.esp40,
 
         // Afficher la correction seulement si elle est visible
         if (isCorrectionVisible) ...[
           _buildCorrection(correction: correction),
 
-          const SizedBox(height: 20),
+          EspConstants.esp40,
         ],
       ],
     );

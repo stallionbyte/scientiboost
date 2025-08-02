@@ -5,6 +5,8 @@ import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
+import 'details1.dart';
+
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
 
@@ -20,43 +22,26 @@ class _Correction3State extends ConsumerState<Correction3> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          EspConstants.esp20,
-
-          expression(left: r"1 u", rightTex2SvgMath: r"931,5\ MeV/c^2"),
-
-          EspConstants.esp20,
-
-          TransitionConstants.et,
-
-          EspConstants.esp20,
-
-          expression(
-            leftTex2SvgMath: r"m(\ _{6}^{14}C \ )",
-            right: r"14,003242 u",
-          ),
-
-          EspConstants.esp20,
-
-          TransitionConstants.dou,
-
-          EspConstants.esp20,
-
-          expression(
-            leftTex2SvgMath: r"m(\ _{6}^{14}C \ )",
-            right: r"14,003242 . 931,5",
-          ),
-
-          EspConstants.esp20,
+          EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: result(
-              value: "13044,01992",
-              leftTex2SvgMath: r"m(\ _{6}^{14}C \ )",
-              unitTex2SvgMath: r"MeV/c^2",
+            wrapped: buildTex2SvgInRichText(
+              math:
+                  r"\begin{array}{l} m(noyau) = \\ 99\% \cdot m(atome) \end{array}",
+              scale: 2.5,
             ),
+            color: Colors.black,
           ),
 
           EspConstants.esp40,
+
+          Details1(),
+
+          EspConstants.esp40,
+
+          sbTxt(
+            txt: "La masse du noyau est sensiblement égale à celle de l'atome",
+          ),
         ],
       ),
     );

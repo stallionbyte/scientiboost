@@ -201,7 +201,7 @@ class _SubscriptionInfosScreenState
             style: const TextStyle(fontSize: 16, color: Colors.red),
           ),
 
-          const SizedBox(height: 20),
+          EspConstants.esp40,
 
           _checkButton(),
         ],
@@ -244,7 +244,7 @@ class _SubscriptionInfosScreenState
                     valueColor: Colors.red,
                   ),
 
-                  const SizedBox(height: 40),
+                  EspConstants.esp40,
                 ],
               ),
             ),

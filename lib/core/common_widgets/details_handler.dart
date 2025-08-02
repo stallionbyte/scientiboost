@@ -47,9 +47,8 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
       children: [
         showButton,
 
-        EspConstants.esp40,
-
         if (showDetails) ...[
+          EspConstants.esp40,
           DottedBorder(
             options: RoundedRectDottedBorderOptions(
               radius: Radius.circular(12.0),

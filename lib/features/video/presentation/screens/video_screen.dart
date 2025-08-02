@@ -11,6 +11,7 @@ import 'package:media_kit_video/media_kit_video.dart'; // Provides [VideoControl
 
 import 'package:scientiboost/core/common_widgets/first_app_bar.dart';
 import 'package:scientiboost/core/providers/providers.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class VideoPlayerScreen extends ConsumerStatefulWidget {
   const VideoPlayerScreen({
@@ -92,7 +93,7 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
   Widget _buildPage() {
     return Column(
       children: [
-        const SizedBox(height: 40),
+        EspConstants.esp40,
         Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.width * 9.0 / 16.0,
@@ -109,7 +110,7 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
                   )
                   : Video(controller: controller),
         ),
-        const SizedBox(height: 20),
+        EspConstants.esp40,
         // titre de la video
         Text(
           widget.title,

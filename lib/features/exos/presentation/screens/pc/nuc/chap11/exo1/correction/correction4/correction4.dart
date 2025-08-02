@@ -3,8 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
-import 'package:scientiboost/core/constants/pc/nuc/data_constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/formules/formules_builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
+
+import 'details1.dart';
 
 class Correction4 extends ConsumerStatefulWidget {
   const Correction4({super.key});
@@ -21,60 +24,46 @@ class _Correction4State extends ConsumerState<Correction4> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          EspConstants.esp20,
-
-          sbTxt(txt: "m(nucléons) = masse(neutrons) + masse(protons)"),
-
-          EspConstants.esp20,
-
-          sbTxt(txt: "masse(protons) = nombre de protons x masse d'un proton"),
-
-          EspConstants.esp20,
-
-          expression(left: r"masse(protons)", rightTex2SvgMath: r"Z \cdot m_p"),
-
-          EspConstants.esp20,
-
-          sbTxt(
-            txt: "masse(neutrons) = nombre de neutrons x masse d'un neutron",
-          ),
-
-          EspConstants.esp20,
-
-          expression(
-            left: r"masse(neutrons)",
-            rightTex2SvgMath: r"(A-Z) \cdot m_n",
-          ),
-
-          EspConstants.esp20,
+          EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: expression(
-              left: r"masse(nucléons)",
-              rightTex2SvgMath: r"Z \cdot m_p + (A-Z) \cdot m_n",
-            ),
+            wrapped: defautDeMasse(scale: 6.0),
             color: Colors.black,
           ),
 
-          EspConstants.esp20,
+          EspConstants.esp40,
 
           TransitionConstants.an,
 
-          EspConstants.esp20,
+          EspConstants.esp40,
 
-          expression(
-            left: r"masse(nucléons)",
-            right:
-                "${PhyNucValuesConstants.masseProtonEnU} + (14 - 6) x ${PhyNucValuesConstants.masseNeutronEnU}",
+          defautDeMasse(
+            scale: 6.0,
+            X: r"U",
+            Z: r"92",
+            A: r"235",
+            masseNoyau: r"3,899 \cdot 10^{-25}",
+            mp:
+                PhyNucData.valueMasseProtonEnU +
+                r" \cdot " +
+                PhyNucData.valueUEnKgTexMath,
+            mn:
+                PhyNucData.valueMasseNeutronEnU +
+                r" \cdot " +
+                PhyNucData.valueUEnKgTexMath,
           ),
 
-          EspConstants.esp20,
+          EspConstants.esp40,
+
+          Details1(),
+
+          EspConstants.esp40,
 
           BordersWrapper(
             wrapped: result(
-              value: "14,112976",
-              left: "masse(nucléons)",
-              unit: "u",
+              leftTex2SvgMath: r"m\left(_{92}^{235}U\right)",
+              valueTex2SvgMath: r"3,36 \cdot 10^{-27}",
+              unitTex2SvgMath: r"\text{kg}",
             ),
           ),
 

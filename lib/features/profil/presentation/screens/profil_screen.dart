@@ -5,6 +5,7 @@ import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmode
 
 import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
 import 'package:scientiboost/core/providers/providers.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class ProfilScreen extends ConsumerWidget {
   const ProfilScreen({super.key});
@@ -50,11 +51,11 @@ class ProfilScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SizedBox(height: 20),
+          EspConstants.esp40,
 
           _buildEmail(ref: ref),
 
-          const SizedBox(height: 20),
+          EspConstants.esp40,
 
           ButtonArrowForward(
             text: 'abonnement(s)',

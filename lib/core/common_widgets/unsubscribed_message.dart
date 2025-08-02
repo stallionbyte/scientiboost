@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scientiboost/core/common_widgets/button_arrow_forward.dart';
-
+import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/providers/providers.dart';
 
 class UnsubscribedMessage extends ConsumerWidget {
@@ -15,7 +15,7 @@ class UnsubscribedMessage extends ConsumerWidget {
       child: Column(
         children: [
           Text("correction réservée aux abonnés de $subject"),
-          const SizedBox(height: 20),
+          EspConstants.esp40,
           ButtonArrowForward(
             text: 'vérifier mon abonnement',
             backgroundColor: Colors.amber,

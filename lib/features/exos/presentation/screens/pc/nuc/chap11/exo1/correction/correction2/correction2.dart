@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
-import 'package:scientiboost/core/constants/pc/nuc/constants.dart';
+import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
 
 import 'details1.dart';
 
@@ -21,35 +23,48 @@ class _Correction2State extends ConsumerState<Correction2> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          EspConstants.esp20,
+          EspConstants.esp40,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-                height: 2,
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(text: "le carbone-14 ( "),
-
-                PhyNucConstants.carbone14,
-
-                const TextSpan(text: " ) est un isotope du carbone-12 ( "),
-
-                PhyNucConstants.carbone12,
-
-                const TextSpan(
-                  text:
-                      " ) car ils ont le même nombre de protons (Z=6) mais des nombres de neutrons différents",
-                ),
-              ],
+          BordersWrapper(
+            wrapped: buildTex2SvgInRichText(
+              math:
+                  r"\begin{array}{l} m( noyau ) = \\ m( atome ) \\ - Z \cdot masse\ d'un\ électron \end{array}",
+              scale: 4.0,
             ),
+            color: Colors.black,
           ),
 
-          EspConstants.esp20,
-          Details1(),
           EspConstants.esp40,
+
+          Details1(),
+
+          EspConstants.esp40,
+
+          TransitionConstants.an,
+
+          EspConstants.esp40,
+
+          buildTex2SvgInRichText(
+            math:
+                // ignore: prefer_adjacent_string_concatenation
+                r"\begin{array}{l} m(\ noyau \ ) = \\" +
+                r"3,9 \cdot 10^{-25} \\ - 92 \cdot " +
+                PhyNucData.valueMasseElectronEnU +
+                r" \cdot " +
+                PhyNucData.valueUEnKgTexMath +
+                r"\end{array}",
+            scale: 4.0,
+          ),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: result(
+              leftTex2SvgMath: r"\text{m(\ noyau \ )}",
+              valueTex2SvgMath: r"3,899 \cdot 10^{-25}",
+              unitTex2SvgMath: r"\text{kg}",
+            ),
+          ),
         ],
       ),
     );

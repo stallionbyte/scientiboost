@@ -9,6 +9,7 @@ import 'package:scientiboost/core/providers/providers.dart';
 
 import 'package:scientiboost/features/auth/presentation/viewmodels/auth_viewmodel.dart';
 import 'package:scientiboost/features/subscription/presentation/viewmodels/subscription_viewmodel.dart';
+import 'package:scientiboost/core/constants/constants.dart';
 
 class ExoScreen extends ConsumerStatefulWidget {
   const ExoScreen({
@@ -216,12 +217,9 @@ class _ExoScreenState extends ConsumerState<ExoScreen> {
 
           _buildToggleCorrectionButton(),
 
-          const SizedBox(height: 40),
+          EspConstants.esp40,
 
-          if (isCorrectionVisible) ...[
-            _buildCorrection(),
-            const SizedBox(height: 40),
-          ],
+          if (isCorrectionVisible) ...[_buildCorrection(), EspConstants.esp40],
         ],
       ),
     );

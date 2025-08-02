@@ -63,21 +63,14 @@ List<InlineSpan> valueWithExp({
 }
 
 Widget result({
-  WidgetSpan? leftRich,
-  List<InlineSpan>? leftRichs,
-  String? leftTex2SvgMath,
+  required String leftTex2SvgMath,
   double leftTex2SvgMathScale = 1.0,
-  String? value,
-  String? valueTex2SvgMath,
+
+  required String valueTex2SvgMath,
   double valueTex2SvgMathScale = 1.0,
-  List<InlineSpan>? valueRichs,
-  WidgetSpan? valueRich,
-  WidgetSpan? unitRich,
-  String? left,
-  String? unit,
+
   String? unitTex2SvgMath,
   double unitTex2SvgMathScale = 1.0,
-  bool bold = true,
 
   double height = 1.5,
 }) {
@@ -89,63 +82,21 @@ Widget result({
         color: Colors.black,
       ),
       children: <InlineSpan>[
-        if (leftRich != null) leftRich,
-
-        if (leftRichs != null) ...leftRichs,
-
-        if (left != null)
-          TextSpan(
-            text: left,
-            style: TextStyle(
-              fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-
-        if (leftTex2SvgMath != null)
-          buildTex2SvgInWidgetSpan(
-            math: bold ? r"\mathbf{" + leftTex2SvgMath + r"}" : leftTex2SvgMath,
-            scale: leftTex2SvgMathScale,
-          ),
-
-        TextSpan(
-          text: " = ",
-          style: TextStyle(
-            fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-          ),
+        buildTex2SvgInWidgetSpan(
+          math: r"\mathbf{" + leftTex2SvgMath + r"}\ ",
+          scale: leftTex2SvgMathScale,
         ),
 
-        if (valueRichs != null) ...valueRichs,
+        buildTex2SvgInWidgetSpan(math: r"=\ ", scale: 0.6),
 
-        if (valueRich != null) valueRich,
-
-        if (valueTex2SvgMath != null)
-          buildTex2SvgInWidgetSpan(
-            math:
-                bold ? r"\mathbf{" + valueTex2SvgMath + r"}" : valueTex2SvgMath,
-            scale: valueTex2SvgMathScale,
-          ),
-
-        if (value != null)
-          TextSpan(
-            text: "$value ",
-            style: TextStyle(
-              fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-
-        if (unitRich != null) unitRich,
-
-        if (unit != null)
-          TextSpan(
-            text: " $unit",
-            style: TextStyle(
-              fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
+        buildTex2SvgInWidgetSpan(
+          math: r"\mathbf{" + valueTex2SvgMath + r"} \ ",
+          scale: valueTex2SvgMathScale,
+        ),
 
         if (unitTex2SvgMath != null)
           buildTex2SvgInWidgetSpan(
-            math: bold ? r"\mathbf{" + unitTex2SvgMath + r"}" : unitTex2SvgMath,
+            math: r"\mathbf{" + unitTex2SvgMath + r"}",
             scale: unitTex2SvgMathScale,
           ),
       ],
@@ -154,17 +105,14 @@ Widget result({
 }
 
 Widget expression({
-  String? left,
-  String? leftTex2SvgMath,
+  required String leftTex2SvgMath,
   double leftTex2SvgMathScale = 1.0,
 
-  String? right,
-  String? rightTex2SvgMath,
+  required rightTex2SvgMath,
   double rightTex2SvgMathScale = 1.0,
 
-  String operateur = " = ",
-  String? operateurTex2SvgMath,
-  double operateurTex2SvgMathScale = 1.0,
+  String operateurTex2SvgMath = r"=",
+  double operateurTex2SvgMathScale = 0.6,
 
   double height = 1.5,
 }) {
@@ -176,29 +124,20 @@ Widget expression({
         color: Colors.black,
       ),
       children: <InlineSpan>[
-        if (left != null) TextSpan(text: left),
+        buildTex2SvgInWidgetSpan(
+          math: leftTex2SvgMath + r"\ ",
+          scale: leftTex2SvgMathScale,
+        ),
 
-        if (leftTex2SvgMath != null)
-          buildTex2SvgInWidgetSpan(
-            math: leftTex2SvgMath,
-            scale: leftTex2SvgMathScale,
-          ),
+        buildTex2SvgInWidgetSpan(
+          math: operateurTex2SvgMath + r"\ ",
+          scale: operateurTex2SvgMathScale,
+        ),
 
-        if (operateurTex2SvgMath != null)
-          buildTex2SvgInWidgetSpan(
-            math: operateurTex2SvgMath,
-            scale: operateurTex2SvgMathScale,
-          ),
-
-        if (operateurTex2SvgMath == null) TextSpan(text: operateur),
-
-        if (right != null) TextSpan(text: right),
-
-        if (rightTex2SvgMath != null)
-          buildTex2SvgInWidgetSpan(
-            math: rightTex2SvgMath,
-            scale: rightTex2SvgMathScale,
-          ),
+        buildTex2SvgInWidgetSpan(
+          math: rightTex2SvgMath,
+          scale: rightTex2SvgMathScale,
+        ),
       ],
     ),
   );

@@ -243,7 +243,7 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const SizedBox(height: 40),
+                  EspConstants.esp40,
 
                   Titre(title: "Sélectionnez vos matières :"),
 
@@ -256,7 +256,7 @@ class _SubscriptionSreenState extends ConsumerState<SubscriptionSreen> {
                   // Checkbox Mathématiques
                   _buildCheckBoxMath(),
 
-                  const SizedBox(height: 20),
+                  EspConstants.esp40,
 
                   // Bouton S'abonner
                   _buildSubscriptionButton(),
