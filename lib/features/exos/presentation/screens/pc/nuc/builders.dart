@@ -63,19 +63,6 @@ WidgetSpan notationNoyau({
   );
 }
 
-Widget notationNoyau2({
-  String X = r"X",
-  String A = r"A",
-  String Z = r"Z",
-  bool bold = false,
-  double scale = 1.0,
-}) {
-  return buildTex2SvgInRichText(
-    math: buildTex2SvgMathNotationNoyau(X: X, A: A, Z: Z, bold: bold),
-    scale: scale,
-  );
-}
-
 Widget notationSymbolique({
   required String X,
   required String Z,

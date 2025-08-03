@@ -44,24 +44,6 @@ void scheduleShowSnackBar({
   });
 }
 
-List<InlineSpan> valueWithExp({
-  required String value,
-  required String expo,
-  bool bold = false,
-}) {
-  return <InlineSpan>[
-    TextSpan(
-      text: value,
-      style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal),
-    ),
-    TextSpan(
-      text: " . ",
-      style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal),
-    ),
-    exp(exp: expo, bold: bold),
-  ];
-}
-
 Widget result({
   required String leftTex2SvgMath,
   double leftTex2SvgMathScale = 1.0,
@@ -104,45 +86,6 @@ Widget result({
   );
 }
 
-Widget expression({
-  required String leftTex2SvgMath,
-  double leftTex2SvgMathScale = 1.0,
-
-  required rightTex2SvgMath,
-  double rightTex2SvgMathScale = 1.0,
-
-  String operateurTex2SvgMath = r"=",
-  double operateurTex2SvgMathScale = 0.6,
-
-  double height = 1.5,
-}) {
-  return RichText(
-    text: TextSpan(
-      style: TextStyle(
-        fontSize: ExoConstants.richTextFontSize,
-        height: height,
-        color: Colors.black,
-      ),
-      children: <InlineSpan>[
-        buildTex2SvgInWidgetSpan(
-          math: leftTex2SvgMath + r"\ ",
-          scale: leftTex2SvgMathScale,
-        ),
-
-        buildTex2SvgInWidgetSpan(
-          math: operateurTex2SvgMath + r"\ ",
-          scale: operateurTex2SvgMathScale,
-        ),
-
-        buildTex2SvgInWidgetSpan(
-          math: rightTex2SvgMath,
-          scale: rightTex2SvgMathScale,
-        ),
-      ],
-    ),
-  );
-}
-
 Widget transition({required String transition}) {
   return Text(
     transition,
@@ -150,34 +93,6 @@ Widget transition({required String transition}) {
       fontSize: ExoConstants.fontSize,
       fontWeight: FontWeight.bold,
     ),
-  );
-}
-
-String buildTex2SvgMath10ExpX({required String exp, bool bold = false}) {
-  StringBuffer math = StringBuffer();
-
-  if (bold) {
-    math.write(r" \mathbf{ ");
-  }
-
-  math.write(r" 10 ^ {");
-
-  math.write(exp);
-
-  math.write(r" } ");
-
-  if (bold) {
-    math.write(r" } ");
-  }
-
-  return math.toString();
-}
-
-WidgetSpan exp({required String exp, bool bold = false}) {
-  return buildTex2SvgInWidgetSpan(
-    math: buildTex2SvgMath10ExpX(exp: exp, bold: bold),
-    offsetDy: -2,
-    scale: 0.8,
   );
 }
 
