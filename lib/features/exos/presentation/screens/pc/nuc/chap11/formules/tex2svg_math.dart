@@ -117,17 +117,17 @@ String buildTex2SvgMathDefautDeMasse({
   }
 
   // Ligne 2 : partie entre crochets
-  math.write(r" \left[ \begin{array}{l} ");
+  math.write(r" ( ");
   math.write(Z);
   math.write(r" \cdot ");
   math.write(mp);
-  math.write(r" \\ +  (");
+  math.write(r" +  (");
   math.write(A);
   math.write(r" - ");
   math.write(Z);
   math.write(r") \cdot ");
   math.write(mn);
-  math.write(r" \end{array} \right] \\ - ");
+  math.write(r" ) \\ - ");
 
   // Ligne 3 : masse du noyau
   if (masseNoyau != null) {

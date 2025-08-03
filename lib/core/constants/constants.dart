@@ -70,6 +70,8 @@ class RoutesNamesConstants {
       '/matiere(PC)/nuc/chap(11)/exo(2)';
   static const String pcNucChap11ExosRoutesExo3 =
       '/matiere(PC)/nuc/chap(11)/exo(3)';
+  static const String pcNucChap11ExosRoutesExo4 =
+      '/matiere(PC)/nuc/chap(11)/exo(4)';
 
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';

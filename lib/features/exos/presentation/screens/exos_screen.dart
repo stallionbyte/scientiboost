@@ -201,6 +201,12 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 ),
 
                 EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 4',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo4,
+                ),
+
+                EspConstants.esp40,
               ],
             ),
           ),

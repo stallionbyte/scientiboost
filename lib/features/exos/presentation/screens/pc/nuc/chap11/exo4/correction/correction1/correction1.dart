@@ -4,7 +4,9 @@ import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/formules/formules_builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
+
+import 'details1.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -26,9 +28,16 @@ class _Correction1State extends ConsumerState<Correction1> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: defautDeMasse(scale: 6.0),
+            wrapped: buildTex2SvgInRichText(
+              math: r"\Delta m = \frac{E_l}{c^2}",
+              scale: 3.0,
+            ),
             color: Colors.black,
           ),
+
+          EspConstants.esp40,
+
+          Details1(),
 
           EspConstants.esp40,
 
@@ -37,17 +46,44 @@ class _Correction1State extends ConsumerState<Correction1> {
           EspConstants.esp40,
 
           buildTex2SvgInRichText(
-            math:
-                r"\begin{array}{l} \Delta m(_{42}^{98}Mo) = \\ \left[ \begin{array}{l} 42 \times 1,007276 \\ + 56 \times 1,008665 \end{array} \right] \\ - 97,905 \end{array}",
-            scale: 6.0,
+            math: r"\Delta m = \frac{1176\ MeV}{c^2}",
+            scale: 2.5,
           ),
 
           EspConstants.esp40,
 
           BordersWrapper(
             wrapped: result(
-              leftTex2SvgMath: r"\Delta m(_{42}^{98}Mo)",
-              valueTex2SvgMath: r"0,9146",
+              leftTex2SvgMath: r"\Delta m",
+              valueTex2SvgMath: r"1176\ ",
+              unitTex2SvgMath: r"MeV/c^2",
+            ),
+          ),
+
+          EspConstants.esp40,
+
+          transition(transition: "Ou en u"),
+
+          EspConstants.esp40,
+
+          PhyNucData.uEnMeVC2,
+
+          EspConstants.esp40,
+
+          regleDe3(
+            part1: PhyNucData.valueUEnMeVC2 + r"\ MeV/c^2",
+            part2: r"1\ u",
+            part3: r"1176\ MeV/c^2",
+            left: r"\Delta m",
+            scale: 8.0,
+          ),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: result(
+              leftTex2SvgMath: r"\Delta m",
+              valueTex2SvgMath: r"1,262",
               unitTex2SvgMath: r"\text{u}",
             ),
           ),

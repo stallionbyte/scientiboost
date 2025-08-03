@@ -46,16 +46,34 @@ void scheduleShowSnackBar({
 
 Widget result({
   required String leftTex2SvgMath,
-  double leftTex2SvgMathScale = 1.0,
 
   required String valueTex2SvgMath,
-  double valueTex2SvgMathScale = 1.0,
 
-  String? unitTex2SvgMath,
-  double unitTex2SvgMathScale = 1.0,
+  String unitTex2SvgMath = r"",
+
+  double scale = 1.0,
+
+  bool wrap = false,
 
   double height = 1.5,
 }) {
+  final wrapCode = wrap ? r"\\" : r"";
+
+  final math =
+      // ignore: prefer_adjacent_string_concatenation
+      r"\begin{array}{l}" +
+      r"\mathbf{" +
+      leftTex2SvgMath +
+      r"}\ " +
+      r"=\ " +
+      wrapCode +
+      r"\mathbf{" +
+      valueTex2SvgMath +
+      r"} \ " +
+      r"\mathbf{" +
+      unitTex2SvgMath +
+      r"}" +
+      r"\end{array}";
   return RichText(
     text: TextSpan(
       style: TextStyle(
@@ -64,23 +82,7 @@ Widget result({
         color: Colors.black,
       ),
       children: <InlineSpan>[
-        buildTex2SvgInWidgetSpan(
-          math: r"\mathbf{" + leftTex2SvgMath + r"}\ ",
-          scale: leftTex2SvgMathScale,
-        ),
-
-        buildTex2SvgInWidgetSpan(math: r"=\ ", scale: 0.6),
-
-        buildTex2SvgInWidgetSpan(
-          math: r"\mathbf{" + valueTex2SvgMath + r"} \ ",
-          scale: valueTex2SvgMathScale,
-        ),
-
-        if (unitTex2SvgMath != null)
-          buildTex2SvgInWidgetSpan(
-            math: r"\mathbf{" + unitTex2SvgMath + r"}",
-            scale: unitTex2SvgMathScale,
-          ),
+        buildTex2SvgInWidgetSpan(math: math, scale: scale),
       ],
     ),
   );
