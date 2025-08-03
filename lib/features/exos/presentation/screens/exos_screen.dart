@@ -188,55 +188,11 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                 ),
 
-                /*
                 EspConstants.esp20,
                 ButtonExoExam(
                   text: 'Exercice 2',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
                 ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 3',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 4',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo4,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 5',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo5,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 6',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo6,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 7',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo7,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 8',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo8,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 9',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo9,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 10',
-                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo10,
-                ),
-                EspConstants.esp40,
-
-                */
               ],
             ),
           ),
@@ -256,47 +212,8 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
           },
           body: Padding(
             padding: EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                /*
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 1',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo1,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 2',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo2,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 3',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo3,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 4',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo4,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 5',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo5,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 6',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo6,
-                ),
-                EspConstants.esp20,
-                ButtonExoExam(
-                  text: 'Exercice 7',
-                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo7,
-                ),
-                EspConstants.esp40,
-
-                */
+            child: Column(children: [
+                
               ],
             ),
           ),

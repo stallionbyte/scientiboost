@@ -68,43 +68,6 @@ class RoutesNamesConstants {
       '/matiere(PC)/nuc/chap(11)/exo(1)';
   static const String pcNucChap11ExosRoutesExo2 =
       '/matiere(PC)/nuc/chap(11)/exo(2)';
-  static const String pcNucChap11ExosRoutesExo3 =
-      '/matiere(PC)/nuc/chap(11)/exo(3)';
-  static const String pcNucChap11ExosRoutesExo4 =
-      '/matiere(PC)/nuc/chap(11)/exo(4)';
-  static const String pcNucChap11ExosRoutesExo5 =
-      '/matiere(PC)/nuc/chap(11)/exo(5)';
-  static const String pcNucChap11ExosRoutesExo6 =
-      '/matiere(PC)/nuc/chap(11)/exo(6)';
-  static const String pcNucChap11ExosRoutesExo7 =
-      '/matiere(PC)/nuc/chap(11)/exo(7)';
-  static const String pcNucChap11ExosRoutesExo8 =
-      '/matiere(PC)/nuc/chap(11)/exo(8)';
-  static const String pcNucChap11ExosRoutesExo9 =
-      '/matiere(PC)/nuc/chap(11)/exo(9)';
-  static const String pcNucChap11ExosRoutesExo10 =
-      '/matiere(PC)/nuc/chap(11)/exo(10)';
-
-  static const String pcNucChap12ExosRoutesExo1 =
-      '/matiere(PC)/nuc/chap(12)/exo(1)';
-
-  static const String pcNucChap12ExosRoutesExo2 =
-      '/matiere(PC)/nuc/chap(12)/exo(2)';
-
-  static const String pcNucChap12ExosRoutesExo3 =
-      '/matiere(PC)/nuc/chap(12)/exo(3)';
-
-  static const String pcNucChap12ExosRoutesExo4 =
-      '/matiere(PC)/nuc/chap(12)/exo(4)';
-
-  static const String pcNucChap12ExosRoutesExo5 =
-      '/matiere(PC)/nuc/chap(12)/exo(5)';
-
-  static const String pcNucChap12ExosRoutesExo6 =
-      '/matiere(PC)/nuc/chap(12)/exo(6)';
-
-  static const String pcNucChap12ExosRoutesExo7 =
-      '/matiere(PC)/nuc/chap(12)/exo(7)';
 
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
