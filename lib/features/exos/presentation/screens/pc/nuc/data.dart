@@ -30,4 +30,10 @@ class PhyNucData {
     math: r"1 \ \text{u} = " + valueUEnKgTexMath + r" \ \text{kg}",
     scale: 1.0,
   );
+
+  static const valueUEnMeVC2 = r"931,5";
+  static final uEnMeVC2 = buildTex2SvgInRichText(
+    math: r"1 \ \text{u} = " + valueUEnMeVC2 + r" \ \text{MeV/c}^2",
+    scale: 1.0,
+  );
 }

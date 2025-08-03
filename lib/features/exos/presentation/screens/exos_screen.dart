@@ -182,17 +182,25 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
-                EspConstants.esp20,
+                EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 1',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo1,
                 ),
 
-                EspConstants.esp20,
+                EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 2',
                   route: RoutesNamesConstants.pcNucChap11ExosRoutesExo2,
                 ),
+
+                EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 3',
+                  route: RoutesNamesConstants.pcNucChap11ExosRoutesExo3,
+                ),
+
+                EspConstants.esp40,
               ],
             ),
           ),
