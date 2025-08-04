@@ -84,12 +84,14 @@ Widget energieDeLiaisonParNucleon({
   String mn = r"m_n",
   String? uEnMeVC2,
   String? masseNoyau,
+  bool wrap = false,
   bool bold = false,
   bool entraineQue = false,
   double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathEnergieDeLiaisonParNucleon(
+      wrap: wrap,
       eln: eln,
       X: X,
       Z: Z,

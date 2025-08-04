@@ -164,6 +164,7 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
   required String mn,
   String? masseNoyau,
   String? uEnMeVC2,
+  bool wrap = false,
   bool bold = false,
   bool entraineQue = false,
 }) {
@@ -173,11 +174,13 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
     math.write(r" \mathbf{ ");
   }
 
+  final wrapCode = wrap ? r"\\" : r"";
+
+  math.write(r" \begin{array}{l} ");
+
   if (entraineQue) {
     math.write(r" \Rightarrow \ ");
   }
-
-  math.write(r" \begin{array}{l} ");
 
   math.write(eln);
 
@@ -188,6 +191,8 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
   math.write(r" \cdot ");
 
   math.write(mp);
+
+  math.write(wrapCode);
 
   math.write(r" + ( ");
 
