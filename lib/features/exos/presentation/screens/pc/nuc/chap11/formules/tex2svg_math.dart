@@ -264,7 +264,7 @@ String buildTex2SvgMathEnergieDeLiaison({
 
   math.write(el);
 
-  math.write(r" = \\ \displaystyle  \left[ \begin{array}{l} ");
+  math.write(r" = ( ");
 
   math.write(Z);
 
@@ -272,7 +272,7 @@ String buildTex2SvgMathEnergieDeLiaison({
 
   math.write(mp);
 
-  math.write(r" \\ + ( ");
+  math.write(r"\\ + ( ");
 
   math.write(A);
 
@@ -284,7 +284,7 @@ String buildTex2SvgMathEnergieDeLiaison({
 
   math.write(mn);
 
-  math.write(r" \\  - ");
+  math.write(r"\\  - ");
 
   if (masseNoyau != null) {
     math.write(masseNoyau);
@@ -304,7 +304,7 @@ String buildTex2SvgMathEnergieDeLiaison({
     math.write(r" ) ");
   }
 
-  math.write(r" \end{array} \right] \cdot ");
+  math.write(r" ) \cdot ");
 
   if (uEnMeVC2 != null) {
     math.write(uEnMeVC2);

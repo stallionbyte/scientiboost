@@ -198,6 +198,7 @@ Widget regleDe3({
   bool border = false,
   bool bold = false,
   bool entraineQue = false,
+  bool wrap = false,
   double scale = 1.0,
 }) {
   return buildTex2SvgInRichText(
@@ -206,6 +207,7 @@ Widget regleDe3({
       part2: part2,
       part3: part3,
       left: left,
+      wrap: wrap,
       border: border,
       bold: bold,
       entraineQue: entraineQue,
@@ -232,12 +234,15 @@ String buildTex2SvgMathRegleDe3({
   bool border = false,
   bool bold = false,
   bool entraineQue = false,
+  bool wrap = false,
 }) {
   StringBuffer math = StringBuffer();
 
   if (entraineQue) {
     math.write(r" \Rightarrow ");
   }
+
+  final wrapCode = wrap ? r"\\" : r"";
 
   // Utilisation d'un array à 3 colonnes de largeur égale
   math.write(r"\begin{array}{l} ");
@@ -270,7 +275,9 @@ String buildTex2SvgMathRegleDe3({
   }
 
   math.write(left);
-  math.write(r" = \displaystyle \frac{ ");
+  math.write(r" = ");
+  math.write(wrapCode);
+  math.write(r"\displaystyle \frac{ ");
   math.write(part2);
   math.write(r" \cdot ");
   math.write(part3);
