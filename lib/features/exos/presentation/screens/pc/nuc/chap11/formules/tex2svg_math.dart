@@ -87,6 +87,7 @@ String buildTex2SvgMathDefautDeMasse({
   String? defautDeMasse,
   String? masseNoyau,
   bool bold = false,
+  bool wrap = false,
   bool entraineQue = false,
 }) {
   StringBuffer math = StringBuffer();
@@ -98,6 +99,8 @@ String buildTex2SvgMathDefautDeMasse({
   if (entraineQue) {
     math.write(r" \Rightarrow \ ");
   }
+
+  final wrapCode = wrap ? r"\\" : r"";
 
   // Ouverture d'un array pour rendre plus lisible
   math.write(r"\begin{array}{l} ");
@@ -113,7 +116,8 @@ String buildTex2SvgMathDefautDeMasse({
     math.write(A);
     math.write(r"} ");
     math.write(X);
-    math.write(r") = \\ "); // Wrap ici
+    math.write(r") = ");
+    math.write(wrapCode);
   }
 
   // Ligne 2 : partie entre crochets
@@ -121,7 +125,7 @@ String buildTex2SvgMathDefautDeMasse({
   math.write(Z);
   math.write(r" \cdot ");
   math.write(mp);
-  math.write(r" +  (");
+  math.write(r"\\ +  (");
   math.write(A);
   math.write(r" - ");
   math.write(Z);
@@ -177,7 +181,7 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
 
   math.write(eln);
 
-  math.write(r" = \\ \displaystyle \frac{ \left[ \begin{array}{l} ");
+  math.write(r" = \\ \frac{  \begin{array}{l} [");
 
   math.write(Z);
 
@@ -185,7 +189,7 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
 
   math.write(mp);
 
-  math.write(r" \\ + ( ");
+  math.write(r" + ( ");
 
   math.write(A);
 
@@ -217,7 +221,7 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
     math.write(r" ) ");
   }
 
-  math.write(r" \end{array} \right] \cdot ");
+  math.write(r" ] \cdot ");
 
   if (uEnMeVC2 != null) {
     math.write(uEnMeVC2);
@@ -225,7 +229,7 @@ String buildTex2SvgMathEnergieDeLiaisonParNucleon({
     math.write(r"c^2");
   }
 
-  math.write(r" }{ ");
+  math.write(r" \end{array} }{ ");
 
   math.write(A);
 

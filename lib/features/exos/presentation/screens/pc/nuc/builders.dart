@@ -68,12 +68,13 @@ Widget notationSymbolique({
   required String Z,
   required String A,
   required String nomNoyau,
+  double height = 1.5,
 }) {
   return RichText(
     text: TextSpan(
       style: TextStyle(
         fontSize: ExoConstants.richTextFontSize,
-
+        height: height,
         color: Colors.black,
       ),
       children: <InlineSpan>[

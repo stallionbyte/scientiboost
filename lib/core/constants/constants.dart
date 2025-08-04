@@ -74,6 +74,8 @@ class RoutesNamesConstants {
       '/matiere(PC)/nuc/chap(11)/exo(4)';
   static const String pcNucChap11ExosRoutesExo5 =
       '/matiere(PC)/nuc/chap(11)/exo(5)';
+  static const String pcNucChap11ExosRoutesExo6 =
+      '/matiere(PC)/nuc/chap(11)/exo(6)';
 
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
@@ -103,6 +105,10 @@ class EspConstants {
   static const esp20 = SizedBox(height: 20);
   static const esp30 = SizedBox(height: 30);
   static const esp40 = SizedBox(height: 40);
+  static const esp50 = SizedBox(height: 50);
+  static const esp60 = SizedBox(height: 60);
+  static const esp70 = SizedBox(height: 70);
+  static const esp80 = SizedBox(height: 80);
 }
 
 class TransitionConstants {

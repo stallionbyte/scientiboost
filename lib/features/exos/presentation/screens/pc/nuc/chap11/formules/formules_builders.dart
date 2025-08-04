@@ -53,6 +53,7 @@ Widget defautDeMasse({
   String Z = r" Z ",
   String mp = r" m_p ",
   String mn = r" m_n ",
+  bool wrap = false,
   String? masseNoyau,
   String? defautDeMasse,
   bool bold = false,
@@ -60,6 +61,7 @@ Widget defautDeMasse({
 }) {
   return buildTex2SvgInRichText(
     math: buildTex2SvgMathDefautDeMasse(
+      wrap: wrap,
       X: X,
       A: A,
       Z: Z,
