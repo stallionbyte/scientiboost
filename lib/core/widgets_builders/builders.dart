@@ -170,6 +170,7 @@ Widget tex({
   double offsetDx = 0,
   double offsetDy = 0,
   double scale = 1,
+  bool bold = false,
 }) {
   return RichText(
     text: TextSpan(
@@ -180,7 +181,7 @@ Widget tex({
       ),
       children: <InlineSpan>[
         buildTex2SvgInWidgetSpan(
-          math: math,
+          math: bold ? r"\mathbf{" + math + r"}" : math,
           offsetDx: offsetDx,
           offsetDy: offsetDy,
           scale: scale,

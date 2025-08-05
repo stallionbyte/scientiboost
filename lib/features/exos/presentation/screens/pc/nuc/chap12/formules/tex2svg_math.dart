@@ -483,3 +483,54 @@ String buildTex2SvgMathPeriodeAvecLambda({
   }
   return math.toString();
 }
+
+String buildTex2SvgMathActiviteAvecLambdaNoTemps({
+  required String A,
+  required String lambda,
+  // ignore: non_constant_identifier_names
+  required String No,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+  math.write(r" \begin{array}{l} ");
+  math.write(A);
+  math.write(r" = ");
+  math.write(lambda);
+  math.write(r" \cdot ");
+  math.write(No);
+  math.write(r" \cdot ");
+  math.write(r" \Large{e}^{ -");
+  math.write(r" ");
+  math.write(lambda);
+  math.write(r" ");
+  math.write(t);
+  math.write(r" } ");
+  math.write(r" \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
+String buildTex2SvgMathActiviteAvecLambdaN({
+  required String A,
+  required String lambda,
+  required String N,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+  math.write(r" \begin{array}{l} ");
+  math.write(A);
+  math.write(r" = ");
+  math.write(lambda);
+  math.write(r" \cdot ");
+  math.write(N);
+  math.write(r" \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}

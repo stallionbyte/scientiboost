@@ -161,6 +161,53 @@ Widget activite4({
   );
 }
 
+Widget activiteAvecLambdaNoTemps({
+  String A = r"A",
+  String lambda = r"\lambda",
+  // ignore: non_constant_identifier_names
+  String No = r"N_0",
+  String T = r"T",
+  String t = r"t",
+  bool developpe = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgMathActiviteAvecLambdaNoTemps(
+      A: A,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
+      No: No,
+      t: t,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget activiteAvecLambdaN({
+  String A = r"A",
+  String lambda = r"\lambda",
+  String N = r"N",
+  String T = r"T",
+  bool developpe = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgMathActiviteAvecLambdaN(
+      A: A,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
+      N: N,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
 Widget masseAvecAMNaLambda({
   String m = r"m",
   String A = r"A",

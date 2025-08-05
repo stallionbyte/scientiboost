@@ -103,7 +103,7 @@ String buildTex2SvgEquation13({
 
   math.write(buildTex2SvgMathNotationNoyau(X: X1, A: A1, Z: Z1));
 
-  math.write(r" \longrightarrow ");
+  math.write(r" \longrightarrow \ ");
 
   math.write(cof2);
 

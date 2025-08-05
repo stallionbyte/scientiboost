@@ -42,4 +42,9 @@ class PhyNucData {
     math: r"1 \ \text{MeV} = " + valueMevEnJTexMath + r" \ \text{J}",
     scale: 1.5,
   );
+
+  static const valueCurieEnBqTexMath = r"3,7 \cdot 10^{10}";
+  static final curieEnBq = tex(
+    math: r"1 \ \text{curie} = " + valueCurieEnBqTexMath + r"\ \text{Bq}",
+  );
 }

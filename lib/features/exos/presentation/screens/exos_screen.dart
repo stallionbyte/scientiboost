@@ -262,8 +262,15 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
           },
           body: Padding(
             padding: EdgeInsets.all(16.0),
-            child: Column(children: [
-                
+            child: Column(
+              children: [
+                EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 1',
+                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo1,
+                ),
+
+                EspConstants.esp40,
               ],
             ),
           ),
