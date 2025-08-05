@@ -20,7 +20,7 @@ class _Details1State extends ConsumerState<Details1> {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m( noyau ) = \\ m( atome ) - m( électrons ) \end{array}",
             scale: 4.0,
@@ -28,7 +28,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m( électrons ) = \\ nombre\ d'électrons \\ \times masse\ d'un\ électron \end{array}",
             scale: 4.0,
@@ -47,7 +47,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m( électrons ) = \\ Z \cdot masse\ d'un\ électron \end{array}",
             scale: 4.0,
@@ -59,7 +59,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m( noyau ) = \\ m( atome ) \\ - Z \cdot masse\ d'un\ électron \end{array}",
             scale: 4.0,

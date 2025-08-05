@@ -19,14 +19,11 @@ class _Details1State extends ConsumerState<Details1> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildTex2SvgInRichText(math: r"E_l = \Delta m \cdot c^2", scale: 2.0),
+          tex(math: r"E_l = \Delta m \cdot c^2", scale: 2.0),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\Delta m = 0,9146 \ \text{u}",
-            scale: 2.0,
-          ),
+          tex(math: r"\Delta m = 0,9146 \ \text{u}", scale: 2.0),
 
           EspConstants.esp40,
 
@@ -34,38 +31,32 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"1 \ \text{u} = 931,5 \ \text{MeV/c}^2",
-            scale: 2.0,
-          ),
+          tex(math: r"1 \ \text{u} = 931,5 \ \text{MeV/c}^2", scale: 2.0),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"\Rightarrow 1 \ \text{u} = \frac{931,5 \ \text{MeV}}{c^2}",
             scale: 2.0,
           ),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"\Rightarrow \frac{931,5 \ \text{MeV}}{c^2} = 1 \ \text{u}",
             scale: 2.0,
           ),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"\Rightarrow 931,5 \ \text{MeV} = 1 \ \text{u} \cdot c^2",
             scale: 2.0,
           ),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"1 \ \text{u} \cdot c^2 = 931,5 \ \text{MeV}",
-            scale: 2.0,
-          ),
+          tex(math: r"1 \ \text{u} \cdot c^2 = 931,5 \ \text{MeV}", scale: 2.0),
 
           EspConstants.esp40,
 
@@ -73,14 +64,11 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"E_l = 0,9146 \ \text{u} \cdot c^2",
-            scale: 2.0,
-          ),
+          tex(math: r"E_l = 0,9146 \ \text{u} \cdot c^2", scale: 2.0),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \  E_l = \\ 0,9146 \times 931,5 \ \text{MeV} \end{array}",
             scale: 3.0,

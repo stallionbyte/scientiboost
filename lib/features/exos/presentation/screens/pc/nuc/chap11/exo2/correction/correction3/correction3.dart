@@ -30,7 +30,7 @@ class _Correction3State extends ConsumerState<Correction3> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math:
                   r"\begin{array}{l} m(\text{atome}) = \\ m(\text{noyau}) + m(\text{électrons}) \end{array}",
               scale: 2.5,
@@ -44,7 +44,7 @@ class _Correction3State extends ConsumerState<Correction3> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(\text{atome de } ^{99}Tc) = \\ 1,644 \times 10^{-25} + 3,92 \times 10^{-29} \end{array}",
             scale: 2.5,

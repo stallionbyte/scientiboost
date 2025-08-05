@@ -19,10 +19,7 @@ class _Details2State extends ConsumerState<Details2> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildTex2SvgInRichText(
-            math: r"\Delta m = \frac{E_l}{931,5}",
-            scale: 2.5,
-          ),
+          tex(math: r"\Delta m = \frac{E_l}{931,5}", scale: 2.5),
 
           EspConstants.esp40,
 
@@ -30,7 +27,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(math: r"E_l = 1176 \ \text{MeV}", scale: 2.0),
+          tex(math: r"E_l = 1176 \ \text{MeV}", scale: 2.0),
 
           EspConstants.esp40,
 
@@ -38,7 +35,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Delta m = \frac{1176}{931,5} \\ = 1,262 \ \text{u} \end{array}",
             scale: 2.5,
@@ -50,14 +47,14 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp20,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"1 \ \text{u} = 1,66 \times 10^{-27} \ \text{kg}",
             scale: 2.0,
           ),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Delta m = 1,262 \times 1,66 \times 10^{-27} \\ = 2,095 \times 10^{-27} \ \text{kg} \end{array}",
             scale: 2.5,

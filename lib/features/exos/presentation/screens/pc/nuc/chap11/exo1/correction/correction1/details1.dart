@@ -23,16 +23,10 @@ class _Details1State extends ConsumerState<Details1> {
           relationEinstein(scale: 1.5),
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\Rightarrow \ m \cdot c^2 = E",
-            scale: 3.0,
-          ),
+          tex(math: r"\Rightarrow \ m \cdot c^2 = E", scale: 3.0),
 
           EspConstants.esp40,
-          buildTex2SvgInRichText(
-            math: r"\Rightarrow \ m = \frac{E}{c^2}",
-            scale: 3.0,
-          ),
+          tex(math: r"\Rightarrow \ m = \frac{E}{c^2}", scale: 3.0),
         ],
       ),
     );

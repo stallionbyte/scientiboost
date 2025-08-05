@@ -27,7 +27,7 @@ class _Correction3State extends ConsumerState<Correction3> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math:
                   r"\begin{array}{l} m(_{Z}^{A}X) = Z \cdot m_p \\ + (A-Z) \cdot m_n - \frac{E_l}{c^2} \end{array}",
               scale: 4.0,
@@ -45,7 +45,7 @@ class _Correction3State extends ConsumerState<Correction3> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{26}^{56}Fe) =\\ 26 \cdot " +
                 PhyNucData.valueMasseProtonEnU +

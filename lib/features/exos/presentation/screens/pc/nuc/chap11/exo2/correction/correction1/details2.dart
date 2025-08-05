@@ -19,7 +19,7 @@ class _Details2State extends ConsumerState<Details2> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{Z}^{A}X) = - \Delta m(_{Z}^{A}X) \\ + \left( Z \cdot m_p + (A-Z) \cdot m_n \right) \end{array}",
             scale: 3.0,
@@ -32,7 +32,7 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
 
           // Displaying the mass defect of Technetium-99
-          buildTex2SvgInRichText(
+          tex(
             math: r"\Delta m(_{43}^{99}Tc) = 8,61 \cdot 10^{-28} \, kg",
             scale: 3.0,
           ),
@@ -45,7 +45,7 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
 
           // Displaying the masses of proton, neutron, and the atomic mass unit value
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_p = 1,007276 \, u \\ m_n = 1,008665 \, u \\ 1 \, u = 1,66 \cdot 10^{-27} \, kg \end{array}",
             scale: 4.0,
@@ -59,7 +59,7 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
 
           // Displaying the converted masses
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_p = 1,007276 \cdot 1,66 \cdot 10^{-27} \, kg \\ m_n = 1,008665 \cdot 1,66 \cdot 10^{-27} \, kg \end{array}",
             scale: 3.0,
@@ -73,7 +73,7 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
 
           // Displaying the final calculation by substituting all the values
-          buildTex2SvgInRichText(
+          tex(
             // The calculation is broken into multiple lines using a LaTeX array for better readability.
             math:
                 r"\begin{array}{l} m(_{43}^{99}Tc) = - 8,61 \cdot 10^{-28} \\ + \left( \begin{array}{l} 43 \cdot 1,007276 \cdot 1,66 \cdot 10^{-27} \\ + (99-43) \cdot 1,008665 \cdot 1,66 \cdot 10^{-27} \end{array} \right) \end{array}",

@@ -37,9 +37,7 @@ class _Correction3State extends ConsumerState<Correction3> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"E = 15,99 \cdot" + PhyNucData.valueUEnMeVC2,
-          ),
+          tex(math: r"E = 15,99 \cdot" + PhyNucData.valueUEnMeVC2),
 
           EspConstants.esp40,
 

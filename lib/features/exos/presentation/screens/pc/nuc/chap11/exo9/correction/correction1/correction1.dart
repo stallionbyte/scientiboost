@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap11/formules/formules_builders.dart';
+
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
@@ -26,23 +26,8 @@ class _Correction1State extends ConsumerState<Correction1> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           EspConstants.esp40,
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
 
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(
-                  text: "Pour ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-
-                buildTex2SvgInWidgetSpan(math: r"\mathbf{_{\ 90}^{232}Th}"),
-              ],
-            ),
-          ),
+          transition(transition: "Pour le fer-56"),
 
           EspConstants.esp40,
 
@@ -57,16 +42,10 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           EspConstants.esp40,
 
-          energieDeLiaisonParNucleon(
-            wrap: true,
+          tex(
+            math:
+                r"\begin{array}{l} E_{l/nuc} = \\ \frac{\begin{array}{l} [26 \cdot 1,007276 \cdot 931,5 \\ + (56-26) \cdot 1,008665 \cdot 931,5 \\ - 52093,56]\  \end{array}}{56} \end{array}",
             scale: 7.0,
-            X: r"Th",
-            Z: r"\ 90",
-            A: r"232",
-            mp: PhyNucData.valueMasseProtonEnU,
-            mn: PhyNucData.valueMasseNeutronEnU,
-            masseNoyau: r"232,03805",
-            uEnMeVC2: PhyNucData.valueUEnMeVC2,
           ),
 
           EspConstants.esp40,
@@ -78,30 +57,14 @@ class _Correction1State extends ConsumerState<Correction1> {
           BordersWrapper(
             wrapped: result(
               leftTex2SvgMath: r"E_{l/nuc}",
-              valueTex2SvgMath: r"7,41",
+              valueTex2SvgMath: r"8,72",
               unitTex2SvgMath: r"MeV",
             ),
           ),
 
-          EspConstants.esp40,
+          EspConstants.esp80,
 
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: ExoConstants.richTextFontSize,
-
-                color: Colors.black,
-              ),
-              children: <InlineSpan>[
-                const TextSpan(
-                  text: "Pour ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-
-                buildTex2SvgInWidgetSpan(math: r"\mathbf{_{\ 92}^{235}U}"),
-              ],
-            ),
-          ),
+          transition(transition: "Pour le carbone-12"),
 
           EspConstants.esp40,
 
@@ -122,15 +85,50 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           tex(
             math:
-                r"\begin{array}{l} E_{l/nuc} = \frac{1,911 \cdot" +
+                r"\begin{array}{l} E_{l/nuc} = \frac{0,09892 \cdot" +
                 PhyNucData.valueUEnMeVC2 +
-                r"}{235} \end{array}",
+                r"}{12} \end{array}",
             scale: 3.0,
           ),
 
           EspConstants.esp40,
 
           Details2(),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: result(
+              leftTex2SvgMath: r"E_{l/nuc}",
+              valueTex2SvgMath: r"7,67",
+              unitTex2SvgMath: r"MeV",
+            ),
+          ),
+
+          EspConstants.esp80,
+
+          transition(transition: "Pour l'uranium-238"),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: tex(
+              math: r"\begin{array}{l} E_{l/nuc} = \frac{E_l}{A} \end{array}",
+              scale: 3.0,
+            ),
+            color: Colors.black,
+          ),
+
+          EspConstants.esp40,
+
+          TransitionConstants.an,
+
+          EspConstants.esp40,
+
+          tex(
+            math: r"\begin{array}{l} E_{l/nuc} = \frac{1802}{238} \end{array}",
+            scale: 3.0,
+          ),
 
           EspConstants.esp40,
 

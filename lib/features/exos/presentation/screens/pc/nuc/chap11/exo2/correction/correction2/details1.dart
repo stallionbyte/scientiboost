@@ -26,7 +26,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(\text{électrons}) = \\ nombre\ des\ électrons \times m_e \end{array}",
             scale: 2.5,
@@ -38,7 +38,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} nombre\ des\ électrons = \\ nombre\ des\ protons \end{array}",
             scale: 2.5,
@@ -46,7 +46,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"\begin{array}{l} nombre\ des\ électrons = Z \end{array}",
             scale: 2.5,
           ),
@@ -57,7 +57,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(\text{électrons}) = \\ Z \times m_e \end{array}",
             scale: 2.5,

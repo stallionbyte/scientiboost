@@ -16,7 +16,7 @@ class Donnees extends ConsumerWidget {
         TransitionConstants.donnees,
         EspConstants.esp40,
 
-        buildTex2SvgInRichText(math: r"m(_{\ 8}^{16}X) = 15,99\ u"),
+        tex(math: r"m(_{\ 8}^{16}X) = 15,99\ u"),
 
         EspConstants.esp40,
 

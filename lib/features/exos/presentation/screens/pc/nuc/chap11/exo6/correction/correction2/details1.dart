@@ -33,7 +33,7 @@ class _Details1State extends ConsumerState<Details1> {
           EspConstants.esp40,
           TransitionConstants.dou,
           EspConstants.esp40,
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_p(proton) = \\ " +
                 PhyNucData.valueMasseProtonEnU +
@@ -43,7 +43,7 @@ class _Details1State extends ConsumerState<Details1> {
             scale: 3.0,
           ),
           EspConstants.esp40,
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_n(neutron) = \\ " +
                 PhyNucData.valueMasseNeutronEnU +
@@ -55,10 +55,7 @@ class _Details1State extends ConsumerState<Details1> {
           EspConstants.esp40,
           TransitionConstants.deuxiemement,
           EspConstants.esp40,
-          buildTex2SvgInRichText(
-            math: r"m(_{60}^{144}Nd) = 134032,65\ MeV/c^2",
-            scale: 2.0,
-          ),
+          tex(math: r"m(_{60}^{144}Nd) = 134032,65\ MeV/c^2", scale: 2.0),
           EspConstants.esp40,
           TransitionConstants.ainsi,
           EspConstants.esp40,

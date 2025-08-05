@@ -25,7 +25,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(math: r"m = 15,99\ u"),
+          tex(math: r"m = 15,99\ u"),
 
           EspConstants.esp40,
 
@@ -37,13 +37,13 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"m = 15,99 \cdot " + PhyNucData.valueUEnMeVC2 + r"\ MeV/c^2",
           ),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"m = 15,99 \cdot " +
                 PhyNucData.valueUEnMeVC2 +
@@ -58,7 +58,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"E = 15,99 \cdot" +
                 PhyNucData.valueUEnMeVC2 +
@@ -69,7 +69,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\Rightarrow \ E = 15,99 \cdot" +
                 PhyNucData.valueUEnMeVC2 +
@@ -80,9 +80,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"E = 15,99 \cdot" + PhyNucData.valueUEnMeVC2 + r"\ MeV",
-          ),
+          tex(math: r"E = 15,99 \cdot" + PhyNucData.valueUEnMeVC2 + r"\ MeV"),
         ],
       ),
     );

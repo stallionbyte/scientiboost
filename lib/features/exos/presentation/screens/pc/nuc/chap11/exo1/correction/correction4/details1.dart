@@ -45,7 +45,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_p = \\ " +
                 PhyNucData.valueMasseProtonEnU +
@@ -55,7 +55,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_n = \\ " +
                 PhyNucData.valueMasseNeutronEnU +
@@ -69,7 +69,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"m\left(_{92}^{235}U\right) = 3,899 \cdot 10^{-25} \, kg",
             scale: 1.0,
           ),

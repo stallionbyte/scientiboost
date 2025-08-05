@@ -27,25 +27,25 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
           tex(
             math:
-                r"\begin{array}{l} \text{Nucléide : } _{92}^{235}U \\ Z = 92 \text{ (protons)} \\ A = 235 \text{ (nucléons)} \end{array}",
+                r"\begin{array}{l} \text{Nucléide : } ^{12}C \\ A = 12 \text{ (nucléons)} \end{array}",
             scale: 4.0,
           ),
           EspConstants.esp40,
           tex(
             math:
-                r"\begin{array}{l} \Rightarrow \ E_{l/nuc} = \frac{\Delta m \cdot c^2}{235} \end{array}",
+                r"\begin{array}{l} \Rightarrow \ E_{l/nuc} = \frac{\Delta m \cdot c^2}{12} \end{array}",
             scale: 3.0,
           ),
           EspConstants.esp40,
           tex(
             math:
-                r"\begin{array}{l} \Delta m(_{92}^{235}U) = 1,911 \text{ u} \end{array}",
+                r"\begin{array}{l} \Delta m(^{12}C) = 0,09892 \text{ u} \end{array}",
             scale: 5.0,
           ),
           EspConstants.esp40,
           tex(
             math:
-                r"\begin{array}{l} \Rightarrow \ E_{l/nuc} = \frac{1,911 \text{ u} \cdot c^2}{235} \end{array}",
+                r"\begin{array}{l} \Rightarrow \ E_{l/nuc} = \frac{0,09892 \text{ u} \cdot c^2}{12} \end{array}",
             scale: 7.0,
           ),
           EspConstants.esp40,
@@ -68,7 +68,7 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
           tex(
             math:
-                r"\begin{array}{l} \Rightarrow \ E_{l/nuc} =\\ \frac{1,911 \cdot 931,5 \text{ MeV}}{235} \end{array}",
+                r"\begin{array}{l} \Rightarrow \ E_{l/nuc} =\\ \frac{0,09892 \cdot 931,5 \text{ MeV}}{12} \end{array}",
             scale: 5.0,
           ),
         ],

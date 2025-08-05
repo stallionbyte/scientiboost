@@ -28,10 +28,7 @@ class Donnees extends ConsumerWidget {
 
         EspConstants.esp20,
 
-        buildTex2SvgInRichText(
-          math: r"E_l(_{56}^{138}Ba) = 1176 \ \text{MeV}",
-          scale: 1.0,
-        ),
+        tex(math: r"E_l(_{56}^{138}Ba) = 1176 \ \text{MeV}", scale: 1.0),
 
         EspConstants.esp20,
 

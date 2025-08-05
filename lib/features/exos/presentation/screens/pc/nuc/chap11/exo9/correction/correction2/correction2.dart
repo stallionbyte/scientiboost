@@ -20,20 +20,16 @@ class _Correction2State extends ConsumerState<Correction2> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           EspConstants.esp40,
-
-          tex(math: r"E_{l/nuc}(_{\ 90}^{232}Th) = 7,41\ MeV", scale: 2.0),
-
+          tex(math: r"E_{l/nuc}(fer-56) = 8,72\ MeV"),
           EspConstants.esp40,
-
-          tex(math: r"E_{l/nuc}(_{\ 92}^{235}U) = 7,57\ MeV", scale: 2.0),
-
+          tex(math: r"E_{l/nuc}(carbone-12) = 7,67\ MeV"),
           EspConstants.esp40,
-
+          tex(math: r"E_{l/nuc}(uranium-238) = 7,57\ MeV"),
+          EspConstants.esp40,
           sbTxt(
             txt:
-                "7,57 > 7,41 donc le noyau d'uranium-235 et plus stable que le noyau de thorium-232",
+                "8,72 > 7,67 > 7,57 donc le fer-56 est plus stable que le carbone-12 qui est plus stable que l'uranium-238",
           ),
-
           EspConstants.esp40,
         ],
       ),

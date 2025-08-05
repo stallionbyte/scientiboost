@@ -27,7 +27,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math:
                   r"\begin{array}{l} m(\text{électrons}) = \\ Z \times m_e \end{array}",
               scale: 2.5,
@@ -45,7 +45,7 @@ class _Correction2State extends ConsumerState<Correction2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(\text{électrons}) = \\ 43 \times " +
                 PhyNucData.valueMasseElectronEnU +

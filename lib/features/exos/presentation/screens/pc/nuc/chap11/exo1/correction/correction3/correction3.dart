@@ -25,7 +25,7 @@ class _Correction3State extends ConsumerState<Correction3> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math:
                   r"\begin{array}{l} m(noyau) = \\ 99\% \cdot m(atome) \end{array}",
               scale: 2.5,

@@ -48,3 +48,4 @@ app.*.map.json
 lib/supabase_config.dart
 gen_exo.dart
 gen_exo_empty.dart
+prompts.txt

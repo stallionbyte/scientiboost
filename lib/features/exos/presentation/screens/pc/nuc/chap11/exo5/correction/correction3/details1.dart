@@ -24,7 +24,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \ \frac{E_l}{c^2} = Z \cdot m_p \\ + (A-Z) \cdot m_n \\ - m(_{Z}^{A}X) \end{array}",
             scale: 5.0,
@@ -32,7 +32,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \  \frac{E_l}{c^2} + m(_{Z}^{A}X) = Z \cdot m_p \\ + (A-Z) \cdot m_n \end{array}",
             scale: 3.0,
@@ -40,7 +40,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \  m(_{Z}^{A}X) = Z \cdot m_p \\ + (A-Z) \cdot m_n - \frac{E_l}{c^2} \end{array}",
             scale: 3.0,

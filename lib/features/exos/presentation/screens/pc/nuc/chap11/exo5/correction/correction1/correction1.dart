@@ -23,7 +23,7 @@ class _Correction1State extends ConsumerState<Correction1> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(math: r"E_l = A \cdot E_{l/nuc}"),
+            wrapped: tex(math: r"E_l = A \cdot E_{l/nuc}"),
             color: Colors.black,
           ),
 
@@ -33,7 +33,7 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(math: r"E_l = 56 \cdot 1,28 \cdot 10^{-12}"),
+          tex(math: r"E_l = 56 \cdot 1,28 \cdot 10^{-12}"),
 
           EspConstants.esp40,
 

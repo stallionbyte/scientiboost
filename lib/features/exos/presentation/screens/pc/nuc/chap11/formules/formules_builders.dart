@@ -12,7 +12,7 @@ Widget relationEinstein({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathRelationEinstein(
       E: E,
       m: m,
@@ -34,7 +34,7 @@ Widget energieDeLiaisonAvecDefautDeMase({
   bool entraineQue = false,
   double scale = 1.2,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathEnergieDeLiaisonAvecDefautDeMase(
       el: el,
       c: c,
@@ -59,7 +59,7 @@ Widget defautDeMasse({
   bool bold = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathDefautDeMasse(
       wrap: wrap,
       X: X,
@@ -89,7 +89,7 @@ Widget energieDeLiaisonParNucleon({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathEnergieDeLiaisonParNucleon(
       wrap: wrap,
       eln: eln,
@@ -120,7 +120,7 @@ Widget energieDeLiaison({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathEnergieDeLiaison(
       el: el,
       X: X,

@@ -21,7 +21,7 @@ class _Correction4State extends ConsumerState<Correction4> {
         children: [
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \frac{m(\text{électrons})}{m(\text{atome})} = \\ \frac{3,92 \times 10^{-29}}{1,644 \times 10^{-25}} \end{array}",
             scale: 5.0,
@@ -29,7 +29,7 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \ \frac{m(\text{électrons})}{m(\text{atome})} = \\ 2,38 \times 10^{-4} \end{array}",
             scale: 5.0,
@@ -41,7 +41,7 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \ \frac{m(\text{électrons})}{m(\text{atome})} = \\ 2,38 \times 10^{-4} \times 100\% \end{array}",
             scale: 5.0,
@@ -49,7 +49,7 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \ \frac{m(\text{électrons})}{m(\text{atome})} = 0,024\% \end{array}",
             scale: 5.0,

@@ -29,7 +29,7 @@ class _Correction1State extends ConsumerState<Correction1> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math:
                   r"\begin{array}{l} m(_{Z}^{A}X) = - \Delta m(_{Z}^{A}X) \\ + \left( Z \cdot m_p + (A-Z) \cdot m_n \right) \end{array}",
               scale: 3.0,
@@ -47,7 +47,7 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{43}^{99}Tc) = - 8,61 \times 10^{-28} \\ + \left( \begin{array}{l} 43 \cdot " +
                 PhyNucData.valueMasseProtonEnU +

@@ -21,7 +21,7 @@ class _Details2State extends ConsumerState<Details2> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{Z}^{A}X) = Z \cdot m_p \\ + (A-Z) \cdot m_n \\ - \frac{A \cdot E_{l/nuc}}{c^2} \end{array}",
             scale: 5.0,
@@ -37,7 +37,7 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
           TransitionConstants.dou,
           EspConstants.esp40,
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_p(proton) = \\ " +
                 PhyNucData.valueMasseProtonEnU +
@@ -47,7 +47,7 @@ class _Details2State extends ConsumerState<Details2> {
             scale: 3.0,
           ),
           EspConstants.esp40,
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_n(neutron) = \\ " +
                 PhyNucData.valueMasseNeutronEnU +
@@ -59,19 +59,19 @@ class _Details2State extends ConsumerState<Details2> {
           EspConstants.esp40,
           TransitionConstants.deuxiemement,
           EspConstants.esp40,
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\frac{A \cdot E_{l/nuc}}{c^2} = \frac{144 \times 8,25\ MeV}{c^2} ",
             scale: 2.0,
           ),
           EspConstants.esp40,
-          buildTex2SvgInRichText(
+          tex(
             math: r"\frac{A \cdot E_{l/nuc}}{c^2} = 144 \times 8,25\ MeV/c^2 ",
             scale: 2.0,
           ),
           EspConstants.esp40,
           TransitionConstants.ainsi,
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{60}^{144}Nd) =\\ 60 \cdot " +
                 PhyNucData.valueMasseProtonEnU +

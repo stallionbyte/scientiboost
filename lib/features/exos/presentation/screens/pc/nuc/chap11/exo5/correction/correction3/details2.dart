@@ -22,7 +22,7 @@ class _Details2State extends ConsumerState<Details2> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{Z}^{A}X) = Z \cdot m_p \\ + (A-Z) \cdot m_n - \frac{E_l}{c^2} \end{array}",
             scale: 4.0,
@@ -50,7 +50,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_p(proton) = \\ " +
                 PhyNucData.valueMasseProtonEnU +
@@ -62,7 +62,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_n(neutron) = \\ " +
                 PhyNucData.valueMasseNeutronEnU +
@@ -78,23 +78,17 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\frac{E_l}{c^2} = \frac{448\ MeV}{c^2} ",
-            scale: 2.0,
-          ),
+          tex(math: r"\frac{E_l}{c^2} = \frac{448\ MeV}{c^2} ", scale: 2.0),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\frac{E_l}{c^2} = 448\ MeV/c^2 ",
-            scale: 2.0,
-          ),
+          tex(math: r"\frac{E_l}{c^2} = 448\ MeV/c^2 ", scale: 2.0),
 
           EspConstants.esp40,
 
           TransitionConstants.ainsi,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(_{26}^{56}Fe) =\\ 26 \cdot " +
                 PhyNucData.valueMasseProtonEnU +

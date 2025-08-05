@@ -165,7 +165,7 @@ WidgetSpan buildTex2SvgInWidgetSpan({
   );
 }
 
-Widget buildTex2SvgInRichText({
+Widget tex({
   required String math,
   double offsetDx = 0,
   double offsetDy = 0,
@@ -201,7 +201,7 @@ Widget regleDe3({
   bool wrap = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathRegleDe3(
       part1: part1,
       part2: part2,

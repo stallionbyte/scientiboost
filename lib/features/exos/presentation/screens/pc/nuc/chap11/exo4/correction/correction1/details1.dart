@@ -24,17 +24,11 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\Rightarrow \Delta m \cdot c^2 = E_l",
-            scale: 2.0,
-          ),
+          tex(math: r"\Rightarrow \Delta m \cdot c^2 = E_l", scale: 2.0),
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\Rightarrow \Delta m = \frac{E_l}{c^2}",
-            scale: 3.0,
-          ),
+          tex(math: r"\Rightarrow \Delta m = \frac{E_l}{c^2}", scale: 3.0),
         ],
       ),
     );

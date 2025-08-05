@@ -36,7 +36,7 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Delta m(_{42}^{98}Mo) = \\ \left[ \begin{array}{l} 42 \times 1,007276 \\ + 56 \times 1,008665 \end{array} \right] \\ - 97,905 \end{array}",
             scale: 6.0,

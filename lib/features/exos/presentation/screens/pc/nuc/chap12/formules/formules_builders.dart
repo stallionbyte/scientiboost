@@ -12,7 +12,7 @@ Widget nombreDeNoyauAvecMasse({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathNombreDeNoyauAvecMasse(
       N: N,
       m: m,
@@ -32,7 +32,7 @@ Widget constanteRadioactivite({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathConstanteRadioactivite(
       constanteRadioActive: constanteRadioActive,
       T: T,
@@ -55,7 +55,7 @@ Widget activite({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathLoiDeDecroissanceLike(
       X: A,
       Xo: Ao,
@@ -78,7 +78,7 @@ Widget tempsAvecLambdaAEtAo({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathTempsAvecLambdaXEtXo(
       A: A,
       Ao: Ao,
@@ -99,7 +99,7 @@ Widget activite2({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathActivite2(
       A: A,
       lambda: lambda,
@@ -122,7 +122,7 @@ Widget activite3({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathActivite3(
       A: A,
       lambda: lambda,
@@ -147,7 +147,7 @@ Widget activite4({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathActivite4(
       A: A,
       T: T,
@@ -172,7 +172,7 @@ Widget masseAvecAMNaLambda({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathMasseAvecAMNaLambda(
       A: A,
       M: M,
@@ -196,7 +196,7 @@ Widget masseAvecAMNaTln2({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathMasseAvecAMNaTln2(
       A: A,
       M: M,
@@ -238,7 +238,7 @@ Widget perteDeMasseReaction12({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathPerteDeMasseReaction12(
       A1: A1,
       Z1: Z1,
@@ -298,7 +298,7 @@ Widget energieReaction12({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathEnergieReaction12(
       A1: A1,
       Z1: Z1,
@@ -336,7 +336,7 @@ Widget loiDeDecroissance({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathLoiDeDecroissanceLike(
       X: N,
       Xo: No,
@@ -356,7 +356,7 @@ Widget periodeAvecLambda({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgMathPeriodeAvecLambda(
       T: T,
       lambda: lambda,

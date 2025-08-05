@@ -21,7 +21,7 @@ class _Details2State extends ConsumerState<Details2> {
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(\text{électrons}) = \\ Z \times m_e \end{array}",
             scale: 2.5,
@@ -33,7 +33,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(math: r"\begin{array}{l} Z = 43 \end{array}"),
+          tex(math: r"\begin{array}{l} Z = 43 \end{array}"),
 
           EspConstants.esp40,
 
@@ -53,7 +53,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m_e = " +
                 PhyNucData.valueMasseElectronEnU +
@@ -69,7 +69,7 @@ class _Details2State extends ConsumerState<Details2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} m(\text{électrons}) = \\ 43 \times " +
                 PhyNucData.valueMasseElectronEnU +

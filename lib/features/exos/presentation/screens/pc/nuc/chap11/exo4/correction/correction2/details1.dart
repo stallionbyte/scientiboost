@@ -24,7 +24,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \ (\ Z \cdot m_p + (A-Z) \cdot m_n \ ) \\ - m(_{Z}^{A}X) = \Delta m \end{array}",
             scale: 3.0,
@@ -32,7 +32,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \  - m(_{Z}^{A}X) = \Delta m \\ - (\ Z \cdot m_p + (A-Z) \cdot m_n \ ) \end{array}",
             scale: 3.0,
@@ -40,7 +40,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \  m(_{Z}^{A}X) = - \Delta m \\ + (\ Z \cdot m_p + (A-Z) \cdot m_n \ ) \end{array}",
             scale: 3.0,
@@ -48,7 +48,7 @@ class _Details1State extends ConsumerState<Details1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 r"\begin{array}{l} \Rightarrow \  m(_{Z}^{A}X) = \\ (\ Z \cdot m_p + (A-Z) \cdot m_n \ ) \\ - \Delta m \end{array}",
             scale: 4.0,

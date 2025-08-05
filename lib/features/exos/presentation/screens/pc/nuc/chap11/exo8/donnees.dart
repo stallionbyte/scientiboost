@@ -21,13 +21,13 @@ class Donnees extends ConsumerWidget {
         EspConstants.esp40,
         PhyNucData.uEnMeVC2,
         EspConstants.esp40,
-        buildTex2SvgInRichText(
+        tex(
           math:
               r"\begin{array}{l} m( _{\ 90}^{232}Th ) = 232,03805\ u \end{array}",
           scale: 2.5,
         ),
         EspConstants.esp40,
-        buildTex2SvgInRichText(
+        tex(
           math:
               r"\begin{array}{l} \Delta m( _{\ 92}^{235}U ) = 1,911\ u \end{array}",
           scale: 1.5,

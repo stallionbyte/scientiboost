@@ -23,7 +23,7 @@ class _Correction3State extends ConsumerState<Correction3> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math: r"\begin{array}{l} E_{l/nuc} = \frac{E_l}{A} \end{array}",
               scale: 2.5,
             ),
@@ -38,7 +38,7 @@ class _Correction3State extends ConsumerState<Correction3> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math: r"\begin{array}{l} E_{l/nuc} = \frac{825,6}{98} \end{array}",
             scale: 2.5,
           ),

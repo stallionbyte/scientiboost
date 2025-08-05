@@ -37,7 +37,7 @@ Widget betaPlus({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgEquation13(
       A1: A1,
       Z1: Z1,
@@ -99,7 +99,7 @@ Widget betaMoins({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgEquation13(
       A1: A1,
       Z1: Z1,
@@ -154,7 +154,7 @@ Widget alpha({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgEquation12(
       A1: A1,
       Z1: Z1,
@@ -208,7 +208,7 @@ Widget reaction13({
   bool entraineQue = false,
   double scale = 1.0,
 }) {
-  return buildTex2SvgInRichText(
+  return tex(
     math: buildTex2SvgEquation13(
       A1: A1,
       Z1: Z1,

@@ -26,7 +26,7 @@ class _Correction2State extends ConsumerState<Correction2> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
+            wrapped: tex(
               math:
                   r"\begin{array}{l} m( noyau ) = \\ m( atome ) \\ - Z \cdot masse\ d'un\ électron \end{array}",
               scale: 4.0,
@@ -44,7 +44,7 @@ class _Correction2State extends ConsumerState<Correction2> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
+          tex(
             math:
                 // ignore: prefer_adjacent_string_concatenation
                 r"\begin{array}{l} m(\ noyau \ ) = \\" +

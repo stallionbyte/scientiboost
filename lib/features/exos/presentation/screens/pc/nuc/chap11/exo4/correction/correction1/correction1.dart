@@ -28,10 +28,7 @@ class _Correction1State extends ConsumerState<Correction1> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: buildTex2SvgInRichText(
-              math: r"\Delta m = \frac{E_l}{c^2}",
-              scale: 3.0,
-            ),
+            wrapped: tex(math: r"\Delta m = \frac{E_l}{c^2}", scale: 3.0),
             color: Colors.black,
           ),
 
@@ -45,10 +42,7 @@ class _Correction1State extends ConsumerState<Correction1> {
 
           EspConstants.esp40,
 
-          buildTex2SvgInRichText(
-            math: r"\Delta m = \frac{1176\ MeV}{c^2}",
-            scale: 2.5,
-          ),
+          tex(math: r"\Delta m = \frac{1176\ MeV}{c^2}", scale: 2.5),
 
           EspConstants.esp40,
 
