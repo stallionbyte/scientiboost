@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap12/formules/formules_builders.dart';
 
 class Details1 extends ConsumerStatefulWidget {
   const Details1({super.key});
@@ -21,11 +22,19 @@ class _Details1State extends ConsumerState<Details1> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Raisonnement détaillé : Isoler le temps t de 10% A₀ = A₀·e^(-λt)
+          activite(scale: 2.0),
+          EspConstants.esp40,
+
+          tex(
+            math: r"\begin{array}{l} A = 10\% \cdot A_0 \end{array}",
+            scale: 1.0,
+          ),
+          EspConstants.esp40,
 
           // Étape 1 : Expression de départ
           tex(
             math:
-                r"\begin{array}{l} 10\% \cdot A_0 = A_0 \cdot e^{-\lambda t} \end{array}",
+                r"\begin{array}{l} \Rightarrow \ 10\% \cdot A_0 = A_0 \cdot e^{-\lambda t} \end{array}",
             scale: 3.0,
           ),
           EspConstants.esp40,

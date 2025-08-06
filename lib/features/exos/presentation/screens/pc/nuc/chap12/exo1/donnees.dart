@@ -34,20 +34,7 @@ class Donnees extends ConsumerWidget {
 
         EspConstants.esp40,
 
-        RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: ExoConstants.richTextFontSize,
-
-              color: Colors.black,
-            ),
-            children: <InlineSpan>[
-              const TextSpan(text: "azote-14: "),
-
-              buildTex2SvgInWidgetSpan(math: r"^{14}N"),
-            ],
-          ),
-        ),
+        sbTxt(txt: "Symbole chimique de l'aozte: N"),
       ],
     );
   }

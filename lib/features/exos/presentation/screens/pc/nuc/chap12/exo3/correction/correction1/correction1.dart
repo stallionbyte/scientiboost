@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
+import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/reactions/reactions_builders.dart';
 
 import 'details1.dart';
@@ -25,13 +25,13 @@ class _Correction1State extends ConsumerState<Correction1> {
           EspConstants.esp40,
 
           BordersWrapper(
-            wrapped: betaMoins(
-              X1: r"C",
-              Z1: r"\ 6",
-              A1: r"14",
-              X2: r"N",
-              Z2: r"\ 7",
-              A2: r"14",
+            wrapped: alpha(
+              X1: r"Ra",
+              Z1: r"\ 86",
+              A1: r"222",
+              X2: r"Po",
+              Z2: r"84",
+              A2: r"218",
               scale: 2.0,
             ),
           ),
