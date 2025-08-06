@@ -131,6 +131,7 @@ Widget betaMoins({
 Widget alpha({
   // ignore: non_constant_identifier_names
   String X1 = r"X",
+  String cof1 = r"",
   // ignore: non_constant_identifier_names
   String Z1 = r"Z",
   // ignore: non_constant_identifier_names
@@ -138,6 +139,7 @@ Widget alpha({
 
   // ignore: non_constant_identifier_names
   String X2 = r"X",
+  String cof2 = r"",
   // ignore: non_constant_identifier_names
   String Z2 = r"Z",
   // ignore: non_constant_identifier_names
@@ -145,6 +147,7 @@ Widget alpha({
 
   // ignore: non_constant_identifier_names
   String X3 = r"He",
+  String cof3 = r"",
   // ignore: non_constant_identifier_names
   String Z3 = r"2",
   // ignore: non_constant_identifier_names
@@ -159,14 +162,17 @@ Widget alpha({
       A1: A1,
       Z1: Z1,
       X1: X1,
+      cof1: cof1,
 
       A2: A2,
       Z2: Z2,
       X2: X2,
+      cof2: cof2,
 
       A3: A3,
       Z3: Z3,
       X3: X3,
+      cof3: cof3,
 
       entraineQue: entraineQue,
       bold: bold,
@@ -229,6 +235,57 @@ Widget reaction13({
       Z4: Z4,
       X4: X4,
       cof4: cof4,
+
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
+Widget reaction12({
+  // ignore: non_constant_identifier_names
+  String X1 = r"X",
+  String cof1 = r"",
+  // ignore: non_constant_identifier_names
+  String Z1 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A1 = r"A",
+  // ignore: non_constant_identifier_names
+  String X2 = r"X",
+  String cof2 = r"",
+  // ignore: non_constant_identifier_names
+  String Z2 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A2 = r"A",
+  // ignore: non_constant_identifier_names
+  String X3 = r"X",
+  String cof3 = r"",
+  // ignore: non_constant_identifier_names
+  String Z3 = r"Z",
+  // ignore: non_constant_identifier_names
+  String A3 = r"A",
+
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgEquation12(
+      A1: A1,
+      Z1: Z1,
+      X1: X1,
+      cof1: cof1,
+
+      A2: A2,
+      Z2: Z2,
+      X2: X2,
+      cof2: cof2,
+
+      A3: A3,
+      Z3: Z3,
+      X3: X3,
+      cof3: cof3,
 
       entraineQue: entraineQue,
       bold: bold,
