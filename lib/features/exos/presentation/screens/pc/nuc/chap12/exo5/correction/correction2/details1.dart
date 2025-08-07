@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scientiboost/core/common_widgets/details_handler.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/chap12/formules/formules_builders.dart';
 
 class Details1 extends ConsumerStatefulWidget {
   const Details1({super.key});
@@ -20,6 +21,8 @@ class _Details1State extends ConsumerState<Details1> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Raisonnement détaillé : Isoler le temps t de m/m₀ = e^(-ln2/T·t)
+          loiDeDecroissanceMasse(scale: 2.0, developpe: true),
+          EspConstants.esp80,
 
           // Étape 1 : Formule de départ
           tex(

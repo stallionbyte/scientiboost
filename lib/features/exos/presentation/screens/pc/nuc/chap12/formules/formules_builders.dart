@@ -203,6 +203,9 @@ Widget activiteAvecLambdaNoTemps({
   String No = r"N_0",
   String T = r"T",
   String t = r"t",
+  bool wrap = false,
+  bool wrap2 = false,
+  bool wrap3 = false,
   bool developpe = false,
   bool bold = false,
   bool entraineQue = false,
@@ -210,6 +213,9 @@ Widget activiteAvecLambdaNoTemps({
 }) {
   return tex(
     math: buildTex2SvgMathActiviteAvecLambdaNoTemps(
+      wrap: wrap,
+      wrap2: wrap2,
+      wrap3: wrap3,
       A: A,
       lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
       No: No,
@@ -413,8 +419,10 @@ Widget loiDeDecroissance({
   // ignore: non_constant_identifier_names
   String No = r"N_0",
   String lambda = r"\lambda",
+  String T = r"T",
   String t = r"t",
   bool bold = false,
+  bool developpe = false,
   bool entraineQue = false,
   double scale = 1.0,
 }) {
@@ -422,7 +430,32 @@ Widget loiDeDecroissance({
     math: buildTex2SvgMathLoiDeDecroissanceLike(
       X: N,
       Xo: No,
-      lambda: lambda,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
+      t: t,
+      bold: bold,
+      entraineQue: entraineQue,
+    ),
+    scale: scale,
+  );
+}
+
+Widget loiDeDecroissanceMasse({
+  String m = r"m",
+  // ignore: non_constant_identifier_names
+  String mo = r"m_0",
+  String lambda = r"\lambda",
+  String t = r"t",
+  String T = r"T",
+  bool bold = false,
+  bool entraineQue = false,
+  bool developpe = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgMathLoiDeDecroissanceLike(
+      X: m,
+      Xo: mo,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
       t: t,
       bold: bold,
       entraineQue: entraineQue,

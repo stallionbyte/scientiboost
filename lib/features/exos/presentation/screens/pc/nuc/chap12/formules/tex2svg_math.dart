@@ -542,21 +542,32 @@ String buildTex2SvgMathActiviteAvecLambdaNoTemps({
   required String t,
   bool bold = false,
   bool entraineQue = false,
+  bool wrap = false,
+  bool wrap2 = false,
+  bool wrap3 = false,
 }) {
   StringBuffer math = StringBuffer();
+  final wrapCode = wrap ? r" \\ " : r"";
+  final wrap2Code = wrap2 ? r" \\ " : r"";
+  final wrap3Code = wrap3 ? r" \\ " : r"";
+
   if (bold) math.write(r" \mathbf{ ");
   if (entraineQue) math.write(r" \Rightarrow \ ");
+
   math.write(r" \begin{array}{l} ");
   math.write(A);
   math.write(r" = ");
+  math.write(wrapCode);
   math.write(lambda);
   math.write(r" \cdot ");
   math.write(No);
+  math.write(wrap2Code);
   math.write(r" \cdot ");
   math.write(r" \Large{e}^{ -");
   math.write(r" ");
   math.write(lambda);
   math.write(r" ");
+  math.write(wrap3Code);
   math.write(t);
   math.write(r" } ");
   math.write(r" \end{array} ");
