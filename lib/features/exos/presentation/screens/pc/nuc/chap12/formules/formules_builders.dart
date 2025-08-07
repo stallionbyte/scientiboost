@@ -161,6 +161,41 @@ Widget activite4({
   );
 }
 
+Widget activiteAvecTmoMNaTemps({
+  String A = r"A",
+  String T = r"T",
+  String mo = r"m_0",
+  String M = r"M",
+  // ignore: non_constant_identifier_names
+  String Na = r"\mathcal{N}",
+  String t = r"t",
+  bool bold = false,
+  bool entraineQue = false,
+  bool wrap = false,
+  bool wrap2 = false,
+  bool wrap3 = false,
+  bool wrap4 = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgMathActiviteAvecTmoMNaTemps(
+      wrap: wrap,
+      wrap2: wrap2,
+      wrap3: wrap3,
+      wrap4: wrap4,
+      A: A,
+      T: T,
+      mo: mo,
+      M: M,
+      Na: Na,
+      t: t,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
 Widget activiteAvecLambdaNoTemps({
   String A = r"A",
   String lambda = r"\lambda",

@@ -214,6 +214,56 @@ String buildTex2SvgMathActivite3({
   return math.toString();
 }
 
+String buildTex2SvgMathActiviteAvecTmoMNaTemps({
+  required String A,
+  required String T,
+  required String mo,
+  required String M,
+  // ignore: non_constant_identifier_names
+  required String Na,
+  required String t,
+  bool bold = false,
+  bool entraineQue = false,
+  bool wrap = false,
+  bool wrap2 = false,
+  bool wrap3 = false,
+  bool wrap4 = false,
+}) {
+  StringBuffer math = StringBuffer();
+  final wrapCode = wrap ? r" \\ " : r"";
+  final wrap2Code = wrap2 ? r" \\ " : r"";
+  final wrap3Code = wrap3 ? r" \\ " : r"";
+  final wrap4Code = wrap4 ? r" \\ " : r"";
+  if (bold) math.write(r" \mathbf{ ");
+  if (entraineQue) math.write(r" \Rightarrow \ ");
+
+  math.write(r" \begin{array}{l} ");
+  math.write(A);
+  math.write(r" = ");
+  math.write(wrapCode);
+  math.write(r" \frac{\ln 2}{");
+  math.write(T);
+  math.write(r"}");
+  math.write(wrap2Code);
+  math.write(r"\cdot \frac{");
+  math.write(mo);
+  math.write(r"}{");
+  math.write(M);
+  math.write(r"}");
+  math.write(wrap3Code);
+  math.write(r" \cdot ");
+  math.write(Na);
+  math.write(wrap4Code);
+  math.write(r" \cdot e^{-\frac{\ln 2}{");
+  math.write(T);
+  math.write(r"} ");
+  math.write(t);
+  math.write(r"} ");
+  math.write(r" \end{array} ");
+  if (bold) math.write(r" } ");
+  return math.toString();
+}
+
 String buildTex2SvgMathMasseAvecAMNaLambda({
   required String m,
   required String A,

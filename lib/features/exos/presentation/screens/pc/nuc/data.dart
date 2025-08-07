@@ -47,4 +47,21 @@ class PhyNucData {
   static final curieEnBq = tex(
     math: r"1 \ \text{curie} = " + valueCurieEnBqTexMath + r"\ \text{Bq}",
   );
+
+  static const valueNombreAvogadroTexMath = r"6,02 \cdot 10^{23}";
+  static final nombreAvogadro = tex(
+    math: r"\mathcal{N} = " + valueNombreAvogadroTexMath + r"\ \text{mol}^{-1}",
+  );
+
+  static const value1AnEnSecondes = r"31536000";
+  static final unAnEnSeconde = tex(
+    math: r"1 \ \text{an} = " + value1AnEnSecondes + r" \ \text{s}",
+    scale: 1.5,
+  );
+
+  static const value1AnEnJours = r"365";
+  static final unAnEnJours = tex(
+    math: r"1 \ \text{an} = " + value1AnEnJours + r" \ \text{jours}",
+    scale: 1.0,
+  );
 }
