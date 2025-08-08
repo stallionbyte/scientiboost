@@ -68,6 +68,31 @@ Widget activite({
   );
 }
 
+Widget masseEchantillonRadioactif({
+  String m = r"m",
+  // ignore: non_constant_identifier_names
+  String mo = r"m_o",
+  String lambda = r"\lambda",
+  String T = r"T",
+  String t = r"t",
+  bool developpe = false,
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgMathLoiDeDecroissanceLike(
+      X: m,
+      Xo: mo,
+      lambda: developpe ? r"\frac{ln2}{" + T + r"}" : lambda,
+      t: t,
+      entraineQue: entraineQue,
+      bold: bold,
+    ),
+    scale: scale,
+  );
+}
+
 Widget tempsAvecLambdaAEtAo({
   String A = r"A",
   // ignore: non_constant_identifier_names
