@@ -138,3 +138,43 @@ String buildTex2SvgEquation13({
 
   return math.toString();
 }
+
+String buildTex2SvgMathEnergieDesintegration({
+  required X,
+  required Z,
+  required A,
+  required c,
+  bool alpha = false,
+  bool betamoins = false,
+  bool betaplus = false,
+  bool bold = false,
+  bool entraineQue = false,
+}) {
+  StringBuffer math = StringBuffer();
+  if (bold) {
+    math.write(r" \mathbf{ ");
+  }
+  if (entraineQue) {
+    math.write(r" \Rightarrow ");
+  }
+
+  String particule = alpha ? r"m_{\alpha}" : r"m_e";
+
+  math.write(r" \begin{array}{l} ");
+  math.write(r"Q = [m(_{");
+  math.write(Z);
+  math.write(r"}^{");
+  math.write(A);
+  math.write(r"}");
+  math.write(X);
+  math.write(r") - ");
+  math.write(particule);
+  math.write(r"].");
+  math.write(c);
+  math.write(r"^2");
+  math.write(r" \end{array} ");
+  if (bold) {
+    math.write(r" } ");
+  }
+  return math.toString();
+}

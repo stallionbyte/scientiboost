@@ -25,21 +25,25 @@ class PcNucChap12Exo2Enonce extends ConsumerWidget {
 
         sbTxt(
           txt:
-              "   1) Écris l'équation complète de la désintégration radioactive de l'iode-131. \n \n",
+              "1) Écris l'équation complète de la désintégration radioactive de l'iode-131. \n \n",
         ),
 
         sbTxt(
-          txt: "2) Calcule la constante radioactive λ de l'iode-131. \n \n",
+          txt: "2) Calcules l'énergie libérée par cette désintégration. \n \n",
+        ),
+
+        sbTxt(
+          txt: "3) Calcule la constante radioactive λ de l'iode-131. \n \n",
         ),
 
         sbTxt(
           txt:
-              "3) Détermine au bout de combien de temps l'activité descendra en dessous du seuil de sécurité. \n \n",
+              "4) Détermine au bout de combien de temps l'activité descendra en dessous du seuil de sécurité. \n \n",
         ),
 
         sbTxt(
           txt:
-              "4) Au bout de combien de temps l'activité descendra à 10% de sa valeur initiale ? \n \n",
+              "5) Au bout de combien de temps l'activité descendra à 10% de sa valeur initiale ? \n \n",
         ),
 
         Donnees(),

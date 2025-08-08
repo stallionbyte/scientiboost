@@ -293,3 +293,37 @@ Widget reaction12({
     scale: scale,
   );
 }
+
+Widget energieDesintegration({
+  // ignore: non_constant_identifier_names
+  String X = r"X",
+
+  // ignore: non_constant_identifier_names
+  String Z = r"Z",
+  // ignore: non_constant_identifier_names
+  String A = r"A",
+  String c = r"c",
+
+  bool alpha = false,
+  bool betamoins = false,
+  bool betaplus = false,
+
+  bool bold = false,
+  bool entraineQue = false,
+  double scale = 1.0,
+}) {
+  return tex(
+    math: buildTex2SvgMathEnergieDesintegration(
+      X: X,
+      Z: Z,
+      A: A,
+      c: c,
+      bold: bold,
+      entraineQue: entraineQue,
+      alpha: alpha,
+      betamoins: betamoins,
+      betaplus: betaplus,
+    ),
+    scale: scale,
+  );
+}

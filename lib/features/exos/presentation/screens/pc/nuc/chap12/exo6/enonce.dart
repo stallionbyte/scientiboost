@@ -24,12 +24,16 @@ class PcNucChap12Exo6Enonce extends ConsumerWidget {
         ),
 
         sbTxt(
-          txt:
-              "2) Après combien de temps 2/5 des noyaux initiaux auront disparu ? \n \n   ",
+          txt: "2) Calculer l'énergie libérée par cette désintégration \n \n",
         ),
 
         sbTxt(
-          txt: "3) Calculer l'activité de l'échantillon à ce moment. \n \n",
+          txt:
+              "3) Après combien de temps 2/5 des noyaux initiaux auront disparu ? \n \n   ",
+        ),
+
+        sbTxt(
+          txt: "4) Calculer l'activité de l'échantillon à ce moment. \n \n",
         ),
 
         Donnees(),

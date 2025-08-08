@@ -25,6 +25,12 @@ class PhyNucData {
     scale: 1.5,
   );
 
+  static const valueMasseParticuleAlphaEnU = r"4,002603";
+  static final masseParticuleAlphaEnU = tex(
+    math: r"m(\ \alpha \ ) = " + valueMasseParticuleAlphaEnU + r" \ \text{u}",
+    scale: 1.5,
+  );
+
   static const valueUEnKgTexMath = r"1,66 \cdot 10^{-27}";
   static final uEnKg = tex(
     math: r"1 \ \text{u} = " + valueUEnKgTexMath + r" \ \text{kg}",

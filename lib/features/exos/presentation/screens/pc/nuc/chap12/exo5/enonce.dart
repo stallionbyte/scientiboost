@@ -23,7 +23,11 @@ class PcNucChap12Exo5Enonce extends ConsumerWidget {
               "1) Écrire l'équation de désintégration alpha du plutonium-239.\n \n",
         ),
 
-        sbTxt(txt: "2) a) Après combien de temps on aura m/m₀ = 0,17 ? \n \n "),
+        sbTxt(
+          txt: "2) Calculer l'énergie libérée par cette désintégration.\n \n",
+        ),
+
+        sbTxt(txt: "3) a) Après combien de temps on aura m/m₀ = 0,17 ? \n \n "),
 
         sbTxt(
           txt: "b) Calculer l'activité de l'échantillon à ce moment. \n \n",

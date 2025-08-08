@@ -7,6 +7,7 @@ import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
 import 'correction4/correction4.dart';
+import 'correction5/correction5.dart';
 
 class PcNucChap12Exo2Correction extends ConsumerStatefulWidget {
   const PcNucChap12Exo2Correction({super.key});
@@ -110,6 +111,28 @@ class _PcNucChap12Exo2CorrectionState
           },
 
           body: Correction4(),
+        ),
+
+        ExpansionPanelRadio(
+          value: 'correction-5',
+          canTapOnHeader: true,
+
+          backgroundColor: Colors.white,
+
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                "5) Calculons l'énergie",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: ExoConstants.fontSize,
+                  color: Colors.blue,
+                ),
+              ),
+            );
+          },
+
+          body: Correction5(),
         ),
       ],
     );

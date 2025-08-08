@@ -4,6 +4,7 @@ import 'package:scientiboost/core/constants/constants.dart';
 import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
+import 'correction4/correction4.dart';
 
 class PcNucChap12Exo6Correction extends ConsumerStatefulWidget {
   const PcNucChap12Exo6Correction({super.key});
@@ -40,6 +41,26 @@ class _PcNucChap12Exo6CorrectionState
           },
           body: Correction1(),
         ),
+
+        ExpansionPanelRadio(
+          value: 'correction-4',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                "2) Calculons l'énergie",
+                style: TextStyle(
+                  fontSize: ExoConstants.fontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            );
+          },
+          body: Correction4(),
+        ),
+
         ExpansionPanelRadio(
           value: 'correction-2',
           canTapOnHeader: true,
@@ -47,7 +68,7 @@ class _PcNucChap12Exo6CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) Calculons le temps",
+                "3) Calculons le temps",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -65,7 +86,7 @@ class _PcNucChap12Exo6CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "3) Calculons l'activité de l'échantillon",
+                "4) Calculons l'activité de l'échantillon",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,

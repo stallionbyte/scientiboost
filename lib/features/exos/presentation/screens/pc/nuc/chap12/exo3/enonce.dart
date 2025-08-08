@@ -36,6 +36,11 @@ class PcNucChap12Exo3Enonce extends ConsumerWidget {
               "3) a) Calcules l'activité du radon-222 dans la galerie après 15 jours d'arrêt de l'extraction. Les équipes pourront-elles reprendre le travail sans équipement de protection respiratoire spécial ?\n\n",
         ),
 
+        sbTxt(
+          txt:
+              "4) Représenter qualitativement la courbe A(t) = f(t) donnant les variations de l'activité en fonction du temps. Utilise pour cette représention les points remarquables suivants: t=0, t=T, t=2T, t=3T",
+        ),
+
         Donnees(),
       ],
     );

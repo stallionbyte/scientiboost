@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/builders.dart';
+import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
 
 class Donnees extends ConsumerWidget {
   const Donnees({super.key});
@@ -53,6 +54,13 @@ class Donnees extends ConsumerWidget {
         EspConstants.esp40,
 
         tex(math: r"\ln 2 = 0,693", scale: 1.0),
+
+        EspConstants.esp40,
+        PhyNucData.masseElectronEnU,
+        EspConstants.esp40,
+        tex(math: r"m(_{\ 53}^{131}) = 130,906\ \text{u}"),
+        EspConstants.esp40,
+        PhyNucData.uEnMeVC2,
       ],
     );
   }

@@ -38,6 +38,11 @@ class PcNucChap12Exo4Enonce extends ConsumerWidget {
               "4) Au bout de combien de temps 3/4 des noyaux initiaux auront disparus ? \n \n",
         ),
 
+        sbTxt(
+          txt:
+              "5) Représenter qualitativement la courbe N(t) = f(t) donnant les variations de l'activité en fonction du temps. Utilise pour cette représention les points remarquables suivants: t=0, t=T, t=2T, t=3T, t=4T \n \n",
+        ),
+
         Donnees(),
       ],
     );

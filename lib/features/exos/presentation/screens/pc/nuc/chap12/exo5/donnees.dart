@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/builders.dart';
 
 import 'package:scientiboost/core/constants/constants.dart';
@@ -58,6 +59,20 @@ class Donnees extends ConsumerWidget {
         PhyNucData.unAnEnJours,
 
         EspConstants.esp40,
+
+        PhyNucData.masseParticuleAlphaEnU,
+
+        EspConstants.esp40,
+
+        tex(math: r"m(_{\ 94}^{239}Pu) = 239,05216\ u"),
+
+        EspConstants.esp40,
+
+        PhyNucData.uEnKg,
+
+        EspConstants.esp40,
+
+        PhyNucData.cEnMParS,
       ],
     );
   }
