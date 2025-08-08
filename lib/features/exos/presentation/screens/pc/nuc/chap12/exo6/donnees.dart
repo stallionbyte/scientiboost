@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/data.dart';
 import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/features/exos/presentation/screens/pc/nuc/builders.dart';
 

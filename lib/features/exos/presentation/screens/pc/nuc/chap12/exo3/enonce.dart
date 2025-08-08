@@ -35,6 +35,7 @@ class PcNucChap12Exo3Enonce extends ConsumerWidget {
           txt:
               "3) a) Calcules l'activité du radon-222 dans la galerie après 15 jours d'arrêt de l'extraction. Les équipes pourront-elles reprendre le travail sans équipement de protection respiratoire spécial ?\n\n",
         ),
+
         Donnees(),
       ],
     );
