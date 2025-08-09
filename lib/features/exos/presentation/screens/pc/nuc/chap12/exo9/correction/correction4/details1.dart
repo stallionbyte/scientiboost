@@ -21,7 +21,9 @@ class _Details1State extends ConsumerState<Details1> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Raisonnement détaillé : Isoler le temps t de 0,3m₀ = m₀e^(-λt)
-          sbTxt(txt: "Si 70% de la masse a disparu, donc il reste 30%"),
+          transition(
+            transition: "Si 70% de la masse a disparu, donc il reste 30%",
+          ),
           EspConstants.esp40,
           transition(transition: "masse restante"),
           EspConstants.esp40,

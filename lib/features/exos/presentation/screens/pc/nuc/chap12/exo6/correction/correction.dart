@@ -5,6 +5,7 @@ import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
 import 'correction4/correction4.dart';
+import 'correction5/correction5.dart';
 
 class PcNucChap12Exo6Correction extends ConsumerStatefulWidget {
   const PcNucChap12Exo6Correction({super.key});
@@ -96,6 +97,25 @@ class _PcNucChap12Exo6CorrectionState
             );
           },
           body: Correction3(),
+        ),
+
+        ExpansionPanelRadio(
+          value: 'correction-5',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                "5) Calculons le temps",
+                style: TextStyle(
+                  fontSize: ExoConstants.fontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            );
+          },
+          body: Correction5(),
         ),
       ],
     );

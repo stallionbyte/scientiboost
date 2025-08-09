@@ -36,6 +36,11 @@ class PcNucChap12Exo6Enonce extends ConsumerWidget {
           txt: "4) Calculer l'activité de l'échantillon à ce moment. \n \n",
         ),
 
+        sbTxt(
+          txt:
+              "5) A quel moment l'activité aura 1/8 ème de sa valeur initiale ? \n \n",
+        ),
+
         Donnees(),
       ],
     );

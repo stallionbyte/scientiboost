@@ -33,6 +33,11 @@ class PcNucChap12Exo5Enonce extends ConsumerWidget {
           txt: "b) Calculer l'activité de l'échantillon à ce moment. \n \n",
         ),
 
+        sbTxt(
+          txt:
+              "4) Calculer la masse restante dans l'échantillon après 48200ans. \n \n",
+        ),
+
         Donnees(),
       ],
     );
