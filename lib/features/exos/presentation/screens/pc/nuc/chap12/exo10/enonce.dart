@@ -15,7 +15,7 @@ class PcNucChap12Exo10Enonce extends ConsumerWidget {
       children: [
         sbTxt(
           txt:
-              "Vous êtes géophysicien(ne) spécialisé(e) en prospection minière pour une compagnie d'extraction d'uranium. Lors d'une mission d'exploration dans une région prometteuse, vos détecteurs identifient la présence de radium-226 (²²⁶Ra) dans les échantillons de minerai, indicateur de gisements d'uranium. Le radium-226 est un émetteur alpha qui se désintègre selon l'équation : ²²⁶Ra → ²²²Rn + particule alpha. \n\n Vos analyses révèlent qu'un échantillon de minerai contient N₀ = 1,8 × 10¹⁷ noyaux de radium-226. Pour évaluer le potentiel économique de ce gisement et planifier l'exploitation sur plusieurs générations, vous devez modéliser l'évolution de cette radioactivité naturelle. Les masses nucléaires sont : m(²²⁶Ra) = 226,025403 u et m(²²²Rn) = 222,017571 u. \n \n",
+              "Vous êtes géophysicien(ne) spécialisé(e) en prospection minière pour une compagnie d'extraction d'uranium. Lors d'une mission d'exploration dans une région prometteuse, vos détecteurs identifient la présence de radium-226 (²²⁶Ra) dans les échantillons de minerai, indicateur de gisements d'uranium. Le radium-226 est un émetteur alpha qui se désintègre selon l'équation : ²²⁶Ra → ²²²Rn + particule alpha. \n\n Vos analyses révèlent qu'un échantillon de minerai contient N₀ = 1,8 x 10¹⁷ noyaux de radium-226. Pour évaluer le potentiel économique de ce gisement et planifier l'exploitation sur plusieurs générations, vous devez modéliser l'évolution de cette radioactivité naturelle. Les masses nucléaires sont : m(²²⁶Ra) = 226,025403 u et m(²²²Rn) = 222,017571 u. \n \n",
         ),
 
         sbTxt(
