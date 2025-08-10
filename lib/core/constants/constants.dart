@@ -61,6 +61,7 @@ class PcChaptitlesConstants {
   static const String chap11 = "Le noyau atomique";
   static const String chap12 =
       "Les réactions nucléaires spontanées : la radioactivité";
+  static const String chap13 = "Les réactions nucléaires provoquées";
 }
 
 class RoutesNamesConstants {
@@ -103,6 +104,11 @@ class RoutesNamesConstants {
       '/matiere(PC)/nuc/chap(12)/exo(8)';
   static const String pcNucChap12ExosRoutesExo9 =
       '/matiere(PC)/nuc/chap(12)/exo(9)';
+  static const String pcNucChap12ExosRoutesExo10 =
+      '/matiere(PC)/nuc/chap(12)/exo(10)';
+
+  static const String pcNucChap13ExosRoutesExo1 =
+      '/matiere(PC)/nuc/chap(13)/exo(1)';
 
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';

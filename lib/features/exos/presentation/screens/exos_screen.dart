@@ -319,6 +319,40 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 ),
 
                 EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 10',
+                  route: RoutesNamesConstants.pcNucChap12ExosRoutesExo10,
+                ),
+
+                EspConstants.esp40,
+              ],
+            ),
+          ),
+        ),
+
+        ExpansionPanelRadio(
+          value: 'phyNucChap13',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                'chapitre 12: ${PcChaptitlesConstants.chap13}',
+                style: TextStyle(fontSize: 16),
+              ),
+            );
+          },
+          body: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 1',
+                  route: RoutesNamesConstants.pcNucChap13ExosRoutesExo1,
+                ),
+
+                EspConstants.esp40,
               ],
             ),
           ),
