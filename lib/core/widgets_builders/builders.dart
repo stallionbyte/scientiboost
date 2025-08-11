@@ -169,7 +169,7 @@ Widget tex({
   required String math,
   double offsetDx = 0,
   double offsetDy = 0,
-  double scale = 1,
+  double scale = 1.2,
   bool bold = false,
 }) {
   return RichText(
