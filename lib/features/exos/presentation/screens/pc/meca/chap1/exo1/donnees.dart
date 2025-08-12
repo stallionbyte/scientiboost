@@ -14,23 +14,18 @@ class Donnees extends ConsumerWidget {
       children: [
         TransitionConstants.donnees,
         EspConstants.esp40,
-        tex(math: r"m(^{233}U) = 233,03963\ u"),
+        tex(math: r"v_1 = 72\ \text{km/h} = 20\ \text{m/s}"),
         EspConstants.esp40,
-        tex(math: r"m(^{95}Sr) = 94,91936\ u"),
+        tex(math: r"a_2 = 2{,}5\ \text{m/s}^2"),
         EspConstants.esp40,
-        tex(math: r"m(^{138}Xe) = 137,91395\ u"),
+        tex(math: r"v_{2,0} = 0\ \text{m/s}"),
         EspConstants.esp40,
-        tex(math: r"m(^2H) = 2,01410\ u"),
+        tex(math: r"x_{1,0} = x_{2,0} = 0\ \text{m}"),
         EspConstants.esp40,
-        tex(math: r"m(^3He) = 3,01603\ u"),
-        EspConstants.esp40,
-        tex(math: r" m_n = 1,00866\ u"),
-        EspConstants.esp40,
-        tex(math: r"1\ u = 931,5\ \text{MeV}/c^2"),
-        EspConstants.esp40,
-        tex(math: r"\mathcal{N}_A = 6,022 \times 10^{23}\ mol^{-1}"),
-        EspConstants.esp40,
-        tex(math: r"1\ \text{MeV} = 1,602 \times 10^{-13}\ J"),
+        tex(
+          math:
+              r"\text{À } t = 0\text{, la voiture passe devant le motocycliste}",
+        ),
       ],
     );
   }

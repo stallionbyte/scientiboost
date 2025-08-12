@@ -65,6 +65,18 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
 
         EspConstants.esp40,
 
+        _buildTitle(title: "Mécanique", fontSize: 20.0),
+
+        EspConstants.esp40,
+
+        _buildMecaniqueAccordion(),
+
+        EspConstants.esp40,
+
+        _buildTitle(title: "Electricité", fontSize: 20.0),
+
+        EspConstants.esp40,
+
         _buildTitle(title: "Nucléaire", fontSize: 20.0),
 
         EspConstants.esp40,
@@ -73,23 +85,15 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
 
         EspConstants.esp40,
 
-        _buildTitle(title: "Mécanique", fontSize: 20.0),
-
-        EspConstants.esp40,
-
-        _buildTitle(title: "Electricité", fontSize: 20.0),
-
-        EspConstants.esp40,
-
         _buildTitle(title: "Chimie", fontSize: 30.0),
 
         EspConstants.esp40,
 
-        _buildTitle(title: "Organique", fontSize: 20.0),
+        _buildTitle(title: "Minérale", fontSize: 20.0),
 
         EspConstants.esp40,
 
-        _buildTitle(title: "Minérale", fontSize: 20.0),
+        _buildTitle(title: "Organique", fontSize: 20.0),
 
         EspConstants.esp40,
       ],
@@ -404,6 +408,43 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 ButtonExoExam(
                   text: 'Exercice 10',
                   route: RoutesNamesConstants.pcNucChap13ExosRoutesExo10,
+                ),
+
+                EspConstants.esp40,
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMecaniqueAccordion() {
+    return ExpansionPanelList.radio(
+      elevation: 2,
+      expandedHeaderPadding: EdgeInsets.zero,
+      expandIconColor: Colors.black,
+      children: [
+        ExpansionPanelRadio(
+          value: 'phyMecaChap1',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                'chapitre 1: Les éléments de cinématique',
+                style: TextStyle(fontSize: 16),
+              ),
+            );
+          },
+          body: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 1',
+                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo1,
                 ),
 
                 EspConstants.esp40,

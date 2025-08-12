@@ -58,6 +58,7 @@ class VideoConstants {
 }
 
 class PcChaptitlesConstants {
+  static const String chap1 = "Les éléments de cinématique";
   static const String chap11 = "Le noyau atomique";
   static const String chap12 =
       "Les réactions nucléaires spontanées : la radioactivité";
@@ -65,6 +66,9 @@ class PcChaptitlesConstants {
 }
 
 class RoutesNamesConstants {
+  static const String pcNucChap1ExosRoutesExo1 =
+      '/matiere(PC)/meca/chap(1)/exo(1)';
+
   static const String pcNucChap11ExosRoutesExo1 =
       '/matiere(PC)/nuc/chap(11)/exo(1)';
   static const String pcNucChap11ExosRoutesExo2 =

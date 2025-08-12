@@ -56,7 +56,8 @@ class PcNucChap13Exo10Enonce extends ConsumerWidget {
             children: <InlineSpan>[
               const TextSpan(text: "La fusion de deux deutérium : "),
               buildTex2SvgInWidgetSpan(
-                math: r"^2H + ^2H \rightarrow ^3He + ^1n",
+                math:
+                    r"\begin{array}{l} ^2H + ^2H \rightarrow ^3He + ^1n \end{array}",
                 scale: 2.0,
               ),
             ],
