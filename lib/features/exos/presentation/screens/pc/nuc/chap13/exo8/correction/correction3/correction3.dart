@@ -6,9 +6,6 @@ import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 import 'details1.dart';
-import 'details2.dart';
-import 'details3.dart';
-import 'details4.dart';
 
 class Correction3 extends ConsumerStatefulWidget {
   const Correction3({super.key});
@@ -24,8 +21,50 @@ class _Correction3State extends ConsumerState<Correction3> {
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: []
-      )
+        children: [
+          EspConstants.esp40,
+
+          sbTxt(txt: "Équation de la réaction de fusion :"),
+
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} ^2_1H + ^3_1H \longrightarrow ^4_2He + ^A_ZX \end{array}",
+            scale: 2.0,
+          ),
+
+          EspConstants.esp40,
+
+          Details1(),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: tex(
+              math: r"\begin{array}{l} _Z^AX :\ \  ^1_0n \end{array}",
+              scale: 1.0,
+            ),
+            color: Colors.black,
+          ),
+
+          EspConstants.esp40,
+
+          sbTxt(txt: "L'équation complète est donc :"),
+
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: tex(
+              math:
+                  r"\begin{array}{l} ^2_1H + ^3_1H \longrightarrow ^4_2He + ^1_0n \end{array}",
+              scale: 2.0,
+            ),
+          ),
+
+          EspConstants.esp40,
+        ],
+      ),
     );
   }
 }

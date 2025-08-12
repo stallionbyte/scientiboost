@@ -18,8 +18,34 @@ class _Details1State extends ConsumerState<Details1> {
     return DetailsHandler(
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: []
-      )
+        children: [
+          transition(transition: "Pour la réaction de fission"),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} ^{235}U + ^1n \longrightarrow ^{140}Cs \\ + ^{93}Rb + 3^1n \end{array}",
+            scale: 5.0,
+          ),
+          EspConstants.esp40,
+
+          transition(transition: "La perte de masse est"),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} \Delta m = m_{réactifs} \\ - m_{produits} \end{array}",
+            scale: 3.0,
+          ),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} \Delta m = [m(^{235}U) + m(^1n)] \\ - [m(^{140}Cs) + m(^{93}Rb) \\ + 3 \times m(^1n)] \end{array}",
+            scale: 4.0,
+          ),
+        ],
+      ),
     );
   }
 }

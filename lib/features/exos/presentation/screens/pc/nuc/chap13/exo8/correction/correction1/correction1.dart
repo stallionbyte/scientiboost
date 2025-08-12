@@ -6,9 +6,6 @@ import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
 import 'details1.dart';
-import 'details2.dart';
-import 'details3.dart';
-import 'details4.dart';
 
 class Correction1 extends ConsumerStatefulWidget {
   const Correction1({super.key});
@@ -24,8 +21,24 @@ class _Correction1State extends ConsumerState<Correction1> {
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: []
-      )
+        children: [
+          EspConstants.esp40,
+
+          BordersWrapper(
+            wrapped: tex(
+              math:
+                  r"\begin{array}{l} ^{235}_{92}U + ^1_0n \longrightarrow ^{140}_{55}Cs + \\ ^{93}_{37}Rb + 3^1_0n \end{array}",
+              scale: 4.0,
+            ),
+          ),
+
+          EspConstants.esp40,
+
+          Details1(),
+
+          EspConstants.esp40,
+        ],
+      ),
     );
   }
 }

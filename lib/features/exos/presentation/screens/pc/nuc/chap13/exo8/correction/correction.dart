@@ -5,29 +5,33 @@ import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
 import 'correction4/correction4.dart';
+import 'correction5/correction5.dart';
 
 class PcNucChap13Exo8Correction extends ConsumerStatefulWidget {
   const PcNucChap13Exo8Correction({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _PcNucChap13Exo8CorrectionState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _PcNucChap13Exo8CorrectionState();
 }
 
-class _PcNucChap13Exo8CorrectionState extends ConsumerState<PcNucChap13Exo8Correction> {
+class _PcNucChap13Exo8CorrectionState
+    extends ConsumerState<PcNucChap13Exo8Correction> {
   @override
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
       elevation: 1,
       expandIconColor: Colors.blue,
       expandedHeaderPadding: EdgeInsets.zero,
-      children: [        ExpansionPanelRadio(
+      children: [
+        ExpansionPanelRadio(
           value: 'correction-1',
           canTapOnHeader: true,
           backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "1) question1 ...",
+                "1) Complétons l'équation bilan",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -36,15 +40,16 @@ class _PcNucChap13Exo8CorrectionState extends ConsumerState<PcNucChap13Exo8Corre
               ),
             );
           },
-          body: Correction1()
-        ),        ExpansionPanelRadio(
+          body: Correction1(),
+        ),
+        ExpansionPanelRadio(
           value: 'correction-2',
           canTapOnHeader: true,
           backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) question2 ...",
+                "2) Calculons l'énergie libérée",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -53,15 +58,16 @@ class _PcNucChap13Exo8CorrectionState extends ConsumerState<PcNucChap13Exo8Corre
               ),
             );
           },
-          body: Correction2()
-        ),        ExpansionPanelRadio(
+          body: Correction2(),
+        ),
+        ExpansionPanelRadio(
           value: 'correction-3',
           canTapOnHeader: true,
           backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "3) question3 ...",
+                "3) Écrivons l'équation bilan",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -70,15 +76,16 @@ class _PcNucChap13Exo8CorrectionState extends ConsumerState<PcNucChap13Exo8Corre
               ),
             );
           },
-          body: Correction3()
-        ),        ExpansionPanelRadio(
+          body: Correction3(),
+        ),
+        ExpansionPanelRadio(
           value: 'correction-4',
           canTapOnHeader: true,
           backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "4) question4 ...",
+                "4) Calculons l'énergie libérée",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -87,7 +94,26 @@ class _PcNucChap13Exo8CorrectionState extends ConsumerState<PcNucChap13Exo8Corre
               ),
             );
           },
-          body: Correction4()
+          body: Correction4(),
+        ),
+
+        ExpansionPanelRadio(
+          value: 'correction-5',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                "5) Calculons",
+                style: TextStyle(
+                  fontSize: ExoConstants.fontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            );
+          },
+          body: Correction5(),
         ),
       ],
     );

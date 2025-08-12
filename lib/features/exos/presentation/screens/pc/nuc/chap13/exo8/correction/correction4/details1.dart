@@ -18,8 +18,58 @@ class _Details1State extends ConsumerState<Details1> {
     return DetailsHandler(
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: []
-      )
+        children: [
+          transition(transition: "Pour la réaction de fusion"),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} ^2H + ^3H \longrightarrow ^4He + ^1n \end{array}",
+            scale: 4.0,
+          ),
+          EspConstants.esp40,
+
+          transition(transition: "L'énergie libérée est"),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} Q = E_l(\text{produits}) \\ - E_l(\text{réactifs}) \end{array}",
+            scale: 4.0,
+          ),
+          EspConstants.esp40,
+
+          transition(transition: "L'énergie de liaison totale est"),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} E_l = A \times (E_l/\text{nucléon}) \end{array}",
+          ),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} E_l(\text{produits}) = E_l(^4He) + E_l(^1n) \\ = 4 \cdot E_{l/n}(^4He) + 1 \cdot E_{l/n}(^1n) \end{array}",
+            scale: 4.0,
+          ),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} E_l(\text{réactifs}) = E_l(^2H) + E_l(^3H) \\ = 2 \cdot E_{l/n}(^2H) + 3 \cdot E_{l/n}(^3H) \end{array}",
+            scale: 4.0,
+          ),
+
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} \Rightarrow Q = [4 \cdot E_{l/n}(^4He) + 1 \cdot E_{l/n}(^1n) ] \\ - [ 2 \cdot E_{l/n}(^2H) + 3 \cdot E_{l/n}(^3H) ] \end{array}",
+            scale: 4.0,
+          ),
+        ],
+      ),
     );
   }
 }

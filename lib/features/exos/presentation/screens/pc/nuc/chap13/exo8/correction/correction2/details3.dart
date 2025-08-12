@@ -18,8 +18,39 @@ class _Details3State extends ConsumerState<Details3> {
     return DetailsHandler(
       details: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: []
-      )
+        children: [
+          tex(
+            math: r"\begin{array}{l} Q = \Delta m \times c^2 \end{array}",
+            scale: 3.0,
+          ),
+          EspConstants.esp40,
+
+          tex(
+            math: r"\begin{array}{l} \Delta m = 0,18912\ u \end{array}",
+            scale: 3.0,
+          ),
+          EspConstants.esp40,
+
+          tex(math: r"1\ u = 931,5\ \text{MeV}/c^2", scale: 3.0),
+          EspConstants.esp40,
+
+          tex(math: r"1\ u = 931,5\ \frac{\text{MeV}}{c^2}", scale: 3.0),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} Q = 0,18912 \cdot 931,5\ \frac{\text{MeV}}{c^2} \cdot c^2 \end{array}",
+            scale: 3.0,
+          ),
+          EspConstants.esp40,
+
+          tex(
+            math:
+                r"\begin{array}{l} Q = 0,18912 \cdot 931,5\ \text{MeV} \end{array}",
+            scale: 3.0,
+          ),
+        ],
+      ),
     );
   }
 }
