@@ -148,4 +148,20 @@ final pcNucChap13Routes = [
       );
     },
   ),
+
+  GoRoute(
+    path: RoutesNamesConstants.pcNucChap13ExosRoutesExo10,
+    builder: (context, state) {
+      return ExoScreen(
+        matiere: matiere,
+        chapNum: 11,
+        chapTitle: PcChaptitlesConstants.chap13,
+        exoNum: 10,
+        enonce: PcNucChap13Exo10Enonce(),
+        correction: PcNucChap13Exo10Correction(),
+        route: RoutesNamesConstants.pcNucChap13ExosRoutesExo10,
+        favorites: StorageKeysConstants.favoritesExos,
+      );
+    },
+  ),
 ];
