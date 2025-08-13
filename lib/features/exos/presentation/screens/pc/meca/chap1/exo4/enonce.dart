@@ -15,6 +15,7 @@ class PcMecaChap1Exo4Enonce extends ConsumerWidget {
           txt:
               "Tu es ingénieur hydraulique pour l'Office National de l'Eau et de l'Assainissement (ONEA) du Burkina Faso. Dans le cadre du projet d'extension du réseau d'eau potable de Ouagadougou, tu dois analyser le fonctionnement d'une nouvelle pompe centrifuge installée au château d'eau de Paspanga.\n\nCette pompe est équipée d'un rotor circulaire qui aspire l'eau du forage et la propulse vers le réservoir principal. Pour optimiser le rendement énergétique et assurer un débit constant, tu dois caractériser précisément le mouvement de rotation du rotor.\n\nTon expertise technique déterminera les paramètres de fonctionnement optimal pour alimenter durablement les quartiers périphériques de la capitale.\n\n",
         ),
+        sbImg(uri: "assets/img/pc/meca/rotor-chap1-exo4.png", context: context),
         transition(transition: "CARACTÉRISTIQUES TECHNIQUES\n\n"),
         sbTxt(
           txt:

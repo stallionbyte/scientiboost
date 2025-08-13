@@ -225,6 +225,19 @@ Widget sbTxt({required final String txt}) {
   return texte;
 }
 
+Widget sbImg({required String uri, required BuildContext context}) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(20.0), // Rayon des coins
+    child: Image.asset(
+      uri,
+      width:
+          MediaQuery.of(context).size.width *
+          0.8, // 80% de la largeur de l'écran
+      fit: BoxFit.contain, // Maintenir les proportions
+    ),
+  );
+}
+
 //------------------TeXSVG-MATH-----------------------------------------
 
 String buildTex2SvgMathRegleDe3({
