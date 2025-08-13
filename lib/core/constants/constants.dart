@@ -68,6 +68,8 @@ class PcChaptitlesConstants {
 class RoutesNamesConstants {
   static const String pcNucChap1ExosRoutesExo1 =
       '/matiere(PC)/meca/chap(1)/exo(1)';
+  static const String pcNucChap1ExosRoutesExo2 =
+      '/matiere(PC)/meca/chap(1)/exo(2)';
 
   static const String pcNucChap11ExosRoutesExo1 =
       '/matiere(PC)/nuc/chap(11)/exo(1)';

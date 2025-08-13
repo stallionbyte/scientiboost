@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 
-// import 'donnees.dart';
-
 class PcMecaChap1Exo1Enonce extends ConsumerWidget {
   const PcMecaChap1Exo1Enonce({super.key});
 
