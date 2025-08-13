@@ -36,4 +36,20 @@ final pcMecaChap1Routes = [
       );
     },
   ),
+
+  GoRoute(
+    path: RoutesNamesConstants.pcNucChap1ExosRoutesExo3,
+    builder: (context, state) {
+      return ExoScreen(
+        matiere: matiere,
+        chapNum: 11,
+        chapTitle: PcChaptitlesConstants.chap1,
+        exoNum: 3,
+        enonce: PcMecaChap1Exo3Enonce(),
+        correction: PcMecaChap1Exo3Correction(),
+        route: RoutesNamesConstants.pcNucChap1ExosRoutesExo3,
+        favorites: StorageKeysConstants.favoritesExos,
+      );
+    },
+  ),
 ];
