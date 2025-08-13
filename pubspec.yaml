@@ -95,6 +95,7 @@ flutter:
     - assets/img/pc/A(t)-3T.png
     - assets/img/pc/m(t)-4T.png
     - assets/img/pc/N(t)-4T.png
+    - assets/img/pc/meca/rotor-chap1-exo3.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
