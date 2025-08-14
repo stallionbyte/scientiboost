@@ -21,3 +21,6 @@ export 'package:scientiboost/features/exos/presentation/screens/pc/meca/chap1/ex
 
 export 'package:scientiboost/features/exos/presentation/screens/pc/meca/chap1/exo8/enonce.dart';
 export 'package:scientiboost/features/exos/presentation/screens/pc/meca/chap1/exo8/correction/correction.dart';
+
+export 'package:scientiboost/features/exos/presentation/screens/pc/meca/chap1/exo9/enonce.dart';
+export 'package:scientiboost/features/exos/presentation/screens/pc/meca/chap1/exo9/correction/correction.dart';
