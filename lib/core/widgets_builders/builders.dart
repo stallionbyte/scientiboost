@@ -49,6 +49,8 @@ Widget result({
 
   required String valueTex2SvgMath,
 
+  String operateur = r"=",
+
   String unitTex2SvgMath = r"",
 
   double scale = 1.0,
@@ -65,7 +67,8 @@ Widget result({
       r"\mathbf{" +
       leftTex2SvgMath +
       r"}\ " +
-      r"=\ " +
+      operateur +
+      r"\ " +
       wrapCode +
       r"\mathbf{" +
       valueTex2SvgMath +
