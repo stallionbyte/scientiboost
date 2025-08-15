@@ -11,7 +11,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 1,
         enonce: PcNucChap12Exo1Enonce(),
         correction: PcNucChap12Exo1Correction(),
@@ -27,7 +27,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 2,
         enonce: PcNucChap12Exo2Enonce(),
         correction: PcNucChap12Exo2Correction(),
@@ -43,7 +43,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 3,
         enonce: PcNucChap12Exo3Enonce(),
         correction: PcNucChap12Exo3Correction(),
@@ -59,7 +59,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 4,
         enonce: PcNucChap12Exo4Enonce(),
         correction: PcNucChap12Exo4Correction(),
@@ -75,7 +75,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 5,
         enonce: PcNucChap12Exo5Enonce(),
         correction: PcNucChap12Exo5Correction(),
@@ -91,7 +91,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 6,
         enonce: PcNucChap12Exo6Enonce(),
         correction: PcNucChap12Exo6Correction(),
@@ -107,7 +107,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 7,
         enonce: PcNucChap12Exo7Enonce(),
         correction: PcNucChap12Exo7Correction(),
@@ -123,7 +123,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 8,
         enonce: PcNucChap12Exo8Enonce(),
         correction: PcNucChap12Exo8Correction(),
@@ -139,7 +139,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 9,
         enonce: PcNucChap12Exo9Enonce(),
         correction: PcNucChap12Exo9Correction(),
@@ -155,7 +155,7 @@ final pcNucChap12Routes = [
       return ExoScreen(
         matiere: matiere,
         chapNum: 12,
-        chapTitle: PcChaptitlesConstants.chap12,
+        chapTitle: PcChaptitlesConstants.phyChap12,
         exoNum: 10,
         enonce: PcNucChap12Exo10Enonce(),
         correction: PcNucChap12Exo10Correction(),

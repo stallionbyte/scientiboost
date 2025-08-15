@@ -93,6 +93,10 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
 
         EspConstants.esp40,
 
+        _buildMineraleAccordion(),
+
+        EspConstants.esp40,
+
         _buildTitle(title: "Organique", fontSize: 20.0),
 
         EspConstants.esp40,
@@ -177,7 +181,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'chapitre 11: le noyau atomique',
+                'chapitre 11: ${PcChaptitlesConstants.phyChap11}',
                 style: TextStyle(fontSize: 16),
               ),
             );
@@ -259,7 +263,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'chapitre 12: ${PcChaptitlesConstants.chap12}',
+                'chapitre 12: ${PcChaptitlesConstants.phyChap12}',
                 style: TextStyle(fontSize: 16),
               ),
             );
@@ -341,7 +345,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'chapitre 12: ${PcChaptitlesConstants.chap13}',
+                'chapitre 12: ${PcChaptitlesConstants.phyChap13}',
                 style: TextStyle(fontSize: 16),
               ),
             );
@@ -432,7 +436,7 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                'chapitre 1: Les éléments de cinématique',
+                'chapitre 1: ${PcChaptitlesConstants.phyChap1}',
                 style: TextStyle(fontSize: 16),
               ),
             );
@@ -444,61 +448,98 @@ class _ExosScreenState extends ConsumerState<ExosScreen> {
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 1',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo1,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo1,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 2',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo2,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo2,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 3',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo3,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo3,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 4',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo4,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo4,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 5',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo5,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo5,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 6',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo6,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo6,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 7',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo7,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo7,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 8',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo8,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo8,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 9',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo9,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo9,
                 ),
 
                 EspConstants.esp40,
                 ButtonExoExam(
                   text: 'Exercice 10',
-                  route: RoutesNamesConstants.pcNucChap1ExosRoutesExo10,
+                  route: RoutesNamesConstants.pcMecaChap1ExosRoutesExo10,
+                ),
+
+                EspConstants.esp40,
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMineraleAccordion() {
+    return ExpansionPanelList.radio(
+      elevation: 2,
+      expandedHeaderPadding: EdgeInsets.zero,
+      expandIconColor: Colors.black,
+      children: [
+        ExpansionPanelRadio(
+          value: 'phyMecaChap1',
+          canTapOnHeader: true,
+          backgroundColor: Colors.white,
+          headerBuilder: (context, isExpanded) {
+            return ListTile(
+              title: const Text(
+                'chapitre 1: ${PcChaptitlesConstants.chimChap1}',
+                style: TextStyle(fontSize: 16),
+              ),
+            );
+          },
+          body: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                EspConstants.esp40,
+                ButtonExoExam(
+                  text: 'Exercice 1',
+                  route: RoutesNamesConstants.pcMineChap1ExosRoutesExo1,
                 ),
 
                 EspConstants.esp40,

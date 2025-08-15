@@ -10,8 +10,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 1,
         enonce: PcNucChap13Exo1Enonce(),
         correction: PcNucChap13Exo1Correction(),
@@ -26,8 +26,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 2,
         enonce: PcNucChap13Exo2Enonce(),
         correction: PcNucChap13Exo2Correction(),
@@ -42,8 +42,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 3,
         enonce: PcNucChap13Exo3Enonce(),
         correction: PcNucChap13Exo3Correction(),
@@ -58,8 +58,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 4,
         enonce: PcNucChap13Exo4Enonce(),
         correction: PcNucChap13Exo4Correction(),
@@ -74,8 +74,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 5,
         enonce: PcNucChap13Exo5Enonce(),
         correction: PcNucChap13Exo5Correction(),
@@ -90,8 +90,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 6,
         enonce: PcNucChap13Exo6Enonce(),
         correction: PcNucChap13Exo6Correction(),
@@ -106,8 +106,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 7,
         enonce: PcNucChap13Exo7Enonce(),
         correction: PcNucChap13Exo7Correction(),
@@ -122,8 +122,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 8,
         enonce: PcNucChap13Exo8Enonce(),
         correction: PcNucChap13Exo8Correction(),
@@ -138,8 +138,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 9,
         enonce: PcNucChap13Exo9Enonce(),
         correction: PcNucChap13Exo9Correction(),
@@ -154,8 +154,8 @@ final pcNucChap13Routes = [
     builder: (context, state) {
       return ExoScreen(
         matiere: matiere,
-        chapNum: 11,
-        chapTitle: PcChaptitlesConstants.chap13,
+        chapNum: 13,
+        chapTitle: PcChaptitlesConstants.phyChap13,
         exoNum: 10,
         enonce: PcNucChap13Exo10Enonce(),
         correction: PcNucChap13Exo10Correction(),

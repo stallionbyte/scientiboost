@@ -58,33 +58,34 @@ class VideoConstants {
 }
 
 class PcChaptitlesConstants {
-  static const String chap1 = "Les éléments de cinématique";
-  static const String chap11 = "Le noyau atomique";
-  static const String chap12 =
+  static const String phyChap1 = "Les éléments de cinématique";
+  static const String phyChap11 = "Le noyau atomique";
+  static const String phyChap12 =
       "Les réactions nucléaires spontanées : la radioactivité";
-  static const String chap13 = "Les réactions nucléaires provoquées";
+  static const String phyChap13 = "Les réactions nucléaires provoquées";
+  static const String chimChap1 = "Les solutions aqueuses";
 }
 
 class RoutesNamesConstants {
-  static const String pcNucChap1ExosRoutesExo1 =
+  static const String pcMecaChap1ExosRoutesExo1 =
       '/matiere(PC)/meca/chap(1)/exo(1)';
-  static const String pcNucChap1ExosRoutesExo2 =
+  static const String pcMecaChap1ExosRoutesExo2 =
       '/matiere(PC)/meca/chap(1)/exo(2)';
-  static const String pcNucChap1ExosRoutesExo3 =
+  static const String pcMecaChap1ExosRoutesExo3 =
       '/matiere(PC)/meca/chap(1)/exo(3)';
-  static const String pcNucChap1ExosRoutesExo4 =
+  static const String pcMecaChap1ExosRoutesExo4 =
       '/matiere(PC)/meca/chap(1)/exo(4)';
-  static const String pcNucChap1ExosRoutesExo5 =
+  static const String pcMecaChap1ExosRoutesExo5 =
       '/matiere(PC)/meca/chap(1)/exo(5)';
-  static const String pcNucChap1ExosRoutesExo6 =
+  static const String pcMecaChap1ExosRoutesExo6 =
       '/matiere(PC)/meca/chap(1)/exo(6)';
-  static const String pcNucChap1ExosRoutesExo7 =
+  static const String pcMecaChap1ExosRoutesExo7 =
       '/matiere(PC)/meca/chap(1)/exo(7)';
-  static const String pcNucChap1ExosRoutesExo8 =
+  static const String pcMecaChap1ExosRoutesExo8 =
       '/matiere(PC)/meca/chap(1)/exo(8)';
-  static const String pcNucChap1ExosRoutesExo9 =
+  static const String pcMecaChap1ExosRoutesExo9 =
       '/matiere(PC)/meca/chap(1)/exo(9)';
-  static const String pcNucChap1ExosRoutesExo10 =
+  static const String pcMecaChap1ExosRoutesExo10 =
       '/matiere(PC)/meca/chap(1)/exo(10)';
 
   static const String pcNucChap11ExosRoutesExo1 =
@@ -149,6 +150,9 @@ class RoutesNamesConstants {
       '/matiere(PC)/nuc/chap(13)/exo(9)';
   static const String pcNucChap13ExosRoutesExo10 =
       '/matiere(PC)/nuc/chap(13)/exo(10)';
+
+  static const String pcMineChap1ExosRoutesExo1 =
+      '/matiere(PC)/mine/chap(1)/exo(1)';
 
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';
