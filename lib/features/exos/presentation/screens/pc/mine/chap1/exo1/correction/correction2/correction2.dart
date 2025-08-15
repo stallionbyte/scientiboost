@@ -39,7 +39,7 @@ class _Correction2State extends ConsumerState<Correction2> {
 
           tex(
             math:
-                r"\begin{array}{l} \frac{[CuSO_4]}{1} = \frac{[Cu^{2+}]}{1} \\  = \frac{[SO_4^{2-}]}{1} = \frac{C_1}{1}  \end{array}",
+                r"\begin{array}{l} \frac{C_1}{1} = \frac{[Cu^{2+}]}{1} \\  = \frac{[SO_4^{2-}]}{1}   \end{array}",
             scale: 5.0,
           ),
 

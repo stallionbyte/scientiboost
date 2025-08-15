@@ -5,14 +5,14 @@ import 'package:scientiboost/core/constants/constants.dart';
 import 'package:scientiboost/core/widgets_builders/builders.dart';
 import 'package:scientiboost/core/common_widgets/borders_wrapper.dart';
 
-class Correction4 extends ConsumerStatefulWidget {
-  const Correction4({super.key});
+class Correction2 extends ConsumerStatefulWidget {
+  const Correction2({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _Correction4State();
+  ConsumerState<ConsumerStatefulWidget> createState() => _Correction2State();
 }
 
-class _Correction4State extends ConsumerState<Correction4> {
+class _Correction2State extends ConsumerState<Correction2> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,14 +22,14 @@ class _Correction4State extends ConsumerState<Correction4> {
         children: [
           EspConstants.esp40,
 
-          sbTxt(txt: "Dissociation du sulfate de zinc :"),
+          sbTxt(txt: "Dissociation du chlorure de magnésium :"),
 
           EspConstants.esp40,
 
           BordersWrapper(
             wrapped: tex(
               math:
-                  r"\begin{array}{l} ZnSO_4 \rightarrow Zn^{2+} + SO_4^{2-} \end{array}",
+                  r"\begin{array}{l} MgCl_2 \rightarrow Mg^{2+} + 2Cl^{-} \end{array}",
               scale: 3.0,
             ),
             color: Colors.black,
@@ -39,19 +39,19 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           tex(
             math:
-                r"\begin{array}{l} \frac{C_2}{1} = \frac{[Zn^{2+}]}{1} \\  = \frac{[SO_4^{2-}]}{1}   \end{array}",
+                r"\begin{array}{l} \frac{C_1}{1} = \frac{[Mg^{2+}]}{1} \\  = \frac{[Cl^{-}]}{2}   \end{array}",
             scale: 5.0,
           ),
 
           EspConstants.esp40,
 
-          sbTxt(txt: "Concentration des ions Zn²⁺ :"),
+          sbTxt(txt: "Concentration des ions Mg²⁺ :"),
 
           EspConstants.esp40,
 
           tex(
             math:
-                r"\begin{array}{l} \frac{[Zn^{2+}]}{1}  = \frac{C_2}{1}  \end{array}",
+                r"\begin{array}{l} \frac{[Mg^{2+}]}{1}  = \frac{C_1}{1}  \end{array}",
             scale: 3.0,
           ),
 
@@ -59,7 +59,7 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           BordersWrapper(
             wrapped: tex(
-              math: r"\begin{array}{l} [Zn^{2+}] = C_2 \end{array}",
+              math: r"\begin{array}{l} [Mg^{2+}] = C_1 \end{array}",
               scale: 3.0,
             ),
             color: Colors.black,
@@ -69,21 +69,21 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           BordersWrapper(
             wrapped: result(
-              leftTex2SvgMath: r"[Zn^{2+}]",
-              valueTex2SvgMath: r"0,200",
+              leftTex2SvgMath: r"[Mg^{2+}]",
+              valueTex2SvgMath: r"0,235",
               unitTex2SvgMath: r"mol/L",
             ),
           ),
 
           EspConstants.esp40,
 
-          sbTxt(txt: "Concentration des ions SO₄²⁻ :"),
+          sbTxt(txt: "Concentration des ions Cl⁻ :"),
 
           EspConstants.esp40,
 
           tex(
             math:
-                r"\begin{array}{l} \frac{[ZnSO_4]}{1} = \frac{C_2}{1}  \end{array}",
+                r"\begin{array}{l} \frac{[Cl^{-}]}{2} = \frac{C_1}{1}  \end{array}",
             scale: 3.0,
           ),
 
@@ -91,7 +91,7 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           BordersWrapper(
             wrapped: tex(
-              math: r"\begin{array}{l} [SO_4^{2-}] = C_2 \end{array}",
+              math: r"\begin{array}{l} [Cl^{-}] = 2 \times C_1 \end{array}",
               scale: 3.0,
             ),
             color: Colors.black,
@@ -99,10 +99,21 @@ class _Correction4State extends ConsumerState<Correction4> {
 
           EspConstants.esp40,
 
+          TransitionConstants.an,
+
+          EspConstants.esp40,
+
+          tex(
+            math: r"\begin{array}{l} [Cl^{-}] = 2 \times 0,235 \end{array}",
+            scale: 3.0,
+          ),
+
+          EspConstants.esp40,
+
           BordersWrapper(
             wrapped: result(
-              leftTex2SvgMath: r"[SO_4^{2-}]",
-              valueTex2SvgMath: r"0,200",
+              leftTex2SvgMath: r"[Cl^{-}]",
+              valueTex2SvgMath: r"0,470",
               unitTex2SvgMath: r"mol/L",
             ),
           ),
