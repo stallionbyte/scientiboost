@@ -51,3 +51,55 @@ Widget cEgalemSurMV() {
     ],
   );
 }
+
+Widget cEgaleVgazSurVmVs() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      transition(transition: "Formule de la concentration molaire"),
+      EspConstants.esp40,
+
+      tex(math: r"\begin{array}{l} C = \frac{n}{V} \end{array}", scale: 2.0),
+      EspConstants.esp40,
+
+      transition(transition: "Nombre de moles"),
+      EspConstants.esp40,
+
+      tex(
+        math: r"\begin{array}{l} n = \frac{V_{gaz}}{V_m} \end{array}",
+        scale: 2.0,
+      ),
+      EspConstants.esp40,
+
+      transition(transition: "En substituant"),
+      EspConstants.esp40,
+
+      tex(
+        math:
+            r"\begin{array}{l} \Rightarrow \ C = \frac{\frac{V_{gaz}}{V_m}}{V} \end{array}",
+        scale: 4.0,
+      ),
+      EspConstants.esp40,
+
+      tex(
+        math:
+            r"\begin{array}{l} \Rightarrow \  C = \frac{\frac{V_{gaz}}{V_m}}{ \frac{V}{1}} \end{array}",
+        scale: 5.0,
+      ),
+      EspConstants.esp40,
+
+      tex(
+        math:
+            r"\begin{array}{l} \Rightarrow \  C = \frac{V_{gaz}}{V_m} \cdot \frac{1}{V} \end{array}",
+        scale: 4.0,
+      ),
+      EspConstants.esp40,
+
+      tex(
+        math:
+            r"\begin{array}{l} \Rightarrow \  C = \frac{V_{gaz}}{V_m \times V} \end{array}",
+        scale: 2.0,
+      ),
+    ],
+  );
+}
