@@ -100,4 +100,20 @@ final pcMineChap1Routes = [
       );
     },
   ),
+
+  GoRoute(
+    path: RoutesNamesConstants.pcMineChap1ExosRoutesExo7,
+    builder: (context, state) {
+      return ExoScreen(
+        matiere: matiere,
+        chapNum: 1,
+        chapTitle: PcChaptitlesConstants.chimChap1,
+        exoNum: 7,
+        enonce: PcMineChap1Exo7Enonce(),
+        correction: PcMineChap1Exo7Correction(),
+        route: RoutesNamesConstants.pcMineChap1ExosRoutesExo7,
+        favorites: StorageKeysConstants.favoritesExos,
+      );
+    },
+  ),
 ];
