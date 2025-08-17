@@ -103,3 +103,7 @@ Widget cEgaleVgazSurVmVs() {
     ],
   );
 }
+
+Widget autoprotolyse() {
+  return tex(math: r"H_2O \rightleftharpoons H_3O^+ + OH^-", scale: 2.0);
+}
