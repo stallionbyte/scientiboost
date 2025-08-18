@@ -52,6 +52,31 @@ Widget cEgalemSurMV() {
   );
 }
 
+Widget mEgaleMVC() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      cEgalemSurMV(),
+
+      EspConstants.esp40,
+
+      tex(
+        math:
+            r"\begin{array}{l} \Rightarrow \  \frac{m}{M \times V} = C \end{array}",
+        scale: 2.0,
+      ),
+
+      EspConstants.esp40,
+
+      tex(
+        math:
+            r"\begin{array}{l} \Rightarrow \  m = M \cdot V \cdot C \end{array}",
+        scale: 2.0,
+      ),
+    ],
+  );
+}
+
 Widget cEgaleVgazSurVmVs() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,

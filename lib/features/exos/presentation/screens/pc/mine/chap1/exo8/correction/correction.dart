@@ -5,16 +5,16 @@ import 'correction1/correction1.dart';
 import 'correction2/correction2.dart';
 import 'correction3/correction3.dart';
 
-class PcMineChap1Exo7Correction extends ConsumerStatefulWidget {
-  const PcMineChap1Exo7Correction({super.key});
+class PcMineChap1Exo8Correction extends ConsumerStatefulWidget {
+  const PcMineChap1Exo8Correction({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PcMineChap1Exo7CorrectionState();
+      _PcMineChap1Exo8CorrectionState();
 }
 
-class _PcMineChap1Exo7CorrectionState
-    extends ConsumerState<PcMineChap1Exo7Correction> {
+class _PcMineChap1Exo8CorrectionState
+    extends ConsumerState<PcMineChap1Exo8Correction> {
   @override
   Widget build(BuildContext context) {
     return ExpansionPanelList.radio(
@@ -47,7 +47,7 @@ class _PcMineChap1Exo7CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "2) les concentrations molaires",
+                "2) la masse de Al₂(SO₄)₃ dissoute",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class _PcMineChap1Exo7CorrectionState
           headerBuilder: (context, isExpanded) {
             return ListTile(
               title: const Text(
-                "3) les concentrations molaires",
+                "3) les concentrations molaires de tous les ions",
                 style: TextStyle(
                   fontSize: ExoConstants.fontSize,
                   fontWeight: FontWeight.bold,
