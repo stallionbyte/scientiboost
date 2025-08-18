@@ -32,13 +32,23 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
           borderRadius: BorderRadius.circular(18), // Coins arrondis
         ),
       ),
-      child: Text(
-        showDetails ? 'Masquer détails' : 'Voir détails',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            showDetails ? Icons.expand_less : Icons.expand_more,
+            color: Colors.white,
+          ),
+          SizedBox(width: 8.0),
+          Text(
+            showDetails ? 'Masquer détails' : 'Voir détails',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
       ),
     );
 
@@ -58,7 +68,11 @@ class _DetailsHandlerState extends ConsumerState<DetailsHandler> {
               padding: EdgeInsets.all(16),
             ),
             child: Column(
-              children: [widget.details, EspConstants.esp40, showButton],
+              children: [
+                EspConstants.esp40,
+                widget.details,
+                EspConstants.esp40,
+              ],
             ),
           ),
         ],
