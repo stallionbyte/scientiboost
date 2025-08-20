@@ -63,7 +63,9 @@ class PcChaptitlesConstants {
   static const String phyChap12 =
       "Les réactions nucléaires spontanées : la radioactivité";
   static const String phyChap13 = "Les réactions nucléaires provoquées";
+
   static const String chimChap1 = "Les solutions aqueuses";
+  static const String chimChap2 = "Les acides forts et les bases fortes";
 }
 
 class RoutesNamesConstants {
@@ -171,6 +173,9 @@ class RoutesNamesConstants {
       '/matiere(PC)/mine/chap(1)/exo(9)';
   static const String pcMineChap1ExosRoutesExo10 =
       '/matiere(PC)/mine/chap(1)/exo(10)';
+
+  static const String pcMineChap2ExosRoutesExo1 =
+      '/matiere(PC)/mine/chap(2)/exo(1)';
 
   static const String pcBacD2025 =
       '/pays(BF)/matiere(PC)/examen(BAC-D)/annee(2025)';

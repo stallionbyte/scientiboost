@@ -130,5 +130,26 @@ Widget cEgaleVgazSurVmVs() {
 }
 
 Widget autoprotolyse() {
-  return tex(math: r"H_2O \rightleftharpoons H_3O^+ + OH^-", scale: 2.0);
+  return tex(math: r"2H_2O \rightleftharpoons H_3O^+ + OH^-", scale: 2.0);
+}
+
+Widget onNeCalculePasLaConcentrationDeLeau() {
+  return RichText(
+    text: TextSpan(
+      style: TextStyle(
+        fontSize: ExoConstants.richTextFontSize,
+        height: 1.5,
+        color: Colors.black,
+      ),
+      children: <InlineSpan>[
+        const TextSpan(
+          text: "On ne calcule pas la concentration des molécules d'eau ",
+        ),
+
+        buildTex2SvgInWidgetSpan(math: r"H_2O"),
+
+        const TextSpan(text: " car l'eau est le solvant"),
+      ],
+    ),
+  );
 }
