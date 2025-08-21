@@ -6,3 +6,6 @@ export 'package:scientiboost/features/exos/presentation/screens/pc/mine/chap2/ex
 
 export 'package:scientiboost/features/exos/presentation/screens/pc/mine/chap2/exo3/enonce.dart';
 export 'package:scientiboost/features/exos/presentation/screens/pc/mine/chap2/exo3/correction/correction.dart';
+
+export 'package:scientiboost/features/exos/presentation/screens/pc/mine/chap2/exo4/enonce.dart';
+export 'package:scientiboost/features/exos/presentation/screens/pc/mine/chap2/exo4/correction/correction.dart';
