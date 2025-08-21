@@ -153,3 +153,48 @@ Widget onNeCalculePasLaConcentrationDeLeau() {
     ),
   );
 }
+
+Widget aNegligeableDevantB({
+  String a = r"[H_3O^+]",
+  String b = r"[OH^-]",
+  required String valueA,
+  required String valueB,
+  required String quotient,
+}) {
+  double scale = 3.0;
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      tex(
+        math:
+            r"\frac{" +
+            a +
+            r"}{" +
+            b +
+            r"} = \frac{" +
+            valueA +
+            r"}{" +
+            valueB +
+            r"}",
+
+        scale: scale,
+      ),
+
+      EspConstants.esp40,
+
+      tex(math: r"\frac{" + a + r"}{" + b + r"} = " + quotient, scale: scale),
+
+      EspConstants.esp40,
+
+      tex(
+        math: r"\frac{" + a + r"}{" + b + r"} = " + quotient + r"\leq 10^{-4}",
+        scale: scale,
+      ),
+
+      EspConstants.esp40,
+      transition(transition: "Donc"),
+      EspConstants.esp40,
+      tex(math: a + r"<<" + b, scale: scale),
+    ],
+  );
+}
